@@ -6,9 +6,19 @@ import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.window.core.layout.WindowWidthSizeClass
+
+@OptIn(ExperimentalSharedTransitionApi::class)
+val LocalSharedTransitionScope = compositionLocalOf<SharedTransitionScope> {
+    throw IllegalStateException("Local SharedTransitionScope required")
+}
+
+val LocalNavAnimatedVisibilityScope = compositionLocalOf<AnimatedVisibilityScope> {
+    throw IllegalStateException("Local AnimatedVisibilityScope required")
+}
 
 /**
  * Do not create an instance of this scaffold state directly. Please use
@@ -34,8 +44,8 @@ class ScaffoldState internal constructor(
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun rememberScaffoldState(
-    animatedVisibilityScope: AnimatedVisibilityScope,
-    sharedTransitionScope: SharedTransitionScope,
+    animatedVisibilityScope: AnimatedVisibilityScope = LocalNavAnimatedVisibilityScope.current,
+    sharedTransitionScope: SharedTransitionScope = LocalSharedTransitionScope.current,
 ): ScaffoldState {
     val isMediumScreenWidthOrWider = isMediumScreenWidthOrWider()
 
