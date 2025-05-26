@@ -7,7 +7,7 @@
     <uses-sdk tools:overrideLibrary="androidx.xr.scenecore, androidx.xr.compose, androidx.xr.compose.material3"/>
 
     <application
-        android:name=".TemplateApp"
+        android:name=".SpaceNerdApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.AppTheme">
 
         <activity
-            android:name="template.MainActivity"
+            android:name="com.adammcneilly.spacenerd.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">

@@ -1,4 +1,4 @@
-package template.theme
+package com.adammcneilly.spacenerd.theme
 
 import android.annotation.TargetApi
 import android.os.Build
@@ -23,7 +23,7 @@ private val lightColorScheme = lightColorScheme(
 
 @Composable
 @TargetApi(Build.VERSION_CODES.S)
-fun TemplateTheme(
+fun SpaceTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicTheme: Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S,
     content: @Composable () -> Unit,
