@@ -55,6 +55,7 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation(project(":scaffold"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)

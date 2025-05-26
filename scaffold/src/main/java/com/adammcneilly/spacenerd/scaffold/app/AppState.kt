@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.scaffold.app
 import android.os.Parcelable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.adammcneilly.spacenerd.scaffold.HomeTab
@@ -71,4 +72,15 @@ class AppState(
         AppStateData(
             navItems = navItems,
         )
+
+    companion object {
+        val saver = Saver<AppState, AppStateData>(
+            save = { appState ->
+                appState.toSaveableData()
+            },
+            restore = { appStateData ->
+                AppState(appStateData)
+            },
+        )
+    }
 }

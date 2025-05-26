@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.adammcneilly.spacenerd.theme.SpaceTheme
+import androidx.compose.runtime.saveable.rememberSaveable
+import com.adammcneilly.spacenerd.scaffold.app.App
+import com.adammcneilly.spacenerd.scaffold.app.AppState
+import com.adammcneilly.spacenerd.scaffold.app.AppStateData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,12 +20,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             enableEdgeToEdge()
 
-            SpaceTheme {
-                Surface(
-                    color = MaterialTheme.colorScheme.background,
-                ) {
-                    Greeting("Android")
-                }
+            val appState = rememberSaveable(saver = AppState.saver) {
+                AppState(
+                    initialData = AppStateData(),
+                )
+            }
+
+            App(
+                appState = appState,
+            ) {
+                Greeting("Android")
             }
         }
     }
