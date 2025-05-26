@@ -7,6 +7,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import com.adammcneilly.spacenerd.scaffold.LocalSharedTransitionScope
 import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
 
 @Composable
@@ -23,6 +24,7 @@ fun App(
                     .fillMaxSize(),
             ) {
                 CompositionLocalProvider(
+                    LocalSharedTransitionScope provides this,
                     LocalAppState provides appState,
                 ) {
                     content()
