@@ -1,14 +1,15 @@
 package com.adammcneilly.spacenerd.data.spaceflightnews.dto
 
+import com.adammcneilly.spacenerd.core.models.Article
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class SpaceFlightNewsArticleDTO(
     @Json(name = "authors")
-    val authors: List<SpaceFlightNewsAuthorDTO?>? = null,
+    val authors: List<SpaceFlightNewsAuthorDTO>? = null,
     @Json(name = "events")
-    val events: List<SpaceFlightNewsEventDTO?>? = null,
+    val events: List<SpaceFlightNewsEventDTO>? = null,
     @Json(name = "featured")
     val featured: Boolean? = null,
     @Json(name = "id")
@@ -16,7 +17,7 @@ data class SpaceFlightNewsArticleDTO(
     @Json(name = "image_url")
     val imageUrl: String? = null,
     @Json(name = "launches")
-    val launches: List<SpaceFlightNewsLaunchDTO?>? = null,
+    val launches: List<SpaceFlightNewsLaunchDTO>? = null,
     @Json(name = "news_site")
     val newsSite: String? = null,
     @Json(name = "published_at")
@@ -29,4 +30,14 @@ data class SpaceFlightNewsArticleDTO(
     val updatedAt: String? = null,
     @Json(name = "url")
     val url: String? = null,
-)
+) {
+    fun toArticle(): Article =
+        Article(
+            id = this.id.toString(),
+            title = this.title.orEmpty(),
+            imageUrl = this.imageUrl.orEmpty(),
+            url = this.url.orEmpty(),
+            summary = this.summary.orEmpty(),
+            authors = this.authors?.map(SpaceFlightNewsAuthorDTO::toAuthor).orEmpty(),
+        )
+}

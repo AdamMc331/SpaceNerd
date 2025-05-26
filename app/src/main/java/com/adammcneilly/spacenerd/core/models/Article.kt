@@ -6,5 +6,5 @@ data class Article(
     val imageUrl: String,
     val url: String,
     val summary: String,
-    val author: String,
+    val authors: List<Author>,
 )

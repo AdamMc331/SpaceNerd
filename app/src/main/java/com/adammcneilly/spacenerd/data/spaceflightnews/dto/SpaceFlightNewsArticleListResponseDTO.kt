@@ -12,5 +12,5 @@ data class SpaceFlightNewsArticleListResponseDTO(
     @Json(name = "previous")
     val previous: String? = null,
     @Json(name = "results")
-    val results: List<SpaceFlightNewsArticleDTO?>? = null,
+    val results: List<SpaceFlightNewsArticleDTO>? = null,
 )

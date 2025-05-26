@@ -8,7 +8,7 @@ data class ArticleDisplayModel(
     val image: ImageDisplayModel,
     val url: String,
     val summary: String,
-    val author: String,
+    val authors: List<AuthorDisplayModel>,
 ) {
     constructor(
         article: Article,
@@ -18,6 +18,6 @@ data class ArticleDisplayModel(
         image = ImageDisplayModel.Remote(article.imageUrl),
         url = article.url,
         summary = article.summary,
-        author = article.author,
+        authors = article.authors.map(::AuthorDisplayModel),
     )
 }
