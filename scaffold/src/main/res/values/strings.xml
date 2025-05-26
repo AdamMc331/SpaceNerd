@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="news">News</string>
+    <string name="launches">Launches</string>
+    <string name="astronauts">Astronauts</string>
+    <string name="stations">Stations</string>
+</resources>

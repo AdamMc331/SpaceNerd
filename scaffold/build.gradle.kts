@@ -1,9 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.cash.paparazzi)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.google.dagger.hilt)
-    alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
 }
@@ -12,13 +10,10 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.adammcneilly.spacenerd"
         minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.compileSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -50,39 +45,21 @@ android {
         }
     }
 
-    namespace = "com.adammcneilly.spacenerd"
+    namespace = "com.adammcneilly.spacenerd.scaffold"
 }
 
 dependencies {
     implementation(platform(libs.compose.bom))
-    implementation(project(":scaffold"))
-    implementation(libs.android.material)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.bundles.androidx.xr)
-    implementation(libs.coil.compose)
-    implementation(libs.coil.okhttp)
+    implementation(libs.androidx.adaptive.android)
     implementation(libs.compose.material)
     implementation(libs.compose.material.icons.extended)
     implementation(libs.compose.navigation)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
-    implementation(libs.square.moshi.kotlin)
-    implementation(libs.square.okhttp.logging.interceptor)
-    implementation(libs.square.retrofit)
-    implementation(libs.square.retrofit.converter.moshi)
 
     debugImplementation(platform(libs.compose.bom))
     debugImplementation(libs.compose.ui.test.manifest)
     debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.square.leakcanary)
-
-    annotationProcessor(libs.androidx.room.compiler)
 
     testImplementation(libs.junit)
 
@@ -90,13 +67,6 @@ dependencies {
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.compose.ui.test.junit)
-    androidTestImplementation(libs.hilt.android.testing)
-
-    ksp(libs.androidx.room.compiler)
-    ksp(libs.hilt.compiler)
-    ksp(libs.square.moshi.kotlin.codegen)
-
-    kspAndroidTest(libs.hilt.android.compiler)
 }
 
 tasks.formatKotlinMain {
