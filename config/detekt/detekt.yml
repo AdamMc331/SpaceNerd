@@ -1,0 +1,23 @@
+# Note that this is a slimmed version of a detekt config file that only includes behavior we
+# want to override for our application. This is done by using `buildUponDefaultConfig` in the gradle
+# configuration.
+
+# You can find a list of rules in the Detekt docs: https://detekt.dev/docs/intro
+
+naming:
+  active: true
+  # Ignore function naming for Composable functions since they start with uppercase letters.
+  FunctionNaming:
+    active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**']
+    functionPattern: '[a-z][a-zA-Z0-9]*'
+    excludeClassPattern: '$^'
+    ignoreAnnotated: ['Composable']
+
+style:
+  active: true
+  # If a preview function is private and unused, Detekt flags that by default.AlsoCouldBeApply:
+  # Disable this check if the function is annotated with Preview.
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated: ['Preview']
