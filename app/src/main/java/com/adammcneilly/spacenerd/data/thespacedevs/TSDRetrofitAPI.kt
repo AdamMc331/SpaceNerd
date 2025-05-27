@@ -7,6 +7,6 @@ import retrofit2.http.Query
 interface TSDRetrofitAPI {
     @GET("2.3.0/launches")
     suspend fun getLaunches(
-        @Query("slug") slug: String? = null,
+        @Query("slug") slug: String?,
     ): TSDLaunchListResponseDTO
 }
