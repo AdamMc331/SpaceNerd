@@ -19,6 +19,7 @@ class NewsViewModel @Inject constructor(
     val state = mutableState.asStateFlow()
 
     init {
+        println("ADAMLOG - INIT NEWS VM")
         observeArticles()
     }
 
