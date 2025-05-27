@@ -23,7 +23,7 @@ class NewsViewModel @Inject constructor(
 
             mutableState.update { currentState ->
                 currentState.copy(
-                    articles = articles,
+                    articles = articles.getOrNull().orEmpty(),
                 )
             }
         }

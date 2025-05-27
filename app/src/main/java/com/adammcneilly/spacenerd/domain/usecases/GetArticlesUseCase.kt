@@ -7,7 +7,9 @@ import javax.inject.Inject
 class GetArticlesUseCase @Inject constructor(
     private val repository: ArticleRepository,
 ) {
-    suspend fun invoke(): List<ArticleDisplayModel> {
-        return repository.getArticles().map(::ArticleDisplayModel)
+    suspend fun invoke(): Result<List<ArticleDisplayModel>> {
+        return repository.getArticles().map { articles ->
+            articles.map(::ArticleDisplayModel)
+        }
     }
 }
