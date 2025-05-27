@@ -18,7 +18,7 @@ data class TSDPadDTO(
     @Json(name = "id")
     val id: Int? = null,
     @Json(name = "image")
-    val image: String? = null,
+    val image: TSDImageDTO? = null,
     @Json(name = "info_url")
     val infoUrl: String? = null,
     @Json(name = "latitude")

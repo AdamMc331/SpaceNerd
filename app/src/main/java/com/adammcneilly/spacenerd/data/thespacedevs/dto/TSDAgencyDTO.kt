@@ -20,7 +20,7 @@ data class TSDAgencyDTO(
     @Json(name = "id")
     val id: Int? = null,
     @Json(name = "image")
-    val image: String? = null,
+    val image: TSDImageDTO? = null,
     @Json(name = "launchers")
     val launchers: String? = null,
     @Json(name = "logo")
