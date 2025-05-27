@@ -12,7 +12,9 @@ import com.adammcneilly.spacenerd.scaffold.rememberScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
-fun LaunchListScreen(modifier: Modifier = Modifier) {
+fun LaunchListScreen(
+    modifier: Modifier = Modifier,
+) {
     rememberScaffoldState().PersistentScaffold(
         modifier = modifier,
         navigationBar = {

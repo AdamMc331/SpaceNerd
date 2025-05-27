@@ -1,10 +1,10 @@
 package com.adammcneilly.spacenerd.screens.news
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.adammcneilly.spacenerd.scaffold.PersistentScaffold
 import com.adammcneilly.spacenerd.scaffold.navigation.components.PersistentNavigationBar
 import com.adammcneilly.spacenerd.scaffold.navigation.components.PersistentNavigationRail
@@ -12,7 +12,12 @@ import com.adammcneilly.spacenerd.scaffold.rememberScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
-fun NewsScreen(modifier: Modifier = Modifier) {
+fun NewsScreen(
+    modifier: Modifier = Modifier,
+    viewModel: NewsViewModel = hiltViewModel(),
+) {
+    val state = viewModel.state.collectAsState()
+
     rememberScaffoldState().PersistentScaffold(
         modifier = modifier,
         navigationBar = {
@@ -22,10 +27,9 @@ fun NewsScreen(modifier: Modifier = Modifier) {
             PersistentNavigationRail()
         },
         content = { scaffoldPadding ->
-            Text(
-                text = "News Screen",
-                modifier = Modifier
-                    .padding(scaffoldPadding),
+            NewsContent(
+                state = state.value,
+                contentPadding = scaffoldPadding,
             )
         },
     )

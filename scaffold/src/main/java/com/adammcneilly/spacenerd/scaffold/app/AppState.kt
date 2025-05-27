@@ -56,7 +56,9 @@ class AppState(
                 navItem.selected
             }?.tab
 
-    fun onNavItemSelected(tab: HomeTab) {
+    fun onNavItemSelected(
+        tab: HomeTab,
+    ) {
         navItems = navItems.map { navItem ->
             navItem.copy(
                 selected = (navItem.tab == tab),
