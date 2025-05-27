@@ -6,8 +6,8 @@ import androidx.compose.ui.unit.LayoutDirection
 
 operator fun PaddingValues.plus(
     that: PaddingValues,
-): PaddingValues =
-    object : PaddingValues {
+): PaddingValues {
+    return object : PaddingValues {
         override fun calculateBottomPadding(): Dp = this@plus.calculateBottomPadding() + that.calculateBottomPadding()
 
         override fun calculateLeftPadding(
@@ -20,3 +20,4 @@ operator fun PaddingValues.plus(
 
         override fun calculateTopPadding(): Dp = this@plus.calculateTopPadding() + that.calculateTopPadding()
     }
+}

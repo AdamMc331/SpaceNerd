@@ -15,5 +15,7 @@ object DataModule {
     @Singleton
     fun provideArticleRepository(
         articleRepository: SpaceFlightNewsArticleRepository,
-    ): ArticleRepository = articleRepository
+    ): ArticleRepository {
+        return articleRepository
+    }
 }

@@ -20,38 +20,43 @@ object RemoteModule {
 
     @Provides
     @Singleton
-    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
-        HttpLoggingInterceptor().apply {
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
+    }
 
     @Provides
     @Singleton
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-    ): OkHttpClient =
-        OkHttpClient
+    ): OkHttpClient {
+        return OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
             .build()
+    }
 
     @Provides
     @Singleton
     @Named("SpaceFlightNewsRetrofit")
     fun provideSpaceFlightNewsRetrofit(
         okHttpClient: OkHttpClient,
-    ): Retrofit =
-        Retrofit
+    ): Retrofit {
+        return Retrofit
             .Builder()
             .baseUrl(SPACE_FLIGHT_NEWS_API_URL)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
             .build()
+    }
 
     @Provides
     @Singleton
     fun provideSpaceFlightNewsRetrofitAPI(
         @Named("SpaceFlightNewsRetrofit")
         retrofit: Retrofit,
-    ): SpaceFlightNewsRetrofitAPI = retrofit.create(SpaceFlightNewsRetrofitAPI::class.java)
+    ): SpaceFlightNewsRetrofitAPI {
+        return retrofit.create(SpaceFlightNewsRetrofitAPI::class.java)
+    }
 }

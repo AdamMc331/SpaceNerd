@@ -11,8 +11,9 @@ data class SpaceFlightNewsAuthorDTO(
     @Json(name = "socials")
     val socials: SpaceFlightNewsSocialsDTO? = null,
 ) {
-    fun toAuthor(): Author =
-        Author(
+    fun toAuthor(): Author {
+        return Author(
             name = this.name.orEmpty(),
         )
+    }
 }

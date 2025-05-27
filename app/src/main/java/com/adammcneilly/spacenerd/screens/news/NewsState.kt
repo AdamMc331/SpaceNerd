@@ -6,9 +6,10 @@ data class NewsState(
     val articles: List<ArticleDisplayModel>,
 ) {
     companion object {
-        fun default(): NewsState =
-            NewsState(
+        fun default(): NewsState {
+            return NewsState(
                 articles = emptyList(),
             )
+        }
     }
 }

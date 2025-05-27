@@ -31,8 +31,8 @@ data class SpaceFlightNewsArticleDTO(
     @Json(name = "url")
     val url: String? = null,
 ) {
-    fun toArticle(): Article =
-        Article(
+    fun toArticle(): Article {
+        return Article(
             id = this.id.toString(),
             title = this.title.orEmpty(),
             imageUrl = this.imageUrl.orEmpty(),
@@ -40,4 +40,5 @@ data class SpaceFlightNewsArticleDTO(
             summary = this.summary.orEmpty(),
             authors = this.authors?.map(SpaceFlightNewsAuthorDTO::toAuthor).orEmpty(),
         )
+    }
 }

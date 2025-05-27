@@ -11,23 +11,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsViewModel
-    @Inject
-    constructor(
-        private val getArticlesUseCase: GetArticlesUseCase,
-    ) : ViewModel() {
-        private val mutableState = MutableStateFlow(NewsState.default())
-        val state = mutableState.asStateFlow()
+class NewsViewModel @Inject constructor(
+    private val getArticlesUseCase: GetArticlesUseCase,
+) : ViewModel() {
+    private val mutableState = MutableStateFlow(NewsState.default())
+    val state = mutableState.asStateFlow()
 
-        init {
-            viewModelScope.launch {
-                val articles = getArticlesUseCase.invoke()
+    init {
+        viewModelScope.launch {
+            val articles = getArticlesUseCase.invoke()
 
-                mutableState.update { currentState ->
-                    currentState.copy(
-                        articles = articles,
-                    )
-                }
+            mutableState.update { currentState ->
+                currentState.copy(
+                    articles = articles,
+                )
             }
         }
     }
+}
