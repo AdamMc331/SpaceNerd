@@ -4,10 +4,13 @@ import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.adammcneilly.spacenerd.scaffold.HomeTab
 import com.adammcneilly.spacenerd.scaffold.LocalNavAnimatedVisibilityScope
@@ -30,9 +33,32 @@ fun AppNavHost() {
         if (route != null) {
             if (navController.currentBackStackEntry?.destination?.route != route) {
                 navController.navigate(route) {
+                    // Pop up to the start destination of the graph to
+                    // avoid building up a large stack of destinations
+                    // on the back stack as users select items
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        saveState = true // Save state of popped destinations (including ViewModel saved state)
+                    }
                     launchSingleTop = true
                     restoreState = true
                 }
+            }
+        }
+    }
+
+    // Observe NavController's back stack to update AppState on system back
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+
+    LaunchedEffect(navBackStackEntry) {
+        val currentRoute = navBackStackEntry?.destination?.route
+        currentRoute?.let { route ->
+            // Find the HomeTab corresponding to the current route
+            val tabForRoute = HomeTab.entries.find { it.route == route }
+            if (tabForRoute != null && appState.currentSelectedTab != tabForRoute) {
+                // This will update the visual selection in your BottomNavigationBar
+                // It should NOT trigger the LaunchedEffect above if currentTabFromAppState
+                // is already correct, preventing navigation loops.
+                appState.onNavItemSelected(tabForRoute)
             }
         }
     }
