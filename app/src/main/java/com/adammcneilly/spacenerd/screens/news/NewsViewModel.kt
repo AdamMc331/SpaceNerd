@@ -6,6 +6,7 @@ import com.adammcneilly.spacenerd.domain.usecases.GetArticlesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,14 +19,19 @@ class NewsViewModel @Inject constructor(
     val state = mutableState.asStateFlow()
 
     init {
-        viewModelScope.launch {
-            val articles = getArticlesUseCase.invoke()
+        observeArticles()
+    }
 
-            mutableState.update { currentState ->
-                currentState.copy(
-                    articles = articles.getOrNull().orEmpty(),
-                )
-            }
+    private fun observeArticles() {
+        viewModelScope.launch {
+            getArticlesUseCase.invoke()
+                .collectLatest { articles ->
+                    mutableState.update { currentState ->
+                        currentState.copy(
+                            articleData = articles,
+                        )
+                    }
+                }
         }
     }
 }
