@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.thespacedevs
+package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

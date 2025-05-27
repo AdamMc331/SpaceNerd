@@ -1,5 +1,6 @@
-package com.adammcneilly.spacenerd.data.thespacedevs
+package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
+import com.adammcneilly.spacenerd.core.models.Launch
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -69,4 +70,13 @@ data class TSDLaunchDTO(
     val windowEnd: String? = null,
     @Json(name = "window_start")
     val windowStart: String? = null,
-)
+) {
+
+    fun toLaunch(): Launch {
+        return Launch(
+            id = this.id.orEmpty(),
+            name = this.name.orEmpty(),
+            imageUrl = this.image?.imageUrl.orEmpty(),
+        )
+    }
+}

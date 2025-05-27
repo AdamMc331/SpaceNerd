@@ -1,10 +1,10 @@
-package com.adammcneilly.spacenerd.data.thespacedevs
+package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TSDLogoDTO(
+data class TSDImageDTO(
     @Json(name = "credit")
     val credit: String? = null,
     @Json(name = "id")
