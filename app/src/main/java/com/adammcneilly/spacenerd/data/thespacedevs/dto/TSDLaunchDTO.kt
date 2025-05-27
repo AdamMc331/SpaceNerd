@@ -71,7 +71,6 @@ data class TSDLaunchDTO(
     @Json(name = "window_start")
     val windowStart: String? = null,
 ) {
-
     fun toLaunch(): Launch {
         return Launch(
             id = this.id.orEmpty(),

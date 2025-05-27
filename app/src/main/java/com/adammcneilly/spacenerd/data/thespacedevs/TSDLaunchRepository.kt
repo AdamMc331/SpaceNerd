@@ -12,6 +12,7 @@ import javax.inject.Inject
 class TSDLaunchRepository @Inject constructor(
     private val api: TSDRetrofitAPI,
 ) : LaunchRepository {
+    @Suppress("TooGenericExceptionCaught")
     override fun getLaunches(
         request: LaunchListRequest,
     ): Flow<DataResult<List<Launch>>> {
