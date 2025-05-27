@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.data.thespacedevs.dto
 import com.adammcneilly.spacenerd.core.models.Launch
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.datetime.Instant
 
 @JsonClass(generateAdapter = true)
 data class TSDLaunchDTO(
@@ -37,7 +38,7 @@ data class TSDLaunchDTO(
     @Json(name = "net")
     val net: String? = null,
     @Json(name = "net_precision")
-    val netPrecision: String? = null,
+    val netPrecision: TSDNetPrecisionDTO? = null,
     @Json(name = "orbital_launch_attempt_count")
     val orbitalLaunchAttemptCount: Int? = null,
     @Json(name = "orbital_launch_attempt_count_year")
@@ -51,7 +52,7 @@ data class TSDLaunchDTO(
     @Json(name = "probability")
     val probability: String? = null,
     @Json(name = "program")
-    val program: List<String>? = null,
+    val program: List<TSDProgramDTO>? = null,
     @Json(name = "response_mode")
     val responseMode: String? = null,
     @Json(name = "rocket")
@@ -76,6 +77,7 @@ data class TSDLaunchDTO(
             id = this.id.orEmpty(),
             name = this.name.orEmpty(),
             imageUrl = this.image?.imageUrl.orEmpty(),
+            launchTime = Instant.parse(this.net.orEmpty()),
         )
     }
 }

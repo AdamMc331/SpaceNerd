@@ -8,5 +8,7 @@ interface TSDRetrofitAPI {
     @GET("2.3.0/launches")
     suspend fun getLaunches(
         @Query("slug") slug: String?,
+        @Query("net__gte") after: String?,
+        @Query("net__lte") before: String?,
     ): TSDLaunchListResponseDTO
 }

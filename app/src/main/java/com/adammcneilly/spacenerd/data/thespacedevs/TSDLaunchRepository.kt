@@ -23,6 +23,8 @@ class TSDLaunchRepository @Inject constructor(
                 val launches = api
                     .getLaunches(
                         slug = request.slug,
+                        before = request.before?.toString(),
+                        after = request.after?.toString(),
                     )
                     .results
                     ?.map(TSDLaunchDTO::toLaunch)
