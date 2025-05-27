@@ -13,5 +13,7 @@ import javax.inject.Singleton
 object DataModule {
     @Provides
     @Singleton
-    fun provideArticleRepository(articleRepository: SpaceFlightNewsArticleRepository): ArticleRepository = articleRepository
+    fun provideArticleRepository(
+        articleRepository: SpaceFlightNewsArticleRepository,
+    ): ArticleRepository = articleRepository
 }

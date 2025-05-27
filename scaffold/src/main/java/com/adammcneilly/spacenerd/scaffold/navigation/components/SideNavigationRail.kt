@@ -15,7 +15,9 @@ import com.adammcneilly.spacenerd.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
 
 @Composable
-fun SideNavigationRail(modifier: Modifier = Modifier) {
+fun SideNavigationRail(
+    modifier: Modifier = Modifier,
+) {
     val appState = LocalAppState.current
 
     NavigationRail(

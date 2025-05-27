@@ -27,7 +27,9 @@ object RemoteModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+    ): OkHttpClient =
         OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
@@ -36,7 +38,9 @@ object RemoteModule {
     @Provides
     @Singleton
     @Named("SpaceFlightNewsRetrofit")
-    fun provideSpaceFlightNewsRetrofit(okHttpClient: OkHttpClient): Retrofit =
+    fun provideSpaceFlightNewsRetrofit(
+        okHttpClient: OkHttpClient,
+    ): Retrofit =
         Retrofit
             .Builder()
             .baseUrl(SPACE_FLIGHT_NEWS_API_URL)

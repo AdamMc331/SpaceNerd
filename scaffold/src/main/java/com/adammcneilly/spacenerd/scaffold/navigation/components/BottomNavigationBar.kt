@@ -15,7 +15,9 @@ import com.adammcneilly.spacenerd.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
 
 @Composable
-fun BottomNavigationBar(modifier: Modifier = Modifier) {
+fun BottomNavigationBar(
+    modifier: Modifier = Modifier,
+) {
     val appState = LocalAppState.current
 
     NavigationBar(

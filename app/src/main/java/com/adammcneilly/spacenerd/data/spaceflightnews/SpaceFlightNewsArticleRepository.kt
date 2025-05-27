@@ -10,10 +10,10 @@ class SpaceFlightNewsArticleRepository
     constructor(
         private val api: SpaceFlightNewsRetrofitAPI,
     ) : ArticleRepository {
-        override suspend fun getArticles(): List<Article> =
-            api
-                .getArticles()
+        override suspend fun getArticles(): List<Article> {
+            return api.getArticles()
                 .results
                 ?.map(SpaceFlightNewsArticleDTO::toArticle)
                 .orEmpty()
+        }
     }
