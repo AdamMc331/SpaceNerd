@@ -1,9 +1,10 @@
 package com.adammcneilly.spacenerd.screens.news
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -19,10 +20,16 @@ fun NewsContent(
         contentPadding = contentPadding.plus(PaddingValues(16.dp)),
         modifier = modifier,
     ) {
-        items(state.articles) { article ->
-            Text(
-                text = article.title,
+        itemsIndexed(state.articles) { index, article ->
+            ArticleListItem(
+                article = article,
+                modifier = Modifier
+                    .fillMaxWidth(),
             )
+
+            if (index != state.articles.lastIndex) {
+                HorizontalDivider()
+            }
         }
     }
 }

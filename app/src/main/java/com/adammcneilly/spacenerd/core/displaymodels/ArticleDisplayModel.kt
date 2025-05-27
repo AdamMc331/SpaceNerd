@@ -20,4 +20,6 @@ data class ArticleDisplayModel(
         summary = article.summary,
         authors = article.authors.map(::AuthorDisplayModel),
     )
+
+    val authorNames = authors.joinToString()
 }
