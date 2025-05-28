@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 
+private const val CARD_IMAGE_ASPECT_RATIO = 1.5F
+
 @Composable
 fun LaunchSummaryCard(
     launch: LaunchDisplayModel,
@@ -56,6 +58,6 @@ private fun LaunchImage(
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1F),
+            .aspectRatio(CARD_IMAGE_ASPECT_RATIO),
     )
 }
