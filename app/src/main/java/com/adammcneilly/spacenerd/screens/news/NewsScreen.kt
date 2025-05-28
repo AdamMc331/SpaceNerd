@@ -2,8 +2,10 @@ package com.adammcneilly.spacenerd.screens.news
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.adammcneilly.spacenerd.scaffold.PersistentScaffold
 import com.adammcneilly.spacenerd.scaffold.navigation.components.PersistentNavigationBar
@@ -18,6 +20,16 @@ fun NewsScreen(
 ) {
     val state = viewModel.state.collectAsState()
 
+    val selectedArticle = state.value.selectedArticle
+    val uriHandler = LocalUriHandler.current
+
+    LaunchedEffect(selectedArticle) {
+        if (selectedArticle != null) {
+            uriHandler.openUri(selectedArticle.url)
+            viewModel.onEvent(NewsEvent.NavigatedToArticle(selectedArticle))
+        }
+    }
+
     rememberScaffoldState().PersistentScaffold(
         modifier = modifier,
         navigationBar = {
@@ -30,6 +42,7 @@ fun NewsScreen(
             NewsContent(
                 state = state.value,
                 contentPadding = scaffoldPadding,
+                onEvent = viewModel::onEvent,
             )
         },
     )

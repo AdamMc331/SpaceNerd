@@ -5,11 +5,13 @@ import com.adammcneilly.spacenerd.data.DataResult
 
 data class NewsState(
     val articleData: DataResult<List<ArticleDisplayModel>>,
+    val selectedArticle: ArticleDisplayModel?,
 ) {
     companion object {
         fun default(): NewsState {
             return NewsState(
                 articleData = DataResult.Loading,
+                selectedArticle = null,
             )
         }
     }

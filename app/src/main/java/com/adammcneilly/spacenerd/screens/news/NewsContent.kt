@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.screens.news
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,6 +25,7 @@ import com.adammcneilly.spacenerd.data.DataResult
 fun NewsContent(
     state: NewsState,
     contentPadding: PaddingValues,
+    onEvent: (NewsEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     when (state.articleData) {
@@ -46,6 +48,9 @@ fun NewsContent(
             ArticleList(
                 contentPadding = contentPadding,
                 articles = state.articleData.data,
+                onArticleClicked = { article ->
+                    onEvent.invoke(NewsEvent.ArticleSelected(article))
+                },
                 modifier = Modifier
                     .fillMaxSize(),
             )
@@ -83,6 +88,7 @@ private fun ErrorMessage(
 private fun ArticleList(
     contentPadding: PaddingValues,
     articles: List<ArticleDisplayModel>,
+    onArticleClicked: (ArticleDisplayModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -101,6 +107,9 @@ private fun ArticleList(
             ArticleCard(
                 article = article,
                 modifier = Modifier
+                    .clickable {
+                        onArticleClicked.invoke(article)
+                    }
                     .fillMaxWidth(),
             )
         }

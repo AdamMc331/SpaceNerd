@@ -35,4 +35,25 @@ class NewsViewModel @Inject constructor(
                 }
         }
     }
+
+    fun onEvent(
+        event: NewsEvent,
+    ) {
+        when (event) {
+            is NewsEvent.ArticleSelected -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedArticle = event.article,
+                    )
+                }
+            }
+            is NewsEvent.NavigatedToArticle -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedArticle = null,
+                    )
+                }
+            }
+        }
+    }
 }
