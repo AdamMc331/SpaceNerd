@@ -30,7 +30,7 @@ fun ArticleCard(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(1F),
+                    .aspectRatio(1.5F),
             )
 
             Column(
