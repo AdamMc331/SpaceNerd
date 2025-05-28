@@ -1,5 +1,10 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import com.adammcneilly.spacenerd.core.models.Article
 
 data class ArticleDisplayModel(
@@ -21,5 +26,13 @@ data class ArticleDisplayModel(
         authors = article.authors.map(::AuthorDisplayModel),
     )
 
-    val authorNames = authors.joinToString()
+    private val authorNames = authors.joinToString(transform = AuthorDisplayModel::name)
+
+    val titleAuthor: AnnotatedString = buildAnnotatedString {
+        withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+            append(title)
+        }
+        append(" | ")
+        append(authorNames)
+    }
 }
