@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 
+private const val ARTICLE_IMAGE_ASPECT_RATIO = 1.5F
+
 @Composable
 fun ArticleCard(
     article: ArticleDisplayModel,
@@ -30,7 +32,7 @@ fun ArticleCard(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(1.5F),
+                    .aspectRatio(ARTICLE_IMAGE_ASPECT_RATIO),
             )
 
             Column(
