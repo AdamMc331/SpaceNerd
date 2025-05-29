@@ -1,22 +1,26 @@
 package com.adammcneilly.spacenerd.screens.launches
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.ui.utils.plus
 import com.adammcneilly.spacenerd.data.DataResult
+import com.adammcneilly.spacenerd.scaffold.R as scaffoldR
 
 @Composable
 fun LaunchListContent(
@@ -78,6 +82,7 @@ private fun ErrorMessage(
 }
 
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 private fun LaunchList(
     contentPadding: PaddingValues,
     launches: List<LaunchDisplayModel>,
@@ -85,16 +90,20 @@ private fun LaunchList(
 ) {
     LazyColumn(
         contentPadding = contentPadding.plus(PaddingValues(16.dp)),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier,
     ) {
-        itemsIndexed(launches) { index, launch ->
+        item {
             Text(
-                text = launch.name,
+                text = stringResource(scaffoldR.string.launches),
+                style = MaterialTheme.typography.titleLarge,
             )
+        }
 
-            if (index != launches.lastIndex) {
-                HorizontalDivider()
-            }
+        items(launches) { launch ->
+            LaunchSummaryCard(
+                launch = launch,
+            )
         }
     }
 }
