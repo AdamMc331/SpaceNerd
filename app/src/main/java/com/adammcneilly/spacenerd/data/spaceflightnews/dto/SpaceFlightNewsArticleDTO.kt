@@ -34,10 +34,10 @@ data class SpaceFlightNewsArticleDTO(
     fun toArticle(): Article {
         return Article(
             id = this.id.toString(),
-            title = this.title.orEmpty(),
+            title = this.title?.trim().orEmpty(),
             imageUrl = this.imageUrl.orEmpty(),
             url = this.url.orEmpty(),
-            summary = this.summary.orEmpty(),
+            summary = this.summary?.trim().orEmpty(),
             authors = this.authors?.map(SpaceFlightNewsAuthorDTO::toAuthor).orEmpty(),
         )
     }

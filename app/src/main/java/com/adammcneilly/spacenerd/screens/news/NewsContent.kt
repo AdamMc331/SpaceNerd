@@ -1,5 +1,7 @@
 package com.adammcneilly.spacenerd.screens.news
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,9 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,6 +25,7 @@ import com.adammcneilly.spacenerd.data.DataResult
 fun NewsContent(
     state: NewsState,
     contentPadding: PaddingValues,
+    onEvent: (NewsEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     when (state.articleData) {
@@ -45,6 +48,9 @@ fun NewsContent(
             ArticleList(
                 contentPadding = contentPadding,
                 articles = state.articleData.data,
+                onArticleClicked = { article ->
+                    onEvent.invoke(NewsEvent.ArticleSelected(article))
+                },
                 modifier = Modifier
                     .fillMaxSize(),
             )
@@ -82,22 +88,30 @@ private fun ErrorMessage(
 private fun ArticleList(
     contentPadding: PaddingValues,
     articles: List<ArticleDisplayModel>,
+    onArticleClicked: (ArticleDisplayModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         contentPadding = contentPadding.plus(PaddingValues(16.dp)),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier,
     ) {
-        itemsIndexed(articles) { index, article ->
-            ArticleListItem(
+        item {
+            Text(
+                text = "News",
+                style = MaterialTheme.typography.titleLarge,
+            )
+        }
+
+        items(articles) { article ->
+            ArticleCard(
                 article = article,
                 modifier = Modifier
+                    .clickable {
+                        onArticleClicked.invoke(article)
+                    }
                     .fillMaxWidth(),
             )
-
-            if (index != articles.lastIndex) {
-                HorizontalDivider()
-            }
         }
     }
 }
