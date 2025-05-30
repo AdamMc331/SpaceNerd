@@ -18,15 +18,15 @@ import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
 fun Pill(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.secondary,
-    textColor: Color = MaterialTheme.colorScheme.onSecondary,
+    containerColor: Color = MaterialTheme.colorScheme.secondary,
+    contentColor: Color = MaterialTheme.colorScheme.onSecondary,
 ) {
     Text(
         text = text,
-        color = textColor,
+        color = contentColor,
         modifier = modifier
             .background(
-                color = color,
+                color = containerColor,
                 shape = CircleShape,
             )
             .padding(

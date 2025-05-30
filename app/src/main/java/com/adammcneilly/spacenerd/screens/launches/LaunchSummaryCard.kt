@@ -33,7 +33,9 @@ fun LaunchSummaryCard(
                 LaunchImage(launch)
 
                 Pill(
-                    text = "TODO",
+                    text = launch.status.label,
+                    containerColor = launch.status.containerColor,
+                    contentColor = launch.status.contentColor,
                     modifier = Modifier
                         .align(Alignment.TopEnd)
                         .padding(16.dp),

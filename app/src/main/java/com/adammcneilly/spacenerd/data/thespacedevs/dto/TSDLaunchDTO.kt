@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.datetime.Instant
@@ -78,6 +79,7 @@ data class TSDLaunchDTO(
             name = this.name.orEmpty(),
             imageUrl = this.image?.imageUrl.orEmpty(),
             launchTime = Instant.parse(this.net.orEmpty()),
+            status = this.status?.toLaunchStatus() ?: LaunchStatus.Unknown,
         )
     }
 }
