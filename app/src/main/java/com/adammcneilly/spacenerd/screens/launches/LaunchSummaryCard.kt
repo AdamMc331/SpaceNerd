@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.screens.launches
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,11 +9,13 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.ui.components.Pill
 
 private const val CARD_IMAGE_ASPECT_RATIO = 1.5F
 
@@ -26,7 +29,16 @@ fun LaunchSummaryCard(
         modifier = modifier,
     ) {
         Column {
-            LaunchImage(launch)
+            Box {
+                LaunchImage(launch)
+
+                Pill(
+                    text = "TODO",
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(16.dp),
+                )
+            }
 
             LaunchInfo(launch)
         }
