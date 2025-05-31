@@ -18,6 +18,7 @@ class GetArticlesUseCase @Inject constructor(
                     articlesResult
                 }
                 DataResult.Loading -> {
+                    @Suppress("MagicNumber")
                     val displayModels = List(3) {
                         ArticleDisplayModel.placeholder()
                     }
