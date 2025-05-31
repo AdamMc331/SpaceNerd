@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.domain.usecases
 
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.data.DataResult
 import com.adammcneilly.spacenerd.data.repositories.ArticleRepository
 import kotlinx.coroutines.flow.Flow
@@ -12,8 +13,23 @@ class GetArticlesUseCase @Inject constructor(
 ) {
     fun invoke(): Flow<DataResult<List<ArticleDisplayModel>>> {
         return repository.getArticles().map { articlesResult ->
-            articlesResult.map { articles ->
-                articles.map(::ArticleDisplayModel)
+            when (articlesResult) {
+                is DataResult.Error -> {
+                    articlesResult
+                }
+                DataResult.Loading -> {
+                    @Suppress("MagicNumber")
+                    val displayModels = List(3) {
+                        ArticleDisplayModel.placeholder()
+                    }
+
+                    DataResult.Success(displayModels)
+                }
+                is DataResult.Success<List<Article>> -> {
+                    val displayModels = articlesResult.data.map(::ArticleDisplayModel)
+
+                    DataResult.Success(displayModels)
+                }
             }
         }
     }

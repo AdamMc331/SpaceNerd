@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
+    implementation(libs.eygraber.compose.placeholder.material3)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.kotlinx.datetime)
