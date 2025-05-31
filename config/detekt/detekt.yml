@@ -21,3 +21,8 @@ style:
   UnusedPrivateMember:
     active: true
     ignoreAnnotated: ['Preview', 'PreviewLightDark', 'PreviewDynamicColors']
+
+  # Detekt sometimes sees source sets as unused private properties, let's not fail on that.
+  UnusedPrivateProperty:
+    active: true
+    excludes: ['**.kts']
