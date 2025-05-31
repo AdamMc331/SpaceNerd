@@ -15,6 +15,7 @@ data class TSDStatusDTO(
     @Json(name = "name")
     val name: String? = null,
 ) {
+    @Suppress("MagicNumber")
     fun toLaunchStatus(): LaunchStatus {
         return when (this.id) {
             1 -> LaunchStatus.Go
