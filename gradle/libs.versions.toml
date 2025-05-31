@@ -6,7 +6,6 @@ appCompat = "1.7.0"
 coil = "3.2.0"
 compileSdk = "35"
 composeBom = "2025.05.01"
-composePlaceholderMaterial3 = "1.0.11"
 detektGradlePlugin = "1.23.8"
 espresso = "3.6.1"
 gradleVersionsPlugin = "0.52.0"
@@ -26,6 +25,7 @@ moshi = "1.15.2"
 navigationCompose = "2.9.0"
 okhttp = "4.12.0"
 paparazzi = "1.3.5"
+placeholder = "1.0.11"
 retrofit = "3.0.0"
 room = "2.7.1"
 sortDependencies = "0.14"
@@ -52,12 +52,12 @@ compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = 
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 compose-material = { group = "androidx.compose.material3", name = "material3" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
-eygraber-compose-placeholder-material3 = { module = "com.eygraber:compose-placeholder-material3", version.ref = "composePlaceholderMaterial3" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-test-junit = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detektGradlePlugin" }
+eygraber-compose-placeholder-material3 = { module = "com.eygraber:compose-placeholder-material3", version.ref = "placeholder" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradle-versions-plugin = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradleVersionsPlugin" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
