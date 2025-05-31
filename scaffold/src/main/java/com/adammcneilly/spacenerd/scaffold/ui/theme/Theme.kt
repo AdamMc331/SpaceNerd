@@ -1,7 +1,5 @@
 package com.adammcneilly.spacenerd.scaffold.ui.theme
 
-import android.annotation.TargetApi
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -22,17 +20,13 @@ private val lightColorScheme = lightColorScheme(
 )
 
 @Composable
-@TargetApi(Build.VERSION_CODES.S)
 fun SpaceTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicTheme: Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S,
     content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
-        dynamicTheme && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
-        dynamicTheme && !darkTheme -> dynamicLightColorScheme(LocalContext.current)
-        darkTheme -> darkColorScheme
-        else -> lightColorScheme
+        darkTheme -> dynamicDarkColorScheme(LocalContext.current)
+        else -> dynamicLightColorScheme(LocalContext.current)
     }
 
     MaterialTheme(
