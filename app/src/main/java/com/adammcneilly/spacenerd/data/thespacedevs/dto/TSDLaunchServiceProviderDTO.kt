@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
+import com.adammcneilly.spacenerd.core.models.LaunchServiceProvider
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -17,4 +18,12 @@ data class TSDLaunchServiceProviderDTO(
     val type: TSDTypeDTO? = null,
     @Json(name = "url")
     val url: String? = null,
-)
+) {
+    fun toLaunchServiceProvider(): LaunchServiceProvider {
+        return LaunchServiceProvider(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+            abbreviation = this.abbrev.orEmpty(),
+        )
+    }
+}
