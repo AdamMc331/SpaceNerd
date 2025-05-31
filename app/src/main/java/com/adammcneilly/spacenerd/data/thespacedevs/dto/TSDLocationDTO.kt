@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
+import com.adammcneilly.spacenerd.core.models.Location
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -35,4 +36,11 @@ data class TSDLocationDTO(
     val totalLaunchCount: Int? = null,
     @Json(name = "url")
     val url: String? = null,
-)
+) {
+    fun toLocation(): Location {
+        return Location(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+        )
+    }
+}

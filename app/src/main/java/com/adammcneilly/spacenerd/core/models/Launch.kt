@@ -8,4 +8,6 @@ data class Launch(
     val imageUrl: String,
     val launchTime: Instant,
     val status: LaunchStatus,
+    val provider: LaunchServiceProvider?,
+    val pad: LaunchPad?,
 )

@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.core.displaymodels
 
 import androidx.compose.ui.graphics.Color
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceNerdColors
 
 data class LaunchStatusDisplayModel(
     val label: String,
@@ -34,15 +35,15 @@ private fun LaunchStatus.label(): String {
 
 private fun LaunchStatus.containerColor(): Color {
     return when (this) {
-        LaunchStatus.Go -> Color.Green
+        LaunchStatus.Go -> SpaceNerdColors.Green
         LaunchStatus.TBD -> Color.Gray
-        LaunchStatus.Success -> Color.Green
+        LaunchStatus.Success -> SpaceNerdColors.Green
         LaunchStatus.Failure -> Color.Red
         LaunchStatus.Hold -> Color.Yellow
         LaunchStatus.PartialFailure -> Color.Red
         LaunchStatus.TBC -> Color.Gray
-        LaunchStatus.InFlight -> Color.Green
-        LaunchStatus.Deployed -> Color.Green
+        LaunchStatus.InFlight -> SpaceNerdColors.Green
+        LaunchStatus.Deployed -> SpaceNerdColors.Green
         LaunchStatus.Unknown -> Color.Gray
     }
 }

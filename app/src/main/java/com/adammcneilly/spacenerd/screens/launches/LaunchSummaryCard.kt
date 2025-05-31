@@ -59,6 +59,11 @@ private fun LaunchInfo(
             text = launch.name,
             style = MaterialTheme.typography.titleSmall,
         )
+
+        Text(
+            text = launch.subtitle,
+            style = MaterialTheme.typography.bodySmall,
+        )
     }
 }
 

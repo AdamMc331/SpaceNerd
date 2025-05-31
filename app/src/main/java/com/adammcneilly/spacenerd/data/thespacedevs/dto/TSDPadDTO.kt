@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
+import com.adammcneilly.spacenerd.core.models.LaunchPad
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -41,4 +42,12 @@ data class TSDPadDTO(
     val url: String? = null,
     @Json(name = "wiki_url")
     val wikiUrl: String? = null,
-)
+) {
+    fun toLaunchPad(): LaunchPad {
+        return LaunchPad(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+            location = this.location?.toLocation(),
+        )
+    }
+}
