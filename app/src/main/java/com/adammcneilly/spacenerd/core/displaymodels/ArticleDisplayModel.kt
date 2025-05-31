@@ -41,10 +41,10 @@ data class ArticleDisplayModel(
         fun placeholder(): ArticleDisplayModel {
             return ArticleDisplayModel(
                 id = "",
-                title = "",
+                title = "Placeholder Title Should Be Long",
                 image = ImageDisplayModel.Remote(""),
                 url = "",
-                summary = "",
+                summary = "Placeholder Summary\nMultiline",
                 authors = emptyList(),
                 isPlaceholder = true,
             )
