@@ -115,7 +115,7 @@ private class LaunchDisplayModelProvider :
             LaunchDisplayModel(
                 id = "123",
                 name = "Falcon 9 Block 5 | Starlink Group 12-19",
-                image = ImageDisplayModel.Local(R.drawable.armstrong),
+                image = ImageDisplayModel.Local(R.drawable.falcon9),
                 status = LaunchStatusDisplayModel(LaunchStatus.Go),
                 subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
             ),
