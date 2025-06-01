@@ -7,6 +7,7 @@ data class NewsState(
     val selectedArticle: ArticleDisplayModel?,
 ) {
     companion object {
+        @Suppress("MagicNumber")
         fun default(): NewsState {
             val placeholderArticles = List(3) {
                 ArticleDisplayModel.placeholder()
