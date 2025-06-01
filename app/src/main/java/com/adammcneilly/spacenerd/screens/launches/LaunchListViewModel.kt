@@ -2,8 +2,9 @@ package com.adammcneilly.spacenerd.screens.launches
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.data.models.LaunchListRequest
-import com.adammcneilly.spacenerd.domain.usecases.GetLaunchesUseCase
+import com.adammcneilly.spacenerd.data.repositories.LaunchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,7 +18,7 @@ import kotlin.time.Duration.Companion.days
 
 @HiltViewModel
 class LaunchListViewModel @Inject constructor(
-    private val getLaunchesUseCase: GetLaunchesUseCase,
+    private val launchRepository: LaunchRepository,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(LaunchListState.default())
     val state = mutableState.asStateFlow()
@@ -27,17 +28,20 @@ class LaunchListViewModel @Inject constructor(
     }
 
     private fun observeLaunches() {
+        val launchRequest = LaunchListRequest(
+            after = Clock.System.now(),
+            before = Clock.System.now().plus(30.days),
+        )
+
         viewModelScope.launch {
-            getLaunchesUseCase.invoke(
-                request = LaunchListRequest(
-                    after = Clock.System.now(),
-                    before = Clock.System.now().plus(30.days),
-                ),
-            )
+            launchRepository
+                .getLaunches(launchRequest)
                 .collectLatest { launches ->
+                    val displayModels = launches.map(::LaunchDisplayModel)
+
                     mutableState.update { currentState ->
                         currentState.copy(
-                            launches = launches,
+                            launches = displayModels,
                         )
                     }
                 }
