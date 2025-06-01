@@ -1,7 +1,6 @@
 package com.adammcneilly.spacenerd.data.thespacedevs
 
 import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.data.DataResult
 import com.adammcneilly.spacenerd.data.models.LaunchListRequest
 import com.adammcneilly.spacenerd.data.repositories.LaunchRepository
 import com.adammcneilly.spacenerd.data.thespacedevs.dto.TSDLaunchDTO
@@ -15,10 +14,8 @@ class TSDLaunchRepository @Inject constructor(
     @Suppress("TooGenericExceptionCaught")
     override fun getLaunches(
         request: LaunchListRequest,
-    ): Flow<DataResult<List<Launch>>> {
+    ): Flow<List<Launch>> {
         return flow {
-            emit(DataResult.Loading)
-
             try {
                 val launches = api
                     .getLaunches(
@@ -30,9 +27,9 @@ class TSDLaunchRepository @Inject constructor(
                     ?.map(TSDLaunchDTO::toLaunch)
                     .orEmpty()
 
-                emit(DataResult.Success(launches))
+                emit(launches)
             } catch (e: Exception) {
-                emit(DataResult.Error(e))
+                println("Unable to request launches: $e")
             }
         }
     }

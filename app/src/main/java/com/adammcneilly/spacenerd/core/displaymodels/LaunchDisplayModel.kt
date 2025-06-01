@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.LaunchStatus
 
 data class LaunchDisplayModel(
     val id: String,
@@ -8,6 +9,7 @@ data class LaunchDisplayModel(
     val image: ImageDisplayModel,
     val status: LaunchStatusDisplayModel,
     val subtitle: String,
+    val isPlaceholder: Boolean = false,
 ) {
     constructor(launch: Launch) : this(
         id = launch.id,
@@ -16,6 +18,19 @@ data class LaunchDisplayModel(
         status = LaunchStatusDisplayModel(launch.status),
         subtitle = launch.buildSubtitle(),
     )
+
+    companion object {
+        fun placeholder(): LaunchDisplayModel {
+            return LaunchDisplayModel(
+                id = "",
+                name = "Placeholder Launch Name",
+                image = ImageDisplayModel.Remote(""),
+                status = LaunchStatusDisplayModel(LaunchStatus.Unknown),
+                subtitle = "Placeholder Subtitle",
+                isPlaceholder = true,
+            )
+        }
+    }
 }
 
 private fun Launch.buildSubtitle(): String {

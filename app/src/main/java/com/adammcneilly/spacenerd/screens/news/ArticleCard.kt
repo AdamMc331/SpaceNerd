@@ -1,10 +1,8 @@
 package com.adammcneilly.spacenerd.screens.news
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -63,18 +61,12 @@ fun ArticleCard(
                         ),
                 )
 
-                Spacer(
-                    modifier = Modifier
-                        .height(4.dp),
-                )
-
                 Text(
                     text = article.summary,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier
-                        .placeholder(
-                            visible = article.isPlaceholder,
-                        ),
+                        .padding(top = 4.dp)
+                        .placeholder(article.isPlaceholder),
                 )
             }
         }
