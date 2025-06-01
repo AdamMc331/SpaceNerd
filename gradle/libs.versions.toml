@@ -29,6 +29,7 @@ placeholder = "1.0.11"
 retrofit = "3.0.0"
 room = "2.7.1"
 sortDependencies = "0.14"
+testParameterInjector = "1.18"
 xr = "1.0.0-alpha04"
 xr-material = "1.0.0-alpha08"
 adaptiveAndroid = "1.1.0"
@@ -58,6 +59,7 @@ compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-mani
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detektGradlePlugin" }
 eygraber-compose-placeholder-material3 = { module = "com.eygraber:compose-placeholder-material3", version.ref = "placeholder" }
+google-testparameterinjector = { module = "com.google.testparameterinjector:test-parameter-injector", version.ref = "testParameterInjector" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradle-versions-plugin = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradleVersionsPlugin" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
