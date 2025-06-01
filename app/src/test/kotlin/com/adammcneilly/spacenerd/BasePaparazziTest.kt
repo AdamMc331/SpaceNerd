@@ -35,7 +35,9 @@ abstract class BasePaparazziTest {
         content: @Composable () -> Unit,
     ) {
         _paparazzi.snapshot {
-            SpaceTheme {
+            SpaceTheme(
+                darkTheme = useDarkTheme,
+            ) {
                 Surface(
                     modifier = Modifier
                         .fillMaxSize(),
