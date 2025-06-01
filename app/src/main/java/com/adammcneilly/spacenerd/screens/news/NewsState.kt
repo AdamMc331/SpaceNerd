@@ -3,7 +3,7 @@ package com.adammcneilly.spacenerd.screens.news
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 
 data class NewsState(
-    val articles: Result<List<ArticleDisplayModel>>,
+    val articles: List<ArticleDisplayModel>,
     val selectedArticle: ArticleDisplayModel?,
 ) {
     companion object {
@@ -14,7 +14,7 @@ data class NewsState(
             }
 
             return NewsState(
-                articles = Result.success(placeholderArticles),
+                articles = placeholderArticles,
                 selectedArticle = null,
             )
         }

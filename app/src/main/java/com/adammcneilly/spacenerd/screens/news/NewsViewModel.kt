@@ -27,9 +27,9 @@ class NewsViewModel @Inject constructor(
         viewModelScope.launch {
             articleRepository
                 .getArticles()
-                .collectLatest { articlesResult ->
-                    val displayModelResult = articlesResult.map { articles ->
-                        articles.map(::ArticleDisplayModel)
+                .collectLatest { articles ->
+                    val displayModelResult = articles.map { article ->
+                        ArticleDisplayModel(article)
                     }
 
                     mutableState.update { currentState ->

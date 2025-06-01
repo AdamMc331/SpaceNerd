@@ -11,7 +11,7 @@ class SpaceFlightNewsArticleRepository @Inject constructor(
     private val api: SpaceFlightNewsRetrofitAPI,
 ) : ArticleRepository {
     @Suppress("TooGenericExceptionCaught")
-    override fun getArticles(): Flow<Result<List<Article>>> {
+    override fun getArticles(): Flow<List<Article>> {
         return flow {
             try {
                 val articles = api.getArticles()
@@ -19,9 +19,9 @@ class SpaceFlightNewsArticleRepository @Inject constructor(
                     ?.map(SpaceFlightNewsArticleDTO::toArticle)
                     .orEmpty()
 
-                Result.success(articles)
+                emit(articles)
             } catch (e: Exception) {
-                Result.failure(e)
+                println("Unable to request articles: $e")
             }
         }
     }

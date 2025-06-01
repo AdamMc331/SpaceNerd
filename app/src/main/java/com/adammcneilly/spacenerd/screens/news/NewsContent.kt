@@ -32,30 +32,15 @@ fun NewsContent(
             )
         }
 
-        val articles = state.articles.getOrNull()
-
-        if (articles != null) {
-            items(articles) { article ->
-                ArticleCard(
-                    article = article,
-                    modifier = Modifier
-                        .clickable {
-                            onEvent.invoke(NewsEvent.ArticleSelected(article))
-                        }
-                        .fillMaxWidth(),
-                )
-            }
-        }
-
-        val error = state.articles.exceptionOrNull()
-
-        if (error != null) {
-            item {
-                Text(
-                    text = "Error: ${error.message}",
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            }
+        items(state.articles) { article ->
+            ArticleCard(
+                article = article,
+                modifier = Modifier
+                    .clickable {
+                        onEvent.invoke(NewsEvent.ArticleSelected(article))
+                    }
+                    .fillMaxWidth(),
+            )
         }
     }
 }
