@@ -1,7 +1,6 @@
 package com.adammcneilly.spacenerd.data.spaceflightnews
 
 import com.adammcneilly.spacenerd.core.models.Article
-import com.adammcneilly.spacenerd.data.DataResult
 import com.adammcneilly.spacenerd.data.repositories.ArticleRepository
 import com.adammcneilly.spacenerd.data.spaceflightnews.dto.SpaceFlightNewsArticleDTO
 import kotlinx.coroutines.flow.Flow
@@ -12,19 +11,17 @@ class SpaceFlightNewsArticleRepository @Inject constructor(
     private val api: SpaceFlightNewsRetrofitAPI,
 ) : ArticleRepository {
     @Suppress("TooGenericExceptionCaught")
-    override fun getArticles(): Flow<DataResult<List<Article>>> {
+    override fun getArticles(): Flow<Result<List<Article>>> {
         return flow {
-            emit(DataResult.Loading)
-
             try {
                 val articles = api.getArticles()
                     .results
                     ?.map(SpaceFlightNewsArticleDTO::toArticle)
                     .orEmpty()
 
-                emit(DataResult.Success(articles))
+                Result.success(articles)
             } catch (e: Exception) {
-                emit(DataResult.Error(e))
+                Result.failure(e)
             }
         }
     }
