@@ -7,8 +7,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
 import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
+import com.android.resources.NightMode
+import com.android.resources.ScreenOrientation
 import com.google.testing.junit.testparameterinjector.TestParameter
 import com.google.testing.junit.testparameterinjector.TestParameterInjector
 import org.junit.Rule
@@ -25,7 +28,7 @@ abstract class BasePaparazziTest {
     val _paparazzi = Paparazzi()
 
     @TestParameter
-    val useDarkTheme: Boolean = false
+    val testInput: TestInput = TestInput.LANDSCAPE_PHONE
 
     /**
      * Validates the supplied [content] in both light and dark theme.
@@ -34,10 +37,10 @@ abstract class BasePaparazziTest {
         screenPaddingDp: Int = 16,
         content: @Composable () -> Unit,
     ) {
+        _paparazzi.unsafeUpdateConfig(testInput.deviceConfig)
+
         _paparazzi.snapshot {
-            SpaceTheme(
-                darkTheme = useDarkTheme,
-            ) {
+            SpaceTheme {
                 Surface(
                     modifier = Modifier
                         .fillMaxSize(),
@@ -52,5 +55,28 @@ abstract class BasePaparazziTest {
                 }
             }
         }
+    }
+
+    enum class TestInput(
+        val deviceConfig: DeviceConfig,
+    ) {
+        LIGHT_PHONE(
+            deviceConfig = DeviceConfig.NEXUS_5.copy(
+                nightMode = NightMode.NOTNIGHT,
+            ),
+        ),
+        DARK_PHONE(
+            deviceConfig = DeviceConfig.NEXUS_5.copy(
+                nightMode = NightMode.NIGHT,
+            ),
+        ),
+        LANDSCAPE_PHONE(
+            deviceConfig = DeviceConfig.NEXUS_5.copy(
+                orientation = ScreenOrientation.LANDSCAPE,
+            ),
+        ),
+        TABLET(
+            deviceConfig = DeviceConfig.PIXEL_C,
+        ),
     }
 }
