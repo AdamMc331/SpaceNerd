@@ -58,6 +58,7 @@ dependencies {
     implementation(project(":scaffold"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.adaptive.android)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
