@@ -10,7 +10,6 @@ import javax.inject.Inject
 class SpaceFlightNewsArticleRepository @Inject constructor(
     private val api: SpaceFlightNewsRetrofitAPI,
 ) : ArticleRepository {
-    @Suppress("TooGenericExceptionCaught")
     override fun getArticles(): Flow<List<Article>> {
         return flow {
             try {
