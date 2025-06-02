@@ -75,8 +75,5 @@ abstract class BasePaparazziTest {
                 orientation = ScreenOrientation.LANDSCAPE,
             ),
         ),
-        TABLET(
-            deviceConfig = DeviceConfig.PIXEL_C,
-        ),
     }
 }

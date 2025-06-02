@@ -71,7 +71,7 @@ private fun MediumExpandedCard(
                     .placeholder(
                         visible = article.isPlaceholder,
                     )
-                    .size(56.dp)
+                    .size(64.dp)
                     .clip(MaterialTheme.shapes.medium),
             )
 
