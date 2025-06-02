@@ -15,6 +15,35 @@ class TSDLaunchRepository @Inject constructor(
     override fun getLaunches(
         request: LaunchListRequest,
     ): Flow<List<Launch>> {
+        return when (request) {
+            is LaunchListRequest.Custom -> {
+                requestCustomLaunches(request)
+            }
+            LaunchListRequest.Upcoming -> {
+                return requestUpcomingLaunches()
+            }
+        }
+    }
+
+    private fun requestUpcomingLaunches(): Flow<List<Launch>> {
+        return flow {
+            try {
+                val launches = api
+                    .getUpcomingLaunches()
+                    .results
+                    ?.map(TSDLaunchDTO::toLaunch)
+                    .orEmpty()
+
+                emit(launches)
+            } catch (e: Exception) {
+                println("Unable to request launches: $e")
+            }
+        }
+    }
+
+    private fun requestCustomLaunches(
+        request: LaunchListRequest.Custom,
+    ): Flow<List<Launch>> {
         return flow {
             try {
                 val launches = api
