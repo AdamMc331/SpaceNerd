@@ -55,7 +55,8 @@ private fun MediumExpandedCard(
 ) {
     ElevatedCard(
         shape = MaterialTheme.shapes.medium,
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxWidth(),
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
