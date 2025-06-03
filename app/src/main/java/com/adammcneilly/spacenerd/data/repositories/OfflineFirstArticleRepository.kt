@@ -19,7 +19,11 @@ class OfflineFirstArticleRepository @Inject constructor(
 
                 val currentTime = Clock.System.now()
 
-                val needsServerFetch = lastFetchTimestamp == null || (currentTime - lastFetchTimestamp).inWholeHours >= 1
+                val needsServerFetch = if (lastFetchTimestamp == null) {
+                    true
+                } else {
+                    (currentTime - lastFetchTimestamp).inWholeHours >= 1
+                }
 
                 if (needsServerFetch) {
                     val articles = remoteArticleRepository.getArticles()

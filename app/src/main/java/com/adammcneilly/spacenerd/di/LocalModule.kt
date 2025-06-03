@@ -26,7 +26,7 @@ object LocalModule {
                 SpaceNerdDatabase::class.java,
                 "spacenerd.db",
             )
-            // TODO: Eventually replace with migrations, once stable.
+            // Eventually replace with migrations, once stable.
             .fallbackToDestructiveMigration(
                 dropAllTables = true,
             )
