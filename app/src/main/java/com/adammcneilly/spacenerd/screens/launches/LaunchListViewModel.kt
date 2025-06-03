@@ -40,4 +40,35 @@ class LaunchListViewModel @Inject constructor(
                 }
         }
     }
+
+    fun onEvent(
+        event: LaunchListEvent,
+    ) {
+        when (event) {
+            is LaunchListEvent.LaunchSelected -> {
+                processLaunchSelected(event)
+            }
+            is LaunchListEvent.NavigatedToLaunch -> {
+                processNavigatedToLaunch()
+            }
+        }
+    }
+
+    private fun processLaunchSelected(
+        event: LaunchListEvent.LaunchSelected,
+    ) {
+        mutableState.update { currentState ->
+            currentState.copy(
+                selectedLaunch = event.launch,
+            )
+        }
+    }
+
+    private fun processNavigatedToLaunch() {
+        mutableState.update { currentState ->
+            currentState.copy(
+                selectedLaunch = null,
+            )
+        }
+    }
 }

@@ -4,6 +4,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 
 data class LaunchListState(
     val launches: List<LaunchDisplayModel>,
+    val selectedLaunch: LaunchDisplayModel?,
 ) {
     companion object {
         @Suppress("MagicNumber")
@@ -14,6 +15,7 @@ data class LaunchListState(
 
             return LaunchListState(
                 launches = placeholderLaunches,
+                selectedLaunch = null,
             )
         }
     }

@@ -11,6 +11,22 @@ import javax.inject.Inject
 class TSDLaunchRepository @Inject constructor(
     private val api: TSDRetrofitAPI,
 ) : LaunchRepository {
+    override fun getLaunch(
+        launchId: String,
+    ): Flow<Launch> {
+        return flow {
+            try {
+                val launch = api
+                    .getLaunch(launchId)
+                    .toLaunch()
+
+                emit(launch)
+            } catch (e: Exception) {
+                println("Unable to request launch for id $launchId: $e")
+            }
+        }
+    }
+
     override fun getLaunches(
         request: LaunchListRequest,
     ): Flow<List<Launch>> {

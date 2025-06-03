@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.screens.launches
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +18,7 @@ import com.adammcneilly.spacenerd.scaffold.R as scaffoldR
 fun LaunchListContent(
     state: LaunchListState,
     contentPadding: PaddingValues,
+    onEvent: (LaunchListEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -34,6 +36,10 @@ fun LaunchListContent(
         items(state.launches) { launch ->
             LaunchSummaryCard(
                 launch = launch,
+                modifier = Modifier
+                    .clickable {
+                        onEvent.invoke(LaunchListEvent.LaunchSelected(launch))
+                    },
             )
         }
     }

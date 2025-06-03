@@ -16,6 +16,7 @@ import com.adammcneilly.spacenerd.scaffold.HomeTab
 import com.adammcneilly.spacenerd.scaffold.LocalNavAnimatedVisibilityScope
 import com.adammcneilly.spacenerd.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.screens.astronauts.AstronautListScreen
+import com.adammcneilly.spacenerd.screens.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.screens.launches.LaunchListScreen
 import com.adammcneilly.spacenerd.screens.news.NewsScreen
 import com.adammcneilly.spacenerd.screens.stations.StationsListScreen
@@ -72,7 +73,11 @@ fun AppNavHost() {
         }
 
         animatedComposable(HomeTab.Launches.route) {
-            LaunchListScreen()
+            LaunchListScreen(
+                navigateToLaunch = { launch ->
+                    navController.navigate("launch/${launch.id}")
+                },
+            )
         }
 
         animatedComposable(HomeTab.Astronauts.route) {
@@ -81,6 +86,10 @@ fun AppNavHost() {
 
         animatedComposable(HomeTab.Stations.route) {
             StationsListScreen()
+        }
+
+        animatedComposable("launch/{launchId}") {
+            LaunchDetailScreen()
         }
     }
 }

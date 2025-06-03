@@ -8,4 +8,8 @@ interface LaunchRepository {
     fun getLaunches(
         request: LaunchListRequest,
     ): Flow<List<Launch>>
+
+    fun getLaunch(
+        launchId: String,
+    ): Flow<Launch>
 }

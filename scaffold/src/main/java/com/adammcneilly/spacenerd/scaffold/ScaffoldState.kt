@@ -12,12 +12,12 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.window.core.layout.WindowWidthSizeClass
 
 @OptIn(ExperimentalSharedTransitionApi::class)
-val LocalSharedTransitionScope = compositionLocalOf<SharedTransitionScope> {
-    throw IllegalStateException("Local SharedTransitionScope required")
+val LocalSharedTransitionScope = compositionLocalOf<SharedTransitionScope?> {
+    null
 }
 
-val LocalNavAnimatedVisibilityScope = compositionLocalOf<AnimatedVisibilityScope> {
-    throw IllegalStateException("Local AnimatedVisibilityScope required")
+val LocalNavAnimatedVisibilityScope = compositionLocalOf<AnimatedVisibilityScope?> {
+    null
 }
 
 /**
@@ -44,8 +44,12 @@ class ScaffoldState internal constructor(
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun rememberScaffoldState(
-    animatedVisibilityScope: AnimatedVisibilityScope = LocalNavAnimatedVisibilityScope.current,
-    sharedTransitionScope: SharedTransitionScope = LocalSharedTransitionScope.current,
+    animatedVisibilityScope: AnimatedVisibilityScope = requireNotNull(LocalNavAnimatedVisibilityScope.current) {
+        "AnimatedVisibilityScope must be provided via LocalNavAnimatedVisibilityScope"
+    },
+    sharedTransitionScope: SharedTransitionScope = requireNotNull(LocalSharedTransitionScope.current) {
+        "SharedTransitionScope must be provided via LocalSharedTransitionScope"
+    },
 ): ScaffoldState {
     val isMediumScreenWidthOrWider = isMediumScreenWidthOrWider()
 
