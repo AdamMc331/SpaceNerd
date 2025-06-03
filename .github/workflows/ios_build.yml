@@ -12,13 +12,11 @@ jobs:
   ios-build:
     runs-on: macos-14
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set Up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version-file: .github/.java-version
+      - name: Setup
+        uses: ./.github/actions/worfklow_setup
 
       - name: Run tests
         run: ./gradlew :shared:iosX64Test
