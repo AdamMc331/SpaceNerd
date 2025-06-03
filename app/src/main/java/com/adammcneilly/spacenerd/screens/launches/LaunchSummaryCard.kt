@@ -33,6 +33,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.ui.components.Pill
+import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
 import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
@@ -149,7 +150,10 @@ private fun LaunchStatus(
         containerColor = launch.status.containerColor,
         contentColor = launch.status.contentColor,
         textStyle = textStyle,
-        modifier = modifier,
+        modifier = modifier
+            .sharedElement(
+                key = "LaunchStatus-${launch.id}",
+            ),
     )
 }
 
@@ -188,7 +192,10 @@ private fun LaunchImage(
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = modifier
-            .placeholder(launch.isPlaceholder),
+            .placeholder(launch.isPlaceholder)
+            .sharedElement(
+                key = "LaunchImage-${launch.id}",
+            ),
     )
 }
 
