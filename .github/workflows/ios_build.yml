@@ -16,7 +16,7 @@
 #        uses: actions/checkout@v4
 #
 #      - name: Setup
-#        uses: ./.github/actions/worfklow_setup
+#        uses: ./.github/actions/workflow_setup
 #
 #      - name: Run tests
 #        run: ./gradlew :shared:iosX64Test
