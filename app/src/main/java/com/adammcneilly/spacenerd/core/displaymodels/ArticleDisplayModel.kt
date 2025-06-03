@@ -14,6 +14,7 @@ data class ArticleDisplayModel(
     val url: String,
     val summary: String,
     val authors: List<AuthorDisplayModel>,
+    val isPlaceholder: Boolean = false,
 ) {
     constructor(
         article: Article,
@@ -34,5 +35,19 @@ data class ArticleDisplayModel(
         }
         append(" | ")
         append(authorNames)
+    }
+
+    companion object {
+        fun placeholder(): ArticleDisplayModel {
+            return ArticleDisplayModel(
+                id = "",
+                title = "Placeholder Title Should Be Long",
+                image = ImageDisplayModel.Remote(""),
+                url = "",
+                summary = "Placeholder Summary\nMultiline",
+                authors = emptyList(),
+                isPlaceholder = true,
+            )
+        }
     }
 }

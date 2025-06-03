@@ -59,6 +59,7 @@ dependencies {
     implementation(project(":scaffold"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.adaptive.android)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -71,6 +72,7 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
+    implementation(libs.eygraber.compose.placeholder.material3)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.kotlinx.datetime)
@@ -86,6 +88,7 @@ dependencies {
 
     annotationProcessor(libs.androidx.room.compiler)
 
+    testImplementation(libs.google.testparameterinjector)
     testImplementation(libs.junit)
 
     androidTestImplementation(platform(libs.compose.bom))

@@ -1,31 +1,23 @@
 package com.adammcneilly.spacenerd.data.spaceflightnews
 
 import com.adammcneilly.spacenerd.core.models.Article
-import com.adammcneilly.spacenerd.data.DataResult
-import com.adammcneilly.spacenerd.data.repositories.ArticleRepository
+import com.adammcneilly.spacenerd.data.repositories.RemoteArticleRepository
 import com.adammcneilly.spacenerd.data.spaceflightnews.dto.SpaceFlightNewsArticleDTO
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class SpaceFlightNewsArticleRepository @Inject constructor(
     private val api: SpaceFlightNewsRetrofitAPI,
-) : ArticleRepository {
-    @Suppress("TooGenericExceptionCaught")
-    override fun getArticles(): Flow<DataResult<List<Article>>> {
-        return flow {
-            emit(DataResult.Loading)
+) : RemoteArticleRepository {
+    override suspend fun getArticles(): Result<List<Article>> {
+        return try {
+            val articles = api.getArticles()
+                .results
+                ?.map(SpaceFlightNewsArticleDTO::toArticle)
+                .orEmpty()
 
-            try {
-                val articles = api.getArticles()
-                    .results
-                    ?.map(SpaceFlightNewsArticleDTO::toArticle)
-                    .orEmpty()
-
-                emit(DataResult.Success(articles))
-            } catch (e: Exception) {
-                emit(DataResult.Error(e))
-            }
+            Result.success(articles)
+        } catch (e: Exception) {
+            Result.failure(e)
         }
     }
 }

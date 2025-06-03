@@ -1,15 +1,19 @@
 package com.adammcneilly.spacenerd.screens.launches
 
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
-import com.adammcneilly.spacenerd.data.DataResult
 
 data class LaunchListState(
-    val launches: DataResult<List<LaunchDisplayModel>>,
+    val launches: List<LaunchDisplayModel>,
 ) {
     companion object {
+        @Suppress("MagicNumber")
         fun default(): LaunchListState {
+            val placeholderLaunches = List(3) {
+                LaunchDisplayModel.placeholder()
+            }
+
             return LaunchListState(
-                launches = DataResult.Loading,
+                launches = placeholderLaunches,
             )
         }
     }

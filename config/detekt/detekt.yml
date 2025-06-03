@@ -26,3 +26,11 @@ style:
   UnusedPrivateProperty:
     active: true
     excludes: ['**.kts']
+
+exceptions:
+  active: true
+  # Data repositories will catch any possible errors, so ignore the specificity in
+  # those files.
+  TooGenericExceptionCaught:
+    active: true
+    excludes: ['**Repository.kt']

@@ -1,7 +1,6 @@
 package com.adammcneilly.spacenerd.data.thespacedevs
 
 import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.data.DataResult
 import com.adammcneilly.spacenerd.data.models.LaunchListRequest
 import com.adammcneilly.spacenerd.data.repositories.LaunchRepository
 import com.adammcneilly.spacenerd.data.thespacedevs.dto.TSDLaunchDTO
@@ -12,13 +11,39 @@ import javax.inject.Inject
 class TSDLaunchRepository @Inject constructor(
     private val api: TSDRetrofitAPI,
 ) : LaunchRepository {
-    @Suppress("TooGenericExceptionCaught")
     override fun getLaunches(
         request: LaunchListRequest,
-    ): Flow<DataResult<List<Launch>>> {
-        return flow {
-            emit(DataResult.Loading)
+    ): Flow<List<Launch>> {
+        return when (request) {
+            is LaunchListRequest.Custom -> {
+                requestCustomLaunches(request)
+            }
+            LaunchListRequest.Upcoming -> {
+                return requestUpcomingLaunches()
+            }
+        }
+    }
 
+    private fun requestUpcomingLaunches(): Flow<List<Launch>> {
+        return flow {
+            try {
+                val launches = api
+                    .getUpcomingLaunches()
+                    .results
+                    ?.map(TSDLaunchDTO::toLaunch)
+                    .orEmpty()
+
+                emit(launches)
+            } catch (e: Exception) {
+                println("Unable to request launches: $e")
+            }
+        }
+    }
+
+    private fun requestCustomLaunches(
+        request: LaunchListRequest.Custom,
+    ): Flow<List<Launch>> {
+        return flow {
             try {
                 val launches = api
                     .getLaunches(
@@ -30,9 +55,9 @@ class TSDLaunchRepository @Inject constructor(
                     ?.map(TSDLaunchDTO::toLaunch)
                     .orEmpty()
 
-                emit(DataResult.Success(launches))
+                emit(launches)
             } catch (e: Exception) {
-                emit(DataResult.Error(e))
+                println("Unable to request launches: $e")
             }
         }
     }

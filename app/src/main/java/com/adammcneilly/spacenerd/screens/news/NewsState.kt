@@ -1,16 +1,20 @@
 package com.adammcneilly.spacenerd.screens.news
 
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
-import com.adammcneilly.spacenerd.data.DataResult
 
 data class NewsState(
-    val articleData: DataResult<List<ArticleDisplayModel>>,
+    val articles: List<ArticleDisplayModel>,
     val selectedArticle: ArticleDisplayModel?,
 ) {
     companion object {
+        @Suppress("MagicNumber")
         fun default(): NewsState {
+            val placeholderArticles = List(3) {
+                ArticleDisplayModel.placeholder()
+            }
+
             return NewsState(
-                articleData = DataResult.Loading,
+                articles = placeholderArticles,
                 selectedArticle = null,
             )
         }
