@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.data.spaceflightnews.dto
 import com.adammcneilly.spacenerd.core.models.Article
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.datetime.Instant
 
 @JsonClass(generateAdapter = true)
 data class SpaceFlightNewsArticleDTO(
@@ -39,6 +40,7 @@ data class SpaceFlightNewsArticleDTO(
             url = this.url.orEmpty(),
             summary = this.summary?.trim().orEmpty(),
             authors = this.authors?.map(SpaceFlightNewsAuthorDTO::toAuthor).orEmpty(),
+            publishedAtUtc = Instant.parse(this.publishedAt.orEmpty()),
         )
     }
 }
