@@ -26,9 +26,19 @@ class OfflineFirstArticleRepository @Inject constructor(
                 }
 
                 if (needsServerFetch) {
-                    val articles = remoteArticleRepository.getArticles()
-                    localArticleRepository.saveArticles(articles)
-                    cacheTimestampRepository.setCacheTimestamp(CacheTimestampRepository.KEY_ARTICLES, currentTime)
+                    val response = remoteArticleRepository.getArticles()
+
+                    val articles = response.getOrNull()
+                    if (articles != null) {
+                        localArticleRepository.saveArticles(articles)
+                        cacheTimestampRepository.setCacheTimestamp(CacheTimestampRepository.KEY_ARTICLES, currentTime)
+                    }
+
+                    val error = response.exceptionOrNull()
+                    if (error != null) {
+                        // Need to log this somewhere
+                        println("Error fetching articles: $error")
+                    }
                 }
             }
     }

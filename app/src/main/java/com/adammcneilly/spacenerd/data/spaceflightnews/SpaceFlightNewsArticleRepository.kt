@@ -8,10 +8,16 @@ import javax.inject.Inject
 class SpaceFlightNewsArticleRepository @Inject constructor(
     private val api: SpaceFlightNewsRetrofitAPI,
 ) : RemoteArticleRepository {
-    override suspend fun getArticles(): List<Article> {
-        return api.getArticles()
-            .results
-            ?.map(SpaceFlightNewsArticleDTO::toArticle)
-            .orEmpty()
+    override suspend fun getArticles(): Result<List<Article>> {
+        return try {
+            val articles = api.getArticles()
+                .results
+                ?.map(SpaceFlightNewsArticleDTO::toArticle)
+                .orEmpty()
+
+            Result.success(articles)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }
