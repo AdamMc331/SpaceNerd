@@ -11,4 +11,7 @@ interface TSDRetrofitAPI {
         @Query("net__gte") after: String?,
         @Query("net__lte") before: String?,
     ): TSDLaunchListResponseDTO
+
+    @GET("2.3.0/launches/upcoming")
+    suspend fun getUpcomingLaunches(): TSDLaunchListResponseDTO
 }

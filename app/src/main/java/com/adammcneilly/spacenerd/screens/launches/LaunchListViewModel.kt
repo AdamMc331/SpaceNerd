@@ -11,10 +11,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
 import kotlinx.datetime.plus
 import javax.inject.Inject
-import kotlin.time.Duration.Companion.days
 
 @HiltViewModel
 class LaunchListViewModel @Inject constructor(
@@ -28,14 +26,9 @@ class LaunchListViewModel @Inject constructor(
     }
 
     private fun observeLaunches() {
-        val launchRequest = LaunchListRequest(
-            after = Clock.System.now(),
-            before = Clock.System.now().plus(30.days),
-        )
-
         viewModelScope.launch {
             launchRepository
-                .getLaunches(launchRequest)
+                .getLaunches(LaunchListRequest.Upcoming)
                 .collectLatest { launches ->
                     val displayModels = launches.map(::LaunchDisplayModel)
 
