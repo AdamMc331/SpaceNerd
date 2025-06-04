@@ -1,0 +1,114 @@
+{
+  "projectStructure": {
+    "formatVersion": "0.3.3",
+    "isPublishedAsRoot": "true",
+    "variants": [
+      {
+        "name": "iosArm64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosSimulatorArm64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosX64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "jvmApiElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "jvmRuntimeElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      }
+    ],
+    "sourceSets": [
+      {
+        "name": "appleMain",
+        "dependsOn": [
+          "nativeMain"
+        ],
+        "moduleDependency": [
+          "Space Nerd.core:displaymodels",
+          "org.jetbrains.compose.components:components-resources",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "io.coil-kt.coil3:coil-compose",
+          "io.coil-kt.coil3:coil-network-ktor3"
+        ],
+        "sourceSetCInteropMetadataDirectory": "appleMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "commonMain",
+        "dependsOn": [],
+        "moduleDependency": [
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "Space Nerd.core:displaymodels",
+          "org.jetbrains.compose.components:components-resources",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "io.coil-kt.coil3:coil-compose",
+          "io.coil-kt.coil3:coil-network-ktor3"
+        ],
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "iosMain",
+        "dependsOn": [
+          "appleMain"
+        ],
+        "moduleDependency": [
+          "Space Nerd.core:displaymodels",
+          "org.jetbrains.compose.components:components-resources",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "io.coil-kt.coil3:coil-compose",
+          "io.coil-kt.coil3:coil-network-ktor3"
+        ],
+        "sourceSetCInteropMetadataDirectory": "iosMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "nativeMain",
+        "dependsOn": [
+          "commonMain"
+        ],
+        "moduleDependency": [
+          "Space Nerd.core:displaymodels",
+          "org.jetbrains.compose.components:components-resources",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "io.coil-kt.coil3:coil-compose",
+          "io.coil-kt.coil3:coil-network-ktor3"
+        ],
+        "sourceSetCInteropMetadataDirectory": "nativeMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      }
+    ]
+  }
+}

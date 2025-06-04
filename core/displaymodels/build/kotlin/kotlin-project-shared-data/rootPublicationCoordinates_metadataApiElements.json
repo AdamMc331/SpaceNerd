@@ -1,0 +1,8 @@
+{
+  "buildPath": ":",
+  "projectPath": ":core:displaymodels",
+  "moduleId": {
+    "groupId": "Space Nerd.core",
+    "moduleId": "displaymodels"
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "projectStructure": {
+    "formatVersion": "0.3.3",
+    "isPublishedAsRoot": "true",
+    "variants": [
+      {
+        "name": "debugApiElements",
+        "sourceSet": [
+          "jvmMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "debugRuntimeElements",
+        "sourceSet": [
+          "jvmMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "releaseApiElements",
+        "sourceSet": [
+          "jvmMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "releaseRuntimeElements",
+        "sourceSet": [
+          "jvmMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "desktopApiElements",
+        "sourceSet": [
+          "jvmMain",
+          "commonMain",
+          "nonAndroidMain"
+        ]
+      },
+      {
+        "name": "desktopRuntimeElements",
+        "sourceSet": [
+          "jvmMain",
+          "commonMain",
+          "nonAndroidMain"
+        ]
+      },
+      {
+        "name": "jsApiElements",
+        "sourceSet": [
+          "commonMain",
+          "webMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ]
+      },
+      {
+        "name": "jsRuntimeElements",
+        "sourceSet": [
+          "commonMain",
+          "webMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ]
+      },
+      {
+        "name": "linuxArm64ApiElements",
+        "sourceSet": [
+          "linuxMain",
+          "posixMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ]
+      },
+      {
+        "name": "linuxX64ApiElements",
+        "sourceSet": [
+          "linuxMain",
+          "posixMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ]
+      },
+      {
+        "name": "macosArm64ApiElements",
+        "sourceSet": [
+          "macosMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "macosX64ApiElements",
+        "sourceSet": [
+          "macosMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "mingwX64ApiElements",
+        "sourceSet": [
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ]
+      },
+      {
+        "name": "tvosArm64ApiElements",
+        "sourceSet": [
+          "tvOsMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "tvosSimulatorArm64ApiElements",
+        "sourceSet": [
+          "tvOsMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "tvosX64ApiElements",
+        "sourceSet": [
+          "tvOsMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "uikitArm64ApiElements",
+        "sourceSet": [
+          "uikitMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "uikitSimArm64ApiElements",
+        "sourceSet": [
+          "uikitMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "uikitX64ApiElements",
+        "sourceSet": [
+          "uikitMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "wasmJsApiElements",
+        "sourceSet": [
+          "commonMain",
+          "webMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ]
+      },
+      {
+        "name": "wasmJsRuntimeElements",
+        "sourceSet": [
+          "commonMain",
+          "webMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ]
+      },
+      {
+        "name": "watchosArm32ApiElements",
+        "sourceSet": [
+          "watchOsMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "watchosArm64ApiElements",
+        "sourceSet": [
+          "watchOsMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "watchosSimulatorArm64ApiElements",
+        "sourceSet": [
+          "watchOsMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      },
+      {
+        "name": "watchosX64ApiElements",
+        "sourceSet": [
+          "watchOsMain",
+          "darwinMain",
+          "nativeMain",
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain",
+          "posixMain"
+        ]
+      }
+    ],
+    "sourceSets": [
+      {
+        "name": "commonMain",
+        "dependsOn": [],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "darwinMain",
+        "dependsOn": [
+          "nativeMain",
+          "posixMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlinx:atomicfu",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection"
+        ],
+        "sourceSetCInteropMetadataDirectory": "darwinMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "jvmMain",
+        "dependsOn": [
+          "commonMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "linuxMain",
+        "dependsOn": [
+          "posixMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlinx:atomicfu",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection"
+        ],
+        "sourceSetCInteropMetadataDirectory": "linuxMain-cinterop",
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "macosMain",
+        "dependsOn": [
+          "darwinMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlinx:atomicfu",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection"
+        ],
+        "sourceSetCInteropMetadataDirectory": "macosMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "nativeMain",
+        "dependsOn": [
+          "commonMain",
+          "nonAndroidMain",
+          "nonJvmMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection",
+          "org.jetbrains.kotlinx:atomicfu"
+        ],
+        "sourceSetCInteropMetadataDirectory": "nativeMain-cinterop",
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "nonAndroidMain",
+        "dependsOn": [
+          "commonMain"
+        ],
+        "moduleDependency": [],
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "nonJvmMain",
+        "dependsOn": [
+          "commonMain"
+        ],
+        "moduleDependency": [],
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "posixMain",
+        "dependsOn": [
+          "nativeMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlinx:atomicfu",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection"
+        ],
+        "sourceSetCInteropMetadataDirectory": "posixMain-cinterop",
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "tvOsMain",
+        "dependsOn": [
+          "darwinMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlinx:atomicfu",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection"
+        ],
+        "sourceSetCInteropMetadataDirectory": "tvOsMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "uikitMain",
+        "dependsOn": [
+          "darwinMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlinx:atomicfu",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection"
+        ],
+        "sourceSetCInteropMetadataDirectory": "uikitMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "watchOsMain",
+        "dependsOn": [
+          "darwinMain"
+        ],
+        "moduleDependency": [
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+          "org.jetbrains.kotlinx:atomicfu",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "org.jetbrains.compose.annotation-internal:annotation",
+          "org.jetbrains.compose.collection-internal:collection"
+        ],
+        "sourceSetCInteropMetadataDirectory": "watchOsMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "webMain",
+        "dependsOn": [
+          "nonAndroidMain",
+          "nonJvmMain"
+        ],
+        "moduleDependency": [],
+        "binaryLayout": "klib"
+      }
+    ]
+  }
+}
