@@ -26,7 +26,7 @@ os.makedirs(module_root + "/src/commonMain/kotlin/com/adammcneilly/spacenerd/" +
 
 # Add to project
 settings = open("settings.gradle.kts", "a")
-settings.write("\n")
 settings.write("include(\":" + ":".join(module_parts) + "\")")
+settings.write("\n")
 
 print("Done!")

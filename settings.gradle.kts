@@ -14,7 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Space Nerd"
 include(":app")
+include(":core:data")
 include(":core:models")
 include(":scaffold")
-
-include(":core:data")
