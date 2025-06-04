@@ -22,6 +22,11 @@ style:
     active: true
     ignoreAnnotated: ['Preview', 'PreviewLightDark', 'PreviewDynamicColors']
 
+  # Detekt sometimes sees source sets as unused private properties, let's not fail on that.
+  UnusedPrivateProperty:
+    active: true
+    excludes: ['**.kts']
+
 exceptions:
   active: true
   # Data repositories will catch any possible errors, so ignore the specificity in

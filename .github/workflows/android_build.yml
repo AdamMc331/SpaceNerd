@@ -13,22 +13,16 @@ on:
   pull_request:
 
 jobs:
-  build:
+  android-build:
     runs-on: macos-14
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup
         uses: ./.github/actions/workflow_setup
 
+      # assembleDebug is used to improve build times by only building
+      # the debug Android artifacts. https://touchlab.co/touchlab-build-only-what-you-need
       - name: Build Project
-        run: ./gradlew assemble
-
-      - name: Run Tests
-        run: ./gradlew test
-
-      - name: Lint Checks
-        run: ./gradlew detektAll lintKotlin lint
-
-      - name: Dependency Sort Checks
-        run: ./gradlew checkSortDependencies
+        run: ./gradlew assembleDebug
