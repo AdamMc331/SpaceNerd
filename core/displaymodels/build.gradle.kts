@@ -16,7 +16,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:models"))
-            implementation(project(":scaffold"))
+            implementation(project(":core:ui:scaffold"))
             implementation(compose.components.resources)
             implementation(compose.ui)
         }
@@ -25,12 +25,4 @@ kotlin {
             implementation(kotlin("test"))
         }
     }
-}
-
-tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
-}
-
-tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
 }

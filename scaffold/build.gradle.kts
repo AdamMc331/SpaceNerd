@@ -68,11 +68,3 @@ dependencies {
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.compose.ui.test.junit)
 }
-
-tasks.formatKotlinMain {
-    exclude { it.file.path.contains("build/")}
-}
-
-tasks.lintKotlinMain {
-    exclude { it.file.path.contains("build/")}
-}

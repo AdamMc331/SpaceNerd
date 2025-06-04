@@ -21,11 +21,3 @@ kotlin {
         }
     }
 }
-
-tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
-}
-
-tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
-}

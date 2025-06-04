@@ -50,11 +50,3 @@ android {
 
     namespace = "com.adammcneilly.core.data"
 }
-
-tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
-}
-
-tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
-}
