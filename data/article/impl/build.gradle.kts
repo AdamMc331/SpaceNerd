@@ -18,6 +18,7 @@ kotlin {
             implementation(project(":core:models"))
             implementation(project(":data:article:api"))
             implementation(libs.androidx.room.runtime)
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
