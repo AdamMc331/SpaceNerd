@@ -105,9 +105,9 @@ dependencies {
 }
 
 tasks.formatKotlinMain {
-    exclude { it.file.path.contains("build/")}
+    exclude { it.file.path.contains("build/") }
 }
 
 tasks.lintKotlinMain {
-    exclude { it.file.path.contains("build/")}
+    exclude { it.file.path.contains("build/") }
 }
