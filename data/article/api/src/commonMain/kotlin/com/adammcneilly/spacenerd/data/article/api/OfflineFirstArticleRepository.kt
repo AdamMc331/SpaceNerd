@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onStart
 
 @Suppress("ForbiddenComment")
-internal class OfflineFirstArticleRepository(
+class OfflineFirstArticleRepository(
     private val localArticleService: LocalArticleService,
     private val remoteArticleService: RemoteArticleService,
 ) : ArticleRepository {
