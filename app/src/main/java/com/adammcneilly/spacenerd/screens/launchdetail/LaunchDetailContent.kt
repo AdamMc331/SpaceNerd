@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.screens.launchdetail
 
+import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,6 +9,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,10 +20,12 @@ import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.ui.components.Pill
+import com.adammcneilly.spacenerd.core.ui.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder
+import com.eygraber.compose.placeholder.placeholder
 
 private const val LAUNCH_IMAGE_ASPECT_RATIO = 1.5F
 
@@ -33,36 +38,83 @@ fun LaunchDetailContent(
         modifier = modifier,
     ) {
         item {
-            Box {
-                LaunchImage(
-                    launch = state.launch,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .aspectRatio(LAUNCH_IMAGE_ASPECT_RATIO)
-                        .sharedElement(
-                            key = "LaunchImage-${state.launch.id}",
-                        ),
-                )
-
-                LaunchStatus(
-                    launch = state.launch,
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .statusBarsPadding()
-                        .padding(16.dp)
-                        .placeholder(
-                            visible = state.launch.isPlaceholder,
-                            color = PlaceholderDefaults.color(
-                                contentAlpha = 0.15F,
-                            ),
-                            shape = CircleShape,
-                        )
-                        .sharedElement(
-                            key = "LaunchStatus-${state.launch.id}",
-                        ),
-                )
-            }
+            LaunchImageStatus(state)
         }
+
+        item {
+            LaunchTitle(state)
+        }
+
+        item {
+            LaunchSubtitle(state)
+        }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalSharedTransitionApi::class)
+private fun LaunchTitle(
+    state: LaunchDetailState,
+) {
+    Text(
+        text = state.launch.name,
+        style = MaterialTheme.typography.titleLarge,
+        modifier = Modifier
+            .placeholder(state.launch.isPlaceholder)
+            .sharedBounds("LAUNCH_TITLE_${state.launch.id}")
+            .padding(top = 16.dp)
+            .padding(horizontal = 16.dp),
+    )
+}
+
+@Composable
+@OptIn(ExperimentalSharedTransitionApi::class)
+private fun LaunchSubtitle(
+    state: LaunchDetailState,
+) {
+    Text(
+        text = state.launch.subtitle,
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier
+            .padding(top = 4.dp)
+            .padding(horizontal = 16.dp)
+            .placeholder(state.launch.isPlaceholder)
+            .sharedBounds("LAUNCH_SUBTITLE_${state.launch.id}"),
+    )
+}
+
+@Composable
+private fun LaunchImageStatus(
+    state: LaunchDetailState,
+) {
+    Box {
+        LaunchImage(
+            launch = state.launch,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(LAUNCH_IMAGE_ASPECT_RATIO)
+                .sharedElement(
+                    key = "LaunchImage-${state.launch.id}",
+                ),
+        )
+
+        LaunchStatus(
+            launch = state.launch,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .statusBarsPadding()
+                .padding(16.dp)
+                .placeholder(
+                    visible = state.launch.isPlaceholder,
+                    color = PlaceholderDefaults.color(
+                        contentAlpha = 0.15F,
+                    ),
+                    shape = CircleShape,
+                )
+                .sharedElement(
+                    key = "LaunchStatus-${state.launch.id}",
+                ),
+        )
     }
 }
 
