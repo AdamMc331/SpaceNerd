@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform")
+    alias(libs.plugins.kotlin.multiplatform)
 }
 
 kotlin {
@@ -12,19 +12,20 @@ kotlin {
     )
 
     sourceSets {
-        val commonMain by getting
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
+        commonMain.dependencies {
+
+        }
+
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
     }
 }
 
 tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/")}
+    exclude { it.file.path.contains("build/") }
 }
 
 tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/")}
+    exclude { it.file.path.contains("build/") }
 }
