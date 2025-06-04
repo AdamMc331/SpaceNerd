@@ -41,10 +41,4 @@ room {
     schemaDirectory("$projectDir/schemas")
 }
 
-tasks.withType<FormatTask> {
-    exclude { it.file.path.contains("build/") }
-}
 
-tasks.withType<LintTask> {
-    exclude { it.file.path.contains("build/") }
-}

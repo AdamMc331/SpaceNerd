@@ -1,6 +1,4 @@
-import org.gradle.kotlin.dsl.withType
-import org.jmailen.gradle.kotlinter.tasks.FormatTask
-import org.jmailen.gradle.kotlinter.tasks.LintTask
+
 
 plugins {
     alias(libs.plugins.android.application)
@@ -108,10 +106,4 @@ dependencies {
     kspAndroidTest(libs.hilt.android.compiler)
 }
 
-tasks.withType<FormatTask> {
-    exclude { it.file.path.contains("build/") }
-}
 
-tasks.withType<LintTask> {
-    exclude { it.file.path.contains("build/") }
-}

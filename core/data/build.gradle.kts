@@ -54,10 +54,4 @@ android {
     namespace = "com.adammcneilly.core.data"
 }
 
-tasks.withType<FormatTask> {
-    exclude { it.file.path.contains("build/") }
-}
 
-tasks.withType<LintTask> {
-    exclude { it.file.path.contains("build/") }
-}
