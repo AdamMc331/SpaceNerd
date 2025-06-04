@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.room)
 }
 
@@ -15,10 +16,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":core:data"))
             implementation(project(":core:models"))
             implementation(project(":data:article:api"))
             implementation(libs.androidx.room.runtime)
             implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.serialization.json)
         }
 
         commonTest.dependencies {

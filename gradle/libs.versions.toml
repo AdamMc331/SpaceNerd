@@ -16,6 +16,7 @@ kotlin = "2.1.21"
 kotlinter = "5.1.0"
 kotlinxCoroutines = "1.9.0"
 kotlinxDatetime = "0.6.2"
+kotlinxSerialization = "1.7.3"
 ksp = "2.1.21-2.0.1"
 ktor = "3.0.3"
 ktxCore = "1.16.0"
@@ -75,6 +76,7 @@ kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
@@ -101,6 +103,7 @@ google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 room = { id = "androidx.room", version.ref = "room" }
 square-sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }

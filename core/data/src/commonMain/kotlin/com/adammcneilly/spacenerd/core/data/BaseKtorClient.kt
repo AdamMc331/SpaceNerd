@@ -21,14 +21,14 @@ import kotlinx.serialization.json.Json
 private typealias RemoteParams = Map<String, Any?>
 
 /**
- * Creates a default [httpClient] that can make requests to the supplied [baseURL].
+ * Creates a default [httpClient] that can make requests to the supplied [baseUrl].
  *
  * You can either subclass this with a specific client type,
  * like `object GitHubClient : BaseKtorClient("https://api.github.com")`,
  * or repurpose this class to represent a specific client instead.
  */
 open class BaseKtorClient(
-    val baseURL: String,
+    val baseUrl: String,
 ) {
     val httpClient = HttpClient {
         install(ContentNegotiation) {
@@ -47,7 +47,7 @@ open class BaseKtorClient(
     }
 
     /**
-     * A helper function to build the [baseURL] and [endpoint] operation and performs a get request.
+     * A helper function to build the [baseUrl] and [endpoint] operation and performs a get request.
      * Will also pass in the supplied [params] as necessary.
      *
      * NOTE that it is expected for endpoint to begin with a forward slash (/), it is not automatically
@@ -61,7 +61,7 @@ open class BaseKtorClient(
         endpoint: String,
         params: RemoteParams = emptyMap(),
     ): Result<T> {
-        val url = "$baseURL$endpoint"
+        val url = "$baseUrl$endpoint"
 
         return try {
             val apiResult: T = httpClient
