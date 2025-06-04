@@ -60,10 +60,10 @@ private fun LaunchTitle(
         text = state.launch.name,
         style = MaterialTheme.typography.titleLarge,
         modifier = Modifier
-            .placeholder(state.launch.isPlaceholder)
-            .sharedBounds("LAUNCH_TITLE_${state.launch.id}")
             .padding(top = 16.dp)
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp)
+            .placeholder(state.launch.isPlaceholder)
+            .sharedBounds("LAUNCH_TITLE_${state.launch.id}"),
     )
 }
 
