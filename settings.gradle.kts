@@ -16,6 +16,7 @@ rootProject.name = "Space Nerd"
 include(":app")
 include(":core:data")
 include(":core:models")
+include(":core:ui:scaffold")
 include(":data:article:api")
 include(":data:article:impl")
 include(":scaffold")
