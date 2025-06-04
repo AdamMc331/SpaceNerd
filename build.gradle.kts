@@ -13,6 +13,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform).apply(false)
     alias(libs.plugins.kotlin.parcelize).apply(false)
     alias(libs.plugins.kotlinter).apply(false)
+    alias(libs.plugins.room)
     alias(libs.plugins.square.sort.dependencies).apply(false)
 }
 
