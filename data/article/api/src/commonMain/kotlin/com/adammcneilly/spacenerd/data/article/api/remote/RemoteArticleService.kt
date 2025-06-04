@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.article.remote
+package com.adammcneilly.spacenerd.data.article.api.remote
 
 import com.adammcneilly.spacenerd.core.models.Article
 
