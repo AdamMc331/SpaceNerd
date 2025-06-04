@@ -1,6 +1,3 @@
-import org.jmailen.gradle.kotlinter.tasks.FormatTask
-import org.jmailen.gradle.kotlinter.tasks.LintTask
-
 plugins {
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.multiplatform)
@@ -40,5 +37,3 @@ dependencies {
 room {
     schemaDirectory("$projectDir/schemas")
 }
-
-

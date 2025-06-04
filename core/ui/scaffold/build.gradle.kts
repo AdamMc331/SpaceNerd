@@ -1,7 +1,5 @@
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
-import org.jmailen.gradle.kotlinter.tasks.FormatTask
-import org.jmailen.gradle.kotlinter.tasks.LintTask
+
 
 plugins {
     alias(libs.plugins.compose.compiler)
@@ -50,5 +48,3 @@ kotlin {
         }
     }
 }
-
-

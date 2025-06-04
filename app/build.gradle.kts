@@ -1,5 +1,3 @@
-
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.cash.paparazzi)
@@ -105,5 +103,3 @@ dependencies {
 
     kspAndroidTest(libs.hilt.android.compiler)
 }
-
-

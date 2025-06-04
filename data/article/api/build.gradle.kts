@@ -1,6 +1,3 @@
-import org.jmailen.gradle.kotlinter.tasks.FormatTask
-import org.jmailen.gradle.kotlinter.tasks.LintTask
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
 }
@@ -25,5 +22,3 @@ kotlin {
         }
     }
 }
-
-
