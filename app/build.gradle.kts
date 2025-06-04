@@ -66,7 +66,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.bundles.androidx.xr)
     implementation(libs.coil.compose)
-    implementation(libs.coil.ktor)
+    implementation(libs.coil.okhttp)
     implementation(libs.compose.material)
     implementation(libs.compose.material.icons.extended)
     implementation(libs.compose.navigation)
