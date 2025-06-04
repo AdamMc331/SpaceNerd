@@ -1,3 +1,6 @@
+import org.jmailen.gradle.kotlinter.tasks.FormatTask
+import org.jmailen.gradle.kotlinter.tasks.LintTask
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
@@ -51,10 +54,10 @@ android {
     namespace = "com.adammcneilly.core.data"
 }
 
-tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
+tasks.withType<FormatTask> {
+    exclude { it.file.path.contains("build/")}
 }
 
-tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
+tasks.withType<LintTask> {
+    exclude { it.file.path.contains("build/")}
 }

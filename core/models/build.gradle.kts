@@ -1,3 +1,7 @@
+import org.gradle.kotlin.dsl.withType
+import org.jmailen.gradle.kotlinter.tasks.FormatTask
+import org.jmailen.gradle.kotlinter.tasks.LintTask
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
 }
@@ -22,10 +26,10 @@ kotlin {
     }
 }
 
-tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
+tasks.withType<FormatTask> {
+    exclude { it.file.path.contains("build/")}
 }
 
-tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
+tasks.withType<LintTask> {
+    exclude { it.file.path.contains("build/")}
 }
