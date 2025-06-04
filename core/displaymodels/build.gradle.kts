@@ -17,6 +17,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":core:models"))
             implementation(project(":scaffold"))
+            implementation(compose.components.resources)
             implementation(compose.ui)
         }
 
