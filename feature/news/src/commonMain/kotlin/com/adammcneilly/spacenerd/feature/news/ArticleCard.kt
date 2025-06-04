@@ -22,12 +22,12 @@ import com.eygraber.compose.placeholder.material3.placeholder
 private const val ARTICLE_IMAGE_ASPECT_RATIO = 1.5F
 
 @Composable
+@Suppress("ForbiddenComment")
 fun ArticleCard(
     article: ArticleDisplayModel,
     modifier: Modifier = Modifier,
 ) {
     // TODO: Need adaptive info for CMP format
-    @Suppress("ForbiddenComment")
     val isAtLeastMediumWidth = false
 
     if (isAtLeastMediumWidth) {
