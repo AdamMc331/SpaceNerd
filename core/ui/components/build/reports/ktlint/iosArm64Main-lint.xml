@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<checkstyle version="8.0">
-    <file name="build/generated/compose/resourceGenerator/kotlin/iosArm64MainResourceCollectors/space nerd/core/ui/components/generated/resources/ActualResourceCollectors.kt">
-        <error line="3" column="9" severity="error" message="Package name contains a disallowed character" source="standard:package-name" />
-    </file>
-</checkstyle>
