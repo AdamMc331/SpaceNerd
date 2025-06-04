@@ -12,6 +12,7 @@ gradleVersionsPlugin = "0.52.0"
 hilt = "2.56.2"
 hiltNavigationCompose = "1.2.0"
 junit = "4.13.2"
+kmpCompose = "1.7.3"
 kotlin = "2.1.21"
 kotlinter = "5.1.0"
 kotlinxCoroutines = "1.10.2"
@@ -101,6 +102,7 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektGradlePlugin
 google-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.compose", version.ref = "kmpCompose" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
