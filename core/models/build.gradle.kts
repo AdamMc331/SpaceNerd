@@ -12,23 +12,20 @@ kotlin {
     )
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(libs.kotlinx.datetime)
-            }
+        commonMain.dependencies {
+            implementation(libs.kotlinx.datetime)
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
+
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
     }
 }
 
 tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/")}
+    exclude { it.file.path.contains("build/") }
 }
 
 tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/")}
+    exclude { it.file.path.contains("build/") }
 }
