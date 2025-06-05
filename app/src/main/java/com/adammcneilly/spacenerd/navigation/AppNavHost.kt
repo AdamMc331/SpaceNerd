@@ -72,43 +72,36 @@ fun AppNavHost() {
                         key = key,
                         metadata = TwoPaneScene.twoPane(),
                     ) {
-                        RenderHomeTab(
-                            key = key,
-                            navigator = {
-                                backStack.add(it)
-                            },
-                        )
+                        when (key.tab) {
+                            HomeTab.News -> {
+                                NewsScreen()
+                            }
+
+                            HomeTab.Launches -> {
+                                LaunchListScreen(
+                                    navigateToLaunch = { launch ->
+                                        val newScreen = AppScreen.LaunchDetail(launch.id)
+
+                                        if (backStack.lastOrNull() is AppScreen.LaunchDetail) {
+                                            backStack[backStack.lastIndex] = newScreen
+                                        } else {
+                                            backStack.add(newScreen)
+                                        }
+                                    },
+                                )
+                            }
+
+                            HomeTab.Astronauts -> {
+                                AstronautListScreen()
+                            }
+
+                            HomeTab.Stations -> {
+                                StationsListScreen()
+                            }
+                        }
                     }
                 }
             }
         },
     )
-}
-
-@Composable
-private fun RenderHomeTab(
-    key: AppScreen.Tab,
-    navigator: (AppScreen) -> Unit,
-) {
-    when (key.tab) {
-        HomeTab.News -> {
-            NewsScreen()
-        }
-
-        HomeTab.Launches -> {
-            LaunchListScreen(
-                navigateToLaunch = { launch ->
-                    navigator.invoke(AppScreen.LaunchDetail(launch.id))
-                },
-            )
-        }
-
-        HomeTab.Astronauts -> {
-            AstronautListScreen()
-        }
-
-        HomeTab.Stations -> {
-            StationsListScreen()
-        }
-    }
 }
