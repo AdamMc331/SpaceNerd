@@ -17,7 +17,7 @@ class LaunchDetailViewModel @Inject constructor(
     private val launchRepository: LaunchRepository,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-    private val launchId: String = checkNotNull(savedStateHandle["launchId"])
+    private val launchId: String? = savedStateHandle["launchId"]
 
     private val mutableState = MutableStateFlow(LaunchDetailState.default())
     val state = mutableState.asStateFlow()
@@ -28,7 +28,7 @@ class LaunchDetailViewModel @Inject constructor(
 
     private fun observeLaunch() {
         viewModelScope.launch {
-            launchRepository.getLaunch(launchId)
+            launchRepository.getLaunch(launchId.orEmpty())
                 .collect { launch ->
                     val displayModel = LaunchDisplayModel(launch)
 
