@@ -18,13 +18,14 @@ fun ScaffoldState.PersistentNavigationBar(
     exitTransition: ExitTransition = slideOutVertically(targetOffsetY = { it }),
 ) {
     AnimatedVisibility(
-        modifier = modifier
-            .sharedElement(
-                sharedContentState = rememberSharedContentState(
-                    BottomNavSharedElementKey,
-                ),
-                animatedVisibilityScope = this,
-            ),
+        modifier = modifier,
+        // Need to figure out why this breaks with nav 3
+//            .sharedElement(
+//                sharedContentState = rememberSharedContentState(
+//                    BottomNavSharedElementKey,
+//                ),
+//                animatedVisibilityScope = this,
+//            ),
         visible = canShowBottomNavigation,
         enter = enterTransition,
         exit = exitTransition,

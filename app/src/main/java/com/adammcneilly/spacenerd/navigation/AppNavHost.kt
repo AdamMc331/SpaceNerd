@@ -69,27 +69,12 @@ fun AppNavHost() {
                             }
 
                             is AppScreen.Tab -> {
-                                when (key.tab) {
-                                    HomeTab.News -> {
-                                        NewsScreen()
-                                    }
-
-                                    HomeTab.Launches -> {
-                                        LaunchListScreen(
-                                            navigateToLaunch = { launch ->
-                                                backStack.add(AppScreen.LaunchDetail(launch.id))
-                                            },
-                                        )
-                                    }
-
-                                    HomeTab.Astronauts -> {
-                                        AstronautListScreen()
-                                    }
-
-                                    HomeTab.Stations -> {
-                                        StationsListScreen()
-                                    }
-                                }
+                                RenderHomeTab(
+                                    key = key,
+                                    navigator = {
+                                        backStack.add(it)
+                                    },
+                                )
                             }
                         }
                     }
@@ -97,4 +82,32 @@ fun AppNavHost() {
             }
         },
     )
+}
+
+@Composable
+private fun RenderHomeTab(
+    key: AppScreen.Tab,
+    navigator: (AppScreen) -> Unit,
+) {
+    when (key.tab) {
+        HomeTab.News -> {
+            NewsScreen()
+        }
+
+        HomeTab.Launches -> {
+            LaunchListScreen(
+                navigateToLaunch = { launch ->
+                    navigator.invoke(AppScreen.LaunchDetail(launch.id))
+                },
+            )
+        }
+
+        HomeTab.Astronauts -> {
+            AstronautListScreen()
+        }
+
+        HomeTab.Stations -> {
+            StationsListScreen()
+        }
+    }
 }
