@@ -51,6 +51,7 @@ android {
 dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.androidx.adaptive.android)
+    implementation(libs.androidx.navigation3.ui)
     implementation(libs.compose.material)
     implementation(libs.compose.material.icons.extended)
     implementation(libs.compose.navigation)

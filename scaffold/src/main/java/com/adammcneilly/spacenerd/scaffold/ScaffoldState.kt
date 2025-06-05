@@ -9,14 +9,11 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.window.core.layout.WindowWidthSizeClass
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 val LocalSharedTransitionScope = compositionLocalOf<SharedTransitionScope?> {
-    null
-}
-
-val LocalNavAnimatedVisibilityScope = compositionLocalOf<AnimatedVisibilityScope?> {
     null
 }
 
@@ -44,8 +41,8 @@ class ScaffoldState internal constructor(
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun rememberScaffoldState(
-    animatedVisibilityScope: AnimatedVisibilityScope = requireNotNull(LocalNavAnimatedVisibilityScope.current) {
-        "AnimatedVisibilityScope must be provided via LocalNavAnimatedVisibilityScope"
+    animatedVisibilityScope: AnimatedVisibilityScope = requireNotNull(LocalNavAnimatedContentScope.current) {
+        "AnimatedVisibilityScope must be provided via LocalNavAnimatedContentScope"
     },
     sharedTransitionScope: SharedTransitionScope = requireNotNull(LocalSharedTransitionScope.current) {
         "SharedTransitionScope must be provided via LocalSharedTransitionScope"

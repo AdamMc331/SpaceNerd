@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
-import com.adammcneilly.spacenerd.scaffold.LocalNavAnimatedVisibilityScope
+import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import com.adammcneilly.spacenerd.scaffold.LocalSharedTransitionScope
 
 @Composable
@@ -22,7 +22,7 @@ fun Modifier.sharedBounds(
     clipShapeInOverlayDuringTransition: Shape? = null,
 ): Modifier {
     val sharedTransitionScope = LocalSharedTransitionScope.current
-    val animatedVisibilityScope = LocalNavAnimatedVisibilityScope.current
+    val animatedVisibilityScope = LocalNavAnimatedContentScope.current
 
     if (sharedTransitionScope == null || animatedVisibilityScope == null) {
         return this

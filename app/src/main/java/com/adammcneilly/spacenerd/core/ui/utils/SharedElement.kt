@@ -3,7 +3,7 @@ package com.adammcneilly.spacenerd.core.ui.utils
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.scaffold.LocalNavAnimatedVisibilityScope
+import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import com.adammcneilly.spacenerd.scaffold.LocalSharedTransitionScope
 
 /**
@@ -16,7 +16,7 @@ fun Modifier.sharedElement(
     key: String,
 ): Modifier {
     val sharedTransitionScope = LocalSharedTransitionScope.current
-    val animatedVisibilityScope = LocalNavAnimatedVisibilityScope.current
+    val animatedVisibilityScope = LocalNavAnimatedContentScope.current
 
     if (sharedTransitionScope == null || animatedVisibilityScope == null) {
         return this
