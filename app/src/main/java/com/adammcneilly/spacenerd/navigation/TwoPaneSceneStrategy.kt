@@ -9,13 +9,17 @@ import androidx.window.core.layout.WindowSizeClass
 
 class TwoPaneSceneStrategy : SceneStrategy<AppScreen> {
     @Composable
+    @Suppress("ReturnCount")
     override fun calculateScene(
         entries: List<NavEntry<AppScreen>>,
         onBack: (Int) -> Unit,
     ): Scene<AppScreen>? {
         val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
 
-        val isMediumOrLargerWidth = windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
+        val isMediumOrLargerWidth = windowSizeClass.isWidthAtLeastBreakpoint(
+            widthDpBreakpoint = WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
+        )
+
         if (!isMediumOrLargerWidth) {
             return null
         }
