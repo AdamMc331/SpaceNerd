@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
-import androidx.annotation.DrawableRes
+import org.jetbrains.compose.resources.DrawableResource
 
 sealed interface ImageDisplayModel {
     data class Remote(
@@ -8,7 +8,6 @@ sealed interface ImageDisplayModel {
     ) : ImageDisplayModel
 
     data class Local(
-        @DrawableRes
-        val resource: Int,
+        val resource: DrawableResource,
     ) : ImageDisplayModel
 }

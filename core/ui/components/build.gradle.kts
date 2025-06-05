@@ -15,14 +15,24 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:models"))
-            implementation(project(":core:ui:scaffold"))
+            implementation(project(":core:displaymodels"))
             implementation(compose.components.resources)
+            implementation(compose.material3)
             implementation(compose.ui)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.ktor)
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
     }
+}
+
+tasks.formatKotlinCommonMain {
+    exclude { it.file.path.contains("build/") }
+}
+
+tasks.lintKotlinCommonMain {
+    exclude { it.file.path.contains("build/") }
 }
