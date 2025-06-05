@@ -7,12 +7,12 @@ import androidx.navigation3.ui.Scene
 import androidx.navigation3.ui.SceneStrategy
 import androidx.window.core.layout.WindowSizeClass
 
-class TwoPaneSceneStrategy<T : AppScreen> : SceneStrategy<T> {
+class TwoPaneSceneStrategy : SceneStrategy<AppScreen> {
     @Composable
     override fun calculateScene(
-        entries: List<NavEntry<T>>,
+        entries: List<NavEntry<AppScreen>>,
         onBack: (Int) -> Unit,
-    ): Scene<T>? {
+    ): Scene<AppScreen>? {
         val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
 
         val isMediumOrLargerWidth = windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
@@ -31,6 +31,14 @@ class TwoPaneSceneStrategy<T : AppScreen> : SceneStrategy<T> {
         }
 
         if (!entriesSupportTwoPanes) {
+            return null
+        }
+
+        val bothEntriesAreTabs = lastTwoEntries.all { entry ->
+            entry.key is AppScreen.Tab
+        }
+
+        if (bothEntriesAreTabs) {
             return null
         }
 

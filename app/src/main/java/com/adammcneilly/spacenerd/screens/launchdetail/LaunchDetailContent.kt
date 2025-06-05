@@ -21,7 +21,6 @@ import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.ui.components.Pill
 import com.adammcneilly.spacenerd.core.ui.utils.sharedBounds
-import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder
@@ -92,10 +91,7 @@ private fun LaunchImageStatus(
             launch = state.launch,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(LAUNCH_IMAGE_ASPECT_RATIO)
-                .sharedElement(
-                    key = "LaunchImage-${state.launch.id}",
-                ),
+                .aspectRatio(LAUNCH_IMAGE_ASPECT_RATIO),
         )
 
         LaunchStatus(
@@ -110,9 +106,6 @@ private fun LaunchImageStatus(
                         contentAlpha = 0.15F,
                     ),
                     shape = CircleShape,
-                )
-                .sharedElement(
-                    key = "LaunchStatus-${state.launch.id}",
                 ),
         )
     }

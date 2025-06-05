@@ -44,6 +44,7 @@ fun AppNavHost() {
 
     NavDisplay(
         backStack = backStack,
+        sceneStrategy = TwoPaneSceneStrategy(),
         onBack = {
             backStack.removeLastOrNull()
 
@@ -54,15 +55,23 @@ fun AppNavHost() {
             }
         },
         entryProvider = { key ->
-            NavEntry(key) {
-                when (key) {
-                    is AppScreen.LaunchDetail -> {
+            when (key) {
+                is AppScreen.LaunchDetail -> {
+                    NavEntry(
+                        key = key,
+                        metadata = TwoPaneScene.twoPane(),
+                    ) {
                         LaunchDetailScreen(
                             launchId = key.launchId,
                         )
                     }
+                }
 
-                    is AppScreen.Tab -> {
+                is AppScreen.Tab -> {
+                    NavEntry(
+                        key = key,
+                        metadata = TwoPaneScene.twoPane(),
+                    ) {
                         RenderHomeTab(
                             key = key,
                             navigator = {

@@ -8,13 +8,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.Scene
 
-class TwoPaneScene<T : AppScreen>(
+class TwoPaneScene(
     override val key: Any,
-    override val previousEntries: List<NavEntry<T>>,
-    val firstEntry: NavEntry<T>,
-    val secondEntry: NavEntry<T>,
-) : Scene<T> {
-    override val entries: List<NavEntry<T>> = listOf(
+    override val previousEntries: List<NavEntry<AppScreen>>,
+    val firstEntry: NavEntry<AppScreen>,
+    val secondEntry: NavEntry<AppScreen>,
+) : Scene<AppScreen> {
+    override val entries: List<NavEntry<AppScreen>> = listOf(
         firstEntry,
         secondEntry,
     )
@@ -33,7 +33,7 @@ class TwoPaneScene<T : AppScreen>(
 
             Box(
                 modifier = Modifier
-                    .weight(2F),
+                    .weight(1F),
             ) {
                 secondEntry.content.invoke(secondEntry.key)
             }
