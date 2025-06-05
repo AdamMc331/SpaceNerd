@@ -22,7 +22,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/workflow_setup
 
-      # assembleDebug is used to improve build times by only building
+      # assemble is used to improve build times by only building
       # the debug Android artifacts. https://touchlab.co/touchlab-build-only-what-you-need
       - name: Build Project
-        run: ./gradlew assembleDebug
+        run: ./gradlew assemble
