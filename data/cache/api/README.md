@@ -4,4 +4,4 @@
 
 <!-- Explanation of this module's responsibilities. -->
 
-Defines the API surface for cache specific information in the application. 
+API surface for storing cache timestamps locally, used to throttle data requests to avoid hitting APIs repeatedly and unnecessarily.
