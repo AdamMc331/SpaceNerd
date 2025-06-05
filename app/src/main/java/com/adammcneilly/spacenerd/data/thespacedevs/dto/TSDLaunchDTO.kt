@@ -78,7 +78,7 @@ data class TSDLaunchDTO(
             id = this.id.orEmpty(),
             name = this.name.orEmpty(),
             imageUrl = this.image?.imageUrl.orEmpty(),
-            launchTime = Instant.parse(this.net.orEmpty()),
+            launchTimeUtc = Instant.parse(this.net.orEmpty()),
             status = this.status?.toLaunchStatus() ?: LaunchStatus.Unknown,
             provider = this.launchServiceProvider?.toLaunchServiceProvider(),
             pad = this.pad?.toLaunchPad(),
