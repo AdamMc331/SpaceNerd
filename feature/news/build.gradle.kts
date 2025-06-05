@@ -19,7 +19,7 @@ kotlin {
             implementation(project(":core:models"))
             implementation(project(":core:ui:components"))
             implementation(project(":data:article:api"))
-            implementation(project(":scaffold"))
+            implementation(project(":core:ui:scaffold"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)

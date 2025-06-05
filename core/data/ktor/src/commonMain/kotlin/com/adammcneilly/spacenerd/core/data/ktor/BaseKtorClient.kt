@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.core.data
+package com.adammcneilly.spacenerd.core.data.ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
