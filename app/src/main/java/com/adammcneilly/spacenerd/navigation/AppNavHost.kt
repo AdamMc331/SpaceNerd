@@ -5,9 +5,12 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
 import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
+import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import com.adammcneilly.spacenerd.scaffold.HomeTab
 import com.adammcneilly.spacenerd.scaffold.LocalNavAnimatedVisibilityScope
 import com.adammcneilly.spacenerd.scaffold.app.LocalAppState
@@ -47,6 +50,11 @@ fun AppNavHost() {
 
     NavDisplay(
         backStack = backStack,
+        entryDecorators = listOf(
+            rememberSceneSetupNavEntryDecorator(),
+            rememberSavedStateNavEntryDecorator(),
+            rememberViewModelStoreNavEntryDecorator(),
+        ),
         onBack = {
             backStack.removeLastOrNull()
 
@@ -65,7 +73,9 @@ fun AppNavHost() {
                 ) {
                     when (key) {
                         is AppScreen.LaunchDetail -> {
-                            LaunchDetailScreen()
+                            LaunchDetailScreen(
+                                launchId = key.launchId,
+                            )
                         }
 
                         is AppScreen.Tab -> {

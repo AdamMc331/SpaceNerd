@@ -8,6 +8,6 @@ sealed interface AppScreen {
     ) : AppScreen
 
     data class LaunchDetail(
-        val id: String,
+        val launchId: String,
     ) : AppScreen
 }

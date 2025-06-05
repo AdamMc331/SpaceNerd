@@ -1,6 +1,5 @@
 package com.adammcneilly.spacenerd.screens.launchdetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
@@ -15,20 +14,15 @@ import javax.inject.Inject
 @HiltViewModel
 class LaunchDetailViewModel @Inject constructor(
     private val launchRepository: LaunchRepository,
-    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-    private val launchId: String? = savedStateHandle["launchId"]
-
     private val mutableState = MutableStateFlow(LaunchDetailState.default())
     val state = mutableState.asStateFlow()
 
-    init {
-        observeLaunch()
-    }
-
-    private fun observeLaunch() {
+    fun observeLaunch(
+        launchId: String,
+    ) {
         viewModelScope.launch {
-            launchRepository.getLaunch(launchId.orEmpty())
+            launchRepository.getLaunch(launchId)
                 .collect { launch ->
                     val displayModel = LaunchDisplayModel(launch)
 
