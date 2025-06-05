@@ -26,3 +26,7 @@ kotlin {
         }
     }
 }
+
+compose.resources {
+    packageOfResClass = "com.adammcneilly.spacenerd.core.displaymodels"
+}
