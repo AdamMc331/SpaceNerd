@@ -18,6 +18,7 @@ import com.adammcneilly.spacenerd.screens.news.NewsScreen
 import com.adammcneilly.spacenerd.screens.stations.StationsListScreen
 
 @Composable
+@Suppress("LongMethod")
 fun AppNavHost() {
     val startDestination = AppScreen.Tab(HomeTab.News)
 
