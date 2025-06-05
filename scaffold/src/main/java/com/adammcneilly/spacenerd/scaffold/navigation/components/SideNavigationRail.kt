@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.scaffold.navigation.components
+package com.adammcneilly.spacenerd.core.ui.scaffold.navigation.components
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationRail
@@ -9,10 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import com.adammcneilly.spacenerd.scaffold.app.AppState
-import com.adammcneilly.spacenerd.scaffold.app.AppStateData
-import com.adammcneilly.spacenerd.scaffold.app.LocalAppState
-import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
+import com.adammcneilly.spacenerd.core.ui.scaffold.app.AppState
+import com.adammcneilly.spacenerd.core.ui.scaffold.app.AppStateData
+import com.adammcneilly.spacenerd.core.ui.scaffold.app.LocalAppState
+import com.adammcneilly.spacenerd.core.ui.scaffold.ui.theme.SpaceTheme
 
 @Composable
 fun SideNavigationRail(

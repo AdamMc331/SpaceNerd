@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.scaffold.app
+package com.adammcneilly.spacenerd.core.ui.scaffold.app
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
@@ -7,8 +7,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.scaffold.LocalSharedTransitionScope
-import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
+import com.adammcneilly.spacenerd.core.ui.scaffold.LocalSharedTransitionScope
+import com.adammcneilly.spacenerd.core.ui.scaffold.ui.theme.SpaceTheme
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)

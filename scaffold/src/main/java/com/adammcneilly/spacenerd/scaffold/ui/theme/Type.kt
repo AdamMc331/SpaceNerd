@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.scaffold.ui.theme
+package com.adammcneilly.spacenerd.core.ui.scaffold.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

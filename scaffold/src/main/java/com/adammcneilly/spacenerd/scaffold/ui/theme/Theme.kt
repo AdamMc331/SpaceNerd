@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.scaffold.ui.theme
+package com.adammcneilly.spacenerd.core.ui.scaffold.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

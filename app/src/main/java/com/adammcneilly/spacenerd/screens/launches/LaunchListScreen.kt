@@ -9,10 +9,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
-import com.adammcneilly.spacenerd.scaffold.PersistentScaffold
-import com.adammcneilly.spacenerd.scaffold.navigation.components.PersistentNavigationBar
-import com.adammcneilly.spacenerd.scaffold.navigation.components.PersistentNavigationRail
-import com.adammcneilly.spacenerd.scaffold.rememberScaffoldState
+import com.adammcneilly.spacenerd.core.ui.scaffold.PersistentScaffold
+import com.adammcneilly.spacenerd.core.ui.scaffold.navigation.components.PersistentNavigationBar
+import com.adammcneilly.spacenerd.core.ui.scaffold.navigation.components.PersistentNavigationRail
+import com.adammcneilly.spacenerd.core.ui.scaffold.rememberScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)

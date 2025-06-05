@@ -5,9 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.saveable.rememberSaveable
-import com.adammcneilly.spacenerd.scaffold.app.App
-import com.adammcneilly.spacenerd.scaffold.app.AppState
-import com.adammcneilly.spacenerd.scaffold.app.AppStateData
+import com.adammcneilly.spacenerd.core.ui.scaffold.app.App
+import com.adammcneilly.spacenerd.core.ui.scaffold.app.AppState
+import com.adammcneilly.spacenerd.core.ui.scaffold.app.AppStateData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
