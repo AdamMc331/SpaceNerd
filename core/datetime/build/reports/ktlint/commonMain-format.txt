@@ -1,0 +1,1 @@
+/Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/datetime/src/commonMain/kotlin/com/adammcneilly/spacenerd/core/datetime/SystemTimeProvider.kt:7:1: Format fixed > [standard:no-empty-first-line-in-class-body] Class body should not start with blank line
