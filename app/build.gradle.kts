@@ -55,8 +55,9 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation(project(":core:data:ktor"))
     implementation(project(":core:models"))
-    implementation(project(":scaffold"))
+    implementation(project(":core:ui:scaffold"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.adaptive.android)

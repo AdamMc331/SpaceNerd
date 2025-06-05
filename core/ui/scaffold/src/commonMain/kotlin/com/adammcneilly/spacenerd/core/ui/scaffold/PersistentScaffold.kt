@@ -14,8 +14,8 @@ import androidx.compose.ui.zIndex
 
 /**
  * A persistent [Scaffold] that will render the various slots for any given screen,
- * allowing each screen to hold persistent UI elements such as [com.adammcneilly.spacenerd.scaffold.navigation.components.PersistentNavigationBar]
- * or [com.adammcneilly.spacenerd.scaffold.navigation.components.PersistentNavigationRail].
+ * allowing each screen to hold persistent UI elements such as [com.adammcneilly.spacenerd.core.ui.scaffold.navigation.components.PersistentNavigationBar]
+ * or [com.adammcneilly.spacenerd.core.ui.scaffold.navigation.components.PersistentNavigationRail].
  */
 @Composable
 @Suppress("LongParameterList")

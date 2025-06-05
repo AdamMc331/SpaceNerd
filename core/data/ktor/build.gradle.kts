@@ -48,5 +48,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.core.data"
+    namespace = "com.adammcneilly.core.data.ktor"
 }

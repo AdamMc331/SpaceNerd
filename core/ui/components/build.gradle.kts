@@ -29,10 +29,6 @@ kotlin {
     }
 }
 
-tasks.formatKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
-}
-
-tasks.lintKotlinCommonMain {
-    exclude { it.file.path.contains("build/") }
+compose.resources {
+    packageOfResClass = "com.adammcneilly.spacenerd.core.ui.components"
 }

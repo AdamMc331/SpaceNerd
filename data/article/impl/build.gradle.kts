@@ -16,7 +16,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:data"))
+            implementation(project(":core:data:ktor"))
             implementation(project(":core:models"))
             implementation(project(":data:article:api"))
             implementation(libs.androidx.room.runtime)
