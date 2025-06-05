@@ -1,6 +1,4 @@
 plugins {
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -22,8 +20,4 @@ kotlin {
             implementation(kotlin("test"))
         }
     }
-}
-
-compose.resources {
-    packageOfResClass = "com.adammcneilly.spacenerd.core.displaymodels"
 }

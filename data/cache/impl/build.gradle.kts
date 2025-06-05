@@ -1,7 +1,6 @@
 plugins {
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -16,6 +15,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":data:cache:api"))
+            implementation(libs.androidx.room.runtime)
             implementation(libs.kotlinx.datetime)
         }
 
@@ -23,8 +23,4 @@ kotlin {
             implementation(kotlin("test"))
         }
     }
-}
-
-compose.resources {
-    packageOfResClass = "com.adammcneilly.spacenerd.core.displaymodels"
 }
