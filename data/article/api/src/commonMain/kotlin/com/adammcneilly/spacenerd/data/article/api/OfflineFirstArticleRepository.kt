@@ -8,9 +8,6 @@ import com.adammcneilly.spacenerd.data.cache.api.CacheTimestampRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onStart
 import kotlin.time.Duration.Companion.hours
-import kotlin.time.Duration.Companion.minutes
-
-private val articleThrottleDuration = 15.minutes
 
 class OfflineFirstArticleRepository(
     private val localArticleService: LocalArticleService,
