@@ -4,4 +4,4 @@
 
 <!-- Explanation of this module's responsibilities. -->
 
-Implementation instances for the [cache API](../api).
+Implementation details for the [cache API](../api).
