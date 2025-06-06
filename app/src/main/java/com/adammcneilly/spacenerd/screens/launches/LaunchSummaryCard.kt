@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.screens.launches
 
+import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,7 @@ import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.ui.components.Pill
 import com.adammcneilly.spacenerd.core.ui.scaffold.theme.SpaceTheme
+import com.adammcneilly.spacenerd.core.ui.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
@@ -158,6 +160,7 @@ private fun LaunchStatus(
 }
 
 @Composable
+@OptIn(ExperimentalSharedTransitionApi::class)
 private fun LaunchInfo(
     launch: LaunchDisplayModel,
     modifier: Modifier = Modifier,
@@ -169,7 +172,8 @@ private fun LaunchInfo(
             text = launch.name,
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier
-                .placeholder(launch.isPlaceholder),
+                .placeholder(launch.isPlaceholder)
+                .sharedBounds("LAUNCH_TITLE_${launch.id}"),
         )
 
         Text(
@@ -177,7 +181,8 @@ private fun LaunchInfo(
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier
                 .padding(top = 4.dp)
-                .placeholder(launch.isPlaceholder),
+                .placeholder(launch.isPlaceholder)
+                .sharedBounds("LAUNCH_SUBTITLE_${launch.id}"),
         )
     }
 }
