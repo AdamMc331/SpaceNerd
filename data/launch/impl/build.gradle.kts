@@ -14,6 +14,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":core:datetime"))
             implementation(project(":core:models"))
             implementation(project(":data:launch:api"))
             implementation(libs.androidx.room.runtime)
