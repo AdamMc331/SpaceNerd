@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -13,7 +14,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(project(":core:datetime"))
+            implementation(project(":core:models"))
+            implementation(project(":data:launch:api"))
+            implementation(libs.androidx.room.runtime)
         }
 
         commonTest.dependencies {
