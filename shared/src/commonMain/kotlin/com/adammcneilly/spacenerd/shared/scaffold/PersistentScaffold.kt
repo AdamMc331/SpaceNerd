@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.adammcneilly.spacenerd.scaffold.ScaffoldState
 
 /**
  * A persistent [Scaffold] that will render the various slots for any given screen,

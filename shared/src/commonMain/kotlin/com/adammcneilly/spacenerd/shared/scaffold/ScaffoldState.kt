@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.scaffold
+package com.adammcneilly.spacenerd.shared.scaffold
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi

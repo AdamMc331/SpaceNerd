@@ -8,7 +8,7 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.scaffold.ScaffoldState
+import com.adammcneilly.spacenerd.shared.scaffold.ScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
