@@ -12,9 +12,9 @@ gradleVersionsPlugin = "0.52.0"
 hilt = "2.56.2"
 hiltNavigationCompose = "1.2.0"
 junit = "4.13.2"
-kmpCompose = "1.7.3"
+kmpCompose = "1.8.1"
 kotlin = "2.1.21"
-kotlinter = "5.1.0"
+kotlinter = "5.1.1"
 kotlinxCoroutines = "1.10.2"
 kotlinxDatetime = "0.6.2"
 kotlinxSerialization = "1.8.1"
@@ -57,8 +57,9 @@ coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" 
 coil-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 compose-material = { group = "androidx.compose.material3", name = "material3" }
+compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+compose-material3-windowsizeclass = { module = "org.jetbrains.compose.material3:material3-window-size-class", version.ref = "kmpCompose"}
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-test-junit = { group = "androidx.compose.ui", name = "ui-test-junit4" }

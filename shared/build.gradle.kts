@@ -1,4 +1,6 @@
 plugins {
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -13,7 +15,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
+            implementation(compose.runtime)
+            implementation(compose.ui)
+            implementation(libs.compose.material3.windowsizeclass)
         }
 
         commonTest.dependencies {
