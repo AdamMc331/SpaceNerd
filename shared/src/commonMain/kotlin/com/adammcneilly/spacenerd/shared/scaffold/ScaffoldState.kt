@@ -3,6 +3,9 @@ package com.adammcneilly.spacenerd.shared.scaffold
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.compositionLocalOf
@@ -66,18 +69,17 @@ fun rememberScaffoldState(
  * we should show a bottom navigation or a navigation rail.
  */
 @Composable
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 private fun isMediumScreenWidthOrWider(): State<Boolean> {
-    // TODO: KMP?
-//    val widthSizeClass = currentWindowAdaptiveInfo()
-//        .windowSizeClass
-//        .windowWidthSizeClass
-//
-//    val mediumOrHigherClasses = listOf(
-//        WindowWidthSizeClass.MEDIUM,
-//        WindowWidthSizeClass.EXPANDED,
-//    )
+    val widthSizeClass = calculateWindowSizeClass()
+        .widthSizeClass
 
-    val isMediumScreenWidthOrWider: Boolean = false
+    val mediumOrHigherClasses = listOf(
+        WindowWidthSizeClass.Medium,
+        WindowWidthSizeClass.Expanded,
+    )
+
+    val isMediumScreenWidthOrWider = (widthSizeClass in mediumOrHigherClasses)
 
     return rememberUpdatedState(isMediumScreenWidthOrWider)
 }
