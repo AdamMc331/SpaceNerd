@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared
+package com.adammcneilly.spacenerd.shared.scaffold
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Box

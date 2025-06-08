@@ -1,6 +1,6 @@
 @file:Suppress("MagicNumber")
 
-package com.adammcneilly.spacenerd.shared.theme
+package com.adammcneilly.spacenerd.shared.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

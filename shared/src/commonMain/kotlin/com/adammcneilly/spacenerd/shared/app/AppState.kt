@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
-import com.adammcneilly.spacenerd.shared.HomeTab
+import com.adammcneilly.spacenerd.shared.navigation.HomeTab
 import com.adammcneilly.spacenerd.shared.navigation.NavItem
 
 /**
