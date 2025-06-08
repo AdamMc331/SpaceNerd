@@ -14,5 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Space Nerd"
 include(":app")
-include(":scaffold")
 include(":shared")

@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
+import com.adammcneilly.spacenerd.shared.ui.theme.SpaceTheme
 
 @Composable
 fun Pill(

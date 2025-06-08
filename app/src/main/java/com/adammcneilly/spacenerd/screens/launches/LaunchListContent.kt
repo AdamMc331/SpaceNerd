@@ -9,10 +9,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.ui.utils.plus
-import com.adammcneilly.spacenerd.scaffold.R as scaffoldR
 
 @Composable
 fun LaunchListContent(
@@ -28,7 +26,7 @@ fun LaunchListContent(
     ) {
         item {
             Text(
-                text = stringResource(scaffoldR.string.launches),
+                text = "Launches",
                 style = MaterialTheme.typography.titleLarge,
             )
         }

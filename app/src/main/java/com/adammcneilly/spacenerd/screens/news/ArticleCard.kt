@@ -27,7 +27,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.AuthorDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
-import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
+import com.adammcneilly.spacenerd.shared.ui.theme.SpaceTheme
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val ARTICLE_IMAGE_ASPECT_RATIO = 1.5F
