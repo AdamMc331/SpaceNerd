@@ -1,4 +1,6 @@
 plugins {
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -13,7 +15,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.materialIconsExtended)
+            implementation(compose.material3)
+            implementation(compose.ui)
         }
 
         commonTest.dependencies {
