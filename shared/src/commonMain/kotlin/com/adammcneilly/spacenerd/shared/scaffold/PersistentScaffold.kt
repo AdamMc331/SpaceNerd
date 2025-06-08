@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.shared.scaffold
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.animateBounds
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -33,9 +34,8 @@ fun ScaffoldState.PersistentScaffold(
         navigationRail = navigationRail,
         content = {
             Scaffold(
-                modifier = modifier,
-                // TODO: KMP?
-//                    .animateBounds(lookaheadScope = this),
+                modifier = modifier
+                    .animateBounds(lookaheadScope = this),
                 topBar = {
                     topBar()
                 },

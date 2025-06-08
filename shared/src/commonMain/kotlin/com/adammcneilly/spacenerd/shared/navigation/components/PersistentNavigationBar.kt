@@ -20,7 +20,7 @@ fun ScaffoldState.PersistentNavigationBar(
     AnimatedVisibility(
         modifier = modifier
             .sharedElement(
-                state = rememberSharedContentState(
+                sharedContentState = rememberSharedContentState(
                     BottomNavSharedElementKey,
                 ),
                 animatedVisibilityScope = this,

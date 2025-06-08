@@ -20,7 +20,7 @@ fun ScaffoldState.PersistentNavigationRail(
     AnimatedVisibility(
         modifier = modifier
             .sharedElement(
-                state = rememberSharedContentState(
+                sharedContentState = rememberSharedContentState(
                     NavRailSharedElementKey,
                 ),
                 animatedVisibilityScope = this,
