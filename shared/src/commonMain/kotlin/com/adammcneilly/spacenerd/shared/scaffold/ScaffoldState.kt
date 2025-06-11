@@ -5,12 +5,12 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
-import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
+import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 val LocalSharedTransitionScope = compositionLocalOf<SharedTransitionScope?> {
@@ -71,8 +71,7 @@ fun rememberScaffoldState(
 @Composable
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 private fun isMediumScreenWidthOrWider(): State<Boolean> {
-    val widthSizeClass = calculateWindowSizeClass()
-        .widthSizeClass
+    val widthSizeClass = currentWindowWidthSizeClass()
 
     val mediumOrHigherClasses = listOf(
         WindowWidthSizeClass.Medium,
