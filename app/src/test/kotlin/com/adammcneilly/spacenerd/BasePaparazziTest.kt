@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
-import com.adammcneilly.spacenerd.scaffold.ui.theme.SpaceTheme
+import com.adammcneilly.spacenerd.shared.ui.theme.SpaceTheme
 import com.android.resources.NightMode
 import com.android.resources.ScreenOrientation
 import com.google.testing.junit.testparameterinjector.TestParameter
@@ -28,7 +28,7 @@ abstract class BasePaparazziTest {
     val _paparazzi = Paparazzi()
 
     @TestParameter
-    val testInput: TestInput = TestInput.LANDSCAPE_PHONE
+    val testInput: TestInput = TestInput.LIGHT_PHONE
 
     /**
      * Validates the supplied [content] in both light and dark theme.
