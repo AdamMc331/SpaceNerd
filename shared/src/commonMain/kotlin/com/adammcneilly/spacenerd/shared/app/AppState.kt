@@ -21,7 +21,13 @@ val LocalAppState = staticCompositionLocalOf<AppState> {
  * shared business logic like navigation state via [navItems].
  */
 class AppState(
-    initialNavItems: List<NavItem>,
+    initialSelectedTab: HomeTab = HomeTab.News,
+    initialNavItems: List<NavItem> = HomeTab.entries.map { tab ->
+        NavItem(
+            tab = tab,
+            selected = (tab == initialSelectedTab),
+        )
+    },
 ) {
     var navItems: List<NavItem> by mutableStateOf(initialNavItems)
         private set
