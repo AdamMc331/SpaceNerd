@@ -14,10 +14,12 @@ interface CacheTimestampRepository {
     )
 
     /**
-     * Retrieves the most recent cache timestamp for the [key] and checks if the time between that instant and [currentTime]
+     * Retrieves the most recent cache timestamp for the [key] and checks
+     * if the time between that instant and [currentTime]
      * exceeds the [cacheDuration].
      *
-     * @return True if the duration since last request exceeds [cacheDuration], or if [getCacheTimestamp] for [key] is null.
+     * @return True if the duration since last request exceeds [cacheDuration],
+     * or if [getCacheTimestamp] for [key] is null.
      */
     suspend fun shouldSyncWithServer(
         key: String,
