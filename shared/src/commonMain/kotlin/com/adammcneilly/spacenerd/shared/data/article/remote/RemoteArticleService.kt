@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.data.article
+package com.adammcneilly.spacenerd.shared.data.article.remote
 
 import com.adammcneilly.spacenerd.shared.core.models.Article
 
