@@ -4,8 +4,10 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -33,6 +35,7 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.runtime)
             implementation(compose.ui)
+            implementation(libs.androidx.room.runtime)
             implementation(libs.compose.material3.windowsizeclass)
             implementation(libs.kotlinx.datetime)
         }
@@ -63,4 +66,8 @@ android {
     }
 
     namespace = "com.adammcneilly.spacenerd.shared"
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
