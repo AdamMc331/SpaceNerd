@@ -1,9 +1,9 @@
 package com.adammcneilly.spacenerd.data.thespacedevs
 
-import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.data.models.LaunchListRequest
 import com.adammcneilly.spacenerd.data.repositories.LaunchRepository
 import com.adammcneilly.spacenerd.data.thespacedevs.dto.TSDLaunchDTO
+import com.adammcneilly.spacenerd.shared.core.models.Launch
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

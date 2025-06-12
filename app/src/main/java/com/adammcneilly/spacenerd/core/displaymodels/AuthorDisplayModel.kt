@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
-import com.adammcneilly.spacenerd.core.models.Author
+import com.adammcneilly.spacenerd.shared.core.models.Author
 
 data class AuthorDisplayModel(
     val name: String,

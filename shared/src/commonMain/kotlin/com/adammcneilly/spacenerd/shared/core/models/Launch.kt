@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.core.models
+package com.adammcneilly.spacenerd.shared.core.models
 
 import kotlinx.datetime.Instant
 

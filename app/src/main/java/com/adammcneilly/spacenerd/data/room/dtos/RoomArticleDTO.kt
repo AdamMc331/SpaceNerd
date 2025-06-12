@@ -3,9 +3,9 @@ package com.adammcneilly.spacenerd.data.room.dtos
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.adammcneilly.spacenerd.core.models.Article
-import com.adammcneilly.spacenerd.core.models.Author
 import com.adammcneilly.spacenerd.data.room.typeconverters.StringListTypeConverter
+import com.adammcneilly.spacenerd.shared.core.models.Article
+import com.adammcneilly.spacenerd.shared.core.models.Author
 import kotlinx.datetime.Instant
 
 @Entity(tableName = "articles")

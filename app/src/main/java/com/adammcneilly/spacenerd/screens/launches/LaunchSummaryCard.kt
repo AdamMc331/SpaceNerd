@@ -31,11 +31,11 @@ import com.adammcneilly.spacenerd.R
 import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
-import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.ui.components.Pill
 import com.adammcneilly.spacenerd.core.ui.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
+import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.shared.ui.theme.SpaceTheme
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color

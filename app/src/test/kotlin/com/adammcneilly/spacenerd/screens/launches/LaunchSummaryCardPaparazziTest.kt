@@ -5,7 +5,7 @@ import com.adammcneilly.spacenerd.R
 import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
-import com.adammcneilly.spacenerd.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
 import org.junit.Test
 
 class LaunchSummaryCardPaparazziTest : BasePaparazziTest() {

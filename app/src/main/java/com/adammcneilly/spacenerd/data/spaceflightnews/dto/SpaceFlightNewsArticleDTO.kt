@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.data.spaceflightnews.dto
 
-import com.adammcneilly.spacenerd.core.models.Article
+import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.datetime.Instant

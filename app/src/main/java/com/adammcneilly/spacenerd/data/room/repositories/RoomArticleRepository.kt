@@ -1,9 +1,9 @@
 package com.adammcneilly.spacenerd.data.room.repositories
 
-import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.data.repositories.LocalArticleRepository
 import com.adammcneilly.spacenerd.data.room.daos.ArticleDao
 import com.adammcneilly.spacenerd.data.room.dtos.RoomArticleDTO
+import com.adammcneilly.spacenerd.shared.core.models.Article
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

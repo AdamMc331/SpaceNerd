@@ -5,7 +5,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import com.adammcneilly.spacenerd.core.models.Article
+import com.adammcneilly.spacenerd.shared.core.models.Article
 
 data class ArticleDisplayModel(
     val id: String,
