@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
-import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.shared.core.models.Launch
+import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.datetime.Instant

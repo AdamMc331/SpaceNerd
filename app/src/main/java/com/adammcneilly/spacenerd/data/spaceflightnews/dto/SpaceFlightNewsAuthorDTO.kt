@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.data.spaceflightnews.dto
 
-import com.adammcneilly.spacenerd.core.models.Author
+import com.adammcneilly.spacenerd.shared.core.models.Author
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

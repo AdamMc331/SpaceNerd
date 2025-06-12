@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.data.repositories
 
-import com.adammcneilly.spacenerd.core.models.Article
+import com.adammcneilly.spacenerd.shared.core.models.Article
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.datetime.Clock

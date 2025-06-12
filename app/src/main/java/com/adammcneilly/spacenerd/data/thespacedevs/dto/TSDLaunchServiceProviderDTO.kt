@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.data.thespacedevs.dto
 
-import com.adammcneilly.spacenerd.core.models.LaunchServiceProvider
+import com.adammcneilly.spacenerd.shared.core.models.LaunchServiceProvider
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

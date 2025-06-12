@@ -34,6 +34,7 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.ui)
             implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {

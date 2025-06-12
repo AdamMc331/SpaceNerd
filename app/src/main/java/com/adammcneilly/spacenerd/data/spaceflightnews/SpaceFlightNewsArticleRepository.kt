@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.data.spaceflightnews
 
-import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.data.repositories.RemoteArticleRepository
 import com.adammcneilly.spacenerd.data.spaceflightnews.dto.SpaceFlightNewsArticleDTO
+import com.adammcneilly.spacenerd.shared.core.models.Article
 import javax.inject.Inject
 
 class SpaceFlightNewsArticleRepository @Inject constructor(
