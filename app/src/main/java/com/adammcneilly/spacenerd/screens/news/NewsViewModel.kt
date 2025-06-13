@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.data.repositories.ArticleRepository
+import com.adammcneilly.spacenerd.shared.di.RepositoryDependencies
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val articleRepository: ArticleRepository,
+    private val articleRepository: com.adammcneilly.spacenerd.shared.data.article.ArticleRepository = RepositoryDependencies.articleRepository,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(NewsState.default())
     val state = mutableState.asStateFlow()
