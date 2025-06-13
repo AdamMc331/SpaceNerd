@@ -23,10 +23,17 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64(),
-    )
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "SpaceNerdApp"
+            isStatic = true
+            linkerOpts.add("-lsqlite3") // Essential for iOS SQLite support
+        }
+    }
 
     sourceSets {
         androidMain.dependencies {
+            implementation(libs.androidx.room.runtime.android)
             implementation(libs.ktor.client.android)
         }
 
@@ -73,6 +80,15 @@ android {
     }
 
     namespace = "com.adammcneilly.spacenerd.shared"
+}
+
+dependencies {
+    // KSP configuration for Room code generation
+    add("kspCommonMainMetadata", libs.androidx.room.compiler)
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspIosX64", libs.androidx.room.compiler)
+    add("kspIosArm64", libs.androidx.room.compiler)
+    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
 }
 
 room {
