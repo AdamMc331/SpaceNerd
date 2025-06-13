@@ -5,7 +5,9 @@ import android.content.Context
 object ApplicationContextProvider {
     private lateinit var applicationContext: Context
 
-    fun initialize(context: Context) {
+    fun initialize(
+        context: Context,
+    ) {
         applicationContext = context.applicationContext
     }
 

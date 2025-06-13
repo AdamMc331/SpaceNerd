@@ -11,7 +11,7 @@ import platform.Foundation.NSUserDomainMask
  * iOS implementation of database builder
  */
 @OptIn(ExperimentalForeignApi::class)
-actual fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<SpaceNerdDatabase> {
     val documentDirectory = NSFileManager.defaultManager.URLForDirectory(
         directory = NSDocumentDirectory,
         inDomain = NSUserDomainMask,
@@ -20,7 +20,7 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
         error = null,
     )
     val databasePath = documentDirectory?.path + "/$DATABASE_NAME"
-    return Room.databaseBuilder<AppDatabase>(
+    return Room.databaseBuilder<SpaceNerdDatabase>(
         name = databasePath,
     )
 }

@@ -12,6 +12,6 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<SpaceNerdDatabase> {
     val dbFile = context.getDatabasePath(DATABASE_NAME)
     return Room.databaseBuilder<SpaceNerdDatabase>(
         context = context,
-        name = dbFile.absolutePath
+        name = dbFile.absolutePath,
     )
 }

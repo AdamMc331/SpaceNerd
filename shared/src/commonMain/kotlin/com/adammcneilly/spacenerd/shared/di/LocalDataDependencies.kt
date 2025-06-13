@@ -2,7 +2,6 @@ package com.adammcneilly.spacenerd.shared.di
 
 import com.adammcneilly.spacenerd.shared.data.article.local.LocalArticleService
 import com.adammcneilly.spacenerd.shared.data.article.local.room.RoomArticleService
-import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.shared.data.local.room.SpaceNerdDatabase
 import com.adammcneilly.spacenerd.shared.data.local.room.getDatabase
 
