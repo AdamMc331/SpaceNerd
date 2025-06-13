@@ -62,7 +62,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.room.runtime)
     implementation(libs.bundles.androidx.xr)
     implementation(libs.coil.compose)
     implementation(libs.coil.okhttp)
@@ -85,8 +84,6 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.square.leakcanary)
 
-    annotationProcessor(libs.androidx.room.compiler)
-
     testImplementation(libs.google.testparameterinjector)
     testImplementation(libs.junit)
 
@@ -96,7 +93,6 @@ dependencies {
     androidTestImplementation(libs.compose.ui.test.junit)
     androidTestImplementation(libs.hilt.android.testing)
 
-    ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
     ksp(libs.square.moshi.kotlin.codegen)
 
