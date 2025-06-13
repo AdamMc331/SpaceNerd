@@ -1,6 +1,5 @@
 package com.adammcneilly.spacenerd.di
 
-import com.adammcneilly.spacenerd.data.spaceflightnews.SpaceFlightNewsRetrofitAPI
 import com.adammcneilly.spacenerd.data.thespacedevs.TSDRetrofitAPI
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -17,7 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteModule {
-    private const val SPACE_FLIGHT_NEWS_API_URL = "https://api.spaceflightnewsapi.net/"
     private const val THE_SPACE_DEVS_API_URL = "https://ll.thespacedevs.com/"
 
     @Provides
@@ -37,29 +35,6 @@ object RemoteModule {
             .Builder()
             .addInterceptor(loggingInterceptor)
             .build()
-    }
-
-    @Provides
-    @Singleton
-    @Named("SpaceFlightNewsRetrofit")
-    fun provideSpaceFlightNewsRetrofit(
-        okHttpClient: OkHttpClient,
-    ): Retrofit {
-        return Retrofit
-            .Builder()
-            .baseUrl(SPACE_FLIGHT_NEWS_API_URL)
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideSpaceFlightNewsRetrofitAPI(
-        @Named("SpaceFlightNewsRetrofit")
-        retrofit: Retrofit,
-    ): SpaceFlightNewsRetrofitAPI {
-        return retrofit.create(SpaceFlightNewsRetrofitAPI::class.java)
     }
 
     @Provides

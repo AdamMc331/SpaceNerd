@@ -1,14 +1,8 @@
 package com.adammcneilly.spacenerd.di
 
-import com.adammcneilly.spacenerd.data.repositories.ArticleRepository
-import com.adammcneilly.spacenerd.data.repositories.CacheTimestampRepository
 import com.adammcneilly.spacenerd.data.repositories.LaunchRepository
-import com.adammcneilly.spacenerd.data.repositories.LocalArticleRepository
-import com.adammcneilly.spacenerd.data.repositories.RemoteArticleRepository
-import com.adammcneilly.spacenerd.data.room.repositories.RoomArticleRepository
-import com.adammcneilly.spacenerd.data.room.repositories.RoomCacheTimestampRepository
-import com.adammcneilly.spacenerd.data.spaceflightnews.SpaceFlightNewsArticleRepository
 import com.adammcneilly.spacenerd.data.thespacedevs.TSDLaunchRepository
+import com.adammcneilly.spacenerd.shared.data.article.ArticleRepository
 import com.adammcneilly.spacenerd.shared.di.RepositoryDependencies
 import dagger.Module
 import dagger.Provides
@@ -21,7 +15,7 @@ import javax.inject.Singleton
 object DataModule {
     @Provides
     @Singleton
-    fun provideArticleRepository(): com.adammcneilly.spacenerd.shared.data.article.ArticleRepository {
+    fun provideArticleRepository(): ArticleRepository {
         return RepositoryDependencies.articleRepository
     }
 
@@ -31,29 +25,5 @@ object DataModule {
         launchRepository: TSDLaunchRepository,
     ): LaunchRepository {
         return launchRepository
-    }
-
-    @Provides
-    @Singleton
-    fun provideCacheTimestampRepository(
-        cacheTimestampRepository: RoomCacheTimestampRepository,
-    ): CacheTimestampRepository {
-        return cacheTimestampRepository
-    }
-
-    @Provides
-    @Singleton
-    fun provideLocalArticleRepository(
-        localArticleRepository: RoomArticleRepository,
-    ): LocalArticleRepository {
-        return localArticleRepository
-    }
-
-    @Provides
-    @Singleton
-    fun provideRemoteArticleRepository(
-        remoteArticleRepository: SpaceFlightNewsArticleRepository,
-    ): RemoteArticleRepository {
-        return remoteArticleRepository
     }
 }
