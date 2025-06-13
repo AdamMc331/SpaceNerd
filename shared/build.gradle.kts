@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.room)
 }
 
@@ -38,6 +39,11 @@ kotlin {
             implementation(libs.androidx.room.runtime)
             implementation(libs.compose.material3.windowsizeclass)
             implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.serialization.kotlinx.json)
         }
 
         commonTest.dependencies {
