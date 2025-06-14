@@ -7,7 +7,7 @@ import com.adammcneilly.spacenerd.shared.data.article.remote.snapi.dto.SNAPIArti
 import com.adammcneilly.spacenerd.shared.data.remote.ktor.BaseKtorClient
 
 class SNAPIArticleService(
-    private val client: BaseKtorClient = SNAPIKtorClient,
+    private val client: BaseKtorClient,
 ) : RemoteArticleService {
     override suspend fun getArticles(): Result<List<Article>> {
         return client.getResponse<SNAPIArticleListResponseDTO>(

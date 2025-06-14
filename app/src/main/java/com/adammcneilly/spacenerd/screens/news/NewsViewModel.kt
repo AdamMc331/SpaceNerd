@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val articleRepository: ArticleRepository,
+    private val articleRepository: com.adammcneilly.spacenerd.shared.data.article.ArticleRepository,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(NewsState.default())
     val state = mutableState.asStateFlow()
