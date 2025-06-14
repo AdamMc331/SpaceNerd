@@ -2,7 +2,6 @@ package com.adammcneilly.spacenerd.di
 
 import com.adammcneilly.spacenerd.data.repositories.LaunchRepository
 import com.adammcneilly.spacenerd.data.thespacedevs.TSDLaunchRepository
-import com.adammcneilly.spacenerd.shared.data.article.ArticleRepository
 import com.adammcneilly.spacenerd.shared.di.RepositoryDependencies
 import dagger.Module
 import dagger.Provides
@@ -15,7 +14,7 @@ import javax.inject.Singleton
 object DataModule {
     @Provides
     @Singleton
-    fun provideArticleRepository(): ArticleRepository {
+    fun provideArticleRepository(): com.adammcneilly.spacenerd.shared.data.article.ArticleRepository {
         return RepositoryDependencies.articleRepository
     }
 
