@@ -29,7 +29,7 @@ interface RoomLaunchDao {
         launchPad: RoomLaunchPadDTO,
     )
 
-    suspend fun insertLaunches(
+    suspend fun insertDomainLaunches(
         launches: List<Launch>,
     ) {
         launches.forEach { launch ->

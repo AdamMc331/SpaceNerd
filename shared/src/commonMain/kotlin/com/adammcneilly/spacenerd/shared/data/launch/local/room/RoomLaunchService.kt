@@ -13,7 +13,7 @@ class RoomLaunchService(
     override suspend fun saveLaunches(
         launches: List<Launch>,
     ) {
-        launchDao.insertLaunches(launches)
+        launchDao.insertDomainLaunches(launches)
     }
 
     override fun getLaunches(

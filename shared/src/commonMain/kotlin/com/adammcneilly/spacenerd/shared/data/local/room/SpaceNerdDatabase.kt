@@ -9,6 +9,10 @@ import com.adammcneilly.spacenerd.shared.data.article.local.room.RoomArticleDTO
 import com.adammcneilly.spacenerd.shared.data.article.local.room.RoomArticleDao
 import com.adammcneilly.spacenerd.shared.data.cache.local.room.RoomCacheTimestampDTO
 import com.adammcneilly.spacenerd.shared.data.cache.local.room.RoomCacheTimestampDao
+import com.adammcneilly.spacenerd.shared.data.launch.local.room.RoomLaunchDao
+import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDTO
+import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchPadDTO
+import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchServiceProviderDTO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 
@@ -17,6 +21,9 @@ import kotlinx.coroutines.IO
     entities = [
         RoomArticleDTO::class,
         RoomCacheTimestampDTO::class,
+        RoomLaunchDTO::class,
+        RoomLaunchPadDTO::class,
+        RoomLaunchServiceProviderDTO::class,
     ],
 )
 @ConstructedBy(SpaceNerdDatabaseConstructor::class)
@@ -24,6 +31,8 @@ abstract class SpaceNerdDatabase : RoomDatabase() {
     abstract fun articleDao(): RoomArticleDao
 
     abstract fun cacheTimestampDao(): RoomCacheTimestampDao
+
+    abstract fun launchDao(): RoomLaunchDao
 }
 
 /**

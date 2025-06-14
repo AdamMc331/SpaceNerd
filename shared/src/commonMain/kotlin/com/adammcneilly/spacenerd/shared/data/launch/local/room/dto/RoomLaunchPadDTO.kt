@@ -10,7 +10,7 @@ import com.adammcneilly.spacenerd.shared.core.models.Location
 data class RoomLaunchPadDTO(
     @PrimaryKey val id: String,
     val name: String,
-    @Embedded val location: Location?,
+    @Embedded(prefix = "launchlocation_") val location: Location?,
 ) {
     constructor(
         launchPad: LaunchPad,
