@@ -1,14 +1,9 @@
-package com.adammcneilly.spacenerd.shared.data.launch.local
+package com.adammcneilly.spacenerd.shared.data.launch
 
 import com.adammcneilly.spacenerd.shared.core.models.Launch
-import com.adammcneilly.spacenerd.shared.data.launch.LaunchListRequest
 import kotlinx.coroutines.flow.Flow
 
-interface LocalLaunchService {
-    suspend fun saveLaunches(
-        launches: List<Launch>,
-    )
-
+interface LaunchRepository {
     fun getLaunches(
         request: LaunchListRequest,
     ): Flow<List<Launch>>

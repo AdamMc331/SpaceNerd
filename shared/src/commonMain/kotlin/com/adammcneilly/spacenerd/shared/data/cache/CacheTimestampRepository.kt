@@ -1,16 +1,18 @@
 package com.adammcneilly.spacenerd.shared.data.cache
 
+import com.adammcneilly.spacenerd.shared.datetime.DateTimeProvider
 import kotlinx.datetime.Instant
 import kotlin.time.Duration
 
 interface CacheTimestampRepository {
+    val dateTimeProvider: DateTimeProvider
+
     suspend fun getCacheTimestamp(
         key: String,
     ): Instant?
 
     suspend fun setCacheTimestamp(
         key: String,
-        timestamp: Instant,
     )
 
     /**
@@ -23,9 +25,9 @@ interface CacheTimestampRepository {
      */
     suspend fun shouldSyncWithServer(
         key: String,
-        currentTime: Instant,
         cacheDuration: Duration,
     ): Boolean {
+        val currentTime = dateTimeProvider.now()
         val lastFetchTimestamp = getCacheTimestamp(key)
 
         return if (lastFetchTimestamp == null) {
@@ -37,5 +39,7 @@ interface CacheTimestampRepository {
 
     companion object {
         const val KEY_ARTICLES = "articles"
+        const val KEY_LAUNCHES_PREFIX = "launches"
+        const val KEY_LAUNCH_PREFIX = "launch"
     }
 }

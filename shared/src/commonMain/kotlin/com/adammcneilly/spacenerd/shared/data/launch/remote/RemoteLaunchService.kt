@@ -7,4 +7,8 @@ interface RemoteLaunchService {
     suspend fun getLaunches(
         request: LaunchListRequest,
     ): Result<List<Launch>>
+
+    suspend fun getLaunch(
+        id: String,
+    ): Result<Launch>
 }

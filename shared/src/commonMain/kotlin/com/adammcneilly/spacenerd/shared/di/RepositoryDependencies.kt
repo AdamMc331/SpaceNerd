@@ -8,6 +8,7 @@ import com.adammcneilly.spacenerd.shared.data.cache.local.room.RoomCacheTimestam
 object RepositoryDependencies {
     val cacheTimestampRepository: CacheTimestampRepository by lazy {
         RoomCacheTimestampRepository(
+            dateTimeProvider = UtilDependencies.dateTimeProvider,
             cacheTimestampDao = LocalDataDependencies.roomDatabase.cacheTimestampDao(),
         )
     }

@@ -62,4 +62,16 @@ interface RoomLaunchDao {
         before: String?,
         after: String?,
     ): Flow<List<RoomLaunchDetailDTO>>
+
+    @Transaction
+    @Query(
+        """
+        SELECT * 
+        FROM launches 
+        WHERE id == :id  
+        """,
+    )
+    fun getLaunch(
+        id: String,
+    ): Flow<RoomLaunchDetailDTO>
 }
