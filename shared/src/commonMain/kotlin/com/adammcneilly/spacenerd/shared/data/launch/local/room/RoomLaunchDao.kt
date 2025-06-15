@@ -55,7 +55,8 @@ interface RoomLaunchDao {
         FROM launches 
         WHERE 
             (:before IS NULL OR launchTime <= :before) 
-            AND (:after IS NULL OR launchTime >= :after)  
+            AND (:after IS NULL OR launchTime >= :after)
+        ORDER BY launchTime ASC
         """,
     )
     fun getLaunches(
