@@ -1,7 +1,6 @@
 package com.adammcneilly.spacenerd.di
 
-import com.adammcneilly.spacenerd.data.repositories.LaunchRepository
-import com.adammcneilly.spacenerd.data.thespacedevs.TSDLaunchRepository
+import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
 import com.adammcneilly.spacenerd.shared.di.RepositoryDependencies
 import dagger.Module
 import dagger.Provides
@@ -20,9 +19,7 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideLaunchRepository(
-        launchRepository: TSDLaunchRepository,
-    ): LaunchRepository {
-        return launchRepository
+    fun provideLaunchRepository(): LaunchRepository {
+        return RepositoryDependencies.launchRepository
     }
 }
