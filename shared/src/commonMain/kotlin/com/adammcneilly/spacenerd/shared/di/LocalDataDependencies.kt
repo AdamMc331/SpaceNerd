@@ -21,6 +21,7 @@ object LocalDataDependencies {
     val localLaunchService: LocalLaunchService by lazy {
         RoomLaunchService(
             launchDao = roomDatabase.launchDao(),
+            dateTimeProvider = UtilDependencies.dateTimeProvider,
         )
     }
 }
