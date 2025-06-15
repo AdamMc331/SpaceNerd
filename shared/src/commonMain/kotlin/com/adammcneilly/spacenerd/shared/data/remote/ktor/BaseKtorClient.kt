@@ -35,6 +35,7 @@ open class BaseKtorClient(
             val converter = KotlinxSerializationConverter(
                 Json {
                     ignoreUnknownKeys = true
+                    isLenient = true
                 },
             )
             register(ContentType.Any, converter)
