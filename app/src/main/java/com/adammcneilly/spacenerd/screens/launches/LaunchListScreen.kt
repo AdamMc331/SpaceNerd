@@ -8,7 +8,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationBar
 import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationRail
 import com.adammcneilly.spacenerd.shared.scaffold.PersistentScaffold

@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.screens.news
 
-import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 
 sealed interface NewsEvent {
     data class ArticleSelected(

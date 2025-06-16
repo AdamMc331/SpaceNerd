@@ -2,9 +2,11 @@ package com.adammcneilly.spacenerd.screens.news
 
 import com.adammcneilly.spacenerd.BasePaparazziTest
 import com.adammcneilly.spacenerd.R
-import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.AuthorDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
+import com.adammcneilly.spacenerd.shared.core.models.Article
+import com.adammcneilly.spacenerd.shared.core.models.Author
+import kotlinx.datetime.Instant
 import org.junit.Test
 
 class ArticleCardPaparazziTest : BasePaparazziTest() {
@@ -21,22 +23,27 @@ class ArticleCardPaparazziTest : BasePaparazziTest() {
 
     @Test
     fun renderDefault() {
-        val article = ArticleDisplayModel(
+        val article = Article(
             id = "123",
             title = "Neil Armstrong Steps Foot On The Moon",
-            image = ImageDisplayModel.Local(R.drawable.armstrong),
+            imageUrl = "",
             url = "",
             summary = "Armstrong, Aldrin, and Collins complete successful Apollo 11 mission.",
+            publishedAtUtc = Instant.parse("2025-06-15T22:01:57Z"),
             authors = listOf(
-                AuthorDisplayModel(
+                Author(
                     name = "NASA",
                 ),
             ),
         )
 
+        val displayModel = ArticleDisplayModel(article).copy(
+            image = ImageDisplayModel.Local(R.drawable.armstrong),
+        )
+
         snapshot {
             ArticleCard(
-                article = article,
+                article = displayModel,
             )
         }
     }

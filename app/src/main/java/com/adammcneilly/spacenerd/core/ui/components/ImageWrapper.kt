@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import coil3.compose.AsyncImage
-import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 
 @Composable
 fun ImageWrapper(

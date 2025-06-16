@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.screens.news
 
-import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 
 data class NewsState(
     val articles: List<ArticleDisplayModel>,

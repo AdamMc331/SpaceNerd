@@ -2,7 +2,7 @@ package com.adammcneilly.spacenerd.screens.launches
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchListRequest
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -17,11 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.ui.components.Pill
 import com.adammcneilly.spacenerd.core.ui.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
+import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder

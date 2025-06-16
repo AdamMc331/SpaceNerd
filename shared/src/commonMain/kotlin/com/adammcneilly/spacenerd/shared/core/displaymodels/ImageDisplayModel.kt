@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.core.displaymodels
+package com.adammcneilly.spacenerd.shared.core.displaymodels
 
 import androidx.annotation.DrawableRes
 

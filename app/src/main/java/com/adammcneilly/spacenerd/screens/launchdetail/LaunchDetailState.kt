@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.screens.launchdetail
 
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 
 data class LaunchDetailState(
     val launch: LaunchDisplayModel,
