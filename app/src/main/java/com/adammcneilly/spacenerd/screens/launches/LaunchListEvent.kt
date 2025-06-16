@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.screens.launches
 
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 
 sealed interface LaunchListEvent {
     data class LaunchSelected(

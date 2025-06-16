@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.core.displaymodels
+package com.adammcneilly.spacenerd.shared.core.displaymodels
 
 import androidx.compose.ui.graphics.Color
 import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus

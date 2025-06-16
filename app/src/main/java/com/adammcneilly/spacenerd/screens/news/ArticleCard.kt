@@ -15,6 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -23,10 +27,9 @@ import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.R
-import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.AuthorDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.ui.theme.SpaceTheme
 import com.eygraber.compose.placeholder.material3.placeholder
 
@@ -120,7 +123,7 @@ private fun ArticleInfo(
         modifier = modifier,
     ) {
         Text(
-            text = article.titleAuthor,
+            text = article.title,
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
                 .placeholder(
@@ -144,15 +147,16 @@ private class ArticleDisplayModelProvider :
             ArticleDisplayModel.placeholder(),
             ArticleDisplayModel(
                 id = "123",
-                title = "Neil Armstrong Steps Foot On The Moon",
+                title = buildAnnotatedString {
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                        append("Neil Armstrong Steps Foot On The Moon")
+                    }
+                    append(" | ")
+                    append("NASA")
+                },
                 image = ImageDisplayModel.Local(R.drawable.armstrong),
                 url = "",
                 summary = "Armstrong, Aldrin, and Collins complete successful Apollo 11 mission.",
-                authors = listOf(
-                    AuthorDisplayModel(
-                        name = "NASA",
-                    ),
-                ),
             ),
         ),
     )

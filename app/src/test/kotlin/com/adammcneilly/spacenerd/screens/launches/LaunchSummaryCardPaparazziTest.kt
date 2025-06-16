@@ -2,9 +2,9 @@ package com.adammcneilly.spacenerd.screens.launches
 
 import com.adammcneilly.spacenerd.BasePaparazziTest
 import com.adammcneilly.spacenerd.R
-import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
 import org.junit.Test
 
