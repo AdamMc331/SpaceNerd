@@ -21,7 +21,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun LaunchListScreen(
     navigateToLaunch: (LaunchDisplayModel) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: LaunchListViewModel = koinViewModel()
+    viewModel: LaunchListViewModel = koinViewModel(),
 ) {
     val state = viewModel.state.collectAsState()
     val selectedLaunch = state.value.selectedLaunch
