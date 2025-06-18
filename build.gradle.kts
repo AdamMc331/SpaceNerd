@@ -1,3 +1,6 @@
+import org.jmailen.gradle.kotlinter.tasks.FormatTask
+import org.jmailen.gradle.kotlinter.tasks.LintTask
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 plugins {
@@ -10,8 +13,11 @@ plugins {
     alias(libs.plugins.google.dagger.hilt).apply(false)
     alias(libs.plugins.google.ksp).apply(false)
     alias(libs.plugins.kotlin.android).apply(false)
+    alias(libs.plugins.kotlin.multiplatform).apply(false)
     alias(libs.plugins.kotlin.parcelize).apply(false)
+    alias(libs.plugins.kotlinx.serialization).apply(false)
     alias(libs.plugins.kotlinter).apply(false)
+    alias(libs.plugins.room).apply(false)
     alias(libs.plugins.square.sort.dependencies).apply(false)
 }
 
@@ -19,10 +25,17 @@ apply(from = "buildscripts/githooks.gradle")
 apply(from = "buildscripts/versionsplugin.gradle")
 
 subprojects {
-    apply(from = "../buildscripts/detekt.gradle")
-
+    apply(plugin = "io.gitlab.arturbosch.detekt")
     apply(plugin = "com.squareup.sort-dependencies")
     apply(plugin = "org.jmailen.kotlinter")
+
+    tasks.withType<FormatTask> {
+        exclude { it.file.path.contains("build/") }
+    }
+
+    tasks.withType<LintTask> {
+        exclude { it.file.path.contains("build/") }
+    }
 }
 
 tasks.register("clean", Delete::class) {
