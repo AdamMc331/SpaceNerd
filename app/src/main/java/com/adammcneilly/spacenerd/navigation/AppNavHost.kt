@@ -1,21 +1,23 @@
 package com.adammcneilly.spacenerd.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
-import com.adammcneilly.spacenerd.scaffold.HomeTab
-import com.adammcneilly.spacenerd.scaffold.app.LocalAppState
-import com.adammcneilly.spacenerd.screens.astronauts.AstronautListScreen
-import com.adammcneilly.spacenerd.screens.launchdetail.LaunchDetailScreen
-import com.adammcneilly.spacenerd.screens.launches.LaunchListScreen
-import com.adammcneilly.spacenerd.screens.news.NewsScreen
-import com.adammcneilly.spacenerd.screens.stations.StationsListScreen
+import com.adammcneilly.spacenerd.shared.app.LocalAppState
+import com.adammcneilly.spacenerd.shared.feature.astronautlist.AstronautListScreen
+import com.adammcneilly.spacenerd.shared.feature.launchdetail.LaunchDetailScreen
+import com.adammcneilly.spacenerd.shared.feature.launchlist.LaunchListScreen
+import com.adammcneilly.spacenerd.shared.feature.news.NewsScreen
+import com.adammcneilly.spacenerd.shared.feature.stationslist.StationsListScreen
+import com.adammcneilly.spacenerd.shared.navigation.HomeTab
+import com.adammcneilly.spacenerd.shared.scaffold.LocalNavAnimatedVisibilityScope
 
 @Composable
-@Suppress("LongMethod")
 fun AppNavHost() {
     val startDestination = AppScreen.Tab(HomeTab.News)
 
@@ -45,7 +47,6 @@ fun AppNavHost() {
 
     NavDisplay(
         backStack = backStack,
-        sceneStrategy = TwoPaneSceneStrategy(),
         onBack = {
             backStack.removeLastOrNull()
 
@@ -56,53 +57,59 @@ fun AppNavHost() {
             }
         },
         entryProvider = { key ->
-            when (key) {
-                is AppScreen.LaunchDetail -> {
-                    NavEntry(
-                        key = key,
-                        metadata = TwoPaneScene.twoPane(),
-                    ) {
-                        LaunchDetailScreen(
-                            launchId = key.launchId,
-                        )
-                    }
-                }
+            NavEntry(
+                key = key,
+                metadata = TwoPaneScene.twoPane(),
+            ) {
+                CompositionLocalProvider(
+                    LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
+                ) {
+                    when (key) {
+                        is AppScreen.LaunchDetail -> {
+                            LaunchDetailScreen(
+                                launchId = key.launchId,
+                            )
+                        }
 
-                is AppScreen.Tab -> {
-                    NavEntry(
-                        key = key,
-                        metadata = TwoPaneScene.twoPane(),
-                    ) {
-                        when (key.tab) {
-                            HomeTab.News -> {
-                                NewsScreen()
-                            }
-
-                            HomeTab.Launches -> {
-                                LaunchListScreen(
-                                    navigateToLaunch = { launch ->
-                                        val newScreen = AppScreen.LaunchDetail(launch.id)
-
-                                        if (backStack.lastOrNull() is AppScreen.LaunchDetail) {
-                                            backStack[backStack.lastIndex] = newScreen
-                                        } else {
-                                            backStack.add(newScreen)
-                                        }
-                                    },
-                                )
-                            }
-
-                            HomeTab.Astronauts -> {
-                                AstronautListScreen()
-                            }
-
-                            HomeTab.Stations -> {
-                                StationsListScreen()
-                            }
+                        is AppScreen.Tab -> {
+                            RenderHomeTab(
+                                key = key,
+                                navigator = {
+                                    backStack.add(it)
+                                },
+                            )
                         }
                     }
                 }
             }
         },
     )
+}
+
+@Composable
+private fun RenderHomeTab(
+    key: AppScreen.Tab,
+    navigator: (AppScreen) -> Unit,
+) {
+    when (key.tab) {
+        HomeTab.News -> {
+            NewsScreen()
+        }
+
+        HomeTab.Launches -> {
+            LaunchListScreen(
+                navigateToLaunch = { launch ->
+                    navigator.invoke(AppScreen.LaunchDetail(launch.id))
+                },
+            )
+        }
+
+        HomeTab.Astronauts -> {
+            AstronautListScreen()
+        }
+
+        HomeTab.Stations -> {
+            StationsListScreen()
+        }
+    }
 }
