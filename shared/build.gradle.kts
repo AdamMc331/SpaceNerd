@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.cash.paparazzi)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.compose)
@@ -40,13 +41,17 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(compose.components.resources)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.materialIconsExtended)
             implementation(compose.runtime)
             implementation(compose.ui)
             implementation(libs.androidx.room.runtime)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.ktor)
             implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.eygraber.compose.placeholder.material3)
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.client.content.negotiation)
@@ -58,6 +63,7 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(libs.google.testparameterinjector)
         }
 
         iosMain.dependencies {

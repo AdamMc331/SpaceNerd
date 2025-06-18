@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.screens.news
+package com.adammcneilly.spacenerd.shared.feature.news.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,38 +10,28 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.PreviewDynamicColors
-import androidx.compose.ui.tooling.preview.PreviewFontScale
-import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import androidx.window.core.layout.WindowSizeClass
-import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
-import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
-import com.adammcneilly.spacenerd.shared.ui.theme.SpaceTheme
+import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
+import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val ARTICLE_IMAGE_ASPECT_RATIO = 1.5F
 
 @Composable
-fun ArticleCard(
+fun ArticleSummaryCard(
     article: ArticleDisplayModel,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowAdaptiveInfo()
-        .windowSizeClass
-        .isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
+    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
+        WindowWidthSizeClass.Medium,
+        WindowWidthSizeClass.Expanded,
+    )
 
     if (isAtLeastMediumWidth) {
         MediumExpandedCard(article, modifier)
@@ -136,40 +126,6 @@ private fun ArticleInfo(
             modifier = Modifier
                 .padding(top = 4.dp)
                 .placeholder(article.isPlaceholder),
-        )
-    }
-}
-
-private class ArticleDisplayModelProvider :
-    CollectionPreviewParameterProvider<ArticleDisplayModel>(
-        collection = listOf(
-            ArticleDisplayModel.placeholder(),
-            ArticleDisplayModel(
-                id = "123",
-                title = buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                        append("Neil Armstrong Steps Foot On The Moon")
-                    }
-                    append(" | ")
-                    append("NASA")
-                },
-                image = ImageDisplayModel.Placeholder,
-                url = "",
-                summary = "Armstrong, Aldrin, and Collins complete successful Apollo 11 mission.",
-            ),
-        ),
-    )
-
-@Composable
-@PreviewLightDark
-@PreviewFontScale
-@PreviewDynamicColors
-private fun ArticleCardPreview(
-    @PreviewParameter(ArticleDisplayModelProvider::class) article: ArticleDisplayModel,
-) {
-    SpaceTheme {
-        ArticleCard(
-            article = article,
         )
     }
 }

@@ -39,7 +39,7 @@ data class ArticleDisplayModel(
             return ArticleDisplayModel(
                 id = "",
                 title = AnnotatedString("Placeholder Title Should Be Long"),
-                image = ImageDisplayModel.Remote(""),
+                image = ImageDisplayModel.Placeholder,
                 url = "",
                 summary = "Placeholder Summary\nMultiline",
                 isPlaceholder = true,
