@@ -7,8 +7,6 @@ import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
 import kotlinx.datetime.Instant
 import org.junit.Test
-import `space nerd`.shared.generated.resources.Res
-import `space nerd`.shared.generated.resources.armstrong
 
 class ArticleSummaryCardPaparazziTest : BasePaparazziTest() {
     @Test
@@ -39,7 +37,7 @@ class ArticleSummaryCardPaparazziTest : BasePaparazziTest() {
         )
 
         val displayModel = ArticleDisplayModel(article).copy(
-            image = ImageDisplayModel.Local(Res.drawable.armstrong),
+            image = ImageDisplayModel.Placeholder,
         )
 
         snapshot {
