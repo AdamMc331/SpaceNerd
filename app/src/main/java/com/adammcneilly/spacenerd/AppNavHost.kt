@@ -13,9 +13,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.adammcneilly.spacenerd.screens.astronauts.AstronautListScreen
-import com.adammcneilly.spacenerd.screens.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.screens.stations.StationsListScreen
 import com.adammcneilly.spacenerd.shared.app.LocalAppState
+import com.adammcneilly.spacenerd.shared.feature.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.shared.feature.launchlist.LaunchListScreen
 import com.adammcneilly.spacenerd.shared.feature.news.NewsScreen
 import com.adammcneilly.spacenerd.shared.navigation.HomeTab
@@ -88,8 +88,12 @@ fun AppNavHost() {
             StationsListScreen()
         }
 
-        animatedComposable("launch/{launchId}") {
-            LaunchDetailScreen()
+        animatedComposable("launch/{launchId}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("launchId")
+
+            LaunchDetailScreen(
+                launchId = id.toString(),
+            )
         }
     }
 }

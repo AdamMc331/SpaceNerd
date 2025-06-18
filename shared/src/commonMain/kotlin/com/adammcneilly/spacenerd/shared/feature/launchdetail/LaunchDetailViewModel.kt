@@ -1,25 +1,20 @@
-package com.adammcneilly.spacenerd.screens.launchdetail
+package com.adammcneilly.spacenerd.shared.feature.launchdetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.adammcneilly.spacenerd.shared.feature.launchdetail.ui.LaunchDetailUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class LaunchDetailViewModel @Inject constructor(
+class LaunchDetailViewModel(
+    private val launchId: String,
     private val launchRepository: LaunchRepository,
-    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-    private val launchId: String = checkNotNull(savedStateHandle["launchId"])
-
-    private val mutableState = MutableStateFlow(LaunchDetailState.default())
+    private val mutableState = MutableStateFlow(LaunchDetailUiState.default())
     val state = mutableState.asStateFlow()
 
     init {
