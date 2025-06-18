@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -62,6 +63,13 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+    // Not needed yet?
+//    implementation(libs.androidx.material3.adaptive.navigation3)
+    // NOTE: This was inconsistent in docs, maybe we should report.
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.room.runtime)
     implementation(libs.bundles.androidx.xr)
     implementation(libs.coil.compose)
     implementation(libs.coil.okhttp)
@@ -74,6 +82,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.serialization.core)
     implementation(libs.square.moshi.kotlin)
     implementation(libs.square.okhttp.logging.interceptor)
     implementation(libs.square.retrofit)
