@@ -1,13 +1,13 @@
-package com.adammcneilly.spacenerd.screens.launches
+package com.adammcneilly.spacenerd.shared.feature.launchlist.ui
 
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 
-sealed interface LaunchListEvent {
+sealed interface LaunchListUiEvent {
     data class LaunchSelected(
         val launch: LaunchDisplayModel,
-    ) : LaunchListEvent
+    ) : LaunchListUiEvent
 
     data class NavigatedToLaunch(
         val launch: LaunchDisplayModel,
-    ) : LaunchListEvent
+    ) : LaunchListUiEvent
 }

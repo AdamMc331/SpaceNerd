@@ -23,7 +23,7 @@ fun AstronautListScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Astronuts",
+                        text = "Astronauts",
                     )
                 },
             )
