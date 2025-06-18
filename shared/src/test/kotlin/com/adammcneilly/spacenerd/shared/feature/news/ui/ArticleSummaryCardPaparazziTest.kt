@@ -10,7 +10,7 @@ import org.junit.Test
 import `space nerd`.shared.generated.resources.Res
 import `space nerd`.shared.generated.resources.armstrong
 
-class ArticleCardPaparazziTest : BasePaparazziTest() {
+class ArticleSummaryCardPaparazziTest : BasePaparazziTest() {
     @Test
     fun renderPlaceholder() {
         val article = ArticleDisplayModel.placeholder()

@@ -28,7 +28,10 @@ fun ArticleSummaryCard(
     article: ArticleDisplayModel,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(WindowWidthSizeClass.Medium, WindowWidthSizeClass.Expanded)
+    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
+        WindowWidthSizeClass.Medium,
+        WindowWidthSizeClass.Expanded,
+    )
 
     if (isAtLeastMediumWidth) {
         MediumExpandedCard(article, modifier)
