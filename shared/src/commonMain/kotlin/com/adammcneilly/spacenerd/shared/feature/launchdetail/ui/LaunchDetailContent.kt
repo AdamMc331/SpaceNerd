@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.screens.launchdetail
+package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Box
@@ -17,11 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
-import com.adammcneilly.spacenerd.core.ui.components.Pill
-import com.adammcneilly.spacenerd.core.ui.utils.sharedBounds
-import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
+import com.adammcneilly.spacenerd.shared.ui.components.Pill
+import com.adammcneilly.spacenerd.shared.ui.utils.sharedBounds
+import com.adammcneilly.spacenerd.shared.ui.utils.sharedElement
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder
@@ -31,7 +31,7 @@ private const val LAUNCH_IMAGE_ASPECT_RATIO = 1.5F
 
 @Composable
 fun LaunchDetailContent(
-    state: LaunchDetailState,
+    state: LaunchDetailUiState,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -54,7 +54,7 @@ fun LaunchDetailContent(
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
 private fun LaunchTitle(
-    state: LaunchDetailState,
+    state: LaunchDetailUiState,
 ) {
     Text(
         text = state.launch.name,
@@ -70,7 +70,7 @@ private fun LaunchTitle(
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
 private fun LaunchSubtitle(
-    state: LaunchDetailState,
+    state: LaunchDetailUiState,
 ) {
     Text(
         text = state.launch.subtitle,
@@ -85,7 +85,7 @@ private fun LaunchSubtitle(
 
 @Composable
 private fun LaunchImageStatus(
-    state: LaunchDetailState,
+    state: LaunchDetailUiState,
 ) {
     Box {
         LaunchImage(
