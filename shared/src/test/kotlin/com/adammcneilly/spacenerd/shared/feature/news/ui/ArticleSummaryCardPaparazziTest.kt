@@ -1,13 +1,14 @@
-package com.adammcneilly.spacenerd.screens.news
+package com.adammcneilly.spacenerd.shared.feature.news.ui
 
-import com.adammcneilly.spacenerd.BasePaparazziTest
-import com.adammcneilly.spacenerd.R
+import com.adammcneilly.spacenerd.shared.BasePaparazziTest
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
 import kotlinx.datetime.Instant
 import org.junit.Test
+import `space nerd`.shared.generated.resources.Res
+import `space nerd`.shared.generated.resources.armstrong
 
 class ArticleCardPaparazziTest : BasePaparazziTest() {
     @Test
@@ -15,7 +16,7 @@ class ArticleCardPaparazziTest : BasePaparazziTest() {
         val article = ArticleDisplayModel.placeholder()
 
         snapshot {
-            ArticleCard(
+            ArticleSummaryCard(
                 article = article,
             )
         }
@@ -38,11 +39,11 @@ class ArticleCardPaparazziTest : BasePaparazziTest() {
         )
 
         val displayModel = ArticleDisplayModel(article).copy(
-            image = ImageDisplayModel.Local(R.drawable.armstrong),
+            image = ImageDisplayModel.Local(Res.drawable.armstrong),
         )
 
         snapshot {
-            ArticleCard(
+            ArticleSummaryCard(
                 article = displayModel,
             )
         }
