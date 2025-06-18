@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.screens.stations
+package com.adammcneilly.spacenerd.shared.feature.stationslist
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.padding
