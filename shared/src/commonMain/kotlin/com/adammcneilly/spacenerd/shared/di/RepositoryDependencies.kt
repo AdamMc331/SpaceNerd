@@ -6,6 +6,33 @@ import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.shared.data.cache.local.room.RoomCacheTimestampRepository
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
 import com.adammcneilly.spacenerd.shared.data.launch.OfflineFirstLaunchRepository
+import com.adammcneilly.spacenerd.shared.data.local.room.SpaceNerdDatabase
+import org.koin.dsl.module
+
+val repositoryModule = module {
+    single<CacheTimestampRepository> {
+        RoomCacheTimestampRepository(
+            dateTimeProvider = get(),
+            cacheTimestampDao = get<SpaceNerdDatabase>().cacheTimestampDao(),
+        )
+    }
+
+    single<ArticleRepository> {
+        OfflineFirstArticleRepository(
+            localArticleService = get(),
+            remoteArticleService = get(),
+            cacheTimestampRepository = get(),
+        )
+    }
+
+    single<LaunchRepository> {
+        OfflineFirstLaunchRepository(
+            localLaunchService = get(),
+            remoteLaunchService = get(),
+            cacheTimestampRepository = get(),
+        )
+    }
+}
 
 object RepositoryDependencies {
     val cacheTimestampRepository: CacheTimestampRepository by lazy {

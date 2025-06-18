@@ -1,21 +1,19 @@
-package com.adammcneilly.spacenerd.screens.news
+package com.adammcneilly.spacenerd.shared.feature.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.shared.data.article.ArticleRepository
 import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiEvent
 import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class NewsViewModel @Inject constructor(
-    private val articleRepository: com.adammcneilly.spacenerd.shared.data.article.ArticleRepository,
+class NewsViewModel(
+    private val articleRepository: ArticleRepository,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(NewsUiState.default())
     val state = mutableState.asStateFlow()
