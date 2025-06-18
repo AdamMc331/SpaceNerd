@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.screens.launches
+package com.adammcneilly.spacenerd.shared.feature.launchlist.ui
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Arrangement
@@ -14,29 +14,20 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import androidx.window.core.layout.WindowSizeClass
-import com.adammcneilly.spacenerd.R
-import com.adammcneilly.spacenerd.core.ui.components.ImageWrapper
-import com.adammcneilly.spacenerd.core.ui.components.Pill
-import com.adammcneilly.spacenerd.core.ui.utils.sharedBounds
-import com.adammcneilly.spacenerd.core.ui.utils.sharedElement
-import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
-import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchStatusDisplayModel
-import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
-import com.adammcneilly.spacenerd.shared.ui.theme.SpaceTheme
+import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
+import com.adammcneilly.spacenerd.shared.ui.components.Pill
+import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
+import com.adammcneilly.spacenerd.shared.ui.utils.sharedBounds
+import com.adammcneilly.spacenerd.shared.ui.utils.sharedElement
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder
@@ -48,9 +39,10 @@ fun LaunchSummaryCard(
     launch: LaunchDisplayModel,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowAdaptiveInfo()
-        .windowSizeClass
-        .isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
+    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
+        WindowWidthSizeClass.Medium,
+        WindowWidthSizeClass.Expanded,
+    )
 
     if (isAtLeastMediumWidth) {
         MediumExpandedCard(launch, modifier)
@@ -202,33 +194,4 @@ private fun LaunchImage(
                 key = "LaunchImage-${launch.id}",
             ),
     )
-}
-
-private class LaunchDisplayModelProvider :
-    CollectionPreviewParameterProvider<LaunchDisplayModel>(
-        collection = listOf(
-            LaunchDisplayModel.placeholder(),
-            LaunchDisplayModel(
-                id = "123",
-                name = "Falcon 9 Block 5 | Starlink Group 12-19",
-                image = ImageDisplayModel.AndroidLocal(R.drawable.falcon9),
-                status = LaunchStatusDisplayModel(LaunchStatus.Go),
-                subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
-            ),
-        ),
-    )
-
-@Composable
-@PreviewLightDark
-@Preview(
-    device = "spec:width=411dp,height=891dp,orientation=landscape,dpi=420",
-)
-private fun LaunchSummaryCardPreview(
-    @PreviewParameter(LaunchDisplayModelProvider::class) launch: LaunchDisplayModel,
-) {
-    SpaceTheme {
-        LaunchSummaryCard(
-            launch = launch,
-        )
-    }
 }

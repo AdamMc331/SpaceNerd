@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.screens.launches
+package com.adammcneilly.spacenerd.shared.feature.launchlist.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -10,13 +10,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.core.ui.utils.plus
+import com.adammcneilly.spacenerd.shared.ui.utils.plus
 
 @Composable
 fun LaunchListContent(
-    state: LaunchListState,
+    state: LaunchListUiState,
     contentPadding: PaddingValues,
-    onEvent: (LaunchListEvent) -> Unit,
+    onEvent: (LaunchListUiEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -36,7 +36,7 @@ fun LaunchListContent(
                 launch = launch,
                 modifier = Modifier
                     .clickable {
-                        onEvent.invoke(LaunchListEvent.LaunchSelected(launch))
+                        onEvent.invoke(LaunchListUiEvent.LaunchSelected(launch))
                     },
             )
         }

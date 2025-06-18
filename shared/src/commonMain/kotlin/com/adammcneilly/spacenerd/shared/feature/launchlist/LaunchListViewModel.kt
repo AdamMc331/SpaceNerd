@@ -1,23 +1,22 @@
-package com.adammcneilly.spacenerd.screens.launches
+package com.adammcneilly.spacenerd.shared.feature.launchlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchListRequest
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListUiEvent
+import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class LaunchListViewModel @Inject constructor(
+class LaunchListViewModel(
     private val launchRepository: LaunchRepository,
 ) : ViewModel() {
-    private val mutableState = MutableStateFlow(LaunchListState.default())
+    private val mutableState = MutableStateFlow(LaunchListUiState.default())
     val state = mutableState.asStateFlow()
 
     init {
@@ -41,20 +40,20 @@ class LaunchListViewModel @Inject constructor(
     }
 
     fun onEvent(
-        event: LaunchListEvent,
+        event: LaunchListUiEvent,
     ) {
         when (event) {
-            is LaunchListEvent.LaunchSelected -> {
+            is LaunchListUiEvent.LaunchSelected -> {
                 processLaunchSelected(event)
             }
-            is LaunchListEvent.NavigatedToLaunch -> {
+            is LaunchListUiEvent.NavigatedToLaunch -> {
                 processNavigatedToLaunch()
             }
         }
     }
 
     private fun processLaunchSelected(
-        event: LaunchListEvent.LaunchSelected,
+        event: LaunchListUiEvent.LaunchSelected,
     ) {
         mutableState.update { currentState ->
             currentState.copy(
