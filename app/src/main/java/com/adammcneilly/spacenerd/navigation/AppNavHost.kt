@@ -1,10 +1,12 @@
 package com.adammcneilly.spacenerd.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
 import com.adammcneilly.spacenerd.shared.app.LocalAppState
 import com.adammcneilly.spacenerd.shared.feature.astronautlist.AstronautListScreen
@@ -13,6 +15,7 @@ import com.adammcneilly.spacenerd.shared.feature.launchlist.LaunchListScreen
 import com.adammcneilly.spacenerd.shared.feature.news.NewsScreen
 import com.adammcneilly.spacenerd.shared.feature.stationslist.StationsListScreen
 import com.adammcneilly.spacenerd.shared.navigation.HomeTab
+import com.adammcneilly.spacenerd.shared.scaffold.LocalNavAnimatedVisibilityScope
 
 @Composable
 fun AppNavHost() {
@@ -55,20 +58,24 @@ fun AppNavHost() {
         },
         entryProvider = { key ->
             NavEntry(key) {
-                when (key) {
-                    is AppScreen.LaunchDetail -> {
-                        LaunchDetailScreen(
-                            launchId = key.launchId,
-                        )
-                    }
+                CompositionLocalProvider(
+                    LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
+                ) {
+                    when (key) {
+                        is AppScreen.LaunchDetail -> {
+                            LaunchDetailScreen(
+                                launchId = key.launchId,
+                            )
+                        }
 
-                    is AppScreen.Tab -> {
-                        RenderHomeTab(
-                            key = key,
-                            navigator = {
-                                backStack.add(it)
-                            },
-                        )
+                        is AppScreen.Tab -> {
+                            RenderHomeTab(
+                                key = key,
+                                navigator = {
+                                    backStack.add(it)
+                                },
+                            )
+                        }
                     }
                 }
             }

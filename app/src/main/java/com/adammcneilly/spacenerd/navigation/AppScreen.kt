@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.navigation
 
-import com.adammcneilly.spacenerd.scaffold.HomeTab
+import com.adammcneilly.spacenerd.shared.navigation.HomeTab
 
 sealed interface AppScreen {
     data class Tab(
