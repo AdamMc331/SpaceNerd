@@ -56,7 +56,7 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
-    implementation(project(":scaffold"))
+    implementation(project(":shared"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.adaptive.android)
@@ -93,8 +93,6 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.square.leakcanary)
 
-    annotationProcessor(libs.androidx.room.compiler)
-
     testImplementation(libs.google.testparameterinjector)
     testImplementation(libs.junit)
 
@@ -104,7 +102,6 @@ dependencies {
     androidTestImplementation(libs.compose.ui.test.junit)
     androidTestImplementation(libs.hilt.android.testing)
 
-    ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
     ksp(libs.square.moshi.kotlin.codegen)
 
