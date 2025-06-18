@@ -1,6 +1,5 @@
 package com.adammcneilly.spacenerd.shared.feature.launchdetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
@@ -15,7 +14,6 @@ class LaunchDetailViewModel(
     private val launchId: String,
     private val launchRepository: LaunchRepository,
 ) : ViewModel() {
-
     private val mutableState = MutableStateFlow(LaunchDetailUiState.default())
     val state = mutableState.asStateFlow()
 
