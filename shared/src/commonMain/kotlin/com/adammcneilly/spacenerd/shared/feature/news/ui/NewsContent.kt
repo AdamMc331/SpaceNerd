@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.screens.news
+package com.adammcneilly.spacenerd.shared.feature.news.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -11,13 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.core.ui.utils.plus
+import com.adammcneilly.spacenerd.shared.ui.utils.plus
 
 @Composable
 fun NewsContent(
-    state: NewsState,
+    state: NewsUiState,
     contentPadding: PaddingValues,
-    onEvent: (NewsEvent) -> Unit,
+    onEvent: (NewsUiEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -33,11 +33,11 @@ fun NewsContent(
         }
 
         items(state.articles) { article ->
-            ArticleCard(
+            ArticleSummaryCard(
                 article = article,
                 modifier = Modifier
                     .clickable {
-                        onEvent.invoke(NewsEvent.ArticleSelected(article))
+                        onEvent.invoke(NewsUiEvent.ArticleSelected(article))
                     }
                     .fillMaxWidth(),
             )
