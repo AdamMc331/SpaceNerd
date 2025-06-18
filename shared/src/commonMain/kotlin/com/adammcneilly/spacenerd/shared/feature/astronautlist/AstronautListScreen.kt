@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.screens.astronauts
+package com.adammcneilly.spacenerd.shared.feature.astronautlist
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.padding

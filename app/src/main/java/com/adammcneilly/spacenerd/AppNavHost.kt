@@ -12,12 +12,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.adammcneilly.spacenerd.screens.astronauts.AstronautListScreen
 import com.adammcneilly.spacenerd.screens.launchdetail.LaunchDetailScreen
-import com.adammcneilly.spacenerd.screens.stations.StationsListScreen
 import com.adammcneilly.spacenerd.shared.app.LocalAppState
+import com.adammcneilly.spacenerd.shared.feature.astronautlist.AstronautListScreen
 import com.adammcneilly.spacenerd.shared.feature.launchlist.LaunchListScreen
 import com.adammcneilly.spacenerd.shared.feature.news.NewsScreen
+import com.adammcneilly.spacenerd.shared.feature.stationslist.StationsListScreen
 import com.adammcneilly.spacenerd.shared.navigation.HomeTab
 import com.adammcneilly.spacenerd.shared.scaffold.LocalNavAnimatedVisibilityScope
 
