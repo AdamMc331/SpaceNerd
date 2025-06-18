@@ -7,6 +7,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsContent
+import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiEvent
 import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationBar
 import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationRail
 import com.adammcneilly.spacenerd.shared.scaffold.PersistentScaffold
@@ -26,7 +28,7 @@ fun NewsScreen(
     LaunchedEffect(selectedArticle) {
         if (selectedArticle != null) {
             uriHandler.openUri(selectedArticle.url)
-            viewModel.onEvent(NewsEvent.NavigatedToArticle(selectedArticle))
+            viewModel.onEvent(NewsUiEvent.NavigatedToArticle(selectedArticle))
         }
     }
 

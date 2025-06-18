@@ -1,13 +1,13 @@
-package com.adammcneilly.spacenerd.screens.news
+package com.adammcneilly.spacenerd.shared.feature.news.ui
 
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 
-sealed interface NewsEvent {
+sealed interface NewsUiEvent {
     data class ArticleSelected(
         val article: ArticleDisplayModel,
-    ) : NewsEvent
+    ) : NewsUiEvent
 
     data class NavigatedToArticle(
         val article: ArticleDisplayModel,
-    ) : NewsEvent
+    ) : NewsUiEvent
 }

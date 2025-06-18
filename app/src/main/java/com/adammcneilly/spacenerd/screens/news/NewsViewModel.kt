@@ -3,6 +3,8 @@ package com.adammcneilly.spacenerd.screens.news
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiEvent
+import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +17,7 @@ import javax.inject.Inject
 class NewsViewModel @Inject constructor(
     private val articleRepository: com.adammcneilly.spacenerd.shared.data.article.ArticleRepository,
 ) : ViewModel() {
-    private val mutableState = MutableStateFlow(NewsState.default())
+    private val mutableState = MutableStateFlow(NewsUiState.default())
     val state = mutableState.asStateFlow()
 
     init {
@@ -41,17 +43,17 @@ class NewsViewModel @Inject constructor(
     }
 
     fun onEvent(
-        event: NewsEvent,
+        event: NewsUiEvent,
     ) {
         when (event) {
-            is NewsEvent.ArticleSelected -> {
+            is NewsUiEvent.ArticleSelected -> {
                 mutableState.update { currentState ->
                     currentState.copy(
                         selectedArticle = event.article,
                     )
                 }
             }
-            is NewsEvent.NavigatedToArticle -> {
+            is NewsUiEvent.NavigatedToArticle -> {
                 mutableState.update { currentState ->
                     currentState.copy(
                         selectedArticle = null,
