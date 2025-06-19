@@ -17,8 +17,13 @@ fun Modifier.sharedElement(
 ): Modifier {
     val sharedTransitionScope = LocalSharedTransitionScope.current
     val animatedVisibilityScope = LocalNavAnimatedVisibilityScope.current
+    val localSceneType = LocalSceneType.current
 
-    if (sharedTransitionScope == null || animatedVisibilityScope == null) {
+    if (
+        sharedTransitionScope == null ||
+        animatedVisibilityScope == null ||
+        (localSceneType == SceneType.TwoPane)
+    ) {
         return this
     }
 

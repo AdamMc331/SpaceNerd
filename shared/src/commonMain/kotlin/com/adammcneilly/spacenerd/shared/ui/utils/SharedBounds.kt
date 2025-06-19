@@ -23,8 +23,13 @@ fun Modifier.sharedBounds(
 ): Modifier {
     val sharedTransitionScope = LocalSharedTransitionScope.current
     val animatedVisibilityScope = LocalNavAnimatedVisibilityScope.current
+    val sceneType = LocalSceneType.current
 
-    if (sharedTransitionScope == null || animatedVisibilityScope == null) {
+    if (
+        sharedTransitionScope == null ||
+        animatedVisibilityScope == null ||
+        (sceneType == SceneType.TwoPane)
+    ) {
         return this
     }
 
