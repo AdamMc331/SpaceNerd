@@ -4,9 +4,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.Scene
+import com.adammcneilly.spacenerd.shared.ui.utils.LocalSceneType
+import com.adammcneilly.spacenerd.shared.ui.utils.SceneType
 
 class TwoPaneScene(
     override val key: Any,
@@ -20,22 +23,26 @@ class TwoPaneScene(
     )
 
     override val content: @Composable (() -> Unit) = {
-        Row(
-            modifier = Modifier
-                .fillMaxSize(),
+        CompositionLocalProvider(
+            LocalSceneType provides SceneType.TwoPane,
         ) {
-            Box(
+            Row(
                 modifier = Modifier
-                    .weight(1F),
+                    .fillMaxSize(),
             ) {
-                firstEntry.content.invoke(firstEntry.key)
-            }
+                Box(
+                    modifier = Modifier
+                        .weight(1F),
+                ) {
+                    firstEntry.content.invoke(firstEntry.key)
+                }
 
-            Box(
-                modifier = Modifier
-                    .weight(1F),
-            ) {
-                secondEntry.content.invoke(secondEntry.key)
+                Box(
+                    modifier = Modifier
+                        .weight(1F),
+                ) {
+                    secondEntry.content.invoke(secondEntry.key)
+                }
             }
         }
     }

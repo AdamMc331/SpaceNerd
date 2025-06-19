@@ -16,6 +16,7 @@ fun LaunchDetailScreen(
     launchId: String,
     modifier: Modifier = Modifier,
     viewModel: LaunchDetailViewModel = koinViewModel(
+        key = "LaunchDetailVm_$launchId",
         parameters = {
             parametersOf(launchId)
         },
