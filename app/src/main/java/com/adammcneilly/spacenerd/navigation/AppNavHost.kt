@@ -3,8 +3,6 @@ package com.adammcneilly.spacenerd.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.LocalNavAnimatedContentScope
@@ -22,9 +20,9 @@ import com.adammcneilly.spacenerd.shared.scaffold.LocalNavAnimatedVisibilityScop
 fun AppNavHost() {
     val startDestination = AppScreen.Tab(HomeTab.News)
 
-    val backStack = remember {
-        mutableStateListOf<AppScreen>(startDestination)
-    }
+    val backStack = rememberNavBackStack<AppScreen>(
+        startDestination,
+    )
 
     val appState = LocalAppState.current
 
