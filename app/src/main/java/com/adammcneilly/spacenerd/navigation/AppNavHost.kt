@@ -31,15 +31,16 @@ fun AppNavHost() {
     LaunchedEffect(currentTab) {
         if (currentTab != null) {
             val previousTab = (backStack.lastOrNull() as? AppScreen.Tab)?.tab
+            if (previousTab != null) {
+                if (currentTab != previousTab) {
+                    // Before adding this tab, drop everything up to the first tab
+                    while (backStack.lastOrNull() != startDestination) {
+                        backStack.removeLastOrNull()
+                    }
 
-            if (currentTab != previousTab) {
-                // Before adding this tab, drop everything up to the first tab
-                while (backStack.lastOrNull() != startDestination) {
-                    backStack.removeLastOrNull()
+                    // Need to navigate to current tab
+                    backStack.add(AppScreen.Tab(currentTab))
                 }
-
-                // Need to navigate to current tab
-                backStack.add(AppScreen.Tab(currentTab))
             }
         }
     }
