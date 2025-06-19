@@ -5,6 +5,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
@@ -56,8 +57,12 @@ fun AppNavHost() {
                 appState.onNavItemSelected(newTab)
             }
         },
+        sceneStrategy = TwoPaneSceneStrategy(),
         entryProvider = { key ->
-            NavEntry(key) {
+            NavEntry(
+                key = key,
+                metadata = TwoPaneScene.twoPane(),
+            ) {
                 CompositionLocalProvider(
                     LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
                 ) {
@@ -71,9 +76,7 @@ fun AppNavHost() {
                         is AppScreen.Tab -> {
                             RenderHomeTab(
                                 key = key,
-                                navigator = {
-                                    backStack.add(it)
-                                },
+                                backStack = backStack,
                             )
                         }
                     }
@@ -86,7 +89,7 @@ fun AppNavHost() {
 @Composable
 private fun RenderHomeTab(
     key: AppScreen.Tab,
-    navigator: (AppScreen) -> Unit,
+    backStack: SnapshotStateList<AppScreen>,
 ) {
     when (key.tab) {
         HomeTab.News -> {
@@ -96,7 +99,13 @@ private fun RenderHomeTab(
         HomeTab.Launches -> {
             LaunchListScreen(
                 navigateToLaunch = { launch ->
-                    navigator.invoke(AppScreen.LaunchDetail(launch.id))
+                    val newScreen = AppScreen.LaunchDetail(launch.id)
+
+                    if (backStack.lastOrNull() is AppScreen.LaunchDetail) {
+                        backStack[backStack.lastIndex] = newScreen
+                    } else {
+                        backStack.add(newScreen)
+                    }
                 },
             )
         }
