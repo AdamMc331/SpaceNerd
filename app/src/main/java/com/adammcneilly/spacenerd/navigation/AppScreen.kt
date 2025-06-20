@@ -1,13 +1,17 @@
 package com.adammcneilly.spacenerd.navigation
 
+import androidx.navigation3.runtime.NavKey
 import com.adammcneilly.spacenerd.shared.navigation.HomeTab
+import kotlinx.serialization.Serializable
 
-sealed interface AppScreen {
+sealed class AppScreen : NavKey {
+    @Serializable
     data class Tab(
         val tab: HomeTab,
-    ) : AppScreen
+    ) : AppScreen()
 
+    @Serializable
     data class LaunchDetail(
         val launchId: String,
-    ) : AppScreen
+    ) : AppScreen()
 }
