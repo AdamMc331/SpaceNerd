@@ -40,8 +40,6 @@ xr = "1.0.0-alpha04"
 xr-material = "1.0.0-alpha08"
 adaptiveAndroid = "1.1.0"
 nav3Core = "1.0.0-alpha04"
-material3AdaptiveNav3 = "1.0.0-SNAPSHOT"
-lifecycleViewmodelNav3 = "1.0.0-alpha02"
 kotlinSerialization = "2.1.21"
 kotlinxSerializationCore = "1.8.1"
 
