@@ -34,14 +34,14 @@ class TwoPaneScene(
                     modifier = Modifier
                         .weight(1F),
                 ) {
-                    firstEntry.content.invoke(firstEntry.key)
+                    firstEntry.Content()
                 }
 
                 Box(
                     modifier = Modifier
                         .weight(1F),
                 ) {
-                    secondEntry.content.invoke(secondEntry.key)
+                    secondEntry.Content()
                 }
             }
         }

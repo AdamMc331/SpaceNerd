@@ -63,10 +63,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
-    // Not needed yet?
-//    implementation(libs.androidx.material3.adaptive.navigation3)
-    // NOTE: This was inconsistent in docs, maybe we should report.
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.room.runtime)

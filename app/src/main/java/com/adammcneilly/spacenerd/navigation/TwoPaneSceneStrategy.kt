@@ -39,7 +39,7 @@ class TwoPaneSceneStrategy : SceneStrategy<AppScreen> {
         }
 
         val bothEntriesAreTabs = lastTwoEntries.all { entry ->
-            entry.key is AppScreen.Tab
+            entry.contentKey is AppScreen.Tab
         }
 
         if (bothEntriesAreTabs) {
@@ -50,7 +50,7 @@ class TwoPaneSceneStrategy : SceneStrategy<AppScreen> {
         val secondEntry = lastTwoEntries.last()
 
         return TwoPaneScene(
-            key = Pair(firstEntry.key, secondEntry.key),
+            key = Pair(firstEntry.contentKey, secondEntry.contentKey),
             previousEntries = entries.dropLast(1),
             firstEntry = firstEntry,
             secondEntry = secondEntry,

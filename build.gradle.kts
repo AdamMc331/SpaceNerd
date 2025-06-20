@@ -68,3 +68,13 @@ tasks {
         buildUponDefaultConfig = true
     }
 }
+
+// Work around until paparazzi 2.0.0-alpha02: https://github.com/cashapp/paparazzi/issues/1877#issuecomment-2992495183
+val android16LayoutLibVersion = "15.2.2"
+configurations.all {
+    resolutionStrategy.force(
+        "com.android.tools.layoutlib:layoutlib:$android16LayoutLibVersion",
+        "com.android.tools.layoutlib:layoutlib-resources:$android16LayoutLibVersion",
+        "com.android.tools.layoutlib:layoutlib-runtime:$android16LayoutLibVersion"
+    )
+}
