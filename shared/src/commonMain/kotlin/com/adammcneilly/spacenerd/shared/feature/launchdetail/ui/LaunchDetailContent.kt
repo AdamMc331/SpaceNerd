@@ -53,6 +53,12 @@ fun LaunchDetailContent(
             item {
                 LaunchAgencyCard(
                     agency = state.launch.agency,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 16.dp,
+                        ),
                 )
             }
         }
