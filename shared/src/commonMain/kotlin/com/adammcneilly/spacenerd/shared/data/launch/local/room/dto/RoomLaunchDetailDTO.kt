@@ -8,10 +8,10 @@ import kotlinx.datetime.Instant
 data class RoomLaunchDetailDTO(
     @Embedded val launch: RoomLaunchDTO,
     @Relation(
-        parentColumn = "launchServiceProviderId",
+        parentColumn = "launchAgencyId",
         entityColumn = "id",
     )
-    val launchServiceProvider: RoomAgencyDTO?,
+    val agency: RoomAgencyDTO?,
     @Relation(
         parentColumn = "launchPadId",
         entityColumn = "id",
@@ -25,7 +25,7 @@ data class RoomLaunchDetailDTO(
             imageUrl = launch.imageUrl,
             launchTime = Instant.parse(launch.launchTime),
             status = launch.status,
-            agency = launchServiceProvider?.toLaunchServiceProvider(),
+            agency = agency?.toAgency(),
             pad = launchPad?.toLaunchPad(),
         )
     }

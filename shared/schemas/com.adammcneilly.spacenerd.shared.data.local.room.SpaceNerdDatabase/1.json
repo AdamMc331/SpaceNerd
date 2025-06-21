@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d66fe601645aecdadaf3f5c125f6cab8",
+    "identityHash": "cad0c050c069768b6dccd642878bd5f0",
     "entities": [
       {
         "tableName": "articles",
@@ -169,7 +169,7 @@
         }
       },
       {
-        "tableName": "launchserviceproviders",
+        "tableName": "agencies",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `abbreviation` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
@@ -201,7 +201,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd66fe601645aecdadaf3f5c125f6cab8')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cad0c050c069768b6dccd642878bd5f0')"
     ]
   }
 }

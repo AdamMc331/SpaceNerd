@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.adammcneilly.spacenerd.shared.core.models.Agency
 
-@Entity(tableName = "launchserviceproviders")
+@Entity(tableName = "agencies")
 data class RoomAgencyDTO(
     @PrimaryKey val id: String,
     val name: String,
@@ -18,7 +18,7 @@ data class RoomAgencyDTO(
         abbreviation = agency.abbreviation,
     )
 
-    fun toLaunchServiceProvider(): Agency {
+    fun toAgency(): Agency {
         return Agency(
             id = id,
             name = name,
