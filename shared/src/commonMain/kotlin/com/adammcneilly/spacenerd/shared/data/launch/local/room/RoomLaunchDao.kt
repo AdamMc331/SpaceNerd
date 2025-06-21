@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.adammcneilly.spacenerd.shared.core.models.Launch
-import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomAgencyDTO
+import com.adammcneilly.spacenerd.shared.data.agency.local.room.dto.RoomAgencyDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDetailDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchPadDTO
@@ -19,8 +19,8 @@ interface RoomLaunchDao {
         launches: List<RoomLaunchDTO>,
     )
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAgency(
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreAgency(
         agency: RoomAgencyDTO,
     )
 
@@ -40,7 +40,7 @@ interface RoomLaunchDao {
 
             val agencyDto = launch.agency?.let(::RoomAgencyDTO)
             if (agencyDto != null) {
-                insertAgency(agencyDto)
+                insertOrIgnoreAgency(agencyDto)
             }
 
             val launchDto = RoomLaunchDTO(launch)

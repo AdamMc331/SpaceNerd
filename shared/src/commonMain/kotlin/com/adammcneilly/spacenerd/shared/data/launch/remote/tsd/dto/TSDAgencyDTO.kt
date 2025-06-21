@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto
 
+import com.adammcneilly.spacenerd.shared.core.models.Agency
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -39,4 +40,14 @@ data class TSDAgencyDTO(
     val type: TSDTypeDTO? = null,
     @SerialName(value = "url")
     val url: String? = null,
-)
+) {
+    fun toAgency(): Agency {
+        return Agency(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+            abbreviation = this.abbrev.orEmpty(),
+            description = this.description.orEmpty(),
+            logoUrl = this.logo?.imageUrl.orEmpty(),
+        )
+    }
+}
