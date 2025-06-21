@@ -14,11 +14,6 @@ interface RoomAgencyDao {
         agency: RoomAgencyDTO,
     )
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreAgency(
-        agency: RoomAgencyDTO,
-    )
-
     @Query(
         """
         SELECT * 

@@ -11,15 +11,10 @@ class RoomAgencyService(
 ) : LocalAgencyService {
     override suspend fun saveAgency(
         agency: Agency,
-        overwrite: Boolean,
     ) {
         val agencyDto = RoomAgencyDTO(agency)
 
-        if (overwrite) {
-            agencyDao.insertOrReplaceAgency(agencyDto)
-        } else {
-            agencyDao.insertOrIgnoreAgency(agencyDto)
-        }
+        agencyDao.insertOrReplaceAgency(agencyDto)
     }
 
     override fun getAgency(

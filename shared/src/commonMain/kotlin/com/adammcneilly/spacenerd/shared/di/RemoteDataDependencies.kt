@@ -1,5 +1,7 @@
 package com.adammcneilly.spacenerd.shared.di
 
+import com.adammcneilly.spacenerd.shared.data.agency.remote.RemoteAgencyService
+import com.adammcneilly.spacenerd.shared.data.agency.remote.tsd.TSDAgencyService
 import com.adammcneilly.spacenerd.shared.data.article.remote.RemoteArticleService
 import com.adammcneilly.spacenerd.shared.data.article.remote.snapi.SNAPIArticleService
 import com.adammcneilly.spacenerd.shared.data.article.remote.snapi.SNAPIKtorClient
@@ -9,6 +11,12 @@ import com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.TSDLaunchService
 import org.koin.dsl.module
 
 val remoteModule = module {
+    single<RemoteAgencyService> {
+        TSDAgencyService(
+            client = TSDKtorClient,
+        )
+    }
+
     single<RemoteArticleService> {
         SNAPIArticleService(
             client = SNAPIKtorClient,
@@ -16,20 +24,6 @@ val remoteModule = module {
     }
 
     single<RemoteLaunchService> {
-        TSDLaunchService(
-            client = TSDKtorClient,
-        )
-    }
-}
-
-object RemoteDataDependencies {
-    val remoteArticleService: RemoteArticleService by lazy {
-        SNAPIArticleService(
-            client = SNAPIKtorClient,
-        )
-    }
-
-    val remoteLaunchService: RemoteLaunchService by lazy {
         TSDLaunchService(
             client = TSDKtorClient,
         )

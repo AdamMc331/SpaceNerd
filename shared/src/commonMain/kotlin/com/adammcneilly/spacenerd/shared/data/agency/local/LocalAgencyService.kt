@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface LocalAgencyService {
     suspend fun saveAgency(
         agency: Agency,
-        overwrite: Boolean,
     )
 
     fun getAgency(

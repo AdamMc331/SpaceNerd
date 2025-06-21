@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import com.adammcneilly.spacenerd.shared.data.agency.local.room.RoomAgencyDao
 import com.adammcneilly.spacenerd.shared.data.agency.local.room.dto.RoomAgencyDTO
 import com.adammcneilly.spacenerd.shared.data.article.local.room.RoomArticleDTO
 import com.adammcneilly.spacenerd.shared.data.article.local.room.RoomArticleDao
@@ -27,6 +28,8 @@ import kotlinx.coroutines.Dispatchers
 )
 @ConstructedBy(SpaceNerdDatabaseConstructor::class)
 abstract class SpaceNerdDatabase : RoomDatabase() {
+    abstract fun agencyDao(): RoomAgencyDao
+
     abstract fun articleDao(): RoomArticleDao
 
     abstract fun cacheTimestampDao(): RoomCacheTimestampDao

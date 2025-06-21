@@ -17,7 +17,7 @@ interface CacheTimestampRepository {
 
     /**
      * Retrieves the most recent cache timestamp for the [key] and checks
-     * if the time between that instant and [currentTime]
+     * if the time between that instant and the current time
      * exceeds the [cacheDuration].
      *
      * @return True if the duration since last request exceeds [cacheDuration],
@@ -38,8 +38,9 @@ interface CacheTimestampRepository {
     }
 
     companion object {
+        const val KEY_AGENCY_PREFIX = "agency_"
         const val KEY_ARTICLES = "articles"
         const val KEY_LAUNCHES_PREFIX = "launches"
-        const val KEY_LAUNCH_PREFIX = "launch"
+        const val KEY_LAUNCH_PREFIX = "launch_"
     }
 }
