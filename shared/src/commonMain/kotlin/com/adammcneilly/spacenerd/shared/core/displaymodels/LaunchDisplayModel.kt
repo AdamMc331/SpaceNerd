@@ -34,8 +34,8 @@ data class LaunchDisplayModel(
 }
 
 private fun Launch.buildSubtitle(): String {
-    val providerName = this.provider?.name
+    val agencyName = this.agency?.name
     val locationName = this.pad?.location?.name
 
-    return listOfNotNull(providerName, locationName).joinToString(" • ")
+    return listOfNotNull(agencyName, locationName).joinToString(" • ")
 }
