@@ -19,7 +19,7 @@ data class TSDLaunchServiceProviderDTO(
     @SerialName(value = "url")
     val url: String? = null,
 ) {
-    fun toLaunchServiceProvider(): Agency {
+    fun toAgency(): Agency {
         return Agency(
             id = this.id.toString(),
             name = this.name.orEmpty(),

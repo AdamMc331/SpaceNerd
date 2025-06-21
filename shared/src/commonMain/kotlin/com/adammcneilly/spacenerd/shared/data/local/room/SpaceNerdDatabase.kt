@@ -18,11 +18,11 @@ import kotlinx.coroutines.Dispatchers
 @Database(
     version = 1,
     entities = [
+        RoomAgencyDTO::class,
         RoomArticleDTO::class,
         RoomCacheTimestampDTO::class,
         RoomLaunchDTO::class,
         RoomLaunchPadDTO::class,
-        RoomAgencyDTO::class,
     ],
 )
 @ConstructedBy(SpaceNerdDatabaseConstructor::class)

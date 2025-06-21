@@ -80,7 +80,7 @@ data class TSDLaunchDTO(
             imageUrl = this.image?.imageUrl.orEmpty(),
             launchTime = Instant.parse(this.net.orEmpty()),
             status = this.status?.toLaunchStatus() ?: LaunchStatus.Unknown,
-            agency = this.launchServiceProvider?.toLaunchServiceProvider(),
+            agency = this.launchServiceProvider?.toAgency(),
             pad = this.pad?.toLaunchPad(),
         )
     }
