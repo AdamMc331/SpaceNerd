@@ -6,10 +6,10 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.adammcneilly.spacenerd.shared.core.models.Launch
+import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomAgencyDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDetailDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchPadDTO
-import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchServiceProviderDTO
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -20,8 +20,8 @@ interface RoomLaunchDao {
     )
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLaunchServiceProvider(
-        launchServiceProvider: RoomLaunchServiceProviderDTO,
+    suspend fun insertAgency(
+        agency: RoomAgencyDTO,
     )
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -38,9 +38,9 @@ interface RoomLaunchDao {
                 insertLaunchPad(padDto)
             }
 
-            val serviceProviderDto = launch.provider?.let(::RoomLaunchServiceProviderDTO)
-            if (serviceProviderDto != null) {
-                insertLaunchServiceProvider(serviceProviderDto)
+            val agencyDto = launch.agency?.let(::RoomAgencyDTO)
+            if (agencyDto != null) {
+                insertAgency(agencyDto)
             }
 
             val launchDto = RoomLaunchDTO(launch)

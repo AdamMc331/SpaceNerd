@@ -11,7 +11,7 @@ data class RoomLaunchDetailDTO(
         parentColumn = "launchServiceProviderId",
         entityColumn = "id",
     )
-    val launchServiceProvider: RoomLaunchServiceProviderDTO?,
+    val launchServiceProvider: RoomAgencyDTO?,
     @Relation(
         parentColumn = "launchPadId",
         entityColumn = "id",
@@ -25,7 +25,7 @@ data class RoomLaunchDetailDTO(
             imageUrl = launch.imageUrl,
             launchTime = Instant.parse(launch.launchTime),
             status = launch.status,
-            provider = launchServiceProvider?.toLaunchServiceProvider(),
+            agency = launchServiceProvider?.toLaunchServiceProvider(),
             pad = launchPad?.toLaunchPad(),
         )
     }

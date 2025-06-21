@@ -10,11 +10,10 @@ import com.adammcneilly.spacenerd.shared.data.article.local.room.RoomArticleDao
 import com.adammcneilly.spacenerd.shared.data.cache.local.room.RoomCacheTimestampDTO
 import com.adammcneilly.spacenerd.shared.data.cache.local.room.RoomCacheTimestampDao
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.RoomLaunchDao
+import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomAgencyDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchPadDTO
-import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchServiceProviderDTO
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 
 @Database(
     version = 1,
@@ -23,7 +22,7 @@ import kotlinx.coroutines.IO
         RoomCacheTimestampDTO::class,
         RoomLaunchDTO::class,
         RoomLaunchPadDTO::class,
-        RoomLaunchServiceProviderDTO::class,
+        RoomAgencyDTO::class,
     ],
 )
 @ConstructedBy(SpaceNerdDatabaseConstructor::class)

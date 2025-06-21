@@ -12,7 +12,7 @@ data class RoomLaunchDTO(
     val imageUrl: String,
     val launchTime: String,
     val status: LaunchStatus,
-    val launchServiceProviderId: String?,
+    val launchAgencyId: String?,
     val launchPadId: String?,
 ) {
     constructor(
@@ -23,7 +23,7 @@ data class RoomLaunchDTO(
         imageUrl = launch.imageUrl,
         launchTime = launch.launchTime.toString(),
         status = launch.status,
-        launchServiceProviderId = launch.provider?.id,
+        launchAgencyId = launch.agency?.id,
         launchPadId = launch.pad?.id,
     )
 }

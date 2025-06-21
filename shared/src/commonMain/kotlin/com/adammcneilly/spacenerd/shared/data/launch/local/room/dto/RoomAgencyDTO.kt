@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.adammcneilly.spacenerd.shared.core.models.LaunchServiceProvider
 
 @Entity(tableName = "launchserviceproviders")
-data class RoomLaunchServiceProviderDTO(
+data class RoomAgencyDTO(
     @PrimaryKey val id: String,
     val name: String,
     val abbreviation: String,
