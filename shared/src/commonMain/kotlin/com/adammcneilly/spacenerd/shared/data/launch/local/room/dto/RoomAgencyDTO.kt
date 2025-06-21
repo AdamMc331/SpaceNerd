@@ -2,7 +2,7 @@ package com.adammcneilly.spacenerd.shared.data.launch.local.room.dto
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.adammcneilly.spacenerd.shared.core.models.LaunchServiceProvider
+import com.adammcneilly.spacenerd.shared.core.models.Agency
 
 @Entity(tableName = "launchserviceproviders")
 data class RoomAgencyDTO(
@@ -11,15 +11,15 @@ data class RoomAgencyDTO(
     val abbreviation: String,
 ) {
     constructor(
-        launchServiceProvider: LaunchServiceProvider,
+        agency: Agency,
     ) : this(
-        id = launchServiceProvider.id,
-        name = launchServiceProvider.name,
-        abbreviation = launchServiceProvider.abbreviation,
+        id = agency.id,
+        name = agency.name,
+        abbreviation = agency.abbreviation,
     )
 
-    fun toLaunchServiceProvider(): LaunchServiceProvider {
-        return LaunchServiceProvider(
+    fun toLaunchServiceProvider(): Agency {
+        return Agency(
             id = id,
             name = name,
             abbreviation = abbreviation,

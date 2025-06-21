@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto
 
-import com.adammcneilly.spacenerd.shared.core.models.LaunchServiceProvider
+import com.adammcneilly.spacenerd.shared.core.models.Agency
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,8 +19,8 @@ data class TSDLaunchServiceProviderDTO(
     @SerialName(value = "url")
     val url: String? = null,
 ) {
-    fun toLaunchServiceProvider(): LaunchServiceProvider {
-        return LaunchServiceProvider(
+    fun toLaunchServiceProvider(): Agency {
+        return Agency(
             id = this.id.toString(),
             name = this.name.orEmpty(),
             abbreviation = this.abbrev.orEmpty(),
