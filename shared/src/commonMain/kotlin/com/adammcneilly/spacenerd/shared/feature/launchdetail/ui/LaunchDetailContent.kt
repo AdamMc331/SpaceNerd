@@ -48,6 +48,14 @@ fun LaunchDetailContent(
         item {
             LaunchSubtitle(state)
         }
+
+        if (state.launch.agency != null) {
+            item {
+                LaunchAgencyCard(
+                    agency = state.launch.agency,
+                )
+            }
+        }
     }
 }
 

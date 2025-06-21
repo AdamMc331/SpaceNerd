@@ -9,6 +9,7 @@ data class LaunchDisplayModel(
     val image: ImageDisplayModel,
     val status: LaunchStatusDisplayModel,
     val subtitle: String,
+    val agency: AgencyDisplayModel?,
     val isPlaceholder: Boolean = false,
 ) {
     constructor(launch: Launch) : this(
@@ -16,6 +17,7 @@ data class LaunchDisplayModel(
         name = launch.name,
         image = ImageDisplayModel.Remote(launch.imageUrl),
         status = LaunchStatusDisplayModel(launch.status),
+        agency = launch.agency?.let(::AgencyDisplayModel),
         subtitle = launch.buildSubtitle(),
     )
 
@@ -27,6 +29,7 @@ data class LaunchDisplayModel(
                 image = ImageDisplayModel.Remote(""),
                 status = LaunchStatusDisplayModel(LaunchStatus.Unknown),
                 subtitle = "Placeholder Subtitle",
+                agency = AgencyDisplayModel.placeholder(),
                 isPlaceholder = true,
             )
         }
