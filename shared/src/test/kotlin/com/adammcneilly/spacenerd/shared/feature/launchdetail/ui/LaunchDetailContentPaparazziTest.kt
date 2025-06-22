@@ -30,7 +30,14 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
             agency = AgencyDisplayModel(
                 id = "123",
                 name = "SpaceX",
-                description = "Space Exploration Technologies Corp., known as SpaceX, is an American aerospace manufacturer and space transport services company headquartered in Hawthorne, California. It was founded in 2002 by entrepreneur Elon Musk with the goal of reducing space transportation costs and enabling the colonization of Mars. SpaceX operates from many pads, on the East Coast of the US they operate from SLC-40 at Cape Canaveral Space Force Station and historic LC-39A at Kennedy Space Center. They also operate from SLC-4E at Vandenberg Space Force Base, California, usually for polar launches. Another launch site is being developed at Boca Chica, Texas.",
+                description = "Space Exploration Technologies Corp., known as SpaceX, " +
+                    "is an American aerospace manufacturer and space transport services company " +
+                    "headquartered in Hawthorne, California. It was founded in 2002 by entrepreneur " +
+                    "Elon Musk with the goal of reducing space transportation costs and enabling the " +
+                    "colonization of Mars. SpaceX operates from many pads, on the East Coast of the US " +
+                    "they operate from SLC-40 at Cape Canaveral Space Force Station and historic LC-39A " +
+                    "at Kennedy Space Center. They also operate from SLC-4E at Vandenberg Space Force Base, " +
+                    "California, usually for polar launches. Another launch site is being developed at Boca Chica, Texas.",
                 logo = ImageDisplayModel.Placeholder,
             ),
             subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
