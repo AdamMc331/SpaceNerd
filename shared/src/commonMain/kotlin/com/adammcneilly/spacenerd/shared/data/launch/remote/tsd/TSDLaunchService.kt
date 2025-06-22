@@ -47,9 +47,7 @@ class TSDLaunchService(
 
         return client.getResponse<TSDLaunchDTO>(
             endpoint = endpoint,
-        ).map { launchDTO ->
-            launchDTO.toLaunch()
-        }
+        ).map(TSDLaunchDTO::toLaunch)
     }
 
     private suspend fun getCustomLaunches(
