@@ -37,7 +37,8 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
                     "colonization of Mars. SpaceX operates from many pads, on the East Coast of the US " +
                     "they operate from SLC-40 at Cape Canaveral Space Force Station and historic LC-39A " +
                     "at Kennedy Space Center. They also operate from SLC-4E at Vandenberg Space Force Base, " +
-                    "California, usually for polar launches. Another launch site is being developed at Boca Chica, Texas.",
+                    "California, usually for polar launches. Another launch site is being developed " +
+                    "at Boca Chica, Texas.",
                 logo = ImageDisplayModel.Placeholder,
             ),
             subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
