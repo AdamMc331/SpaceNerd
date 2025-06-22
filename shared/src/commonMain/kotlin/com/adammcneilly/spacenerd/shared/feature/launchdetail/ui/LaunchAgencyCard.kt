@@ -1,6 +1,8 @@
 package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -10,7 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.shared.core.displaymodels.AgencyDisplayModel
+import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.eygraber.compose.placeholder.material3.placeholder
+
+private const val LOGO_ASPECT_RATIO = 4F
 
 @Composable
 fun LaunchAgencyCard(
@@ -20,19 +25,37 @@ fun LaunchAgencyCard(
     ElevatedCard(
         modifier = modifier,
     ) {
-        Column(
-            modifier = Modifier
-                .padding(16.dp),
-        ) {
-            AgencyName(agency)
+        Column {
+            AgencyImage(agency)
 
-            AgencyDescription(
-                agency = agency,
+            Column(
                 modifier = Modifier
-                    .padding(top = 4.dp),
-            )
+                    .padding(16.dp),
+            ) {
+                AgencyName(agency)
+
+                AgencyDescription(
+                    agency = agency,
+                    modifier = Modifier
+                        .padding(top = 4.dp),
+                )
+            }
         }
     }
+}
+
+@Composable
+private fun AgencyImage(
+    agency: AgencyDisplayModel,
+) {
+    ImageWrapper(
+        image = agency.logo,
+        contentDescription = null,
+        modifier = Modifier
+            .placeholder(agency.isPlaceholder)
+            .fillMaxWidth()
+            .aspectRatio(LOGO_ASPECT_RATIO),
+    )
 }
 
 @Composable
