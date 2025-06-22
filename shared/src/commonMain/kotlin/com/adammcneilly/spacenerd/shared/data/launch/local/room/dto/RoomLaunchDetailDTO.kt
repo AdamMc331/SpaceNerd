@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.shared.data.launch.local.room.dto
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.adammcneilly.spacenerd.shared.core.models.Launch
+import com.adammcneilly.spacenerd.shared.data.agency.local.room.dto.RoomAgencyDTO
 import kotlinx.datetime.Instant
 
 data class RoomLaunchDetailDTO(

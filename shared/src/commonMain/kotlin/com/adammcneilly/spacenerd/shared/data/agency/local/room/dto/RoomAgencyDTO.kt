@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.data.launch.local.room.dto
+package com.adammcneilly.spacenerd.shared.data.agency.local.room.dto
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,6 +9,8 @@ data class RoomAgencyDTO(
     @PrimaryKey val id: String,
     val name: String,
     val abbreviation: String,
+    val description: String,
+    val logoUrl: String,
 ) {
     constructor(
         agency: Agency,
@@ -16,6 +18,8 @@ data class RoomAgencyDTO(
         id = agency.id,
         name = agency.name,
         abbreviation = agency.abbreviation,
+        description = agency.description,
+        logoUrl = agency.logoUrl,
     )
 
     fun toAgency(): Agency {
@@ -23,6 +27,8 @@ data class RoomAgencyDTO(
             id = id,
             name = name,
             abbreviation = abbreviation,
+            description = description,
+            logoUrl = logoUrl,
         )
     }
 }

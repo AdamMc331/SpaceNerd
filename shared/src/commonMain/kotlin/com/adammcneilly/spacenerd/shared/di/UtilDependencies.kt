@@ -9,9 +9,3 @@ val utilModule = module {
         SystemDateTimeProvider()
     }
 }
-
-object UtilDependencies {
-    val dateTimeProvider: DateTimeProvider by lazy {
-        SystemDateTimeProvider()
-    }
-}

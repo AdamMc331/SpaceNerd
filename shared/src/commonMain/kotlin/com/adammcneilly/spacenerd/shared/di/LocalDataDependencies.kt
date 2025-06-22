@@ -1,5 +1,7 @@
 package com.adammcneilly.spacenerd.shared.di
 
+import com.adammcneilly.spacenerd.shared.data.agency.local.LocalAgencyService
+import com.adammcneilly.spacenerd.shared.data.agency.local.room.RoomAgencyService
 import com.adammcneilly.spacenerd.shared.data.article.local.LocalArticleService
 import com.adammcneilly.spacenerd.shared.data.article.local.room.RoomArticleService
 import com.adammcneilly.spacenerd.shared.data.launch.local.LocalLaunchService
@@ -13,6 +15,12 @@ val localModule = module {
         getDatabase()
     }
 
+    single<LocalAgencyService> {
+        RoomAgencyService(
+            agencyDao = get<SpaceNerdDatabase>().agencyDao(),
+        )
+    }
+
     single<LocalArticleService> {
         RoomArticleService(
             articleDao = get<SpaceNerdDatabase>().articleDao(),
@@ -23,25 +31,6 @@ val localModule = module {
         RoomLaunchService(
             launchDao = get<SpaceNerdDatabase>().launchDao(),
             dateTimeProvider = get(),
-        )
-    }
-}
-
-object LocalDataDependencies {
-    val roomDatabase: SpaceNerdDatabase by lazy {
-        getDatabase()
-    }
-
-    val localArticleService: LocalArticleService by lazy {
-        RoomArticleService(
-            articleDao = roomDatabase.articleDao(),
-        )
-    }
-
-    val localLaunchService: LocalLaunchService by lazy {
-        RoomLaunchService(
-            launchDao = roomDatabase.launchDao(),
-            dateTimeProvider = UtilDependencies.dateTimeProvider,
         )
     }
 }

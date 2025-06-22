@@ -24,6 +24,8 @@ data class TSDLaunchServiceProviderDTO(
             id = this.id.toString(),
             name = this.name.orEmpty(),
             abbreviation = this.abbrev.orEmpty(),
+            description = "",
+            logoUrl = "",
         )
     }
 }

@@ -26,6 +26,7 @@ class LaunchSummaryCardPaparazziTest : BasePaparazziTest() {
             name = "Falcon 9 Block 5 | Starlink Group 12-19",
             image = ImageDisplayModel.Placeholder,
             status = LaunchStatusDisplayModel(LaunchStatus.Go),
+            agency = null,
             subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
         )
 
