@@ -10,23 +10,6 @@ import com.adammcneilly.spacenerd.shared.data.remote.ktor.BaseKtorClient
 class TSDLaunchService(
     private val client: BaseKtorClient,
 ) : RemoteLaunchService {
-    // interface TSDRetrofitAPI {
-    //    @GET("2.3.0/launches")
-    //    suspend fun getLaunches(
-    //        @Query("slug") slug: String?,
-    //        @Query("net__gte") after: String?,
-    //        @Query("net__lte") before: String?,
-    //    ): TSDLaunchListResponseDTO
-    //
-    //    @GET("2.3.0/launches/{id}")
-    //    suspend fun getLaunch(
-    //        @Path("id") id: String,
-    //    ): TSDLaunchDTO
-    //
-    //    @GET("2.3.0/launches/upcoming")
-    //    suspend fun getUpcomingLaunches(): TSDLaunchListResponseDTO
-    // }
-
     override suspend fun getLaunches(
         request: LaunchListRequest,
     ): Result<List<Launch>> {
@@ -43,7 +26,7 @@ class TSDLaunchService(
     override suspend fun getLaunch(
         id: String,
     ): Result<Launch> {
-        val endpoint = "2.3.0/launches/$id"
+        val endpoint = "launches/$id"
 
         return client.getResponse<TSDLaunchDTO>(
             endpoint = endpoint,
@@ -54,7 +37,7 @@ class TSDLaunchService(
         request: LaunchListRequest.Custom,
     ): Result<List<Launch>> {
         return client.getResponse<TSDLaunchListResponseDTO>(
-            endpoint = "2.3.0/launches",
+            endpoint = "launches",
             params = mapOf(
                 "net__gte" to request.after,
                 "net__lte" to request.before,
@@ -68,7 +51,7 @@ class TSDLaunchService(
 
     private suspend fun getUpcomingLaunches(): Result<List<Launch>> {
         return client.getResponse<TSDLaunchListResponseDTO>(
-            endpoint = "2.3.0/launches/upcoming",
+            endpoint = "launches/upcoming",
         ).map { launchListResponseDTO ->
             launchListResponseDTO.results?.map { launchDTO ->
                 launchDTO.toLaunch()

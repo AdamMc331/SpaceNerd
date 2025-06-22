@@ -12,7 +12,7 @@ class TSDAgencyService(
         id: String,
     ): Result<Agency> {
         return client.getResponse<TSDAgencyDTO>(
-            endpoint = "2.3.0/agencies/$id",
+            endpoint = "agencies/$id",
         ).map(TSDAgencyDTO::toAgency)
     }
 }
