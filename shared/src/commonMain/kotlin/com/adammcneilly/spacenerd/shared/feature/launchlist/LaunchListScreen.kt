@@ -14,6 +14,8 @@ import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigat
 import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationRail
 import com.adammcneilly.spacenerd.shared.scaffold.PersistentScaffold
 import com.adammcneilly.spacenerd.shared.scaffold.rememberScaffoldState
+import com.adammcneilly.spacenerd.shared.ui.utils.LocalSceneType
+import com.adammcneilly.spacenerd.shared.ui.utils.SceneType
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -45,7 +47,9 @@ fun LaunchListScreen(
             )
         },
         navigationRail = {
-            PersistentNavigationRail()
+            if (LocalSceneType.current != SceneType.TwoPane) {
+                PersistentNavigationRail()
+            }
         },
         content = { scaffoldPadding ->
             LaunchListContent(

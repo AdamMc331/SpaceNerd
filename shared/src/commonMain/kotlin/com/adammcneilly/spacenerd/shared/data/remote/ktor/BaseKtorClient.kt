@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.shared.data.remote.ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
@@ -10,7 +11,9 @@ import io.ktor.client.plugins.logging.SIMPLE
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
+import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
 import kotlinx.serialization.json.Json
 
@@ -65,11 +68,16 @@ open class BaseKtorClient(
         val url = "$baseUrl$endpoint"
 
         return try {
-            val apiResult: T = httpClient
+            val response: HttpResponse = httpClient
                 .get(url) {
                     addParams(params)
-                }.body()
-            Result.success(apiResult)
+                }
+
+            if (response.status.isSuccess()) {
+                Result.success(response.body())
+            } else {
+                throw ClientRequestException(response, "Request failed with status: ${response.status}")
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }
