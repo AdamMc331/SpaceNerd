@@ -14,6 +14,7 @@ data class RoomLaunchDTO(
     val status: LaunchStatus,
     val launchAgencyId: String?,
     val launchPadId: String?,
+    val launchMissionId: String?,
 ) {
     constructor(
         launch: Launch,
@@ -25,5 +26,6 @@ data class RoomLaunchDTO(
         status = launch.status,
         launchAgencyId = launch.agency?.id,
         launchPadId = launch.pad?.id,
+        launchMissionId = launch.mission?.id,
     )
 }

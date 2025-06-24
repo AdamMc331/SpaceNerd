@@ -4,6 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Relation
 import com.adammcneilly.spacenerd.shared.core.models.Launch
 import com.adammcneilly.spacenerd.shared.data.agency.local.room.dto.RoomAgencyDTO
+import com.adammcneilly.spacenerd.shared.data.mission.local.room.RoomMissionDTO
 import kotlinx.datetime.Instant
 
 data class RoomLaunchDetailDTO(
@@ -18,6 +19,11 @@ data class RoomLaunchDetailDTO(
         entityColumn = "id",
     )
     val launchPad: RoomLaunchPadDTO?,
+    @Relation(
+        parentColumn = "launchMissionId",
+        entityColumn = "id",
+    )
+    val mission: RoomMissionDTO?,
 ) {
     fun toLaunch(): Launch {
         return Launch(
@@ -28,6 +34,7 @@ data class RoomLaunchDetailDTO(
             status = launch.status,
             agency = agency?.toAgency(),
             pad = launchPad?.toLaunchPad(),
+            mission = mission?.toMission(),
         )
     }
 }

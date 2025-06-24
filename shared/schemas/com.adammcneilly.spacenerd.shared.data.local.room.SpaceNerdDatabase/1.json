@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "29bb2a5bc584e1cb59d45c938dd0da17",
+    "identityHash": "f952b0fbf741e841128fd2bbe8ed888b",
     "entities": [
       {
         "tableName": "agencies",
@@ -126,7 +126,7 @@
       },
       {
         "tableName": "launches",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `launchTime` TEXT NOT NULL, `status` TEXT NOT NULL, `launchAgencyId` TEXT, `launchPadId` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `launchTime` TEXT NOT NULL, `status` TEXT NOT NULL, `launchAgencyId` TEXT, `launchPadId` TEXT, `launchMissionId` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -166,6 +166,11 @@
           {
             "fieldPath": "launchPadId",
             "columnName": "launchPadId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "launchMissionId",
+            "columnName": "launchMissionId",
             "affinity": "TEXT"
           }
         ],
@@ -209,11 +214,47 @@
             "id"
           ]
         }
+      },
+      {
+        "tableName": "missions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "imageUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '29bb2a5bc584e1cb59d45c938dd0da17')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f952b0fbf741e841128fd2bbe8ed888b')"
     ]
   }
 }

@@ -27,6 +27,7 @@ class LaunchSummaryCardPaparazziTest : BasePaparazziTest() {
             image = ImageDisplayModel.Placeholder,
             status = LaunchStatusDisplayModel(LaunchStatus.Go),
             agency = null,
+            mission = null,
             subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
         )
 

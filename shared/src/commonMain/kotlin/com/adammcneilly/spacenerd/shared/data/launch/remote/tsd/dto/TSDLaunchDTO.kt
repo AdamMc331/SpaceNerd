@@ -82,6 +82,7 @@ data class TSDLaunchDTO(
             status = this.status?.toLaunchStatus() ?: LaunchStatus.Unknown,
             agency = this.launchServiceProvider?.toAgency(),
             pad = this.pad?.toLaunchPad(),
+            mission = this.mission?.toMission(),
         )
     }
 }

@@ -5,6 +5,7 @@ import com.adammcneilly.spacenerd.shared.core.displaymodels.AgencyDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchStatusDisplayModel
+import com.adammcneilly.spacenerd.shared.core.displaymodels.MissionDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
 import kotlin.test.Test
 
@@ -40,6 +41,12 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
                     "California, usually for polar launches. Another launch site is being developed " +
                     "at Boca Chica, Texas.",
                 logo = ImageDisplayModel.Placeholder,
+            ),
+            mission = MissionDisplayModel(
+                id = "123",
+                name = "Starlink Group 12-19",
+                description = "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+                image = ImageDisplayModel.Placeholder,
             ),
             subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
         )

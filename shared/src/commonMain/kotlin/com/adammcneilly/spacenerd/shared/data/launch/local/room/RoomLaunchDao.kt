@@ -10,6 +10,7 @@ import com.adammcneilly.spacenerd.shared.data.agency.local.room.dto.RoomAgencyDT
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDetailDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchPadDTO
+import com.adammcneilly.spacenerd.shared.data.mission.local.room.RoomMissionDTO
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -22,6 +23,11 @@ interface RoomLaunchDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreAgency(
         agency: RoomAgencyDTO,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreMission(
+        mission: RoomMissionDTO,
     )
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -41,6 +47,11 @@ interface RoomLaunchDao {
             val agencyDto = launch.agency?.let(::RoomAgencyDTO)
             if (agencyDto != null) {
                 insertOrIgnoreAgency(agencyDto)
+            }
+
+            val missionDto = launch.mission?.let(::RoomMissionDTO)
+            if (missionDto != null) {
+                insertOrIgnoreMission(missionDto)
             }
 
             val launchDto = RoomLaunchDTO(launch)

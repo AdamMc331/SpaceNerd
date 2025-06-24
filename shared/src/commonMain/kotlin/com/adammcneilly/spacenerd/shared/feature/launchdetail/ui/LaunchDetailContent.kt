@@ -62,6 +62,20 @@ fun LaunchDetailContent(
                 )
             }
         }
+
+        if (state.launch.mission != null) {
+            item {
+                LaunchMissionCard(
+                    mission = state.launch.mission,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 16.dp,
+                        ),
+                )
+            }
+        }
     }
 }
 
