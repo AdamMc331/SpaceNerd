@@ -45,7 +45,8 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
             mission = MissionDisplayModel(
                 id = "123",
                 name = "Starlink Group 12-19",
-                description = "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+                description = "A batch of 27 satellites for the Starlink mega-constellation" +
+                    " - SpaceX's project for space-based Internet communication system.",
                 image = ImageDisplayModel.Placeholder,
             ),
             subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
