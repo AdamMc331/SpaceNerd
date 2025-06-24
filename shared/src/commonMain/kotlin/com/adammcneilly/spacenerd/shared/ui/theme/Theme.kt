@@ -2,8 +2,6 @@ package com.adammcneilly.spacenerd.shared.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 @Composable
@@ -12,8 +10,8 @@ fun SpaceTheme(
     content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
-        darkTheme -> darkColorScheme()
-        else -> lightColorScheme()
+        darkTheme -> SpaceNerdColors.DarkColorScheme
+        else -> SpaceNerdColors.LightColorScheme
     }
 
     MaterialTheme(
