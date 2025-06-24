@@ -18,7 +18,7 @@ fun SpaceTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = getTypography(),
         shapes = Shapes,
         content = content,
     )

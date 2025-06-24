@@ -1,16 +1,91 @@
 package com.adammcneilly.spacenerd.shared.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.Font
+import `space nerd`.shared.generated.resources.Res
+import `space nerd`.shared.generated.resources.exo2_regular
+import `space nerd`.shared.generated.resources.orbitron_bold
+import `space nerd`.shared.generated.resources.orbitron_regular
 
-// Set of Material typography styles to start with
-val Typography = Typography(
-    bodyMedium = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-    ),
-)
+@Composable
+private fun orbitronFontFamily() =
+    FontFamily(
+        Font(Res.font.orbitron_regular, FontWeight.Normal),
+        Font(Res.font.orbitron_bold, FontWeight.Bold),
+    )
+
+@Composable
+private fun exo2FontFamily() =
+    FontFamily(
+        Font(Res.font.exo2_regular, FontWeight.Normal),
+    )
+
+@Composable
+fun getTypography(): Typography {
+    val displayFontFamily = orbitronFontFamily()
+    val bodyFontFamily = exo2FontFamily()
+
+    return Typography(
+        displayLarge = TextStyle(
+            fontFamily = displayFontFamily,
+            fontWeight = FontWeight.Bold,
+            fontSize = 57.sp,
+            lineHeight = 64.sp,
+            letterSpacing = (-0.25).sp,
+        ),
+        displayMedium = TextStyle(
+            fontFamily = displayFontFamily,
+            fontWeight = FontWeight.Bold,
+            fontSize = 45.sp,
+            lineHeight = 52.sp,
+            letterSpacing = 0.sp,
+        ),
+        headlineLarge = TextStyle(
+            fontFamily = displayFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = 32.sp,
+            lineHeight = 40.sp,
+            letterSpacing = 0.sp,
+        ),
+        titleLarge = TextStyle(
+            fontFamily = displayFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = 22.sp,
+            lineHeight = 28.sp,
+            letterSpacing = 0.sp,
+        ),
+        bodyLarge = TextStyle(
+            fontFamily = bodyFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            lineHeight = 24.sp,
+            letterSpacing = 0.5.sp,
+        ),
+        bodyMedium = TextStyle(
+            fontFamily = bodyFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            lineHeight = 20.sp,
+            letterSpacing = 0.25.sp,
+        ),
+        labelLarge = TextStyle(
+            fontFamily = bodyFontFamily,
+            fontWeight = FontWeight.Medium,
+            fontSize = 14.sp,
+            lineHeight = 20.sp,
+            letterSpacing = 0.1.sp,
+        ),
+        labelMedium = TextStyle(
+            fontFamily = bodyFontFamily,
+            fontWeight = FontWeight.Medium,
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            letterSpacing = 0.5.sp,
+        ),
+    )
+}
