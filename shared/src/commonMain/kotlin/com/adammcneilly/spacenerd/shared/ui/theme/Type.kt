@@ -26,6 +26,7 @@ private fun exo2FontFamily() =
     )
 
 @Composable
+@Suppress("LongMethod")
 fun getTypography(): Typography {
     val displayFontFamily = orbitronFontFamily()
     val bodyFontFamily = exo2FontFamily()
