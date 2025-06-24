@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto
 
+import com.adammcneilly.spacenerd.shared.core.models.Mission
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -23,4 +24,13 @@ data class TSDMissionDTO(
     val type: String? = null,
     @SerialName(value = "vid_urls")
     val vidUrls: List<String>? = null,
-)
+) {
+    fun toMission(): Mission {
+        return Mission(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+            description = this.description.orEmpty(),
+            imageUrl = this.image.orEmpty(),
+        )
+    }
+}
