@@ -77,6 +77,13 @@ fun getTypography(): Typography {
             lineHeight = 20.sp,
             letterSpacing = 0.25.sp,
         ),
+        bodySmall = TextStyle(
+            fontFamily = bodyFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            letterSpacing = 0.4.sp,
+        ),
         labelLarge = TextStyle(
             fontFamily = bodyFontFamily,
             fontWeight = FontWeight.Medium,
@@ -88,6 +95,13 @@ fun getTypography(): Typography {
             fontFamily = bodyFontFamily,
             fontWeight = FontWeight.Medium,
             fontSize = 12.sp,
+            lineHeight = 16.sp,
+            letterSpacing = 0.5.sp,
+        ),
+        labelSmall = TextStyle(
+            fontFamily = bodyFontFamily,
+            fontWeight = FontWeight.Medium,
+            fontSize = 11.sp,
             lineHeight = 16.sp,
             letterSpacing = 0.5.sp,
         ),
