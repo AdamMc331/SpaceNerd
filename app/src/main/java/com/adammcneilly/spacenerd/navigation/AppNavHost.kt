@@ -58,63 +58,83 @@ fun AppNavHost() {
         },
         sceneStrategy = TwoPaneSceneStrategy(),
         entryProvider = { key ->
-            NavEntry(
-                key = key,
-                metadata = TwoPaneScene.twoPane(),
-            ) {
-                CompositionLocalProvider(
-                    LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
-                ) {
-                    when (key) {
-                        is AppScreen.LaunchDetail -> {
-                            LaunchDetailScreen(
-                                launchId = key.launchId,
-                            )
-                        }
+            when (key) {
+                is AppScreen.LaunchDetail -> {
+                    launchDetailEntry(key)
+                }
 
-                        is AppScreen.Tab -> {
-                            RenderHomeTab(
-                                key = key,
-                                backStack = backStack,
-                            )
-                        }
-                    }
+                is AppScreen.Tab -> {
+                    homeTabEntry(
+                        key = key,
+                        backStack = backStack,
+                    )
                 }
             }
         },
     )
 }
 
-@Composable
-private fun RenderHomeTab(
-    key: AppScreen.Tab,
-    backStack: SnapshotStateList<AppScreen>,
-) {
-    when (key.tab) {
-        HomeTab.News -> {
-            NewsScreen()
-        }
-
-        HomeTab.Launches -> {
-            LaunchListScreen(
-                navigateToLaunch = { launch ->
-                    val newScreen = AppScreen.LaunchDetail(launch.id)
-
-                    if (backStack.lastOrNull() is AppScreen.LaunchDetail) {
-                        backStack[backStack.lastIndex] = newScreen
-                    } else {
-                        backStack.add(newScreen)
-                    }
-                },
+private fun launchDetailEntry(
+    key: AppScreen.LaunchDetail,
+): NavEntry<AppScreen> {
+    return NavEntry(
+        key = key,
+        metadata = TwoPaneScene.twoPane(),
+    ) {
+        CompositionLocalProvider(
+            LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
+        ) {
+            LaunchDetailScreen(
+                launchId = key.launchId,
             )
         }
+    }
+}
 
-        HomeTab.Astronauts -> {
-            AstronautListScreen()
-        }
+private fun homeTabEntry(
+    key: AppScreen.Tab,
+    backStack: SnapshotStateList<AppScreen>,
+): NavEntry<AppScreen> {
+    val metadata = if (key.tab == HomeTab.Launches) {
+        TwoPaneScene.twoPane()
+    } else {
+        emptyMap()
+    }
 
-        HomeTab.Stations -> {
-            StationsListScreen()
+    return NavEntry(
+        key = key,
+        metadata = metadata,
+    ) {
+        CompositionLocalProvider(
+            LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
+        ) {
+            when (key.tab) {
+                HomeTab.News -> {
+                    NewsScreen()
+                }
+
+                HomeTab.Launches -> {
+                    LaunchListScreen(
+                        navigateToLaunch = { launch ->
+                            val newScreen = AppScreen.LaunchDetail(launch.id)
+
+                            if (backStack.lastOrNull() is AppScreen.LaunchDetail) {
+                                backStack[backStack.lastIndex] = newScreen
+                            } else {
+                                backStack.add(newScreen)
+                            }
+                        },
+                    )
+                }
+
+                HomeTab.Astronauts -> {
+                    AstronautListScreen()
+                }
+
+                HomeTab.Stations -> {
+                    StationsListScreen()
+                }
+            }
         }
     }
 }
