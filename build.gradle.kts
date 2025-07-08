@@ -16,6 +16,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform).apply(false)
     alias(libs.plugins.kotlin.parcelize).apply(false)
     alias(libs.plugins.kotlinx.serialization).apply(false)
+    alias(libs.plugins.kotlinx.kover).apply(false)
     alias(libs.plugins.kotlinter).apply(false)
     alias(libs.plugins.room).apply(false)
     alias(libs.plugins.square.sort.dependencies).apply(false)
