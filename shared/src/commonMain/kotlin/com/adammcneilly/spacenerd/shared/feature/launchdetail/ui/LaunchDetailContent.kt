@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.shared.ui.components.Pill
-import com.adammcneilly.spacenerd.shared.ui.utils.plus
 import com.adammcneilly.spacenerd.shared.ui.utils.sharedBounds
 import com.adammcneilly.spacenerd.shared.ui.utils.sharedElement
 import com.eygraber.compose.placeholder.PlaceholderDefaults
@@ -34,11 +33,10 @@ private const val LAUNCH_IMAGE_ASPECT_RATIO = 1.5F
 @Composable
 fun LaunchDetailContent(
     state: LaunchDetailUiState,
-    contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
-        contentPadding = contentPadding + PaddingValues(bottom = 16.dp),
+        contentPadding = PaddingValues(bottom = 16.dp),
         modifier = modifier,
     ) {
         item {
