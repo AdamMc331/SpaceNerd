@@ -5,9 +5,11 @@ import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
-import kotlinx.datetime.Instant
 import org.junit.Test
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 class ArticleSummaryCardPaparazziTest : BasePaparazziTest() {
     @Test
     fun renderPlaceholder() {

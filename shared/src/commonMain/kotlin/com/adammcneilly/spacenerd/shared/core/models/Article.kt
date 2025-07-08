@@ -1,7 +1,9 @@
 package com.adammcneilly.spacenerd.shared.core.models
 
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 data class Article(
     val id: String,
     val title: String,

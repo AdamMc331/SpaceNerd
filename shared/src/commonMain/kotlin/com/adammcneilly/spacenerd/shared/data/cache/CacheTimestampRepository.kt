@@ -1,9 +1,11 @@
 package com.adammcneilly.spacenerd.shared.data.cache
 
 import com.adammcneilly.spacenerd.shared.datetime.DateTimeProvider
-import kotlinx.datetime.Instant
 import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 interface CacheTimestampRepository {
     val dateTimeProvider: DateTimeProvider
 

@@ -8,7 +8,9 @@ import com.adammcneilly.spacenerd.shared.datetime.DateTimeProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 class RoomLaunchService(
     private val launchDao: RoomLaunchDao,
     private val dateTimeProvider: DateTimeProvider,

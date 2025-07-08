@@ -2,10 +2,12 @@ package com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto
 
 import com.adammcneilly.spacenerd.shared.core.models.Launch
 import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
-import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 @Serializable
 data class TSDLaunchDTO(
     @SerialName(value = "agency_launch_attempt_count")
