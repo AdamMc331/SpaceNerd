@@ -20,6 +20,7 @@ import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
 import com.eygraber.compose.placeholder.material3.placeholder
+import com.eygraber.compose.placeholder.placeholder
 
 private const val ARTICLE_IMAGE_ASPECT_RATIO = 1.5F
 
@@ -115,6 +116,16 @@ private fun ArticleInfo(
             text = article.title,
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
+                .placeholder(
+                    visible = article.isPlaceholder,
+                ),
+        )
+
+        Text(
+            text = article.publishedAt,
+            style = MaterialTheme.typography.labelSmall,
+            modifier = Modifier
+                .padding(vertical = 4.dp)
                 .placeholder(
                     visible = article.isPlaceholder,
                 ),

@@ -1,9 +1,10 @@
 package com.adammcneilly.spacenerd.shared.data.article.remote.snapi.dto
 
 import com.adammcneilly.spacenerd.shared.core.models.Article
-import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 @Serializable
 data class SNAPIArticleDTO(
@@ -32,6 +33,7 @@ data class SNAPIArticleDTO(
     @SerialName(value = "url")
     val url: String? = null,
 ) {
+    @OptIn(ExperimentalTime::class)
     fun toArticle(): Article {
         return Article(
             id = this.id.toString(),

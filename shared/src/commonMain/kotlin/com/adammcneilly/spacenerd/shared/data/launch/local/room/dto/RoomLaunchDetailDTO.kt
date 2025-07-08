@@ -5,8 +5,10 @@ import androidx.room.Relation
 import com.adammcneilly.spacenerd.shared.core.models.Launch
 import com.adammcneilly.spacenerd.shared.data.agency.local.room.dto.RoomAgencyDTO
 import com.adammcneilly.spacenerd.shared.data.mission.local.room.RoomMissionDTO
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 data class RoomLaunchDetailDTO(
     @Embedded val launch: RoomLaunchDTO,
     @Relation(

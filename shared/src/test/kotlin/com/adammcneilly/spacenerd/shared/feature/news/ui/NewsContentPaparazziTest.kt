@@ -6,8 +6,8 @@ import com.adammcneilly.spacenerd.shared.BasePaparazziTest
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
-import kotlinx.datetime.Instant
 import kotlin.test.Test
+import kotlin.time.Instant
 
 class NewsContentPaparazziTest : BasePaparazziTest() {
     @Test

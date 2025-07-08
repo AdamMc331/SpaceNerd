@@ -2,8 +2,10 @@ package com.adammcneilly.spacenerd.shared.data.cache.local.room
 
 import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.shared.datetime.DateTimeProvider
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 class RoomCacheTimestampRepository(
     override val dateTimeProvider: DateTimeProvider,
     private val cacheTimestampDao: RoomCacheTimestampDao,

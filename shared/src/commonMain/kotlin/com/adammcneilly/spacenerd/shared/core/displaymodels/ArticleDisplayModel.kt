@@ -7,15 +7,31 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
+import kotlinx.datetime.format
+import kotlinx.datetime.format.DateTimeComponents
+import kotlinx.datetime.format.MonthNames
+import kotlinx.datetime.format.char
+import kotlin.time.ExperimentalTime
+
+private val publishedDateFormat = DateTimeComponents.Format {
+    monthName(MonthNames.ENGLISH_FULL)
+    char(' ')
+    day()
+    char(',')
+    char(' ')
+    year()
+}
 
 data class ArticleDisplayModel(
     val id: String,
     val title: AnnotatedString,
+    val publishedAt: String,
     val image: ImageDisplayModel,
     val url: String,
     val summary: String,
     val isPlaceholder: Boolean = false,
 ) {
+    @OptIn(ExperimentalTime::class)
     constructor(
         article: Article,
     ) : this(
@@ -29,6 +45,7 @@ data class ArticleDisplayModel(
             val authorNames = article.authors.joinToString(transform = Author::name)
             append(authorNames)
         },
+        publishedAt = article.publishedAtUtc.format(publishedDateFormat),
         image = ImageDisplayModel.Remote(article.imageUrl),
         url = article.url,
         summary = article.summary,
@@ -40,6 +57,7 @@ data class ArticleDisplayModel(
                 id = "",
                 title = AnnotatedString("Placeholder Title Should Be Long"),
                 image = ImageDisplayModel.Placeholder,
+                publishedAt = "Month 00, 0000",
                 url = "",
                 summary = "Placeholder Summary\nMultiline",
                 isPlaceholder = true,

@@ -5,8 +5,8 @@ import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
-import kotlinx.datetime.Instant
 import org.junit.Test
+import kotlin.time.Instant
 
 class ArticleSummaryCardPaparazziTest : BasePaparazziTest() {
     @Test

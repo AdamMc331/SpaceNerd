@@ -6,7 +6,9 @@ import com.adammcneilly.spacenerd.shared.data.launch.remote.RemoteLaunchService
 import com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto.TSDLaunchDTO
 import com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto.TSDLaunchListResponseDTO
 import com.adammcneilly.spacenerd.shared.data.remote.ktor.BaseKtorClient
+import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 class TSDLaunchService(
     private val client: BaseKtorClient,
 ) : RemoteLaunchService {

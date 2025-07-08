@@ -6,8 +6,10 @@ import androidx.room.TypeConverters
 import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
 import com.adammcneilly.spacenerd.shared.data.local.room.typeconverters.StringListTypeConverter
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 @Entity(tableName = "articles")
 @TypeConverters(StringListTypeConverter::class)
 data class RoomArticleDTO(
