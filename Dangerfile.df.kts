@@ -39,5 +39,13 @@ danger(args) {
             val message = lines.subList(headerIndex, lines.size).joinToString("\n")
             message(message)
         }
+
+        val koverHtmlFile = File("shared/build/reports/kover/index.html")
+        val koverFileText = koverHtmlFile.readText()
+        val koverOverallPattern = """<h1>shared: Overall Coverage Summary </h1>\s*<table class="coverageStats">.*?</table>""".toRegex(RegexOption.DOT_MATCHES_ALL)
+        val matchResult = koverOverallPattern.find(koverFileText)
+        if (matchResult?.value != null) {
+            message(matchResult.value)
+        }
     }
 }
