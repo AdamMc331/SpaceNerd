@@ -29,7 +29,6 @@ fun LaunchDetailScreen(
         content = { scaffoldPadding ->
             LaunchDetailContent(
                 state = state.value,
-                contentPadding = scaffoldPadding,
             )
         },
     )
