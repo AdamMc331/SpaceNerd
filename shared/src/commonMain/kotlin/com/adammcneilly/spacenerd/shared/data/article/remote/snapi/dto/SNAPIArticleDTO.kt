@@ -43,7 +43,7 @@ data class SNAPIArticleDTO(
             summary = this.summary?.trim().orEmpty(),
             authors = this.authors?.map(SNAPIAuthorDTO::toAuthor).orEmpty(),
             publishedAtUtc = Instant.parse(this.publishedAt.orEmpty()),
-            featured = this.featured ?: false,
+            isFeatured = (this.featured == true),
         )
     }
 }

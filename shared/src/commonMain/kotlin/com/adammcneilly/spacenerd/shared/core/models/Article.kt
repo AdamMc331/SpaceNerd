@@ -12,7 +12,7 @@ import kotlin.time.Instant
  * @property[summary] A short summary of the article.
  * @property[publishedAtUtc] The [Instant] that this article was published.
  * @property[authors] A list of [Author] entities who wrote this article.
- * @property[featured] Indicates if this article should be highlighted or featured.
+ * @property[isFeatured] Indicates if this article should be highlighted or featured.
  */
 @OptIn(ExperimentalTime::class)
 data class Article(
@@ -23,5 +23,5 @@ data class Article(
     val summary: String,
     val publishedAtUtc: Instant,
     val authors: List<Author>,
-    val featured: Boolean,
+    val isFeatured: Boolean,
 )

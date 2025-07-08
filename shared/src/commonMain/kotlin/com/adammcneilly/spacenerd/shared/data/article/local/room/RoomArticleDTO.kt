@@ -21,7 +21,7 @@ data class RoomArticleDTO(
     val summary: String,
     val authors: List<String>,
     val publishedAtUtc: String,
-    val featured: Boolean,
+    val isFeatured: Boolean,
 ) {
     constructor(
         article: Article,
@@ -33,7 +33,7 @@ data class RoomArticleDTO(
         summary = article.summary,
         authors = article.authors.map { it.name },
         publishedAtUtc = article.publishedAtUtc.toString(),
-        featured = article.featured,
+        isFeatured = article.isFeatured,
     )
 
     fun toArticle(): Article {
@@ -49,7 +49,7 @@ data class RoomArticleDTO(
                 )
             },
             publishedAtUtc = Instant.parse(publishedAtUtc),
-            featured = featured,
+            isFeatured = isFeatured,
         )
     }
 }

@@ -31,7 +31,7 @@ private val publishedDateFormat = DateTimeComponents.Format {
  * @property[image] The [ImageDisplayModel] for the article's hero image.
  * @property[url] The URL to the actual article source.
  * @property[summary] A short summary of the article.
- * @property[featured] Indicates if this article should be highlighted or featured.
+ * @property[isFeatured] Indicates if this article should be highlighted or featured.
  * @property[isPlaceholder] True if this display model is just a placeholder, false otherwise.
  */
 data class ArticleDisplayModel(
@@ -41,7 +41,7 @@ data class ArticleDisplayModel(
     val image: ImageDisplayModel,
     val url: String,
     val summary: String,
-    val featured: Boolean,
+    val isFeatured: Boolean,
     val isPlaceholder: Boolean = false,
 ) {
     @OptIn(ExperimentalTime::class)
@@ -62,7 +62,7 @@ data class ArticleDisplayModel(
         image = ImageDisplayModel.Remote(article.imageUrl),
         url = article.url,
         summary = article.summary,
-        featured = article.featured,
+        isFeatured = article.isFeatured,
     )
 
     companion object {
@@ -74,7 +74,7 @@ data class ArticleDisplayModel(
                 publishedAt = "Month 00, 0000",
                 url = "",
                 summary = "Placeholder Summary\nMultiline",
-                featured = false,
+                isFeatured = false,
                 isPlaceholder = true,
             )
         }
