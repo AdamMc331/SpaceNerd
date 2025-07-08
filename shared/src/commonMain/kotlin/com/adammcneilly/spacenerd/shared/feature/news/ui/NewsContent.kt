@@ -21,6 +21,8 @@ import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowHeightSizeClass
 import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
 import com.adammcneilly.spacenerd.shared.ui.utils.plus
 
+private const val LARGE_SCREEN_GRID_COLUMN_COUNT = 3
+
 @Composable
 fun NewsContent(
     state: NewsUiState,
@@ -95,7 +97,7 @@ private fun GridNewsContent(
     modifier: Modifier,
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
+        columns = GridCells.Fixed(LARGE_SCREEN_GRID_COLUMN_COUNT),
         contentPadding = contentPadding.plus(PaddingValues(16.dp)),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
