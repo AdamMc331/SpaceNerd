@@ -27,6 +27,7 @@ class NewsContentPaparazziTest : BasePaparazziTest() {
                         name = "NASA",
                     ),
                 ),
+                isFeatured = false,
             )
         }
 
