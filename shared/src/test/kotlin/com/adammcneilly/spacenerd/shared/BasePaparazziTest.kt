@@ -93,5 +93,12 @@ abstract class BasePaparazziTest {
             widthSizeClass = WindowWidthSizeClass.Expanded,
             heightSizeClass = WindowHeightSizeClass.Compact,
         ),
+        TABLET(
+            deviceConfig = DeviceConfig.PIXEL_C.copy(
+                orientation = ScreenOrientation.LANDSCAPE,
+            ),
+            widthSizeClass = WindowWidthSizeClass.Expanded,
+            heightSizeClass = WindowHeightSizeClass.Expanded,
+        ),
     }
 }
