@@ -22,6 +22,18 @@ private val publishedDateFormat = DateTimeComponents.Format {
     year()
 }
 
+/**
+ * A user-friendly representation of an [Article] to be displayed on the UI.
+ *
+ * @property[id] A unique identifier for this article.
+ * @property[title] The title of the article, potentially with author information formatted.
+ * @property[publishedAt] A formatted string of when the article was published.
+ * @property[image] The [ImageDisplayModel] for the article's hero image.
+ * @property[url] The URL to the actual article source.
+ * @property[summary] A short summary of the article.
+ * @property[isFeatured] Indicates if this article should be highlighted or featured.
+ * @property[isPlaceholder] True if this display model is just a placeholder, false otherwise.
+ */
 data class ArticleDisplayModel(
     val id: String,
     val title: AnnotatedString,
@@ -29,6 +41,7 @@ data class ArticleDisplayModel(
     val image: ImageDisplayModel,
     val url: String,
     val summary: String,
+    val isFeatured: Boolean,
     val isPlaceholder: Boolean = false,
 ) {
     @OptIn(ExperimentalTime::class)
@@ -49,6 +62,7 @@ data class ArticleDisplayModel(
         image = ImageDisplayModel.Remote(article.imageUrl),
         url = article.url,
         summary = article.summary,
+        isFeatured = article.isFeatured,
     )
 
     companion object {
@@ -60,6 +74,7 @@ data class ArticleDisplayModel(
                 publishedAt = "Month 00, 0000",
                 url = "",
                 summary = "Placeholder Summary\nMultiline",
+                isFeatured = false,
                 isPlaceholder = true,
             )
         }
