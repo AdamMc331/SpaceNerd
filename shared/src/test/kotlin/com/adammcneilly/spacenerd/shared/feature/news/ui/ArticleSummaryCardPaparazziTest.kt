@@ -6,8 +6,10 @@ import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.Article
 import com.adammcneilly.spacenerd.shared.core.models.Author
 import org.junit.Test
+import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 class ArticleSummaryCardPaparazziTest : BasePaparazziTest() {
     @Test
     fun renderPlaceholder() {
