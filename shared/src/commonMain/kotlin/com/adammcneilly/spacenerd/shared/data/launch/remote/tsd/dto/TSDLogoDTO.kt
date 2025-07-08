@@ -20,5 +20,5 @@ data class TSDLogoDTO(
     @SerialName(value = "thumbnail_url")
     val thumbnailUrl: String? = null,
     @SerialName(value = "variants")
-    val variants: List<String>? = null,
+    val variants: List<TSDImageVariantDTO>? = null,
 )
