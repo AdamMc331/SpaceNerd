@@ -15,7 +15,7 @@ data class TSDMissionDTO(
     @SerialName(value = "image")
     val image: String? = null,
     @SerialName(value = "info_urls")
-    val infoUrls: List<String>? = null,
+    val infoUrls: List<TSDInfoUrlDTO>? = null,
     @SerialName(value = "name")
     val name: String? = null,
     @SerialName(value = "orbit")
