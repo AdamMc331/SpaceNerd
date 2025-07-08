@@ -40,7 +40,7 @@ danger(args) {
             message(message)
         }
 
-        val koverHtmlFile = File("shared/build/reports/kover/index.html")
+        val koverHtmlFile = File("shared/build/reports/kover/html/index.html")
         val koverFileText = koverHtmlFile.readText()
         val koverOverallPattern = """
             <h1>shared: Overall Coverage Summary </h1>\s*<table class="coverageStats">.*?</table>
