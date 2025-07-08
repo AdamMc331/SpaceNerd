@@ -41,7 +41,9 @@ class OfflineFirstLaunchRepository(
                 syncAgencyIfNecessary(coroutineContext, agencyId)
             }
             .onStart {
-                syncLaunchIfNecessary(coroutineContext, id)
+                // Commenting this out for now, we don't learn anything new from
+                // detail, currently.
+//                syncLaunchIfNecessary(coroutineContext, id)
             }
     }
 
