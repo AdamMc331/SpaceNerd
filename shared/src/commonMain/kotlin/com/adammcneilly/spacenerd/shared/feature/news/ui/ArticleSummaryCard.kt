@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,33 +17,35 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
-import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
 import com.eygraber.compose.placeholder.material3.placeholder
-import com.eygraber.compose.placeholder.placeholder
 
 private const val ARTICLE_IMAGE_ASPECT_RATIO = 1.5F
 
+enum class ArticleSummaryCardVariant {
+    Compact,
+    Expanded,
+}
+
 @Composable
 fun ArticleSummaryCard(
+    variant: ArticleSummaryCardVariant,
     article: ArticleDisplayModel,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
-        WindowWidthSizeClass.Medium,
-        WindowWidthSizeClass.Expanded,
-    )
-
-    if (isAtLeastMediumWidth) {
-        MediumExpandedCard(article, modifier)
-    } else {
-        CompactCard(article, modifier)
+    when (variant) {
+        ArticleSummaryCardVariant.Compact -> {
+            CompactCard(article, modifier)
+        }
+        ArticleSummaryCardVariant.Expanded -> {
+            ExpandedCard(article, modifier)
+        }
     }
 }
 
 @Composable
-private fun MediumExpandedCard(
+private fun ExpandedCard(
     article: ArticleDisplayModel,
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
 ) {
     ElevatedCard(
         shape = MaterialTheme.shapes.medium,
@@ -76,7 +77,7 @@ private fun MediumExpandedCard(
 @Composable
 private fun CompactCard(
     article: ArticleDisplayModel,
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
 ) {
     ElevatedCard(
         shape = MaterialTheme.shapes.large,
