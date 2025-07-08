@@ -107,6 +107,7 @@ class OfflineFirstLaunchRepository(
         }
     }
 
+    @Suppress("UnusedPrivateMember")
     private fun syncLaunchIfNecessary(
         coroutineContext: CoroutineContext,
         id: String,
