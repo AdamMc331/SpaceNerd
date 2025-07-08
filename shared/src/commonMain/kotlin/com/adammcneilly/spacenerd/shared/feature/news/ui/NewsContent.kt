@@ -5,11 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
@@ -21,7 +21,7 @@ import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowHeightSizeClass
 import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
 import com.adammcneilly.spacenerd.shared.ui.utils.plus
 
-private const val LARGE_SCREEN_GRID_COLUMN_COUNT = 3
+private const val LARGE_SCREEN_GRID_COLUMN_COUNT = 2
 
 @Composable
 fun NewsContent(
@@ -96,14 +96,14 @@ private fun GridNewsContent(
     onEvent: (NewsUiEvent) -> Unit,
     modifier: Modifier,
 ) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(LARGE_SCREEN_GRID_COLUMN_COUNT),
+    LazyVerticalStaggeredGrid(
+        columns = StaggeredGridCells.Fixed(LARGE_SCREEN_GRID_COLUMN_COUNT),
         contentPadding = contentPadding.plus(PaddingValues(16.dp)),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalItemSpacing = 16.dp,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier,
     ) {
-        item(span = { GridItemSpan(maxLineSpan) }) {
+        item(span = StaggeredGridItemSpan.FullLine) {
             Text(
                 text = "News",
                 style = MaterialTheme.typography.titleLarge,
