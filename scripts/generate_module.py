@@ -21,6 +21,28 @@ print("Writing files to folder: " + module_root)
 # Copy basic structure
 shutil.copytree(root + "/scripts/module_templates/", module_root)
 
+# Path to the build.gradle.kts file in the newly copied module
+build_gradle_path = os.path.join(module_root, "build.gradle.kts")
+
+try:
+    # Read the content of the copied build.gradle.kts
+    with open(build_gradle_path, 'r') as file:
+        file_content = file.read()
+
+    # Replace the placeholder text
+    modified_content = file_content.replace("REPLACEME", "com.adammcneilly.spacenerd.{module_package}")
+
+    # Write the modified content back to the build.gradle.kts file
+    with open(build_gradle_path, 'w') as file:
+        file.write(modified_content)
+
+    print(f"Updated namespace in {build_gradle_path}")
+
+except FileNotFoundError:
+    print(f"Error: {build_gradle_path} not found after copy.")
+except Exception as e:
+    print(f"An error occurred while modifying {build_gradle_path}: {e}")
+
 # Generate source folders
 os.makedirs(module_root + "/src/commonMain/kotlin/com/adammcneilly/spacenerd/" + "/".join(module_package.split(".")))
 
