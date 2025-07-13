@@ -1,12 +1,12 @@
 package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
 
+import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.shared.BasePaparazziTest
 import com.adammcneilly.spacenerd.shared.core.displaymodels.AgencyDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.shared.core.displaymodels.MissionDisplayModel
-import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
 import kotlin.test.Test
 
 class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
