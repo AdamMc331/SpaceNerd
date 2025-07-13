@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.data.remote.ktor
+package com.adammcneilly.spacenerd.data.remote.ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -9,7 +9,6 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.logging.SIMPLE
 import io.ktor.client.request.HttpRequestBuilder
-import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType

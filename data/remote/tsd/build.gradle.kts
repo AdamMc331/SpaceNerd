@@ -1,10 +1,11 @@
 plugins {
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
-    jvm()
+    androidTarget()
 
     listOf(
         iosX64(),
@@ -15,6 +16,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:models"))
+            implementation(project(":data:remote:ktor"))
             implementation(libs.kotlinx.serialization.json)
         }
 

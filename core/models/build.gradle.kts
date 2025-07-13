@@ -1,9 +1,10 @@
 plugins {
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
 kotlin {
-    jvm()
+    androidTarget()
 
     listOf(
         iosX64(),
