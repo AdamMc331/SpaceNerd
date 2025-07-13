@@ -46,6 +46,7 @@ kotlin {
 
         commonMain.dependencies {
             implementation(project(":core:models"))
+            implementation(project(":data:remote:ktor"))
             implementation(project(":data:remote:tsd"))
             implementation(compose.components.resources)
             implementation(compose.foundation)
