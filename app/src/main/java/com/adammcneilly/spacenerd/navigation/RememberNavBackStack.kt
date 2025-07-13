@@ -24,9 +24,7 @@ import kotlinx.serialization.serializer
 
 /**
  * This file is a work around for: https://issuetracker.google.com/issues/420443609
- */
-
-/**
+ *
  * Provides a [NavBackStack] that is automatically remembered in the Compose hierarchy across
  * process death and config changes.
  *
