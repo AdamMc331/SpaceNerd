@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd.shared.core.displaymodels
 
 import androidx.compose.ui.graphics.Color
-import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.shared.ui.theme.SpaceNerdColors
 
 data class LaunchStatusDisplayModel(

@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd.shared.core.displaymodels
 
 import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.core.models.LaunchStatus
 
 data class LaunchDisplayModel(
     val id: String,
