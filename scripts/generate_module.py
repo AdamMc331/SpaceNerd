@@ -30,7 +30,7 @@ try:
         file_content = file.read()
 
     # Replace the placeholder text
-    modified_content = file_content.replace("REPLACEME", "com.adammcneilly.spacenerd.{module_package}")
+    modified_content = file_content.replace("REPLACEME", f"com.adammcneilly.spacenerd.{module_package}")
 
     # Write the modified content back to the build.gradle.kts file
     with open(build_gradle_path, 'w') as file:
