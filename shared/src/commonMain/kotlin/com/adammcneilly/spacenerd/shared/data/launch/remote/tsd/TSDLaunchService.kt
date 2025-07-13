@@ -1,10 +1,10 @@
 package com.adammcneilly.spacenerd.shared.data.launch.remote.tsd
 
+import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDLaunchDTO
+import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDLaunchListResponseDTO
 import com.adammcneilly.spacenerd.shared.core.models.Launch
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchListRequest
 import com.adammcneilly.spacenerd.shared.data.launch.remote.RemoteLaunchService
-import com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto.TSDLaunchDTO
-import com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto.TSDLaunchListResponseDTO
 import com.adammcneilly.spacenerd.shared.data.remote.ktor.BaseKtorClient
 import kotlin.time.ExperimentalTime
 

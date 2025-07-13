@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.shared.data.agency.remote.tsd
 
+import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDAgencyDTO
 import com.adammcneilly.spacenerd.shared.core.models.Agency
 import com.adammcneilly.spacenerd.shared.data.agency.remote.RemoteAgencyService
-import com.adammcneilly.spacenerd.shared.data.launch.remote.tsd.dto.TSDAgencyDTO
 import com.adammcneilly.spacenerd.shared.data.remote.ktor.BaseKtorClient
 
 class TSDAgencyService(
