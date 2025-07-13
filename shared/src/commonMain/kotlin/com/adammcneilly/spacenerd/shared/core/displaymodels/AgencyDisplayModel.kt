@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.core.displaymodels
 
-import com.adammcneilly.spacenerd.shared.core.models.Agency
+import com.adammcneilly.spacenerd.core.models.Agency
 
 data class AgencyDisplayModel(
     val id: String,

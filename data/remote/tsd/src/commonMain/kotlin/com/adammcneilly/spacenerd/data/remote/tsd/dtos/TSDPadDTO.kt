@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
-import com.adammcneilly.spacenerd.shared.core.models.LaunchPad
+import com.adammcneilly.spacenerd.core.models.LaunchPad
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

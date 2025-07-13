@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.article
 
-import com.adammcneilly.spacenerd.shared.core.models.Article
+import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.shared.data.article.local.LocalArticleService
 import com.adammcneilly.spacenerd.shared.data.article.remote.RemoteArticleService
 import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository

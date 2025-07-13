@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.launch.local.room
 
-import com.adammcneilly.spacenerd.shared.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchListRequest
 import com.adammcneilly.spacenerd.shared.data.launch.local.LocalLaunchService
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDetailDTO

@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.article.remote.snapi.dto
 
-import com.adammcneilly.spacenerd.shared.core.models.Article
+import com.adammcneilly.spacenerd.core.models.Article
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.time.ExperimentalTime

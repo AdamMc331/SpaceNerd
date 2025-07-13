@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
-import com.adammcneilly.spacenerd.shared.core.models.Agency
+import com.adammcneilly.spacenerd.core.models.Agency
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
