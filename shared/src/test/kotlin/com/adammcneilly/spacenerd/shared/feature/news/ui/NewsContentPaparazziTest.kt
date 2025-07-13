@@ -2,10 +2,10 @@ package com.adammcneilly.spacenerd.shared.feature.news.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
+import com.adammcneilly.spacenerd.core.models.Author
 import com.adammcneilly.spacenerd.shared.BasePaparazziTest
 import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.core.models.Article
-import com.adammcneilly.spacenerd.shared.core.models.Author
 import kotlin.test.Test
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant

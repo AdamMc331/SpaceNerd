@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.core.models
+package com.adammcneilly.spacenerd.core.models
 
 enum class LaunchStatus {
     Go,

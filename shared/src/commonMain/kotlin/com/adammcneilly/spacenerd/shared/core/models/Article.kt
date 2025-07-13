@@ -1,5 +1,6 @@
-package com.adammcneilly.spacenerd.shared.core.models
+package com.adammcneilly.spacenerd.core.models
 
+import com.adammcneilly.spacenerd.core.models.Author
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
@@ -11,7 +12,7 @@ import kotlin.time.Instant
  * @property[url] The URL to the actual article source.
  * @property[summary] A short summary of the article.
  * @property[publishedAtUtc] The [Instant] that this article was published.
- * @property[authors] A list of [Author] entities who wrote this article.
+ * @property[authors] A list of [com.adammcneilly.spacenerd.core.models.Author] entities who wrote this article.
  * @property[isFeatured] Indicates if this article should be highlighted or featured.
  */
 @OptIn(ExperimentalTime::class)
