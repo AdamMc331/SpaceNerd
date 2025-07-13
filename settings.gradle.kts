@@ -16,6 +16,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Space Nerd"
 include(":app")
-include(":shared")
-include(":data:remote:tsd")
 include(":core:models")
+include(":data:remote:tsd")
+include(":shared")
