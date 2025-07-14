@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package com.adammcneilly.spacenerd.core.designsystem
 
 import androidx.compose.ui.graphics.Color
