@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.core.displaymodels
 
-import com.adammcneilly.spacenerd.shared.core.models.Mission
+import com.adammcneilly.spacenerd.core.models.Mission
 
 data class MissionDisplayModel(
     val id: String,

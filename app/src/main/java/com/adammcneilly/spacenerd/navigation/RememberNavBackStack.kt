@@ -1,4 +1,5 @@
 package com.adammcneilly.spacenerd.navigation
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.autoSaver
@@ -22,6 +23,8 @@ import kotlinx.serialization.encoding.encodeStructure
 import kotlinx.serialization.serializer
 
 /**
+ * This file is a work around for: https://issuetracker.google.com/issues/420443609
+ *
  * Provides a [NavBackStack] that is automatically remembered in the Compose hierarchy across
  * process death and config changes.
  *

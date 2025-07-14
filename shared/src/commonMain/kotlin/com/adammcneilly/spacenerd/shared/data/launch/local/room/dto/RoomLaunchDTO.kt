@@ -2,8 +2,8 @@ package com.adammcneilly.spacenerd.shared.data.launch.local.room.dto
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.adammcneilly.spacenerd.shared.core.models.Launch
-import com.adammcneilly.spacenerd.shared.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)

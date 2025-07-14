@@ -3,8 +3,8 @@ package com.adammcneilly.spacenerd.shared.data.article.local.room
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.adammcneilly.spacenerd.shared.core.models.Article
-import com.adammcneilly.spacenerd.shared.core.models.Author
+import com.adammcneilly.spacenerd.core.models.Article
+import com.adammcneilly.spacenerd.core.models.Author
 import com.adammcneilly.spacenerd.shared.data.local.room.typeconverters.StringListTypeConverter
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant

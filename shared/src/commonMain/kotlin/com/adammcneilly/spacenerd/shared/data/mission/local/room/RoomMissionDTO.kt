@@ -2,7 +2,7 @@ package com.adammcneilly.spacenerd.shared.data.mission.local.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.adammcneilly.spacenerd.shared.core.models.Mission
+import com.adammcneilly.spacenerd.core.models.Mission
 
 @Entity(tableName = "missions")
 data class RoomMissionDTO(

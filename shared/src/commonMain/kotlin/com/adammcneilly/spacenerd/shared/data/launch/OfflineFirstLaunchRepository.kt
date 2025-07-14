@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.launch
 
-import com.adammcneilly.spacenerd.shared.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.shared.data.agency.local.LocalAgencyService
 import com.adammcneilly.spacenerd.shared.data.agency.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository

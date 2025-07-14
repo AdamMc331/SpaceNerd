@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.launch.local
 
-import com.adammcneilly.spacenerd.shared.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.shared.data.launch.LaunchListRequest
 import kotlinx.coroutines.flow.Flow
 

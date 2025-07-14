@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import com.adammcneilly.spacenerd.shared.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.shared.data.agency.local.room.dto.RoomAgencyDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDTO
 import com.adammcneilly.spacenerd.shared.data.launch.local.room.dto.RoomLaunchDetailDTO

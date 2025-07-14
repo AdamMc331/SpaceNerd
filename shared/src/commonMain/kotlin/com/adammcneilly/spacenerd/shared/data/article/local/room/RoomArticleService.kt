@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.article.local.room
 
-import com.adammcneilly.spacenerd.shared.core.models.Article
+import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.shared.data.article.local.LocalArticleService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

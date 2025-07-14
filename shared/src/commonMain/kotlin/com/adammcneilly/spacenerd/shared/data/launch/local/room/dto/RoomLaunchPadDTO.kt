@@ -3,8 +3,8 @@ package com.adammcneilly.spacenerd.shared.data.launch.local.room.dto
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.adammcneilly.spacenerd.shared.core.models.LaunchPad
-import com.adammcneilly.spacenerd.shared.core.models.Location
+import com.adammcneilly.spacenerd.core.models.LaunchPad
+import com.adammcneilly.spacenerd.core.models.Location
 
 @Entity(tableName = "launchpads")
 data class RoomLaunchPadDTO(
