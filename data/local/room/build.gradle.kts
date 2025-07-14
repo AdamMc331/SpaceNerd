@@ -3,7 +3,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -21,8 +23,14 @@ kotlin {
     )
 
     sourceSets {
-        commonMain.dependencies {
+        androidMain.dependencies {
+            implementation(libs.androidx.room.runtime.android)
+        }
 
+        commonMain.dependencies {
+            implementation(project(":core:models"))
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
 
         commonTest.dependencies {
@@ -47,4 +55,17 @@ android {
     }
 
     namespace = "com.adammcneilly.spacenerd.data.local.room"
+}
+
+dependencies {
+    // KSP configuration for Room code generation
+    add("kspCommonMainMetadata", libs.androidx.room.compiler)
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspIosX64", libs.androidx.room.compiler)
+    add("kspIosArm64", libs.androidx.room.compiler)
+    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
