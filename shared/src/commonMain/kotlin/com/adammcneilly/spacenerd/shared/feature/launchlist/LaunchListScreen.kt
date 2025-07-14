@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListContent
 import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListUiEvent
 import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationBar

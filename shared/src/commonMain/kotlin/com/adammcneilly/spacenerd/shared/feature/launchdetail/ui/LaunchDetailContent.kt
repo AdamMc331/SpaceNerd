@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.shared.ui.components.Pill
 import com.adammcneilly.spacenerd.shared.ui.utils.sharedBounds
@@ -51,31 +51,35 @@ fun LaunchDetailContent(
             LaunchSubtitle(state)
         }
 
-        if (state.launch.agency != null) {
-            item {
-                LaunchAgencyCard(
-                    agency = state.launch.agency,
-                    modifier = Modifier
-                        .padding(top = 16.dp)
-                        .fillMaxWidth()
-                        .padding(
-                            horizontal = 16.dp,
-                        ),
-                )
+        with(state.launch.agency) {
+            if (this@with != null) {
+                item {
+                    LaunchAgencyCard(
+                        agency = this@with,
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .fillMaxWidth()
+                            .padding(
+                                horizontal = 16.dp,
+                            ),
+                    )
+                }
             }
         }
 
-        if (state.launch.mission != null) {
-            item {
-                LaunchMissionCard(
-                    mission = state.launch.mission,
-                    modifier = Modifier
-                        .padding(top = 16.dp)
-                        .fillMaxWidth()
-                        .padding(
-                            horizontal = 16.dp,
-                        ),
-                )
+        with(state.launch.mission) {
+            if (this@with != null) {
+                item {
+                    LaunchMissionCard(
+                        mission = this@with,
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .fillMaxWidth()
+                            .padding(
+                                horizontal = 16.dp,
+                            ),
+                    )
+                }
             }
         }
     }
