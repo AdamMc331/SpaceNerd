@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -25,11 +24,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:designsystem"))
-            implementation(project(":core:models"))
-            implementation(compose.components.resources)
             implementation(compose.ui)
-            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
@@ -53,5 +48,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.core.displaymodels"
+    namespace = "com.adammcneilly.spacenerd.core.designsystem"
 }

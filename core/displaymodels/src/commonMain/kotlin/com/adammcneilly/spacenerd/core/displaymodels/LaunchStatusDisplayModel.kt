@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
 import androidx.compose.ui.graphics.Color
+import com.adammcneilly.spacenerd.core.designsystem.SpaceNerdColors
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
-import com.adammcneilly.spacenerd.shared.ui.theme.SpaceNerdColors
 
 data class LaunchStatusDisplayModel(
     val label: String,
