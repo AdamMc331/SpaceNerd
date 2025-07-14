@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd.shared.data.cache.local.room
 
+import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
 import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository
-import com.adammcneilly.spacenerd.shared.datetime.DateTimeProvider
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 

@@ -45,6 +45,7 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(project(":core:datetime"))
             implementation(project(":core:displaymodels"))
             implementation(project(":core:models"))
             implementation(project(":data:remote:ktor"))
