@@ -23,6 +23,8 @@ kotlin {
         }
     }
 
+    // Not building iOS because build times
+    // and because I don't use it yet
 //    listOf(
 //        iosX64(),
 //        iosArm64(),
@@ -104,6 +106,7 @@ dependencies {
     // KSP configuration for Room code generation
     add("kspCommonMainMetadata", libs.androidx.room.compiler)
     add("kspAndroid", libs.androidx.room.compiler)
+    // Add when we include iOS support
 //    add("kspIosX64", libs.androidx.room.compiler)
 //    add("kspIosArm64", libs.androidx.room.compiler)
 //    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
