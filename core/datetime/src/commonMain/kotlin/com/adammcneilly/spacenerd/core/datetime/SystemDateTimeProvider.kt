@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.datetime
+package com.adammcneilly.spacenerd.core.datetime
 
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime

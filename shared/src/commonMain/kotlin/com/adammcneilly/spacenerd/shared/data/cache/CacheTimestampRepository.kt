@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.data.cache
 
-import com.adammcneilly.spacenerd.shared.datetime.DateTimeProvider
+import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
