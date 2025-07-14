@@ -16,6 +16,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Space Nerd"
 include(":app")
+include(":core:datetime")
 include(":core:models")
 include(":data:remote:ktor")
 include(":data:remote:tsd")
