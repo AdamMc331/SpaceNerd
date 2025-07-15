@@ -1,14 +1,11 @@
 package com.adammcneilly.spacenerd.data.launch
 
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.data.agency.local.LocalAgencyService
+import com.adammcneilly.spacenerd.data.agency.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.data.launch.local.LocalLaunchService
 import com.adammcneilly.spacenerd.data.launch.remote.RemoteLaunchService
-import com.adammcneilly.spacenerd.shared.data.agency.local.LocalAgencyService
-import com.adammcneilly.spacenerd.shared.data.agency.remote.RemoteAgencyService
-import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository
-import com.adammcneilly.spacenerd.shared.data.launch.local.LocalLaunchService
-import com.adammcneilly.spacenerd.shared.data.launch.remote.RemoteLaunchService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach
@@ -55,7 +52,7 @@ class OfflineFirstLaunchRepository(
         agencyId: String,
     ) {
         CoroutineScope(coroutineContext).launch {
-            val cacheKey = "${CacheTimestampRepository.KEY_AGENCY_PREFIX}$agencyId"
+            val cacheKey = "$KEY_AGENCY_PREFIX$agencyId"
 
             val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
                 key = cacheKey,
@@ -85,7 +82,7 @@ class OfflineFirstLaunchRepository(
         request: LaunchListRequest,
     ) {
         CoroutineScope(coroutineContext).launch {
-            val cacheKey = "${CacheTimestampRepository.KEY_LAUNCHES_PREFIX}_$request"
+            val cacheKey = "$KEY_LAUNCH_PREFIX$request"
 
             val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
                 key = cacheKey,
@@ -116,7 +113,7 @@ class OfflineFirstLaunchRepository(
         id: String,
     ) {
         CoroutineScope(coroutineContext).launch {
-            val cacheKey = "${CacheTimestampRepository.KEY_LAUNCH_PREFIX}$id"
+            val cacheKey = "$KEY_LAUNCH_PREFIX$id"
 
             val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
                 key = cacheKey,
@@ -139,5 +136,10 @@ class OfflineFirstLaunchRepository(
                 }
             }
         }
+    }
+
+    companion object {
+        private const val KEY_AGENCY_PREFIX = "agency_"
+        private const val KEY_LAUNCH_PREFIX = "launch_"
     }
 }
