@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.shared.core.displaymodels.MissionDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
 import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.eygraber.compose.placeholder.material3.placeholder
 

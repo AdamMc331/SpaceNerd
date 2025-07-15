@@ -22,7 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.adammcneilly.spacenerd.shared.ui.components.Pill
 import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
