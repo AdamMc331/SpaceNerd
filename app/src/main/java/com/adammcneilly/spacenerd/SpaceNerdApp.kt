@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd
 
 import android.app.Application
-import com.adammcneilly.spacenerd.shared.ApplicationContextProvider
+import com.adammcneilly.spacenerd.data.local.room.ApplicationContextProvider
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
