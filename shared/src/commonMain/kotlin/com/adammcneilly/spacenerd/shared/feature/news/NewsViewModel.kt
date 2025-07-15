@@ -2,7 +2,7 @@ package com.adammcneilly.spacenerd.shared.feature.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.shared.data.article.ArticleRepository
 import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiEvent
 import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiState

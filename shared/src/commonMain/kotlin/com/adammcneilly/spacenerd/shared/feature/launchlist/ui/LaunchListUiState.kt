@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.feature.launchlist.ui
 
-import com.adammcneilly.spacenerd.shared.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 
 data class LaunchListUiState(
     val launches: List<LaunchDisplayModel>,

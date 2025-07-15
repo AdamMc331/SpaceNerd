@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.shared.feature.news.ui
 
-import com.adammcneilly.spacenerd.shared.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 
 data class NewsUiState(
     val articles: List<ArticleDisplayModel>,

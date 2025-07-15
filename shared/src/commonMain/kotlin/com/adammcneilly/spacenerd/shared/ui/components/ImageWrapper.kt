@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import coil3.compose.AsyncImage
-import com.adammcneilly.spacenerd.shared.core.displaymodels.ImageDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import org.jetbrains.compose.resources.painterResource
 
 /**
