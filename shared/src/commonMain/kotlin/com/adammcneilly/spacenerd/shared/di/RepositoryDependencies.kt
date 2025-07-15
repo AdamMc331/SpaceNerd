@@ -1,14 +1,14 @@
 package com.adammcneilly.spacenerd.shared.di
 
-import com.adammcneilly.spacenerd.shared.data.agency.AgencyRepository
-import com.adammcneilly.spacenerd.shared.data.agency.OfflineFirstAgencyRepository
+import com.adammcneilly.spacenerd.data.agency.AgencyRepository
+import com.adammcneilly.spacenerd.data.agency.OfflineFirstAgencyRepository
+import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
+import com.adammcneilly.spacenerd.data.cache.room.RoomCacheTimestampRepository
+import com.adammcneilly.spacenerd.data.launch.LaunchRepository
+import com.adammcneilly.spacenerd.data.launch.OfflineFirstLaunchRepository
+import com.adammcneilly.spacenerd.data.local.room.SpaceNerdDatabase
 import com.adammcneilly.spacenerd.shared.data.article.ArticleRepository
 import com.adammcneilly.spacenerd.shared.data.article.OfflineFirstArticleRepository
-import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository
-import com.adammcneilly.spacenerd.shared.data.cache.local.room.RoomCacheTimestampRepository
-import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
-import com.adammcneilly.spacenerd.shared.data.launch.OfflineFirstLaunchRepository
-import com.adammcneilly.spacenerd.shared.data.local.room.SpaceNerdDatabase
 import org.koin.dsl.module
 
 val repositoryModule = module {

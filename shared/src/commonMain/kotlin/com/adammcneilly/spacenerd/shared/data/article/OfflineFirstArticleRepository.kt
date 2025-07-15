@@ -1,9 +1,9 @@
 package com.adammcneilly.spacenerd.shared.data.article
 
 import com.adammcneilly.spacenerd.core.models.Article
+import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.shared.data.article.local.LocalArticleService
 import com.adammcneilly.spacenerd.shared.data.article.remote.RemoteArticleService
-import com.adammcneilly.spacenerd.shared.data.cache.CacheTimestampRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onStart
@@ -20,7 +20,7 @@ class OfflineFirstArticleRepository(
         return localArticleService.getArticles()
             .onStart {
                 CoroutineScope(coroutineContext).launch {
-                    val cacheKey = CacheTimestampRepository.KEY_ARTICLES
+                    val cacheKey = ""
 
                     val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
                         key = cacheKey,

@@ -3,8 +3,8 @@ package com.adammcneilly.spacenerd.shared.feature.launchlist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
-import com.adammcneilly.spacenerd.shared.data.launch.LaunchListRequest
-import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
+import com.adammcneilly.spacenerd.data.launch.LaunchListRequest
+import com.adammcneilly.spacenerd.data.launch.LaunchRepository
 import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListUiEvent
 import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListUiState
 import kotlinx.coroutines.flow.MutableStateFlow

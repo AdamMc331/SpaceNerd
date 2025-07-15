@@ -3,7 +3,7 @@ package com.adammcneilly.spacenerd.shared.feature.launchdetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
-import com.adammcneilly.spacenerd.shared.data.launch.LaunchRepository
+import com.adammcneilly.spacenerd.data.launch.LaunchRepository
 import com.adammcneilly.spacenerd.shared.feature.launchdetail.ui.LaunchDetailUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
