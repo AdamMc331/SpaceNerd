@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.data.agency
 import com.adammcneilly.spacenerd.core.models.Agency
 import com.adammcneilly.spacenerd.data.agency.local.LocalAgencyService
 import com.adammcneilly.spacenerd.data.agency.remote.RemoteAgencyService
+import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onStart
@@ -21,7 +22,7 @@ class OfflineFirstAgencyRepository(
         return localAgencyService.getAgency(id)
             .onStart {
                 CoroutineScope(coroutineContext).launch {
-                    val cacheKey = "${CacheTimestampRepository.KEY_AGENCY_PREFIX}$id"
+                    val cacheKey = "${CACHE_KEY_AGENCY_PREFIX}$id"
 
                     val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
                         key = cacheKey,
@@ -45,5 +46,9 @@ class OfflineFirstAgencyRepository(
                     }
                 }
             }
+    }
+
+    companion object {
+        private const val CACHE_KEY_AGENCY_PREFIX = "agency_"
     }
 }
