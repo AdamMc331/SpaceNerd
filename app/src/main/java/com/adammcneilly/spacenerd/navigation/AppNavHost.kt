@@ -10,8 +10,8 @@ import androidx.navigation3.ui.NavDisplay
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
+import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListScreen
 import com.adammcneilly.spacenerd.feature.stationlist.StationListScreen
-import com.adammcneilly.spacenerd.shared.feature.astronautlist.AstronautListScreen
 import com.adammcneilly.spacenerd.shared.feature.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.shared.feature.launchlist.LaunchListScreen
 import com.adammcneilly.spacenerd.shared.feature.news.NewsScreen
