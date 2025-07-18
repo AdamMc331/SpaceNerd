@@ -43,7 +43,7 @@ danger(args) {
         val koverHtmlFile = File("build/reports/kover/html/index.html")
         val koverFileText = koverHtmlFile.readText()
         val koverOverallPattern = """
-            <h1>shared: Overall Coverage Summary </h1>\s*<table class="coverageStats">.*?</table>
+            <h1>:: Overall Coverage Summary </h1>\s*<table class="coverageStats">.*?</table>
             """.trimIndent().toRegex(RegexOption.DOT_MATCHES_ALL)
         val matchResult = koverOverallPattern.find(koverFileText)
         if (matchResult?.value != null) {
