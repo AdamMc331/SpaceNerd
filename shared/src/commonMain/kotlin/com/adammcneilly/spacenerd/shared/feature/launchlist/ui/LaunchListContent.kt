@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.shared.ui.utils.plus
+import com.adammcneilly.spacenerd.core.designsystem.utils.plus
 
 @Composable
 fun LaunchListContent(

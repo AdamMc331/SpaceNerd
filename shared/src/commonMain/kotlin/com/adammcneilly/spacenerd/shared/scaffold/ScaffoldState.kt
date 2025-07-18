@@ -10,7 +10,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
-import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
+import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 val LocalSharedTransitionScope = compositionLocalOf<SharedTransitionScope?> {

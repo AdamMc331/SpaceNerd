@@ -23,8 +23,16 @@ kotlin {
     )
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.androidx.activity.compose)
+        }
+
         commonMain.dependencies {
+            implementation(compose.components.resources)
+            implementation(compose.material3)
             implementation(compose.ui)
+            implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.material.kolor)
         }
 
         commonTest.dependencies {

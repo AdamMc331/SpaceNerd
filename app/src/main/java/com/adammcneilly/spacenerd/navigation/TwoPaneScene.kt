@@ -8,8 +8,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.Scene
-import com.adammcneilly.spacenerd.shared.ui.utils.LocalSceneType
-import com.adammcneilly.spacenerd.shared.ui.utils.SceneType
+import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSceneType
+import com.adammcneilly.spacenerd.core.designsystem.utils.SceneType
 
 class TwoPaneScene(
     override val key: Any,
