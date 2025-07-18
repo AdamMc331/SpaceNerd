@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceTheme
+import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSharedTransitionScope
 import com.adammcneilly.spacenerd.shared.di.appModules
-import com.adammcneilly.spacenerd.shared.scaffold.LocalSharedTransitionScope
 import org.koin.compose.KoinApplication
 
 @Composable
