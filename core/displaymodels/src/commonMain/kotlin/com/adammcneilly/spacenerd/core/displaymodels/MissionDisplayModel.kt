@@ -1,12 +1,13 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
+import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Mission
 
 data class MissionDisplayModel(
     val id: String,
     val name: String,
     val description: String,
-    val image: ImageDisplayModel,
+    val image: ImageModel,
     val isPlaceholder: Boolean = false,
 ) {
     constructor(
@@ -15,7 +16,7 @@ data class MissionDisplayModel(
         id = mission.id,
         name = mission.name,
         description = mission.description,
-        image = ImageDisplayModel.Remote(mission.imageUrl),
+        image = ImageModel.Remote(mission.imageUrl),
     )
 
     companion object {
@@ -24,7 +25,7 @@ data class MissionDisplayModel(
                 id = "",
                 name = "Mission Placeholder",
                 description = "Some longer description of the mission\nmultiline for sure",
-                image = ImageDisplayModel.Placeholder,
+                image = ImageModel.Placeholder,
                 isPlaceholder = true,
             )
         }

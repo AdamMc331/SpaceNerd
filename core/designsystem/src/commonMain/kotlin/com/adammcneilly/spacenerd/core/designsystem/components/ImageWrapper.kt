@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.ui.components
+package com.adammcneilly.spacenerd.core.designsystem.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import coil3.compose.AsyncImage
-import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
+import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import org.jetbrains.compose.resources.painterResource
 
 /**
@@ -17,13 +17,13 @@ import org.jetbrains.compose.resources.painterResource
  */
 @Composable
 fun ImageWrapper(
-    image: ImageDisplayModel,
+    image: ImageModel,
     contentDescription: String?,
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Fit,
 ) {
     when (image) {
-        is ImageDisplayModel.Local -> {
+        is ImageModel.Local -> {
             LocalImage(
                 image = image,
                 contentDescription = contentDescription,
@@ -32,7 +32,7 @@ fun ImageWrapper(
             )
         }
 
-        is ImageDisplayModel.Remote -> {
+        is ImageModel.Remote -> {
             RemoteImage(
                 image = image,
                 contentDescription = contentDescription,
@@ -41,7 +41,7 @@ fun ImageWrapper(
             )
         }
 
-        is ImageDisplayModel.Placeholder -> {
+        is ImageModel.Placeholder -> {
             PlaceholderImage(modifier)
         }
         else -> {
@@ -52,7 +52,7 @@ fun ImageWrapper(
 
 @Composable
 private fun RemoteImage(
-    image: ImageDisplayModel.Remote,
+    image: ImageModel.Remote,
     contentDescription: String?,
     contentScale: ContentScale,
     modifier: Modifier,
@@ -67,7 +67,7 @@ private fun RemoteImage(
 
 @Composable
 private fun LocalImage(
-    image: ImageDisplayModel.Local,
+    image: ImageModel.Local,
     contentDescription: String?,
     contentScale: ContentScale,
     modifier: Modifier,

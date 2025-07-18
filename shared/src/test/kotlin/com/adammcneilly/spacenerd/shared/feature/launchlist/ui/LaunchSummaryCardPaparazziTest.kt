@@ -1,6 +1,5 @@
 package com.adammcneilly.spacenerd.shared.feature.launchlist.ui
 
-import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
@@ -24,7 +23,7 @@ class LaunchSummaryCardPaparazziTest : BasePaparazziTest() {
         val launch = LaunchDisplayModel(
             id = "123",
             name = "Falcon 9 Block 5 | Starlink Group 12-19",
-            image = ImageDisplayModel.Placeholder,
+            image = ImageModel.Placeholder,
             status = LaunchStatusDisplayModel(LaunchStatus.Go),
             agency = null,
             mission = null,

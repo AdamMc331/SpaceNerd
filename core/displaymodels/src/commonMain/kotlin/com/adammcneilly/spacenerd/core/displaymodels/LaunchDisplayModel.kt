@@ -1,12 +1,13 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
+import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 
 data class LaunchDisplayModel(
     val id: String,
     val name: String,
-    val image: ImageDisplayModel,
+    val image: ImageModel,
     val status: LaunchStatusDisplayModel,
     val subtitle: String,
     val agency: AgencyDisplayModel?,
@@ -16,7 +17,7 @@ data class LaunchDisplayModel(
     constructor(launch: Launch) : this(
         id = launch.id,
         name = launch.name,
-        image = ImageDisplayModel.Remote(launch.imageUrl),
+        image = ImageModel.Remote(launch.imageUrl),
         status = LaunchStatusDisplayModel(launch.status),
         agency = launch.agency?.let(::AgencyDisplayModel),
         subtitle = launch.buildSubtitle(),
@@ -28,7 +29,7 @@ data class LaunchDisplayModel(
             return LaunchDisplayModel(
                 id = "",
                 name = "Placeholder Launch Name",
-                image = ImageDisplayModel.Remote(""),
+                image = ImageModel.Remote(""),
                 status = LaunchStatusDisplayModel(LaunchStatus.Unknown),
                 subtitle = "Placeholder Subtitle",
                 agency = AgencyDisplayModel.placeholder(),
