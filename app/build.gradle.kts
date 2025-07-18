@@ -60,6 +60,7 @@ dependencies {
     implementation(project(":core:displaymodels"))
     implementation(project(":core:scaffold"))
     implementation(project(":data:local:room"))
+    implementation(project(":feature:stationlist"))
     implementation(project(":shared"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
