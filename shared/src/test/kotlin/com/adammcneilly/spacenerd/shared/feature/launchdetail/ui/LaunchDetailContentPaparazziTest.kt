@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
 
+import androidx.compose.foundation.layout.PaddingValues
 import com.adammcneilly.spacenerd.core.displaymodels.AgencyDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
@@ -17,6 +18,7 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
         ) {
             LaunchDetailContent(
                 state = LaunchDetailUiState.default(),
+                contentPadding = PaddingValues(),
             )
         }
     }
@@ -59,6 +61,7 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
                 state = LaunchDetailUiState(
                     launch = launch,
                 ),
+                contentPadding = PaddingValues(),
             )
         }
     }
