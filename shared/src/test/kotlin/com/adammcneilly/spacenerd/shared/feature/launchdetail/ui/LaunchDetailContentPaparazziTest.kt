@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
 
 import androidx.compose.foundation.layout.PaddingValues
+import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.displaymodels.AgencyDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
@@ -28,7 +28,7 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
         val launch = LaunchDisplayModel(
             id = "123",
             name = "Falcon 9 Block 5 | Starlink Group 12-19",
-            image = ImageDisplayModel.Placeholder,
+            image = ImageModel.Placeholder,
             status = LaunchStatusDisplayModel(LaunchStatus.Go),
             agency = AgencyDisplayModel(
                 id = "123",
@@ -42,14 +42,14 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
                     "at Kennedy Space Center. They also operate from SLC-4E at Vandenberg Space Force Base, " +
                     "California, usually for polar launches. Another launch site is being developed " +
                     "at Boca Chica, Texas.",
-                logo = ImageDisplayModel.Placeholder,
+                logo = ImageModel.Placeholder,
             ),
             mission = MissionDisplayModel(
                 id = "123",
                 name = "Starlink Group 12-19",
                 description = "A batch of 27 satellites for the Starlink mega-constellation" +
                     " - SpaceX's project for space-based Internet communication system.",
-                image = ImageDisplayModel.Placeholder,
+                image = ImageModel.Placeholder,
             ),
             subtitle = "SpaceX • Cape Canaveral SFS, FL, USA",
         )

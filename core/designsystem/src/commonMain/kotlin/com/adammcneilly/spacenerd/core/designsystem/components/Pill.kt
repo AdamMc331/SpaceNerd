@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.ui.components
+package com.adammcneilly.spacenerd.core.designsystem.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding

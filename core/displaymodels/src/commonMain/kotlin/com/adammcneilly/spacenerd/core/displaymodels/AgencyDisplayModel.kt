@@ -1,12 +1,13 @@
 package com.adammcneilly.spacenerd.core.displaymodels
 
+import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Agency
 
 data class AgencyDisplayModel(
     val id: String,
     val name: String,
     val description: String,
-    val logo: ImageDisplayModel,
+    val logo: ImageModel,
     val isPlaceholder: Boolean = false,
 ) {
     constructor(
@@ -15,7 +16,7 @@ data class AgencyDisplayModel(
         id = agency.id,
         name = agency.name,
         description = agency.description,
-        logo = ImageDisplayModel.Remote(agency.logoUrl),
+        logo = ImageModel.Remote(agency.logoUrl),
     )
 
     companion object {
@@ -24,7 +25,7 @@ data class AgencyDisplayModel(
                 id = "",
                 name = "Agency Name",
                 description = "Agency description is kinda long\nand definitely expands multiple\nnew lines",
-                logo = ImageDisplayModel.Placeholder,
+                logo = ImageModel.Placeholder,
                 isPlaceholder = true,
             )
         }

@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
-import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val ARTICLE_IMAGE_ASPECT_RATIO = 1.5F

@@ -5,6 +5,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
+import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.core.models.Author
 import kotlinx.datetime.format
@@ -28,7 +29,7 @@ private val publishedDateFormat = DateTimeComponents.Format {
  * @property[id] A unique identifier for this article.
  * @property[title] The title of the article, potentially with author information formatted.
  * @property[publishedAt] A formatted string of when the article was published.
- * @property[image] The [ImageDisplayModel] for the article's hero image.
+ * @property[image] The [ImageModel] for the article's hero image.
  * @property[url] The URL to the actual article source.
  * @property[summary] A short summary of the article.
  * @property[isFeatured] Indicates if this article should be highlighted or featured.
@@ -38,7 +39,7 @@ data class ArticleDisplayModel(
     val id: String,
     val title: AnnotatedString,
     val publishedAt: String,
-    val image: ImageDisplayModel,
+    val image: ImageModel,
     val url: String,
     val summary: String,
     val isFeatured: Boolean,
@@ -59,7 +60,7 @@ data class ArticleDisplayModel(
             append(authorNames)
         },
         publishedAt = article.publishedAtUtc.format(publishedDateFormat),
-        image = ImageDisplayModel.Remote(article.imageUrl),
+        image = ImageModel.Remote(article.imageUrl),
         url = article.url,
         summary = article.summary,
         isFeatured = article.isFeatured,
@@ -70,7 +71,7 @@ data class ArticleDisplayModel(
             return ArticleDisplayModel(
                 id = "",
                 title = AnnotatedString("Placeholder Title Should Be Long"),
-                image = ImageDisplayModel.Placeholder,
+                image = ImageModel.Placeholder,
                 publishedAt = "Month 00, 0000",
                 url = "",
                 summary = "Placeholder Summary\nMultiline",

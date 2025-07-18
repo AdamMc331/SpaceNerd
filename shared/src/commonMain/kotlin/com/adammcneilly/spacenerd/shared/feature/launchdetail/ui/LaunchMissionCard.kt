@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
-import com.adammcneilly.spacenerd.shared.ui.components.ImageWrapper
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val LOGO_ASPECT_RATIO = 4F
