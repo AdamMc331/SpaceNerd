@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.ui.utils
+package com.adammcneilly.spacenerd.core.designsystem.utils
 
 import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
 import androidx.compose.material3.windowsizeclass.WindowSizeClass

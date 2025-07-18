@@ -17,9 +17,9 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowHeightSizeClass
-import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
-import com.adammcneilly.spacenerd.shared.ui.utils.plus
+import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowHeightSizeClass
+import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
+import com.adammcneilly.spacenerd.core.designsystem.utils.plus
 
 private const val LARGE_SCREEN_GRID_COLUMN_COUNT = 2
 

@@ -7,19 +7,11 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
-import com.adammcneilly.spacenerd.shared.ui.utils.currentWindowWidthSizeClass
-
-@OptIn(ExperimentalSharedTransitionApi::class)
-val LocalSharedTransitionScope = compositionLocalOf<SharedTransitionScope?> {
-    null
-}
-
-val LocalNavAnimatedVisibilityScope = compositionLocalOf<AnimatedVisibilityScope?> {
-    null
-}
+import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
+import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSharedTransitionScope
+import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
 
 /**
  * Do not create an instance of this scaffold state directly. Please use

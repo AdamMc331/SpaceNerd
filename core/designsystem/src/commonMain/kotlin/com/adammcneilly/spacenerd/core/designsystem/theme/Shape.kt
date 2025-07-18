@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.ui.theme
+package com.adammcneilly.spacenerd.core.designsystem.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes

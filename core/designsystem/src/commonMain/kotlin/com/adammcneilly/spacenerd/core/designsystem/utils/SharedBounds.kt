@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.ui.utils
+package com.adammcneilly.spacenerd.core.designsystem.utils
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
@@ -11,8 +11,6 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
-import com.adammcneilly.spacenerd.shared.scaffold.LocalNavAnimatedVisibilityScope
-import com.adammcneilly.spacenerd.shared.scaffold.LocalSharedTransitionScope
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)

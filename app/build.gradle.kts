@@ -57,6 +57,7 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation(project(":core:designsystem"))
     implementation(project(":core:displaymodels"))
     implementation(project(":data:local:room"))
     implementation(project(":shared"))

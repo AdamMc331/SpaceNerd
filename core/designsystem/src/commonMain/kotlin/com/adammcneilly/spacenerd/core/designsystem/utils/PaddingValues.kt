@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.ui.utils
+package com.adammcneilly.spacenerd.core.designsystem.utils
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.Dp

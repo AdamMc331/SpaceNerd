@@ -1,16 +1,17 @@
-package com.adammcneilly.spacenerd.shared.ui.theme
+package com.adammcneilly.spacenerd.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.Font
-import `space nerd`.shared.generated.resources.Res
-import `space nerd`.shared.generated.resources.exo2_regular
-import `space nerd`.shared.generated.resources.orbitron_bold
-import `space nerd`.shared.generated.resources.orbitron_regular
+import `space nerd`.core.designsystem.generated.resources.Res
+import `space nerd`.core.designsystem.generated.resources.exo2_regular
+import `space nerd`.core.designsystem.generated.resources.orbitron_bold
+import `space nerd`.core.designsystem.generated.resources.orbitron_regular
 
 @Composable
 private fun orbitronFontFamily() =

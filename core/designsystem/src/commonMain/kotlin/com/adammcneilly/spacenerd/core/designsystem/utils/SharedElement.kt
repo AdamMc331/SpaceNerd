@@ -1,10 +1,8 @@
-package com.adammcneilly.spacenerd.shared.ui.utils
+package com.adammcneilly.spacenerd.core.designsystem.utils
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.shared.scaffold.LocalNavAnimatedVisibilityScope
-import com.adammcneilly.spacenerd.shared.scaffold.LocalSharedTransitionScope
 
 /**
  * Custom wrapper around the Compose foundation sharedElement modifier, that will only apply
