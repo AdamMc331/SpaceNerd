@@ -7,10 +7,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationBar
-import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationRail
-import com.adammcneilly.spacenerd.shared.scaffold.PersistentScaffold
-import com.adammcneilly.spacenerd.shared.scaffold.rememberScaffoldState
+import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
+import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationBar
+import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
+import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class, ExperimentalMaterial3Api::class)

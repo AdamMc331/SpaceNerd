@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.navigation
+package com.adammcneilly.spacenerd.core.scaffold.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Groups

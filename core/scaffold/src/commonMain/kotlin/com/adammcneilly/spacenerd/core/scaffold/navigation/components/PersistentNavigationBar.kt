@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.navigation.components
+package com.adammcneilly.spacenerd.core.scaffold.navigation.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
@@ -8,7 +8,7 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.shared.scaffold.ScaffoldState
+import com.adammcneilly.spacenerd.core.scaffold.ScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)

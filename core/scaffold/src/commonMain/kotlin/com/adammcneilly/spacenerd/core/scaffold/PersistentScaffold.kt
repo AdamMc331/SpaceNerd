@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.scaffold
+package com.adammcneilly.spacenerd.core.scaffold
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.animateBounds
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 
 /**
- * A persistent [Scaffold] that will render the various slots for any given screen,
+ * A persistent [androidx.compose.material3.Scaffold] that will render the various slots for any given screen,
  * allowing each screen to hold persistent UI elements such as [com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationBar]
  * or [com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationRail].
  */

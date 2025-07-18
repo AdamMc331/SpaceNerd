@@ -6,12 +6,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
+import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationBar
+import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
+import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
 import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsContent
 import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiEvent
-import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationBar
-import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationRail
-import com.adammcneilly.spacenerd.shared.scaffold.PersistentScaffold
-import com.adammcneilly.spacenerd.shared.scaffold.rememberScaffoldState
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

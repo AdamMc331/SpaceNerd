@@ -48,6 +48,7 @@ kotlin {
             implementation(project(":core:designsystem"))
             implementation(project(":core:displaymodels"))
             implementation(project(":core:models"))
+            implementation(project(":core:scaffold"))
             implementation(project(":data:agency"))
             implementation(project(":data:article"))
             implementation(project(":data:cache"))
