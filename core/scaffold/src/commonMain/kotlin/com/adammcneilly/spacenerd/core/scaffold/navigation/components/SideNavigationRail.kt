@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.navigation.components
+package com.adammcneilly.spacenerd.core.scaffold.navigation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,7 +9,7 @@ import androidx.compose.material3.NavigationRailItem
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.adammcneilly.spacenerd.shared.app.LocalAppState
+import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 
 @Composable
 fun SideNavigationRail(

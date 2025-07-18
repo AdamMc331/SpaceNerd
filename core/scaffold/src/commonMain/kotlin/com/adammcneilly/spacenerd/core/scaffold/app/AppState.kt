@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.app
+package com.adammcneilly.spacenerd.core.scaffold.app
 
 import android.os.Parcelable
 import androidx.compose.runtime.getValue
@@ -6,8 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
-import com.adammcneilly.spacenerd.shared.navigation.HomeTab
-import com.adammcneilly.spacenerd.shared.navigation.NavItem
+import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
+import com.adammcneilly.spacenerd.core.scaffold.navigation.NavItem
 import kotlinx.parcelize.Parcelize
 
 /**

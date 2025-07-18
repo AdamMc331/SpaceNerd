@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.scaffold
+package com.adammcneilly.spacenerd.core.scaffold
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
@@ -56,7 +56,7 @@ fun rememberScaffoldState(
 }
 
 /**
- * Access the current [WindowWidthSizeClass] to determine if it's at
+ * Access the current [androidx.compose.material3.windowsizeclass.WindowWidthSizeClass] to determine if it's at
  * a medium or wider width class. This is used to determine whether
  * we should show a bottom navigation or a navigation rail.
  */

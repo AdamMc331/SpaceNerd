@@ -10,12 +10,12 @@ import androidx.compose.ui.Modifier
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSceneType
 import com.adammcneilly.spacenerd.core.designsystem.utils.SceneType
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
+import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationBar
+import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
+import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
 import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListContent
 import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListUiEvent
-import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationBar
-import com.adammcneilly.spacenerd.shared.navigation.components.PersistentNavigationRail
-import com.adammcneilly.spacenerd.shared.scaffold.PersistentScaffold
-import com.adammcneilly.spacenerd.shared.scaffold.rememberScaffoldState
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

@@ -9,6 +9,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceTheme
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSharedTransitionScope
+import com.adammcneilly.spacenerd.core.scaffold.app.AppState
+import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.shared.di.appModules
 import org.koin.compose.KoinApplication
 
