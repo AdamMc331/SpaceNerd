@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.stationslist
+package com.adammcneilly.spacenerd.feature.stationlist
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.padding
@@ -14,7 +14,7 @@ import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class, ExperimentalMaterial3Api::class)
-fun StationsListScreen(
+fun StationListScreen(
     modifier: Modifier = Modifier,
 ) {
     rememberScaffoldState().PersistentScaffold(
