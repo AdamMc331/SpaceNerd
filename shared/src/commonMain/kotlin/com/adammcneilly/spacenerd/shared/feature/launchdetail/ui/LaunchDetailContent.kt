@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.LocalTextStyle
@@ -33,14 +32,20 @@ private const val LAUNCH_IMAGE_ASPECT_RATIO = 1.5F
 @Composable
 fun LaunchDetailContent(
     state: LaunchDetailUiState,
+    contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(bottom = 16.dp),
+        contentPadding = PaddingValues(
+            bottom = 16.dp + contentPadding.calculateBottomPadding(),
+        ),
         modifier = modifier,
     ) {
         item {
-            LaunchImageStatus(state)
+            LaunchImageStatus(
+                state,
+                contentPadding,
+            )
         }
 
         item {
@@ -120,6 +125,7 @@ private fun LaunchSubtitle(
 @Composable
 private fun LaunchImageStatus(
     state: LaunchDetailUiState,
+    contentPadding: PaddingValues,
 ) {
     Box {
         LaunchImage(
@@ -136,7 +142,7 @@ private fun LaunchImageStatus(
             launch = state.launch,
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .statusBarsPadding()
+                .padding(top = contentPadding.calculateTopPadding())
                 .padding(16.dp)
                 .placeholder(
                     visible = state.launch.isPlaceholder,
