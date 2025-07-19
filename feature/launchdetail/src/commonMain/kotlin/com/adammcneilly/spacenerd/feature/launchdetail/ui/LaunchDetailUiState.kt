@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
+package com.adammcneilly.spacenerd.feature.launchdetail.ui
 
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 

@@ -7,6 +7,8 @@ import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailContent
+import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailUiState
 import com.adammcneilly.spacenerd.shared.BasePaparazziTest
 import kotlin.test.Test
 
