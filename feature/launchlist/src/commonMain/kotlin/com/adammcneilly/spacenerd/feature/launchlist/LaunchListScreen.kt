@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.launchlist
+package com.adammcneilly.spacenerd.feature.launchlist
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.slideInVertically
@@ -14,8 +14,8 @@ import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationBar
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
 import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
-import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListContent
-import com.adammcneilly.spacenerd.shared.feature.launchlist.ui.LaunchListUiEvent
+import com.adammcneilly.spacenerd.feature.launchlist.ui.LaunchListContent
+import com.adammcneilly.spacenerd.feature.launchlist.ui.LaunchListUiEvent
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

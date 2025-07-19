@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.launchlist.ui
+package com.adammcneilly.spacenerd.feature.launchlist.ui
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Arrangement

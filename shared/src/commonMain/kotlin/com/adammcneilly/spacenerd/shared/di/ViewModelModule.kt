@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.shared.di
 
+import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailViewModel
+import com.adammcneilly.spacenerd.feature.launchlist.LaunchListViewModel
 import com.adammcneilly.spacenerd.feature.news.NewsViewModel
-import com.adammcneilly.spacenerd.shared.feature.launchdetail.LaunchDetailViewModel
-import com.adammcneilly.spacenerd.shared.feature.launchlist.LaunchListViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
