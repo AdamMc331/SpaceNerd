@@ -4,6 +4,7 @@ import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
+import com.adammcneilly.spacenerd.feature.launchlist.ui.LaunchSummaryCard
 import com.adammcneilly.spacenerd.shared.BasePaparazziTest
 import org.junit.Test
 
