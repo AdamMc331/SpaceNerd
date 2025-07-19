@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
+package com.adammcneilly.spacenerd.feature.launchdetail.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -12,30 +12,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
-import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.AgencyDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val LOGO_ASPECT_RATIO = 4F
 
 @Composable
-fun LaunchMissionCard(
-    mission: MissionDisplayModel,
+fun LaunchAgencyCard(
+    agency: AgencyDisplayModel,
     modifier: Modifier = Modifier,
 ) {
     ElevatedCard(
         modifier = modifier,
     ) {
         Column {
-            MissionImage(mission)
+            AgencyImage(agency)
 
             Column(
                 modifier = Modifier
                     .padding(16.dp),
             ) {
-                MissionName(mission)
+                AgencyName(agency)
 
-                MissionDescription(
-                    mission = mission,
+                AgencyDescription(
+                    agency = agency,
                     modifier = Modifier
                         .padding(top = 4.dp),
                 )
@@ -45,41 +45,41 @@ fun LaunchMissionCard(
 }
 
 @Composable
-private fun MissionImage(
-    mission: MissionDisplayModel,
+private fun AgencyImage(
+    agency: AgencyDisplayModel,
 ) {
     ImageWrapper(
-        image = mission.image,
+        image = agency.logo,
         contentDescription = null,
         modifier = Modifier
-            .placeholder(mission.isPlaceholder)
+            .placeholder(agency.isPlaceholder)
             .fillMaxWidth()
             .aspectRatio(LOGO_ASPECT_RATIO),
     )
 }
 
 @Composable
-private fun MissionName(
-    mission: MissionDisplayModel,
+private fun AgencyName(
+    agency: AgencyDisplayModel,
 ) {
     Text(
-        text = mission.name,
+        text = agency.name,
         style = MaterialTheme.typography.titleMedium,
         modifier = Modifier
-            .placeholder(mission.isPlaceholder),
+            .placeholder(agency.isPlaceholder),
     )
 }
 
 @Composable
-private fun MissionDescription(
-    mission: MissionDisplayModel,
+private fun AgencyDescription(
+    agency: AgencyDisplayModel,
     modifier: Modifier = Modifier,
 ) {
     Text(
-        text = mission.description,
+        text = agency.description,
         maxLines = 3,
         overflow = TextOverflow.Ellipsis,
         modifier = modifier
-            .placeholder(mission.isPlaceholder),
+            .placeholder(agency.isPlaceholder),
     )
 }

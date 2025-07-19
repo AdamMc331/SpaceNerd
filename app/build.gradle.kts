@@ -61,6 +61,7 @@ dependencies {
     implementation(project(":core:scaffold"))
     implementation(project(":data:local:room"))
     implementation(project(":feature:astronautlist"))
+    implementation(project(":feature:launchdetail"))
     implementation(project(":feature:launchlist"))
     implementation(project(":feature:stationlist"))
     implementation(project(":shared"))

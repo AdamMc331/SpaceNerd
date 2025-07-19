@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.launchdetail
+package com.adammcneilly.spacenerd.feature.launchdetail
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.runtime.Composable
@@ -6,7 +6,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
 import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
-import com.adammcneilly.spacenerd.shared.feature.launchdetail.ui.LaunchDetailContent
+import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailContent
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 
