@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.news
+package com.adammcneilly.spacenerd.feature.news
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.runtime.Composable
@@ -10,8 +10,8 @@ import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationBar
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
 import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
-import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsContent
-import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiEvent
+import com.adammcneilly.spacenerd.feature.news.ui.NewsContent
+import com.adammcneilly.spacenerd.feature.news.ui.NewsUiEvent
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

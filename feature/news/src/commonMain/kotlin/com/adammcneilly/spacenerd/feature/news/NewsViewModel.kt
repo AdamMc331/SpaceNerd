@@ -1,11 +1,11 @@
-package com.adammcneilly.spacenerd.shared.feature.news
+package com.adammcneilly.spacenerd.feature.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.data.article.ArticleRepository
-import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiEvent
-import com.adammcneilly.spacenerd.shared.feature.news.ui.NewsUiState
+import com.adammcneilly.spacenerd.feature.news.ui.NewsUiEvent
+import com.adammcneilly.spacenerd.feature.news.ui.NewsUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest

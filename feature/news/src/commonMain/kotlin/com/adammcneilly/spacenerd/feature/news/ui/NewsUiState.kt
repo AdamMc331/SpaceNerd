@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.news.ui
+package com.adammcneilly.spacenerd.feature.news.ui
 
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 

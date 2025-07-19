@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.news.ui
+package com.adammcneilly.spacenerd.feature.news.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

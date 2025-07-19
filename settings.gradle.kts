@@ -34,6 +34,7 @@ include(":data:remote:tsd")
 include(":feature:astronautlist")
 include(":feature:launchdetail")
 include(":feature:launchlist")
+include(":feature:news")
 include(":feature:stationlist")
 include(":shared")
 
