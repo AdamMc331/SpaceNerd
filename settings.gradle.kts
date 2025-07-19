@@ -32,6 +32,7 @@ include(":data:remote:ktor")
 include(":data:remote:snapi")
 include(":data:remote:tsd")
 include(":feature:astronautlist")
+include(":feature:news")
 include(":feature:stationlist")
 include(":shared")
 

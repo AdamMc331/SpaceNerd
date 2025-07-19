@@ -57,6 +57,7 @@ kotlin {
             implementation(project(":data:remote:ktor"))
             implementation(project(":data:remote:snapi"))
             implementation(project(":data:remote:tsd"))
+            implementation(project(":feature:news"))
             implementation(compose.components.resources)
             implementation(compose.foundation)
             implementation(compose.material3)

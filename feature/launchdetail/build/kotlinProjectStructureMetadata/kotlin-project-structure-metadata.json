@@ -1,0 +1,150 @@
+{
+  "projectStructure": {
+    "formatVersion": "0.3.3",
+    "isPublishedAsRoot": "true",
+    "variants": [
+      {
+        "name": "debugApiElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "debugRuntimeElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "releaseApiElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "releaseRuntimeElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosArm64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosSimulatorArm64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosX64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      }
+    ],
+    "sourceSets": [
+      {
+        "name": "appleMain",
+        "dependsOn": [
+          "nativeMain"
+        ],
+        "moduleDependency": [
+          "Space Nerd.core:displaymodels",
+          "Space Nerd.core:designsystem",
+          "Space Nerd.core:models",
+          "Space Nerd.core:scaffold",
+          "Space Nerd.data:launch",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel",
+          "org.jetbrains.compose.material3:material3-window-size-class",
+          "com.eygraber:compose-placeholder-material3",
+          "io.insert-koin:koin-compose-viewmodel-navigation",
+          "io.insert-koin:koin-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "appleMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "commonMain",
+        "dependsOn": [],
+        "moduleDependency": [
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "Space Nerd.core:displaymodels",
+          "Space Nerd.core:designsystem",
+          "Space Nerd.core:models",
+          "Space Nerd.core:scaffold",
+          "Space Nerd.data:launch",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel",
+          "org.jetbrains.compose.material3:material3-window-size-class",
+          "com.eygraber:compose-placeholder-material3",
+          "io.insert-koin:koin-compose-viewmodel-navigation",
+          "io.insert-koin:koin-core"
+        ],
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "iosMain",
+        "dependsOn": [
+          "appleMain"
+        ],
+        "moduleDependency": [
+          "Space Nerd.core:displaymodels",
+          "Space Nerd.core:designsystem",
+          "Space Nerd.core:models",
+          "Space Nerd.core:scaffold",
+          "Space Nerd.data:launch",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel",
+          "org.jetbrains.compose.material3:material3-window-size-class",
+          "com.eygraber:compose-placeholder-material3",
+          "io.insert-koin:koin-compose-viewmodel-navigation",
+          "io.insert-koin:koin-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "iosMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "nativeMain",
+        "dependsOn": [
+          "commonMain"
+        ],
+        "moduleDependency": [
+          "Space Nerd.core:displaymodels",
+          "Space Nerd.core:designsystem",
+          "Space Nerd.core:models",
+          "Space Nerd.core:scaffold",
+          "Space Nerd.data:launch",
+          "org.jetbrains.compose.material3:material3",
+          "org.jetbrains.compose.ui:ui",
+          "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel",
+          "org.jetbrains.compose.material3:material3-window-size-class",
+          "com.eygraber:compose-placeholder-material3",
+          "io.insert-koin:koin-compose-viewmodel-navigation",
+          "io.insert-koin:koin-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "nativeMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      }
+    ]
+  }
+}
