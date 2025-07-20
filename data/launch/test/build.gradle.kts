@@ -1,11 +1,8 @@
-import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -25,18 +22,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:displaymodels"))
-            implementation(project(":core:designsystem"))
             implementation(project(":core:models"))
-            implementation(project(":core:scaffold"))
             implementation(project(":data:launch:api"))
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.compose.material3.windowsizeclass)
-            implementation(libs.eygraber.compose.placeholder.material3)
-            implementation(libs.koin.compose.viewmodel.navigation)
-            implementation(libs.koin.core)
+            implementation(libs.kotlinx.coroutines.core)
         }
 
         commonTest.dependencies {
@@ -60,5 +48,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.feature.launchlist"
+    namespace = "com.adammcneilly.spacenerd.data.launch.test"
 }

@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.launch
+package com.adammcneilly.spacenerd.data.launch.api
 
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant

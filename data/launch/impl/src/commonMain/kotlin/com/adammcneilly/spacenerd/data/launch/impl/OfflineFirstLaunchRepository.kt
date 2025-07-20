@@ -1,11 +1,13 @@
-package com.adammcneilly.spacenerd.data.launch
+package com.adammcneilly.spacenerd.data.launch.impl
 
 import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.data.agency.local.LocalAgencyService
 import com.adammcneilly.spacenerd.data.agency.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
-import com.adammcneilly.spacenerd.data.launch.local.LocalLaunchService
-import com.adammcneilly.spacenerd.data.launch.remote.RemoteLaunchService
+import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
+import com.adammcneilly.spacenerd.data.launch.api.LaunchRepository
+import com.adammcneilly.spacenerd.data.launch.api.local.LocalLaunchService
+import com.adammcneilly.spacenerd.data.launch.api.remote.RemoteLaunchService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach

@@ -1,7 +1,7 @@
-package com.adammcneilly.spacenerd.data.launch.remote
+package com.adammcneilly.spacenerd.data.launch.api.remote
 
 import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.data.launch.LaunchListRequest
+import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
 
 interface RemoteLaunchService {
     suspend fun getLaunches(

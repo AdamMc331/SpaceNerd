@@ -26,6 +26,7 @@ kotlin {
             implementation(project(":core:models"))
             implementation(project(":data:agency"))
             implementation(project(":data:cache"))
+            implementation(project(":data:launch:api"))
             implementation(project(":data:local:room"))
             implementation(project(":data:remote:ktor"))
             implementation(project(":data:remote:tsd"))
@@ -53,5 +54,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.data.launch"
+    namespace = "com.adammcneilly.spacenerd.data.launch.impl"
 }

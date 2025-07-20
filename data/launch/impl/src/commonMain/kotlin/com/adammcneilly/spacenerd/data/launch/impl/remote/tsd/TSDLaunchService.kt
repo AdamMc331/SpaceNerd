@@ -1,8 +1,8 @@
-package com.adammcneilly.spacenerd.data.launch.remote.tsd
+package com.adammcneilly.spacenerd.data.launch.impl.remote.tsd
 
 import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.data.launch.LaunchListRequest
-import com.adammcneilly.spacenerd.data.launch.remote.RemoteLaunchService
+import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
+import com.adammcneilly.spacenerd.data.launch.api.remote.RemoteLaunchService
 import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDLaunchDTO
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDLaunchListResponseDTO
