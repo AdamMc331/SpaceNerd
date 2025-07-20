@@ -1,0 +1,8 @@
+{
+  "buildPath": ":",
+  "projectPath": ":data:article",
+  "moduleId": {
+    "groupId": "Space Nerd.data",
+    "moduleId": "article"
+  }
+}

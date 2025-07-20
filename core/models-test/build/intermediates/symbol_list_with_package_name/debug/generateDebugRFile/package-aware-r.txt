@@ -1,1 +1,0 @@
-com.adammcneilly.spacenerd.core.models.test
