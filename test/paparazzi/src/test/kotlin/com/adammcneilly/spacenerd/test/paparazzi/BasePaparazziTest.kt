@@ -9,6 +9,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.unit.dp
 import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
@@ -48,6 +49,7 @@ abstract class BasePaparazziTest {
             CompositionLocalProvider(
                 LocalWindowWidthSizeClassOverride provides testInput.widthSizeClass,
                 LocalWindowHeightSizeClassOverride provides testInput.heightSizeClass,
+                LocalInspectionMode provides true,
             ) {
                 SpaceTheme {
                     Surface(

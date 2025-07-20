@@ -3,9 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.cash.paparazzi)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -25,22 +22,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(project(":core:models"))
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-            implementation(project(":core:designsystem"))
-            implementation(project(":core:displaymodels"))
-            implementation(project(":core:models"))
-            implementation(project(":core:models-test"))
-            implementation(project(":feature:launchlist"))
-            implementation(project(":feature:launchdetail"))
-            implementation(project(":feature:news"))
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(libs.compose.material3.windowsizeclass)
-            implementation(libs.google.testparameterinjector)
         }
     }
 }
@@ -60,5 +46,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.test.paparazzi"
+    namespace = "com.adammcneilly.spacenerd.core.models.test"
 }

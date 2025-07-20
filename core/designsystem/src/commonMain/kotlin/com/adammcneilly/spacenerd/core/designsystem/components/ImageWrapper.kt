@@ -7,6 +7,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalInspectionMode
 import coil3.compose.AsyncImage
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import org.jetbrains.compose.resources.painterResource
@@ -22,30 +23,31 @@ fun ImageWrapper(
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Fit,
 ) {
-    when (image) {
-        is ImageModel.Local -> {
-            LocalImage(
-                image = image,
-                contentDescription = contentDescription,
-                contentScale = contentScale,
-                modifier = modifier,
-            )
-        }
+    if (LocalInspectionMode.current) {
+        PlaceholderImage(modifier)
+    } else {
+        when (image) {
+            is ImageModel.Local -> {
+                LocalImage(
+                    image = image,
+                    contentDescription = contentDescription,
+                    contentScale = contentScale,
+                    modifier = modifier,
+                )
+            }
 
-        is ImageModel.Remote -> {
-            RemoteImage(
-                image = image,
-                contentDescription = contentDescription,
-                contentScale = contentScale,
-                modifier = modifier,
-            )
-        }
+            is ImageModel.Remote -> {
+                RemoteImage(
+                    image = image,
+                    contentDescription = contentDescription,
+                    contentScale = contentScale,
+                    modifier = modifier,
+                )
+            }
 
-        is ImageModel.Placeholder -> {
-            PlaceholderImage(modifier)
-        }
-        else -> {
-            // No-Op
+            is ImageModel.Placeholder -> {
+                PlaceholderImage(modifier)
+            }
         }
     }
 }
