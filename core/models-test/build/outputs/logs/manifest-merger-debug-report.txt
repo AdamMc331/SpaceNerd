@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml:2:13-83
+INJECTED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml:2:13-83
+	package
+		INJECTED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml
+	xmlns:android
+		ADDED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml:2:23-81
+uses-sdk
+INJECTED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml reason: use-sdk injection requested
+INJECTED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml
+INJECTED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml
+	android:targetSdkVersion
+		INJECTED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml
+	android:minSdkVersion
+		INJECTED from /Users/adammcneilly/AndroidStudioProjects/SpaceNerd/core/models-test/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest3954022746517928320.xml
