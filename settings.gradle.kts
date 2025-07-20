@@ -37,6 +37,7 @@ include(":feature:launchlist")
 include(":feature:news")
 include(":feature:stationlist")
 include(":shared")
+include(":test:models")
 include(":test:paparazzi")
 
 plugins {
