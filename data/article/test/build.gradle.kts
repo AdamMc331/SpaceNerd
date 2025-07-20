@@ -23,10 +23,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:models"))
-            implementation(project(":data:cache"))
-            implementation(project(":data:local:room"))
-            implementation(project(":data:remote:ktor"))
-            implementation(project(":data:remote:snapi"))
+            implementation(project(":data:article:api"))
             implementation(libs.kotlinx.coroutines.core)
         }
 
@@ -51,5 +48,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.data.article"
+    namespace = "com.adammcneilly.spacenerd.data.article.test"
 }

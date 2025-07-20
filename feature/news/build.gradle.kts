@@ -28,7 +28,7 @@ kotlin {
             implementation(project(":core:designsystem"))
             implementation(project(":core:models"))
             implementation(project(":core:scaffold"))
-            implementation(project(":data:article"))
+            implementation(project(":data:article:api"))
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
