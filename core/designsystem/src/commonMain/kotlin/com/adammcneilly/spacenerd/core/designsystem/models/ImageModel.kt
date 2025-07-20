@@ -7,10 +7,6 @@ sealed interface ImageModel {
         val url: String,
     ) : ImageModel
 
-    data class AndroidLocal(
-        val drawableRes: Int,
-    ) : ImageModel
-
     data class Local(
         val resource: DrawableResource,
     ) : ImageModel
