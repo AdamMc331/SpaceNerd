@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.agency
+package com.adammcneilly.spacenerd.data.agency.api
 
 import com.adammcneilly.spacenerd.core.models.Agency
 import kotlinx.coroutines.flow.Flow
