@@ -37,6 +37,7 @@ include(":feature:launchlist")
 include(":feature:news")
 include(":feature:stationlist")
 include(":shared")
+include(":test:paparazzi")
 
 plugins {
     id("org.jetbrains.kotlinx.kover.aggregation").version("0.9.1")
