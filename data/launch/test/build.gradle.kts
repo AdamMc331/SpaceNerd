@@ -22,7 +22,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(project(":core:models"))
+            implementation(project(":data:launch:api"))
         }
 
         commonTest.dependencies {

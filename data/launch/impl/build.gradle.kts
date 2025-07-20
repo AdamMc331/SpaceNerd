@@ -22,7 +22,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(project(":core:datetime"))
+            implementation(project(":core:models"))
+            implementation(project(":data:launch:api"))
+            implementation(project(":data:local:room"))
+            implementation(project(":data:remote:ktor"))
+            implementation(project(":data:remote:tsd"))
         }
 
         commonTest.dependencies {
