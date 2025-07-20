@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.data.launch.impl
 
 import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.data.agency.local.LocalAgencyService
-import com.adammcneilly.spacenerd.data.agency.remote.RemoteAgencyService
+import com.adammcneilly.spacenerd.data.agency.api.local.LocalAgencyService
+import com.adammcneilly.spacenerd.data.agency.api.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
 import com.adammcneilly.spacenerd.data.launch.api.LaunchRepository
