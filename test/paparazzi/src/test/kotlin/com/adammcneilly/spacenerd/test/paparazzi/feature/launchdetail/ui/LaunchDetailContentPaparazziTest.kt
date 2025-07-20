@@ -2,9 +2,9 @@ package com.adammcneilly.spacenerd.test.paparazzi.feature.launchdetail.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.models.test.testLaunch
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailContent
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailUiState
-import com.adammcneilly.spacenerd.test.models.testLaunch
 import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
 import kotlin.test.Test
 import kotlin.time.ExperimentalTime

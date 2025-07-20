@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.test.models
+package com.adammcneilly.spacenerd.core.models.test
 
 import com.adammcneilly.spacenerd.core.models.Location
 

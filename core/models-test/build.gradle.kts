@@ -46,5 +46,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.test.models"
+    namespace = "com.adammcneilly.spacenerd.core.models.test"
 }

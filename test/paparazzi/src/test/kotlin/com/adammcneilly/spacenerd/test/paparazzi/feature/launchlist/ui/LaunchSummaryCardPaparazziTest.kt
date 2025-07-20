@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.test.paparazzi.feature.launchlist.ui
 
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.models.test.testLaunch
 import com.adammcneilly.spacenerd.feature.launchlist.ui.LaunchSummaryCard
-import com.adammcneilly.spacenerd.test.models.testLaunch
 import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
 import org.junit.Test
 
