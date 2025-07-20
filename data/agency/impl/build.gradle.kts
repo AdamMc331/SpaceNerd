@@ -23,6 +23,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:models"))
+            implementation(project(":data:agency:api"))
             implementation(project(":data:cache"))
             implementation(project(":data:local:room"))
             implementation(project(":data:remote:ktor"))
@@ -51,5 +52,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.data.agency"
+    namespace = "com.adammcneilly.spacenerd.data.agency.impl"
 }

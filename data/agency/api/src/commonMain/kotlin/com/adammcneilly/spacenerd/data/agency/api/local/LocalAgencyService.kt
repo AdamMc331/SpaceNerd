@@ -1,9 +1,13 @@
-package com.adammcneilly.spacenerd.data.agency
+package com.adammcneilly.spacenerd.data.agency.api.local
 
 import com.adammcneilly.spacenerd.core.models.Agency
 import kotlinx.coroutines.flow.Flow
 
-interface AgencyRepository {
+interface LocalAgencyService {
+    suspend fun saveAgency(
+        agency: Agency,
+    )
+
     fun getAgency(
         id: String,
     ): Flow<Agency>

@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.agency.remote
+package com.adammcneilly.spacenerd.data.agency.api.remote
 
 import com.adammcneilly.spacenerd.core.models.Agency
 

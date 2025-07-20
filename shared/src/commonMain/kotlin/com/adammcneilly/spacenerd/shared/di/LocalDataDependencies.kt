@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd.shared.di
 
-import com.adammcneilly.spacenerd.data.agency.local.LocalAgencyService
-import com.adammcneilly.spacenerd.data.agency.local.room.RoomAgencyService
+import com.adammcneilly.spacenerd.data.agency.api.local.LocalAgencyService
+import com.adammcneilly.spacenerd.data.agency.impl.local.room.RoomAgencyService
 import com.adammcneilly.spacenerd.data.article.api.local.LocalArticleService
 import com.adammcneilly.spacenerd.data.article.impl.local.room.RoomArticleService
 import com.adammcneilly.spacenerd.data.launch.api.local.LocalLaunchService

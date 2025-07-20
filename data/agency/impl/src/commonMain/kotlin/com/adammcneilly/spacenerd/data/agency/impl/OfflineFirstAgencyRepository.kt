@@ -1,8 +1,9 @@
-package com.adammcneilly.spacenerd.data.agency
+package com.adammcneilly.spacenerd.data.agency.impl
 
 import com.adammcneilly.spacenerd.core.models.Agency
-import com.adammcneilly.spacenerd.data.agency.local.LocalAgencyService
-import com.adammcneilly.spacenerd.data.agency.remote.RemoteAgencyService
+import com.adammcneilly.spacenerd.data.agency.api.AgencyRepository
+import com.adammcneilly.spacenerd.data.agency.api.local.LocalAgencyService
+import com.adammcneilly.spacenerd.data.agency.api.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow

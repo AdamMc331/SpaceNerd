@@ -22,14 +22,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:datetime"))
             implementation(project(":core:models"))
             implementation(project(":data:agency:api"))
-            implementation(project(":data:cache"))
-            implementation(project(":data:launch:api"))
-            implementation(project(":data:local:room"))
-            implementation(project(":data:remote:ktor"))
-            implementation(project(":data:remote:tsd"))
             implementation(libs.kotlinx.coroutines.core)
         }
 
@@ -54,5 +48,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.data.launch.impl"
+    namespace = "com.adammcneilly.spacenerd.data.agency.test"
 }

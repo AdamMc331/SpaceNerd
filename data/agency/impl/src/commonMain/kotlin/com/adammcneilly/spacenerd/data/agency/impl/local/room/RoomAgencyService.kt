@@ -1,7 +1,7 @@
-package com.adammcneilly.spacenerd.data.agency.local.room
+package com.adammcneilly.spacenerd.data.agency.impl.local.room
 
 import com.adammcneilly.spacenerd.core.models.Agency
-import com.adammcneilly.spacenerd.data.agency.local.LocalAgencyService
+import com.adammcneilly.spacenerd.data.agency.api.local.LocalAgencyService
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomAgencyDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import kotlinx.coroutines.flow.Flow
