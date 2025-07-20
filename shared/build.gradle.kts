@@ -4,14 +4,12 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.cash.paparazzi)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlinx.serialization)
-    alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.room)
 }
 
@@ -45,6 +43,24 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(project(":core:datetime"))
+            implementation(project(":core:designsystem"))
+            implementation(project(":core:displaymodels"))
+            implementation(project(":core:models"))
+            implementation(project(":core:scaffold"))
+            implementation(project(":data:agency"))
+            implementation(project(":data:article"))
+            implementation(project(":data:cache"))
+            implementation(project(":data:launch"))
+            implementation(project(":data:local:room"))
+            implementation(project(":data:remote:ktor"))
+            implementation(project(":data:remote:snapi"))
+            implementation(project(":data:remote:tsd"))
+            implementation(project(":feature:astronautlist"))
+            implementation(project(":feature:launchdetail"))
+            implementation(project(":feature:launchlist"))
+            implementation(project(":feature:news"))
+            implementation(project(":feature:stationlist"))
             implementation(compose.components.resources)
             implementation(compose.foundation)
             implementation(compose.material3)

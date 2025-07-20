@@ -7,14 +7,14 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
-import com.adammcneilly.spacenerd.shared.app.LocalAppState
-import com.adammcneilly.spacenerd.shared.feature.astronautlist.AstronautListScreen
-import com.adammcneilly.spacenerd.shared.feature.launchdetail.LaunchDetailScreen
-import com.adammcneilly.spacenerd.shared.feature.launchlist.LaunchListScreen
-import com.adammcneilly.spacenerd.shared.feature.news.NewsScreen
-import com.adammcneilly.spacenerd.shared.feature.stationslist.StationsListScreen
-import com.adammcneilly.spacenerd.shared.navigation.HomeTab
-import com.adammcneilly.spacenerd.shared.scaffold.LocalNavAnimatedVisibilityScope
+import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
+import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
+import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
+import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListScreen
+import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailScreen
+import com.adammcneilly.spacenerd.feature.launchlist.LaunchListScreen
+import com.adammcneilly.spacenerd.feature.news.NewsScreen
+import com.adammcneilly.spacenerd.feature.stationlist.StationListScreen
 
 @Composable
 fun AppNavHost() {
@@ -132,7 +132,7 @@ private fun homeTabEntry(
                 }
 
                 HomeTab.Stations -> {
-                    StationsListScreen()
+                    StationListScreen()
                 }
             }
         }

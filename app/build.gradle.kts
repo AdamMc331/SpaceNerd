@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.jetbrains.kotlin.serialization)
-    alias(libs.plugins.kotlinx.kover)
 }
 
 android {
@@ -57,6 +56,15 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation(project(":core:designsystem"))
+    implementation(project(":core:displaymodels"))
+    implementation(project(":core:scaffold"))
+    implementation(project(":data:local:room"))
+    implementation(project(":feature:astronautlist"))
+    implementation(project(":feature:launchdetail"))
+    implementation(project(":feature:launchlist"))
+    implementation(project(":feature:news"))
+    implementation(project(":feature:stationlist"))
     implementation(project(":shared"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)

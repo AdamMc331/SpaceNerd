@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd.navigation
 
 import androidx.navigation3.runtime.NavKey
-import com.adammcneilly.spacenerd.shared.navigation.HomeTab
+import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
 import kotlinx.serialization.Serializable
 
 sealed class AppScreen : NavKey {

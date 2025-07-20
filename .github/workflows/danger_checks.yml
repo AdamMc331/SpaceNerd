@@ -22,7 +22,7 @@ jobs:
         run: ./gradlew dependencyUpdates
 
       - name: Kover
-        run: ./gradlew koverHtmlReport
+        run: ./gradlew test -Pkover koverHtmlReport
 
       - name: Danger Checks
         uses: danger/kotlin@1.3.3
