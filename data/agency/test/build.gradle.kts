@@ -22,7 +22,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(project(":core:models"))
+            implementation(project(":data:agency:api"))
+            implementation(libs.kotlinx.coroutines.core)
         }
 
         commonTest.dependencies {
