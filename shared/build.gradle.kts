@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.cash.paparazzi)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.compose)
