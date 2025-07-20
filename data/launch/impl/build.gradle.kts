@@ -24,6 +24,8 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":core:datetime"))
             implementation(project(":core:models"))
+            implementation(project(":data:agency"))
+            implementation(project(":data:cache"))
             implementation(project(":data:launch:api"))
             implementation(project(":data:local:room"))
             implementation(project(":data:remote:ktor"))
