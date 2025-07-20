@@ -22,6 +22,7 @@ include(":core:datetime")
 include(":core:designsystem")
 include(":core:displaymodels")
 include(":core:models")
+include(":core:models-test")
 include(":core:scaffold")
 include(":data:agency")
 include(":data:article:api")
@@ -43,4 +44,8 @@ include(":test:paparazzi")
 
 plugins {
     id("org.jetbrains.kotlinx.kover.aggregation").version("0.9.1")
+}
+
+kover {
+    enableCoverage()
 }
