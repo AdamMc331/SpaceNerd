@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.news.ui
+package com.adammcneilly.spacenerd.test.paparazzi.feature.news.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
@@ -7,7 +7,7 @@ import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.core.models.Author
 import com.adammcneilly.spacenerd.feature.news.ui.NewsContent
 import com.adammcneilly.spacenerd.feature.news.ui.NewsUiState
-import com.adammcneilly.spacenerd.shared.BasePaparazziTest
+import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
 import kotlin.test.Test
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant

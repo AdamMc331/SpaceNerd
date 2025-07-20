@@ -1,11 +1,11 @@
-package com.adammcneilly.spacenerd.shared.feature.launchlist.ui
+package com.adammcneilly.spacenerd.test.paparazzi.feature.launchlist.ui
 
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchStatusDisplayModel
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.feature.launchlist.ui.LaunchSummaryCard
-import com.adammcneilly.spacenerd.shared.BasePaparazziTest
+import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
 import org.junit.Test
 
 class LaunchSummaryCardPaparazziTest : BasePaparazziTest() {

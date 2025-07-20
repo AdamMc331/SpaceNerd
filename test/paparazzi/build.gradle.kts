@@ -31,6 +31,11 @@ kotlin {
         commonTest.dependencies {
             implementation(kotlin("test"))
             implementation(project(":core:designsystem"))
+            implementation(project(":core:displaymodels"))
+            implementation(project(":core:models"))
+            implementation(project(":feature:launchlist"))
+            implementation(project(":feature:launchdetail"))
+            implementation(project(":feature:news"))
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(libs.compose.material3.windowsizeclass)

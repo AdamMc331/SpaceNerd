@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.shared.feature.launchdetail.ui
+package com.adammcneilly.spacenerd.test.paparazzi.feature.launchdetail.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
@@ -9,7 +9,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailContent
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailUiState
-import com.adammcneilly.spacenerd.shared.BasePaparazziTest
+import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
 import kotlin.test.Test
 
 class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
