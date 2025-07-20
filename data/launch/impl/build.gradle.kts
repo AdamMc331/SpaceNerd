@@ -30,6 +30,7 @@ kotlin {
             implementation(project(":data:local:room"))
             implementation(project(":data:remote:ktor"))
             implementation(project(":data:remote:tsd"))
+            implementation(libs.kotlinx.coroutines.core)
         }
 
         commonTest.dependencies {
