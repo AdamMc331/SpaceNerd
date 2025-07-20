@@ -1,7 +1,7 @@
-package com.adammcneilly.spacenerd.data.article.remote.snapi
+package com.adammcneilly.spacenerd.data.article.impl.remote.snapi
 
 import com.adammcneilly.spacenerd.core.models.Article
-import com.adammcneilly.spacenerd.data.article.remote.RemoteArticleService
+import com.adammcneilly.spacenerd.data.article.api.remote.RemoteArticleService
 import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
 import com.adammcneilly.spacenerd.data.remote.snapi.dtos.SNAPIArticleDTO
 import com.adammcneilly.spacenerd.data.remote.snapi.dtos.SNAPIArticleListResponseDTO

@@ -1,8 +1,9 @@
-package com.adammcneilly.spacenerd.data.article
+package com.adammcneilly.spacenerd.data.article.impl
 
 import com.adammcneilly.spacenerd.core.models.Article
-import com.adammcneilly.spacenerd.data.article.local.LocalArticleService
-import com.adammcneilly.spacenerd.data.article.remote.RemoteArticleService
+import com.adammcneilly.spacenerd.data.article.api.ArticleRepository
+import com.adammcneilly.spacenerd.data.article.api.local.LocalArticleService
+import com.adammcneilly.spacenerd.data.article.api.remote.RemoteArticleService
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow

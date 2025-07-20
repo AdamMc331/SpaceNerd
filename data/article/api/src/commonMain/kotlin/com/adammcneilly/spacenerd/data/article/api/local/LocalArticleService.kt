@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.article.local
+package com.adammcneilly.spacenerd.data.article.api.local
 
 import com.adammcneilly.spacenerd.core.models.Article
 import kotlinx.coroutines.flow.Flow
