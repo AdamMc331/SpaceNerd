@@ -1,7 +1,7 @@
 package com.adammcneilly.spacenerd.data.stations.api
 
-import com.adammcneilly.spacenerd.core.models.SpaceStation
+import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 
 data class SpaceStationListRequest(
-    val status: SpaceStation.Status? = null,
+    val status: SpaceStationStatus? = null,
 )

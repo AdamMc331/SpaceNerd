@@ -6,5 +6,5 @@ import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
 interface RemoteSpaceStationService {
     suspend fun getStations(
         request: SpaceStationListRequest,
-    ): List<SpaceStation>
+    ): Result<List<SpaceStation>>
 }

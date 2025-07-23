@@ -3,12 +3,6 @@ package com.adammcneilly.spacenerd.core.models
 data class SpaceStation(
     val id: String,
     val name: String,
-    val status: Status,
+    val status: SpaceStationStatus,
     val imageUrl: String,
-) {
-    enum class Status {
-        Active,
-        DeOrbited,
-        Decommissioned,
-    }
-}
+)

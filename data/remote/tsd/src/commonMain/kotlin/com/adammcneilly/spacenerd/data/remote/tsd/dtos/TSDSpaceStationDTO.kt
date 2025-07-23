@@ -1,10 +1,12 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
+import com.adammcneilly.spacenerd.core.models.SpaceStation
+import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TSDResultDTO(
+data class TSDSpaceStationDTO(
     @SerialName("active_expeditions")
     val activeExpeditions: List<TSDActiveExpeditionDTO>? = null,
     @SerialName("deorbited")
@@ -31,4 +33,14 @@ data class TSDResultDTO(
     val type: TSDTypeDTO? = null,
     @SerialName("url")
     val url: String? = null,
-)
+) {
+
+    fun toSpaceStation(): SpaceStation {
+        return SpaceStation(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+            status = this.status?.toSpaceStationStatus() ?: SpaceStationStatus.Unknown,
+            imageUrl = this.image?.imageUrl.orEmpty(),
+        )
+    }
+}
