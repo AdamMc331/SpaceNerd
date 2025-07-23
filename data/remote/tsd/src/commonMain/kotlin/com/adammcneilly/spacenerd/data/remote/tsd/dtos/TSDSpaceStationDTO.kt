@@ -34,7 +34,6 @@ data class TSDSpaceStationDTO(
     @SerialName("url")
     val url: String? = null,
 ) {
-
     fun toSpaceStation(): SpaceStation {
         return SpaceStation(
             id = this.id.toString(),
