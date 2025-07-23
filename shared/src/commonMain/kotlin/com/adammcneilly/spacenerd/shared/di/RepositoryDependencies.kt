@@ -9,6 +9,8 @@ import com.adammcneilly.spacenerd.data.cache.room.RoomCacheTimestampRepository
 import com.adammcneilly.spacenerd.data.launch.api.LaunchRepository
 import com.adammcneilly.spacenerd.data.launch.impl.OfflineFirstLaunchRepository
 import com.adammcneilly.spacenerd.data.local.room.SpaceNerdDatabase
+import com.adammcneilly.spacenerd.data.stations.api.SpaceStationRepository
+import com.adammcneilly.spacenerd.data.stations.impl.OfflineFirstSpaceStationRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -42,6 +44,14 @@ val repositoryModule = module {
             cacheTimestampRepository = get(),
             localAgencyService = get(),
             remoteAgencyService = get(),
+        )
+    }
+
+    single<SpaceStationRepository> {
+        OfflineFirstSpaceStationRepository(
+            localSpaceStationService = get(),
+            remoteSpaceStationService = get(),
+            cacheTimestampRepository = get(),
         )
     }
 }

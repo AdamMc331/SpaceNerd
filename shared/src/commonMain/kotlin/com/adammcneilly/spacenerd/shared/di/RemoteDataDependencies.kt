@@ -8,6 +8,8 @@ import com.adammcneilly.spacenerd.data.launch.api.remote.RemoteLaunchService
 import com.adammcneilly.spacenerd.data.launch.impl.remote.tsd.TSDLaunchService
 import com.adammcneilly.spacenerd.data.remote.snapi.SNAPIKtorClient
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDKtorClient
+import com.adammcneilly.spacenerd.data.stations.api.remote.RemoteSpaceStationService
+import com.adammcneilly.spacenerd.data.stations.impl.remote.TSDSpaceStationService
 import org.koin.dsl.module
 
 val remoteModule = module {
@@ -25,6 +27,12 @@ val remoteModule = module {
 
     single<RemoteLaunchService> {
         TSDLaunchService(
+            client = TSDKtorClient,
+        )
+    }
+
+    single<RemoteSpaceStationService> {
+        TSDSpaceStationService(
             client = TSDKtorClient,
         )
     }
