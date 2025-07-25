@@ -8,6 +8,8 @@ import com.adammcneilly.spacenerd.data.launch.api.local.LocalLaunchService
 import com.adammcneilly.spacenerd.data.launch.impl.local.room.RoomLaunchService
 import com.adammcneilly.spacenerd.data.local.room.SpaceNerdDatabase
 import com.adammcneilly.spacenerd.data.local.room.getDatabase
+import com.adammcneilly.spacenerd.data.stations.api.local.LocalSpaceStationService
+import com.adammcneilly.spacenerd.data.stations.impl.local.RoomSpaceStationService
 import org.koin.dsl.module
 
 val localModule = module {
@@ -31,6 +33,12 @@ val localModule = module {
         RoomLaunchService(
             launchDao = get<SpaceNerdDatabase>().launchDao(),
             dateTimeProvider = get(),
+        )
+    }
+
+    single<LocalSpaceStationService> {
+        RoomSpaceStationService(
+            spaceStationDao = get<SpaceNerdDatabase>().spaceStationDao(),
         )
     }
 }

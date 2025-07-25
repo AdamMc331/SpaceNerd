@@ -9,12 +9,14 @@ import com.adammcneilly.spacenerd.data.local.room.daos.RoomAgencyDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomArticleDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomCacheTimestampDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomLaunchDao
+import com.adammcneilly.spacenerd.data.local.room.daos.RoomSpaceStationDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomMissionDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 
@@ -27,6 +29,7 @@ import kotlinx.coroutines.IO
         RoomLaunchDTO::class,
         RoomLaunchPadDTO::class,
         RoomMissionDTO::class,
+        RoomSpaceStationDTO::class,
     ],
 )
 @ConstructedBy(SpaceNerdDatabaseConstructor::class)
@@ -38,6 +41,8 @@ abstract class SpaceNerdDatabase : RoomDatabase() {
     abstract fun cacheTimestampDao(): RoomCacheTimestampDao
 
     abstract fun launchDao(): RoomLaunchDao
+
+    abstract fun spaceStationDao(): RoomSpaceStationDao
 }
 
 /**
