@@ -25,6 +25,7 @@ class TSDSpaceStationService(
     }
 }
 
+@Suppress("MagicNumber")
 private fun SpaceStationStatus.toTsdId(): Int? {
     return when (this) {
         SpaceStationStatus.Active -> 1
