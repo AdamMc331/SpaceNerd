@@ -25,7 +25,6 @@ apply(from = "buildscripts/versionsplugin.gradle")
 
 subprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
-    apply(plugin = "com.squareup.sort-dependencies")
     apply(plugin = "org.jmailen.kotlinter")
 
     tasks.withType<FormatTask> {
