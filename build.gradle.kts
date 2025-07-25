@@ -18,7 +18,6 @@ plugins {
     alias(libs.plugins.kotlinx.serialization).apply(false)
     alias(libs.plugins.kotlinter).apply(false)
     alias(libs.plugins.room).apply(false)
-    alias(libs.plugins.square.sort.dependencies).apply(false)
 }
 
 apply(from = "buildscripts/githooks.gradle")
