@@ -1,21 +1,14 @@
 package com.adammcneilly.spacenerd.data.stations.impl.remote
 
-import com.adammcneilly.spacenerd.data.remote.ktor.test.FakeKtorClient
-import com.adammcneilly.spacenerd.data.remote.tsd.test.mocks.mockTsdSpaceStationListResponse
+import com.adammcneilly.spacenerd.data.remote.tsd.test.FakeTSDKtorClient
 import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
 import com.varabyte.truthish.assertThat
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 
 class TSDSpaceStationServiceTest {
-    private val mockClient = FakeKtorClient(
-        mockResponses = mapOf(
-            "/space_stations" to mockTsdSpaceStationListResponse,
-        ),
-    )
-
     private val service = TSDSpaceStationService(
-        client = mockClient,
+        client = FakeTSDKtorClient,
     )
 
     @Test

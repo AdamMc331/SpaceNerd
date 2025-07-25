@@ -22,6 +22,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":data:remote:ktor"))
+            implementation(project(":data:remote:ktor-test"))
             implementation(project(":data:remote:tsd"))
         }
 
