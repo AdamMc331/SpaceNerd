@@ -3,8 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -24,20 +22,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:models"))
-            implementation(project(":data:cache"))
-            implementation(project(":data:local:room"))
             implementation(project(":data:remote:ktor"))
-            implementation(project(":data:remote:tsd"))
-            implementation(project(":data:stations:api"))
-            implementation(compose.components.resources)
-            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.ktor.client.testing)
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-            implementation(project(":data:remote:ktor-test"))
-            implementation(libs.kotlinx.coroutines.test)
         }
     }
 }
@@ -57,5 +47,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.data.stations.impl"
+    namespace = "com.adammcneilly.spacenerd.data.remote.ktor.test"
 }
