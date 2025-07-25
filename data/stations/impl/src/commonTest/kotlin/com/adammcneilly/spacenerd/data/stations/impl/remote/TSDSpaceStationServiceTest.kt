@@ -1,8 +1,8 @@
 package com.adammcneilly.spacenerd.data.stations.impl.remote
 
 import com.adammcneilly.spacenerd.data.remote.ktor.test.FakeKtorClient
+import com.adammcneilly.spacenerd.data.remote.tsd.test.mocks.mockTsdSpaceStationListResponse
 import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
-import com.adammcneilly.spacenerd.data.stations.impl.remote.mocks.mockTsdSpaceStationListResponse
 import com.varabyte.truthish.assertThat
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

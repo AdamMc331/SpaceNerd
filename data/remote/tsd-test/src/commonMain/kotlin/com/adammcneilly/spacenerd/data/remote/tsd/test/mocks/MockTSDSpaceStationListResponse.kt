@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.stations.impl.remote.mocks
+package com.adammcneilly.spacenerd.data.remote.tsd.test.mocks
 
 val mockTsdSpaceStationListResponse = """
     {
