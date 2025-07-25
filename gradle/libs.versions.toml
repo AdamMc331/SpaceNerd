@@ -34,7 +34,6 @@ paparazzi = "2.0.0-SNAPSHOT"
 placeholder = "1.0.11"
 retrofit = "3.0.0"
 room = "2.7.2"
-sortDependencies = "0.14"
 sqlite = "2.5.2"
 testParameterInjector = "1.18"
 xr = "1.0.0-alpha04"
@@ -126,7 +125,6 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 room = { id = "androidx.room", version.ref = "room" }
-square-sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }
 jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization"}
 
 [bundles]
