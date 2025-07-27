@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.data.stations.impl.remote
 
 import com.adammcneilly.spacenerd.core.models.SpaceStation
+import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDSpaceStationDTO
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDSpaceStationListResponseDTO
@@ -15,8 +16,21 @@ class TSDSpaceStationService(
     ): Result<List<SpaceStation>> {
         return client.getResponse<TSDSpaceStationListResponseDTO>(
             endpoint = "space_stations",
+            params = mapOf(
+                "status" to request.status?.toTsdId(),
+            ),
         ).map { listDto ->
             listDto.results?.map(TSDSpaceStationDTO::toSpaceStation).orEmpty()
         }
+    }
+}
+
+@Suppress("MagicNumber")
+private fun SpaceStationStatus.toTsdId(): Int? {
+    return when (this) {
+        SpaceStationStatus.Active -> 1
+        SpaceStationStatus.DeOrbited -> 2
+        SpaceStationStatus.Decommissioned -> 3
+        else -> null
     }
 }
