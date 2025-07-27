@@ -7,21 +7,22 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 class FakeLocalSpaceStationService : LocalSpaceStationService {
-    private val stations: MutableList<SpaceStation> = mutableListOf()
+    private val savedStations: MutableList<SpaceStation> = mutableListOf()
+    private val stationsByRequest: MutableMap<SpaceStationListRequest, List<SpaceStation>> = mutableMapOf()
 
     override suspend fun saveStations(
         stations: List<SpaceStation>,
     ) {
-        this.stations += stations
+        this.savedStations += stations
     }
 
     override fun getStations(
         request: SpaceStationListRequest,
     ): Flow<List<SpaceStation>> {
-        val filteredStations = stations.filter { station ->
-            (request.status == null || request.status == station.status)
-        }
+        return flowOf(stationsByRequest[request]!!)
+    }
 
-        return flowOf(filteredStations)
+    fun getSavedStations(): List<SpaceStation> {
+        return this.savedStations
     }
 }
