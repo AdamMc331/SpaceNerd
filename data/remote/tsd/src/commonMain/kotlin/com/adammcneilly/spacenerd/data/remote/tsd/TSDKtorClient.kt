@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.data.remote.tsd.dtos
+package com.adammcneilly.spacenerd.data.remote.tsd
 
 import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
 
