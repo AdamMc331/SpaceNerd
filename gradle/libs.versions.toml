@@ -40,7 +40,7 @@ sqlite = "2.5.2"
 testParameterInjector = "1.18"
 truthish = "1.0.3"
 xr = "1.0.0-alpha04"
-xr-material = "1.0.0-alpha08"
+xr-material = "1.0.0-alpha10"
 
 
 [libraries]
