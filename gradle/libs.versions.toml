@@ -39,7 +39,7 @@ room = "2.7.2"
 sqlite = "2.5.2"
 testParameterInjector = "1.18"
 truthish = "1.0.3"
-xr = "1.0.0-alpha04"
+xr = "1.0.0-alpha05"
 xr-material = "1.0.0-alpha10"
 
 
