@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -33,8 +34,11 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(project(":core:datetime"))
+            implementation(project(":core:models-test"))
             implementation(project(":data:remote:ktor-test"))
             implementation(project(":data:remote:tsd-test"))
+            implementation(libs.cash.turbine)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.varabyte.truthish)
         }

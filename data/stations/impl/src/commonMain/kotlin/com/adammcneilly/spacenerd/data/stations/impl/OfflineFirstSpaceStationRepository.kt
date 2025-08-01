@@ -51,6 +51,6 @@ class OfflineFirstSpaceStationRepository(
     }
 
     companion object {
-        private const val CACHE_KEY_STATIONS_PREFIX = "space_stations_"
+        internal const val CACHE_KEY_STATIONS_PREFIX = "space_stations_"
     }
 }

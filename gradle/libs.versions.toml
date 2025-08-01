@@ -28,6 +28,7 @@ lifecycle = "2.9.1"
 material = "1.12.0"
 materialKolor = "3.0.1"
 minSdk = "31"
+mokkery = "2.9.0"
 moshi = "1.15.2"
 nav3Core = "1.0.0-alpha06"
 navigationCompose = "2.9.3"
@@ -39,6 +40,7 @@ room = "2.7.2"
 sqlite = "2.5.2"
 testParameterInjector = "1.18"
 truthish = "1.0.3"
+turbine = "1.2.1"
 xr = "1.0.0-alpha05"
 xr-material = "1.0.0-alpha10"
 
@@ -62,6 +64,7 @@ androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "andro
 androidx-xr-compose = { module = "androidx.xr.compose:compose", version.ref = "xr" }
 androidx-xr-compose-material3 = { module = "androidx.xr.compose.material3:material3", version.ref = "xr-material" }
 androidx-xr-scenecore = { module = "androidx.xr.scenecore:scenecore", version.ref = "xr" }
+cash-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
@@ -126,6 +129,7 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
+mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
 room = { id = "androidx.room", version.ref = "room" }
 
 [bundles]
