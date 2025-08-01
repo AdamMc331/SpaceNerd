@@ -37,6 +37,7 @@ kotlin {
             implementation(project(":data:remote:ktor-test"))
             implementation(project(":data:remote:tsd-test"))
             implementation(project(":data:stations:test"))
+            implementation(libs.cash.turbine)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.varabyte.truthish)
         }

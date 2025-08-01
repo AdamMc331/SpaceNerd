@@ -39,6 +39,7 @@ room = "2.7.2"
 sqlite = "2.5.2"
 testParameterInjector = "1.18"
 truthish = "1.0.2"
+turbine = "1.2.1"
 xr = "1.0.0-alpha04"
 xr-material = "1.0.0-alpha08"
 
@@ -62,6 +63,7 @@ androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "andro
 androidx-xr-compose = { module = "androidx.xr.compose:compose", version.ref = "xr" }
 androidx-xr-compose-material3 = { module = "androidx.xr.compose.material3:material3", version.ref = "xr-material" }
 androidx-xr-scenecore = { module = "androidx.xr.scenecore:scenecore", version.ref = "xr" }
+cash-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
