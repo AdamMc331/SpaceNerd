@@ -6,14 +6,21 @@ import com.adammcneilly.spacenerd.data.stations.api.remote.RemoteSpaceStationSer
 import com.varabyte.truthish.assertThat
 
 class FakeRemoteSpaceStationService : RemoteSpaceStationService {
-    val stationsByRequest: MutableMap<SpaceStationListRequest, Result<List<SpaceStation>>> = mutableMapOf()
-    val stationRequestsMade: MutableList<SpaceStationListRequest> = mutableListOf()
+    private val stationsByRequest: MutableMap<SpaceStationListRequest, Result<List<SpaceStation>>> = mutableMapOf()
+    private val stationRequestsMade: MutableList<SpaceStationListRequest> = mutableListOf()
 
     override suspend fun getStations(
         request: SpaceStationListRequest,
     ): Result<List<SpaceStation>> {
         stationRequestsMade.add(request)
         return stationsByRequest[request]!!
+    }
+
+    fun setResultForRequest(
+        request: SpaceStationListRequest,
+        result: Result<List<SpaceStation>>,
+    ) {
+        stationsByRequest[request] = result
     }
 
     fun verifyRequestMade(

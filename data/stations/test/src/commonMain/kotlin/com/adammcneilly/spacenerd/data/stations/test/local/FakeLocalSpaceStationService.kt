@@ -25,6 +25,13 @@ class FakeLocalSpaceStationService : LocalSpaceStationService {
         return flowOf(stationsByRequest[request]!!)
     }
 
+    fun setStationsByRequest(
+        request: SpaceStationListRequest,
+        stations: List<SpaceStation>,
+    ) {
+        this.stationsByRequest[request] = stations
+    }
+
     fun verifyStationsSaved(
         stations: List<SpaceStation>,
     ) {
@@ -37,7 +44,7 @@ class FakeLocalSpaceStationService : LocalSpaceStationService {
         assertThat(stationRequestsMade).contains(request)
     }
 
-    fun verifyNoRequestsMade() {
-        assertThat(stationRequestsMade).isEmpty()
+    fun verifyNoStationsSaved() {
+        assertThat(savedStations).isEmpty()
     }
 }

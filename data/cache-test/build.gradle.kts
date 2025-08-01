@@ -25,6 +25,7 @@ kotlin {
             implementation(project(":core:datetime"))
             implementation(project(":core:datetime-test"))
             implementation(project(":data:cache"))
+            implementation(libs.varabyte.truthish)
         }
 
         commonTest.dependencies {
