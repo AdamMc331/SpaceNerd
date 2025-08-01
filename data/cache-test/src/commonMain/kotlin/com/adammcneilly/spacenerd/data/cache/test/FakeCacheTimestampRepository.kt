@@ -11,7 +11,6 @@ class FakeCacheTimestampRepository(
     override val dateTimeProvider: DateTimeProvider,
 ) : CacheTimestampRepository {
     private val timestampsByKey: MutableMap<String, Instant?> = mutableMapOf()
-    private val savedTimestamps: MutableMap<String, Instant> = mutableMapOf()
     private val timestampsSet: MutableList<String> = mutableListOf()
 
     override suspend fun getCacheTimestamp(
