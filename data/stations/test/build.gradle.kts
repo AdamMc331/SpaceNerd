@@ -25,6 +25,7 @@ kotlin {
             implementation(project(":core:models"))
             implementation(project(":data:stations:api"))
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.varabyte.truthish)
         }
 
         commonTest.dependencies {
