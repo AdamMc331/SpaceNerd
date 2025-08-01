@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.kotlin.parcelize).apply(false)
     alias(libs.plugins.kotlinx.serialization).apply(false)
     alias(libs.plugins.kotlinter).apply(false)
+    alias(libs.plugins.mokkery).apply(false)
     alias(libs.plugins.room).apply(false)
 }
 

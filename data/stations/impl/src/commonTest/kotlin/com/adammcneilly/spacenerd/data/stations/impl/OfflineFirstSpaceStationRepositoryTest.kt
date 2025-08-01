@@ -1,29 +1,30 @@
 package com.adammcneilly.spacenerd.data.stations.impl
 
 import app.cash.turbine.test
-import com.adammcneilly.spacenerd.core.datetime.test.FakeDateTimeProvider
 import com.adammcneilly.spacenerd.core.models.test.testSpaceStation
-import com.adammcneilly.spacenerd.data.cache.test.FakeCacheTimestampRepository
+import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
+import com.adammcneilly.spacenerd.data.stations.api.local.LocalSpaceStationService
+import com.adammcneilly.spacenerd.data.stations.api.remote.RemoteSpaceStationService
 import com.adammcneilly.spacenerd.data.stations.impl.OfflineFirstSpaceStationRepository.Companion.CACHE_KEY_STATIONS_PREFIX
-import com.adammcneilly.spacenerd.data.stations.test.local.FakeLocalSpaceStationService
-import com.adammcneilly.spacenerd.data.stations.test.remote.FakeRemoteSpaceStationService
 import com.varabyte.truthish.assertThat
+import dev.mokkery.MockMode
+import dev.mokkery.answering.returns
+import dev.mokkery.every
+import dev.mokkery.everySuspend
+import dev.mokkery.matcher.any
+import dev.mokkery.matcher.eq
+import dev.mokkery.mock
+import dev.mokkery.verify.VerifyMode
+import dev.mokkery.verifySuspend
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
-import kotlin.time.Duration.Companion.hours
-import kotlin.time.Duration.Companion.minutes
-import kotlin.time.ExperimentalTime
-import kotlin.time.Instant
 
-@OptIn(ExperimentalTime::class)
 class OfflineFirstSpaceStationRepositoryTest {
-    private val dateTimeProvider = FakeDateTimeProvider()
-    private val localSpaceStationService = FakeLocalSpaceStationService()
-    private val remoteSpaceStationService = FakeRemoteSpaceStationService()
-    private val cacheTimestampRepository = FakeCacheTimestampRepository(
-        dateTimeProvider = dateTimeProvider,
-    )
+    private val localSpaceStationService = mock<LocalSpaceStationService>(mode = MockMode.autoUnit)
+    private val remoteSpaceStationService = mock<RemoteSpaceStationService>(mode = MockMode.autoUnit)
+    private val cacheTimestampRepository = mock<CacheTimestampRepository>(mode = MockMode.autoUnit)
 
     private val repository = OfflineFirstSpaceStationRepository(
         localSpaceStationService = localSpaceStationService,
@@ -32,74 +33,84 @@ class OfflineFirstSpaceStationRepositoryTest {
     )
 
     @Test
-    fun `request calls remote service if no cache timestamp`() =
+    fun `request calls remote service sync required`() =
         runTest {
-            val now = Instant.parse("2023-01-01T00:00:00Z")
             val request = SpaceStationListRequest()
             val stations = listOf(testSpaceStation)
             val cacheKey = "$CACHE_KEY_STATIONS_PREFIX$request"
-            dateTimeProvider.time = now
-            localSpaceStationService.setStationsByRequest(request, stations)
-            remoteSpaceStationService.setResultForRequest(request, Result.success(stations))
-            cacheTimestampRepository.setTimestampForKey(cacheKey, null)
+
+            every {
+                localSpaceStationService.getStations(request)
+            } returns flowOf(stations)
+
+            everySuspend {
+                remoteSpaceStationService.getStations(request)
+            } returns Result.success(stations)
+
+            everySuspend {
+                cacheTimestampRepository.shouldSyncWithServer(eq(cacheKey), any())
+            } returns true
 
             repository.getStations(request).test {
                 val repoResponse = awaitItem()
                 assertThat(repoResponse).isEqualTo(stations)
 
-                remoteSpaceStationService.verifyRequestMade(request)
-                localSpaceStationService.verifyStationsSaved(stations)
-                cacheTimestampRepository.verifyTimestampSet(cacheKey)
+                verifySuspend {
+                    remoteSpaceStationService.getStations(request)
+                }
+
+                verifySuspend {
+                    localSpaceStationService.saveStations(stations)
+                }
+
+                verifySuspend {
+                    cacheTimestampRepository.setCacheTimestamp(cacheKey)
+                }
 
                 cancelAndIgnoreRemainingEvents()
             }
         }
 
     @Test
-    fun `request calls remote service if cache over 1 hour ago`() =
+    fun `request skips remote service sync required`() =
         runTest {
-            val cacheTime = Instant.parse("2023-01-01T00:00:00Z")
-            val now = cacheTime.plus(2.hours)
             val request = SpaceStationListRequest()
             val stations = listOf(testSpaceStation)
             val cacheKey = "$CACHE_KEY_STATIONS_PREFIX$request"
-            dateTimeProvider.time = now
-            localSpaceStationService.setStationsByRequest(request, stations)
-            remoteSpaceStationService.setResultForRequest(request, Result.success(stations))
-            cacheTimestampRepository.setTimestampForKey(cacheKey, cacheTime)
+
+            every {
+                localSpaceStationService.getStations(request)
+            } returns flowOf(stations)
+
+            everySuspend {
+                remoteSpaceStationService.getStations(request)
+            } returns Result.success(stations)
+
+            everySuspend {
+                cacheTimestampRepository.shouldSyncWithServer(eq(cacheKey), any())
+            } returns false
 
             repository.getStations(request).test {
                 val repoResponse = awaitItem()
                 assertThat(repoResponse).isEqualTo(stations)
 
-                remoteSpaceStationService.verifyRequestMade(request)
-                localSpaceStationService.verifyStationsSaved(stations)
-                cacheTimestampRepository.verifyTimestampSet(cacheKey)
+                verifySuspend(
+                    mode = VerifyMode.exactly(0),
+                ) {
+                    remoteSpaceStationService.getStations(request)
+                }
 
-                cancelAndIgnoreRemainingEvents()
-            }
-        }
+                verifySuspend(
+                    mode = VerifyMode.exactly(0),
+                ) {
+                    localSpaceStationService.saveStations(stations)
+                }
 
-    @Test
-    fun `request skips remote service if cache timestamp set within 1 hour`() =
-        runTest {
-            val cacheTime = Instant.parse("2023-01-01T00:00:00Z")
-            val now = cacheTime.plus(30.minutes)
-            val request = SpaceStationListRequest()
-            val stations = listOf(testSpaceStation)
-            val cacheKey = "$CACHE_KEY_STATIONS_PREFIX$request"
-            dateTimeProvider.time = now
-            localSpaceStationService.setStationsByRequest(request, stations)
-            remoteSpaceStationService.setResultForRequest(request, Result.success(stations))
-            cacheTimestampRepository.setTimestampForKey(cacheKey, cacheTime)
-
-            repository.getStations(request).test {
-                val repoResponse = awaitItem()
-                assertThat(repoResponse).isEqualTo(stations)
-
-                remoteSpaceStationService.verifyNoRequestsMade()
-                localSpaceStationService.verifyNoStationsSaved()
-                cacheTimestampRepository.verifyNoTimestampSet()
+                verifySuspend(
+                    mode = VerifyMode.exactly(0),
+                ) {
+                    cacheTimestampRepository.setCacheTimestamp(cacheKey)
+                }
 
                 cancelAndIgnoreRemainingEvents()
             }
