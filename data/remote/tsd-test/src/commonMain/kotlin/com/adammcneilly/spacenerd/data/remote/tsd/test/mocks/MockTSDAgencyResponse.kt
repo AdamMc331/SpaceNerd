@@ -22,7 +22,7 @@ val mockTsdAgencyResponse = """
                 "nationality_name_composed": "Americano"
             }
         ],
-        "description": "The National Aeronautics and Space Administration is an independent agency of the executive branch of the United States federal government responsible for the civilian space program, as well as aeronautics and aerospace research. NASA have many launch facilities but most are inactive. The most commonly used pad will be LC-39B at Kennedy Space Center in Florida.",
+        "description": "nasaDescription",
         "administrator": "Acting Administrator:  James Free",
         "founding_year": 1958,
         "launchers": "Space Shuttle | SLS",
@@ -46,7 +46,7 @@ val mockTsdAgencyResponse = """
         "logo": {
             "id": 161,
             "name": "[AUTO] National Aeronautics and Space Administration - logo",
-            "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+            "image_url": "nasaImageUrl",
             "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
             "credit": null,
             "license": {
@@ -785,7 +785,7 @@ val mockTsdAgencyResponse = """
                                 "logo": {
                                     "id": 161,
                                     "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                                    "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                                    "image_url": "nasaImageUrl",
                                     "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                                     "credit": null,
                                     "license": {
@@ -997,7 +997,7 @@ val mockTsdAgencyResponse = """
                                 "logo": {
                                     "id": 161,
                                     "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                                    "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                                    "image_url": "nasaImageUrl",
                                     "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                                     "credit": null,
                                     "license": {
@@ -1334,7 +1334,7 @@ val mockTsdAgencyResponse = """
                                 "logo": {
                                     "id": 161,
                                     "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                                    "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                                    "image_url": "nasaImageUrl",
                                     "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                                     "credit": null,
                                     "license": {
@@ -1546,7 +1546,7 @@ val mockTsdAgencyResponse = """
                                 "logo": {
                                     "id": 161,
                                     "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                                    "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                                    "image_url": "nasaImageUrl",
                                     "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                                     "credit": null,
                                     "license": {
@@ -2135,7 +2135,7 @@ val mockTsdAgencyResponse = """
                                 "logo": {
                                     "id": 161,
                                     "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                                    "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                                    "image_url": "nasaImageUrl",
                                     "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                                     "credit": null,
                                     "license": {
@@ -2288,7 +2288,7 @@ val mockTsdAgencyResponse = """
                                 "logo": {
                                     "id": 161,
                                     "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                                    "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                                    "image_url": "nasaImageUrl",
                                     "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                                     "credit": null,
                                     "license": {
@@ -2441,7 +2441,7 @@ val mockTsdAgencyResponse = """
                     "logo": {
                         "id": 161,
                         "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                        "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                        "image_url": "nasaImageUrl",
                         "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                         "credit": null,
                         "license": {
@@ -2562,7 +2562,7 @@ val mockTsdAgencyResponse = """
                     "logo": {
                         "id": 161,
                         "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                        "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                        "image_url": "nasaImageUrl",
                         "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                         "credit": null,
                         "license": {
@@ -2683,7 +2683,7 @@ val mockTsdAgencyResponse = """
                     "logo": {
                         "id": 161,
                         "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                        "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                        "image_url": "nasaImageUrl",
                         "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                         "credit": null,
                         "license": {
@@ -2804,7 +2804,7 @@ val mockTsdAgencyResponse = """
                     "logo": {
                         "id": 161,
                         "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                        "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                        "image_url": "nasaImageUrl",
                         "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                         "credit": null,
                         "license": {
@@ -2925,7 +2925,7 @@ val mockTsdAgencyResponse = """
                     "logo": {
                         "id": 161,
                         "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                        "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                        "image_url": "nasaImageUrl",
                         "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                         "credit": null,
                         "license": {
@@ -3022,7 +3022,7 @@ val mockTsdAgencyResponse = """
                             "nationality_name_composed": "Americano"
                         }
                     ],
-                    "description": "The National Aeronautics and Space Administration is an independent agency of the executive branch of the United States federal government responsible for the civilian space program, as well as aeronautics and aerospace research. NASA have many launch facilities but most are inactive. The most commonly used pad will be LC-39B at Kennedy Space Center in Florida.",
+                    "description": "nasaDescription",
                     "administrator": "Acting Administrator:  James Free",
                     "founding_year": 1958,
                     "launchers": "Space Shuttle | SLS",
@@ -3046,7 +3046,7 @@ val mockTsdAgencyResponse = """
                     "logo": {
                         "id": 161,
                         "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                        "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                        "image_url": "nasaImageUrl",
                         "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                         "credit": null,
                         "license": {

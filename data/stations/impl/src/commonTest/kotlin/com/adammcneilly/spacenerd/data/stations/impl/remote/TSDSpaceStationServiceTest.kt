@@ -24,16 +24,14 @@ class TSDSpaceStationServiceTest {
                 id = "4",
                 name = "International Space Station",
                 status = SpaceStationStatus.Active,
-                imageUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/" +
-                    "international2520space2520station_image_20190220215716.jpeg",
+                imageUrl = "issImageUrl",
             )
 
             val expectedTiangongStation = SpaceStation(
                 id = "18",
                 name = "Tiangong space station",
                 status = SpaceStationStatus.Active,
-                imageUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/" +
-                    "tiangong_space__image_20231031004146.png",
+                imageUrl = "tiangongImageUrl",
             )
 
             val expectedStations = listOf(expectedIss, expectedTiangongStation)
