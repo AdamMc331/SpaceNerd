@@ -16,9 +16,6 @@ naming:
 
 style:
   active: true
-  MaxLineLength:
-    active: true
-    excludes: ['**/commonTest/**']
   # If a preview function is private and unused, Detekt flags that by default.AlsoCouldBeApply:
   # Disable this check if the function is annotated with Preview.
   UnusedPrivateMember:
