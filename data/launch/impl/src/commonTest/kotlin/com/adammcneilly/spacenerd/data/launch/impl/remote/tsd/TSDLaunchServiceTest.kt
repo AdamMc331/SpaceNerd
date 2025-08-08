@@ -89,4 +89,43 @@ class TSDLaunchServiceTest {
 
             assertThat(launches).isEqualTo(expectedLaunches)
         }
+
+    @Test
+    fun parseLaunchDetail() =
+        runTest {
+            val launch = service
+                .getLaunch("123")
+                .getOrThrow()
+
+            val expectedLaunch = Launch(
+                id = "e3df2ecd-c239-472f-95e4-2b89b4f75800",
+                name = "Sputnik 8K74PS | Sputnik 1",
+                imageUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/sputnik_8k74ps_image_20210830185541.jpg",
+                launchTime = Instant.parse("1957-10-04T19:28:34Z"),
+                status = LaunchStatus.Success,
+                agency = Agency(
+                    id = "66",
+                    name = "Soviet Space Program",
+                    abbreviation = "CCCP",
+                    description = "",
+                    logoUrl = "",
+                ),
+                pad = LaunchPad(
+                    id = "32",
+                    name = "1/5",
+                    location = Location(
+                        id = "15",
+                        name = "Baikonur Cosmodrome, Republic of Kazakhstan",
+                    ),
+                ),
+                mission = Mission(
+                    id = "1430",
+                    name = "Sputnik 1",
+                    description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W transmitters for a total mass of 83.6 kg.",
+                    imageUrl = "",
+                ),
+            )
+
+            assertThat(launch).isEqualTo(expectedLaunch)
+        }
 }
