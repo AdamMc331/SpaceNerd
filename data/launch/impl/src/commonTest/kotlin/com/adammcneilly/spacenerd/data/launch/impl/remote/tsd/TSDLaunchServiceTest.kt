@@ -21,6 +21,7 @@ class TSDLaunchServiceTest {
     )
 
     @Test
+    @Suppress("LongMethod")
     fun parseLaunchListRequest() =
         runTest {
             val launches = service
@@ -51,8 +52,7 @@ class TSDLaunchServiceTest {
                 mission = Mission(
                     id = "1430",
                     name = "Sputnik 1",
-                    description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W " +
-                        "transmitters for a total mass of 83.6 kg.",
+                    description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W transmitters for a total mass of 83.6 kg.",
                     imageUrl = "",
                 ),
             )
@@ -122,8 +122,7 @@ class TSDLaunchServiceTest {
                 mission = Mission(
                     id = "1430",
                     name = "Sputnik 1",
-                    description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W " +
-                        "transmitters for a total mass of 83.6 kg.",
+                    description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W transmitters for a total mass of 83.6 kg.",
                     imageUrl = "",
                 ),
             )
