@@ -33,7 +33,7 @@ class OfflineFirstSpaceStationRepositoryTest {
     )
 
     @Test
-    fun `request calls remote service sync required`() =
+    fun `request calls remote service with sync required`() =
         runTest {
             val request = SpaceStationListRequest()
             val stations = listOf(testSpaceStation)
@@ -72,7 +72,7 @@ class OfflineFirstSpaceStationRepositoryTest {
         }
 
     @Test
-    fun `request skips remote service sync required`() =
+    fun `request skips remote service without sync required`() =
         runTest {
             val request = SpaceStationListRequest()
             val stations = listOf(testSpaceStation)

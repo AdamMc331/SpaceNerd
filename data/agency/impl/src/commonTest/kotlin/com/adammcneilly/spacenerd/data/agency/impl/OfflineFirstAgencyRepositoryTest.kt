@@ -32,7 +32,7 @@ class OfflineFirstAgencyRepositoryTest {
     )
 
     @Test
-    fun `request calls remote service sync required`() =
+    fun `request calls remote service with sync required`() =
         runTest {
             val id = "agencyId"
             val cacheKey = "$CACHE_KEY_AGENCY_PREFIX$id"
@@ -70,7 +70,7 @@ class OfflineFirstAgencyRepositoryTest {
         }
 
     @Test
-    fun `request skips remote service sync required`() =
+    fun `request skips remote service without sync required`() =
         runTest {
             val id = "agency_id"
             val cacheKey = "$CACHE_KEY_AGENCY_PREFIX$id"
