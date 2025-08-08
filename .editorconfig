@@ -14,3 +14,6 @@ ktlint_standard_chain-method-continuation = disabled
 ktlint_standard_function-expression-body = disabled
 ktlint_standard_multiline-expression-wrapping = disabled
 ktlint_standard_string-template-indent = disabled
+
+[**/commonTest/**.{kt,kts}]
+ktlint_standard_max-line-length = disabled
