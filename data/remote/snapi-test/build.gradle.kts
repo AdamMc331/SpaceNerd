@@ -22,24 +22,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:models"))
-            implementation(project(":data:cache"))
-            implementation(project(":data:article:api"))
-            implementation(project(":data:local:room"))
             implementation(project(":data:remote:ktor"))
-            implementation(project(":data:remote:snapi"))
-            implementation(libs.kotlinx.coroutines.core)
+            implementation(project(":data:remote:ktor-test"))
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-            implementation(project(":core:datetime"))
-            implementation(project(":core:models-test"))
-            implementation(project(":data:remote:ktor-test"))
-            implementation(project(":data:remote:snapi-test"))
-            implementation(libs.cash.turbine)
-            implementation(libs.kotlinx.coroutines.test)
-            implementation(libs.varabyte.truthish)
         }
     }
 }
@@ -59,5 +47,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.data.article.impl"
+    namespace = "com.adammcneilly.spacenerd.data.remote.snapi.test"
 }
