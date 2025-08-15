@@ -19,5 +19,6 @@ fun SpaceStationSummaryCard(
             placeholder = station.isPlaceholder,
             transitionKeyPrefix = "Station-${station.id}",
         ),
+        modifier = modifier,
     )
 }
