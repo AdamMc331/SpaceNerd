@@ -26,12 +26,16 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":core:displaymodels"))
             implementation(project(":core:designsystem"))
+            implementation(project(":core:models"))
             implementation(project(":core:scaffold"))
+            implementation(project(":data:stations:api"))
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.compose.material3.windowsizeclass)
             implementation(libs.eygraber.compose.placeholder.material3)
+            implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.koin.core)
         }
 
         commonTest.dependencies {

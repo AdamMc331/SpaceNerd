@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.shared.di
 import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailViewModel
 import com.adammcneilly.spacenerd.feature.launchlist.LaunchListViewModel
 import com.adammcneilly.spacenerd.feature.news.NewsViewModel
+import com.adammcneilly.spacenerd.feature.stationlist.SpaceStationListViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
@@ -23,6 +24,12 @@ val viewModelModule = module {
         LaunchDetailViewModel(
             launchId = parameters.get(),
             launchRepository = get(),
+        )
+    }
+
+    viewModel {
+        SpaceStationListViewModel(
+            spaceStationRepository = get(),
         )
     }
 }
