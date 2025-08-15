@@ -14,7 +14,7 @@ import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListScreen
 import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.feature.launchlist.LaunchListScreen
 import com.adammcneilly.spacenerd.feature.news.NewsScreen
-import com.adammcneilly.spacenerd.feature.stationlist.StationListScreen
+import com.adammcneilly.spacenerd.feature.stationlist.SpaceStationListScreen
 
 @Composable
 fun AppNavHost() {
@@ -132,7 +132,11 @@ private fun homeTabEntry(
                 }
 
                 HomeTab.Stations -> {
-                    StationListScreen()
+                    SpaceStationListScreen(
+                        navigateToStation = {
+                            // Coming soon
+                        },
+                    )
                 }
             }
         }
