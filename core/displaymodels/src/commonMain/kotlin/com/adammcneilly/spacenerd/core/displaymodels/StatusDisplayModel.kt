@@ -5,7 +5,7 @@ import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceNerdColors
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 
-data class LaunchStatusDisplayModel(
+data class StatusDisplayModel(
     val label: String,
     val containerColor: Color,
     val contentColor: Color,
