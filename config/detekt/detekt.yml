@@ -16,6 +16,11 @@ naming:
 
 style:
   active: true
+  # A lot of our test files have a long max line length due to mock data
+  # so exclude those from being checked.
+  MaxLineLength:
+    active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**']
   # If a preview function is private and unused, Detekt flags that by default.AlsoCouldBeApply:
   # Disable this check if the function is annotated with Preview.
   UnusedPrivateMember:

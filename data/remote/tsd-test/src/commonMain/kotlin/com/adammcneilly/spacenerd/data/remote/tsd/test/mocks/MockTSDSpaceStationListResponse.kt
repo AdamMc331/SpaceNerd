@@ -13,7 +13,7 @@ val mockTsdSpaceStationListResponse = """
           "image": {
             "id": 1952,
             "name": "ISS as seen from Shuttle Atlantis (STS-132)",
-            "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/international2520space2520station_image_20190220215716.jpeg",
+            "image_url": "issImageUrl",
             "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305194230.jpeg",
             "credit": "NASA",
             "license": {
@@ -464,7 +464,7 @@ val mockTsdSpaceStationListResponse = """
               "logo": {
                 "id": 161,
                 "name": "[AUTO] National Aeronautics and Space Administration - logo",
-                "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/national2520aeronautics2520and2520space2520administration_logo_20190207032448.png",
+                "image_url": "nasaImageUrl",
                 "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185043.png",
                 "credit": null,
                 "license": {
@@ -584,7 +584,7 @@ val mockTsdSpaceStationListResponse = """
           "image": {
             "id": 1941,
             "name": "[AUTO] Tiangong space station - image",
-            "image_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/tiangong_space__image_20231031004146.png",
+            "image_url": "tiangongImageUrl",
             "thumbnail_url": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305194211.png",
             "credit": null,
             "license": {

@@ -50,6 +50,6 @@ class OfflineFirstAgencyRepository(
     }
 
     companion object {
-        private const val CACHE_KEY_AGENCY_PREFIX = "agency_"
+        internal const val CACHE_KEY_AGENCY_PREFIX = "agency_"
     }
 }

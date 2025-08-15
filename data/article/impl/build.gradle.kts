@@ -33,6 +33,13 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(project(":core:datetime"))
+            implementation(project(":core:models-test"))
+            implementation(project(":data:remote:ktor-test"))
+            implementation(project(":data:remote:snapi-test"))
+            implementation(libs.cash.turbine)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.varabyte.truthish)
         }
     }
 }
