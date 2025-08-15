@@ -26,13 +26,17 @@ import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val COMPACT_CARD_IMAGE_ASPECT_RATIO = 1.5F
 
+data class ImageContentCardConfig(
+    val image: ImageModel,
+    val title: String,
+    val subtitle: String?,
+    val placeholder: Boolean,
+    val transitionKeyPrefix: String,
+)
+
 @Composable
 fun ImageContentCard(
-    image: ImageModel,
-    title: String,
-    subtitle: String?,
-    placeholder: Boolean,
-    transitionKeyPrefix: String,
+    config: ImageContentCardConfig,
     modifier: Modifier = Modifier,
 ) {
     val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
@@ -42,20 +46,12 @@ fun ImageContentCard(
 
     if (isAtLeastMediumWidth) {
         MediumExpandedCard(
-            image = image,
-            title = title,
-            subtitle = subtitle,
-            placeholder = placeholder,
-            transitionKeyPrefix = transitionKeyPrefix,
+            config = config,
             modifier = modifier,
         )
     } else {
         CompactCard(
-            image = image,
-            title = title,
-            subtitle = subtitle,
-            placeholder = placeholder,
-            transitionKeyPrefix = transitionKeyPrefix,
+            config = config,
             modifier = modifier,
         )
     }
@@ -63,11 +59,7 @@ fun ImageContentCard(
 
 @Composable
 private fun MediumExpandedCard(
-    image: ImageModel,
-    title: String,
-    subtitle: String?,
-    placeholder: Boolean,
-    transitionKeyPrefix: String,
+    config: ImageContentCardConfig,
     modifier: Modifier = Modifier,
 ) {
     ElevatedCard(
@@ -81,9 +73,9 @@ private fun MediumExpandedCard(
                 .padding(16.dp),
         ) {
             CardImage(
-                image = image,
-                transitionKeyPrefix = transitionKeyPrefix,
-                placeholder = placeholder,
+                image = config.image,
+                transitionKeyPrefix = config.transitionKeyPrefix,
+                placeholder = config.placeholder,
                 modifier = Modifier
                     .size(64.dp)
                     .clip(MaterialTheme.shapes.medium),
@@ -91,10 +83,10 @@ private fun MediumExpandedCard(
 
             Column {
                 CardContent(
-                    title,
-                    subtitle,
-                    transitionKeyPrefix,
-                    placeholder,
+                    title = config.title,
+                    subtitle = config.subtitle,
+                    transitionKeyPrefix = config.transitionKeyPrefix,
+                    placeholder = config.placeholder,
                 )
             }
         }
@@ -103,11 +95,7 @@ private fun MediumExpandedCard(
 
 @Composable
 private fun CompactCard(
-    image: ImageModel,
-    title: String,
-    subtitle: String?,
-    placeholder: Boolean,
-    transitionKeyPrefix: String,
+    config: ImageContentCardConfig,
     modifier: Modifier = Modifier,
 ) {
     ElevatedCard(
@@ -117,9 +105,9 @@ private fun CompactCard(
         Column {
             Box {
                 CardImage(
-                    image = image,
-                    transitionKeyPrefix,
-                    placeholder,
+                    image = config.image,
+                    transitionKeyPrefix = config.transitionKeyPrefix,
+                    placeholder = config.placeholder,
                     modifier = Modifier
                         .fillMaxWidth()
                         .aspectRatio(COMPACT_CARD_IMAGE_ASPECT_RATIO),
@@ -127,10 +115,10 @@ private fun CompactCard(
             }
 
             CardContent(
-                title = title,
-                subtitle = subtitle,
-                transitionKeyPrefix = transitionKeyPrefix,
-                placeholder = placeholder,
+                title = config.title,
+                subtitle = config.subtitle,
+                transitionKeyPrefix = config.transitionKeyPrefix,
+                placeholder = config.placeholder,
                 modifier = Modifier
                     .padding(16.dp),
             )
