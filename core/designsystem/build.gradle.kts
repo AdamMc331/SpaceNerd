@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -33,6 +34,7 @@ kotlin {
             implementation(compose.ui)
             implementation(libs.coil.compose)
             implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.eygraber.compose.placeholder.material3)
             implementation(libs.material.kolor)
         }
 
