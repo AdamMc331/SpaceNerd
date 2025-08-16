@@ -18,6 +18,11 @@ fun SpaceStationSummaryCard(
             subtitle = null,
             placeholder = station.isPlaceholder,
             transitionKeyPrefix = "Station-${station.id}",
+            status = ImageContentCardConfig.StatusConfig(
+                text = station.status.label,
+                contentColor = station.status.contentColor,
+                containerColor = station.status.containerColor,
+            ),
         ),
         modifier = modifier,
     )

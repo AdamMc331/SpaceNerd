@@ -9,19 +9,24 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
+import com.eygraber.compose.placeholder.PlaceholderDefaults
+import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val COMPACT_CARD_IMAGE_ASPECT_RATIO = 1.5F
@@ -32,7 +37,14 @@ data class ImageContentCardConfig(
     val subtitle: String?,
     val placeholder: Boolean,
     val transitionKeyPrefix: String,
-)
+    val status: StatusConfig?,
+) {
+    data class StatusConfig(
+        val text: String,
+        val contentColor: Color,
+        val containerColor: Color,
+    )
+}
 
 @Composable
 fun ImageContentCard(
@@ -88,6 +100,20 @@ private fun MediumExpandedCard(
                     transitionKeyPrefix = config.transitionKeyPrefix,
                     placeholder = config.placeholder,
                 )
+
+                if (config.status != null) {
+                    Pill(
+                        text = config.status.text,
+                        containerColor = config.status.containerColor,
+                        contentColor = config.status.contentColor,
+                        modifier = Modifier
+                            .padding(top = 4.dp)
+                            .placeholder(
+                                visible = config.placeholder,
+                                shape = CircleShape,
+                            ),
+                    )
+                }
             }
         }
     }
@@ -112,6 +138,24 @@ private fun CompactCard(
                         .fillMaxWidth()
                         .aspectRatio(COMPACT_CARD_IMAGE_ASPECT_RATIO),
                 )
+
+                if (config.status != null) {
+                    Pill(
+                        text = config.status.text,
+                        containerColor = config.status.containerColor,
+                        contentColor = config.status.contentColor,
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(16.dp)
+                            .placeholder(
+                                visible = config.placeholder,
+                                color = PlaceholderDefaults.color(
+                                    contentAlpha = 0.15F,
+                                ),
+                                shape = CircleShape,
+                            ),
+                    )
+                }
             }
 
             CardContent(
