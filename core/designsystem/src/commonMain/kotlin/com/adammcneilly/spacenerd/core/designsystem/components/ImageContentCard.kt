@@ -31,6 +31,11 @@ import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val COMPACT_CARD_IMAGE_ASPECT_RATIO = 1.5F
 
+enum class ImageContentCardSize {
+    Compact,
+    Expanded,
+}
+
 data class ImageContentCardConfig(
     val image: ImageModel,
     val title: String,
@@ -38,6 +43,7 @@ data class ImageContentCardConfig(
     val placeholder: Boolean,
     val transitionKeyPrefix: String,
     val status: StatusConfig?,
+    val size: ImageContentCardSize,
 ) {
     data class StatusConfig(
         val text: String,
@@ -51,21 +57,19 @@ fun ImageContentCard(
     config: ImageContentCardConfig,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
-        WindowWidthSizeClass.Medium,
-        WindowWidthSizeClass.Expanded,
-    )
-
-    if (isAtLeastMediumWidth) {
-        MediumExpandedCard(
-            config = config,
-            modifier = modifier,
-        )
-    } else {
-        CompactCard(
-            config = config,
-            modifier = modifier,
-        )
+    when (config.size) {
+        ImageContentCardSize.Compact -> {
+            CompactCard(
+                config = config,
+                modifier = modifier,
+            )
+        }
+        ImageContentCardSize.Expanded -> {
+            MediumExpandedCard(
+                config = config,
+                modifier = modifier,
+            )
+        }
     }
 }
 
