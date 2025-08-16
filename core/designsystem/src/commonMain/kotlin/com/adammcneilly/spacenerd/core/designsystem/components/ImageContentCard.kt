@@ -142,6 +142,7 @@ private fun CompactCard(
                 if (config.status != null) {
                     Pill(
                         text = config.status.text,
+                        textStyle = MaterialTheme.typography.labelSmall,
                         containerColor = config.status.containerColor,
                         contentColor = config.status.contentColor,
                         modifier = Modifier
