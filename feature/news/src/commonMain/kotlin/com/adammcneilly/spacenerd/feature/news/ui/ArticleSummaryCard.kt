@@ -21,50 +21,72 @@ fun ArticleSummaryCard(
 ) {
     ImageContentCard(
         image = { modifier ->
-            ImageWrapper(
-                image = article.image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = modifier
-                    .placeholder(
-                        visible = article.isPlaceholder,
-                    ),
+            ArticleImage(
+                article = article,
+                modifier = modifier,
             )
         },
         status = { },
         content = { modifier ->
-            Column(
+            ArticleInfo(
+                article = article,
                 modifier = modifier,
-            ) {
-                Text(
-                    text = article.title,
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier
-                        .placeholder(
-                            visible = article.isPlaceholder,
-                        ),
-                )
-
-                Text(
-                    text = article.publishedAt,
-                    style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier
-                        .padding(vertical = 4.dp)
-                        .placeholder(
-                            visible = article.isPlaceholder,
-                        ),
-                )
-
-                Text(
-                    text = article.summary,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier
-                        .padding(top = 4.dp)
-                        .placeholder(article.isPlaceholder),
-                )
-            }
+            )
         },
         size = size,
         modifier = modifier,
+    )
+}
+
+@Composable
+private fun ArticleInfo(
+    article: ArticleDisplayModel,
+    modifier: Modifier,
+) {
+    Column(
+        modifier = modifier,
+    ) {
+        Text(
+            text = article.title,
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier
+                .placeholder(
+                    visible = article.isPlaceholder,
+                ),
+        )
+
+        Text(
+            text = article.publishedAt,
+            style = MaterialTheme.typography.labelSmall,
+            modifier = Modifier
+                .padding(vertical = 4.dp)
+                .placeholder(
+                    visible = article.isPlaceholder,
+                ),
+        )
+
+        Text(
+            text = article.summary,
+            style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .placeholder(article.isPlaceholder),
+        )
+    }
+}
+
+@Composable
+private fun ArticleImage(
+    article: ArticleDisplayModel,
+    modifier: Modifier,
+) {
+    ImageWrapper(
+        image = article.image,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = modifier
+            .placeholder(
+                visible = article.isPlaceholder,
+            ),
     )
 }

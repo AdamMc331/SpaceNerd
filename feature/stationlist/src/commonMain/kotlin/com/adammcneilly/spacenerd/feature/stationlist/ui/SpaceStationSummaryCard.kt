@@ -39,51 +39,85 @@ fun SpaceStationSummaryCard(
 
     ImageContentCard(
         image = { modifier ->
-            ImageWrapper(
-                image = station.image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = modifier
-                    .placeholder(station.isPlaceholder)
-                    .sharedElement(
-                        key = "stationImage-${station.id}",
-                    ),
+            StationImage(
+                station = station,
+                modifier = modifier,
             )
         },
         status = { modifier ->
-            val placeholderColor = if (size == ImageContentCard.Size.Compact) {
-                PlaceholderDefaults.color(
-                    contentAlpha = 0.15F,
-                )
-            } else {
-                PlaceholderDefaults.color()
-            }
-
-            Pill(
-                text = station.status.label,
-                containerColor = station.status.containerColor,
-                contentColor = station.status.contentColor,
-                modifier = modifier
-                    .placeholder(
-                        visible = station.isPlaceholder,
-                        shape = CircleShape,
-                        color = placeholderColor,
-                    )
-                    .sharedElement(
-                        key = "StationStatus-${station.id}",
-                    ),
+            StationStatus(
+                size = size,
+                station = station,
+                modifier = modifier,
             )
         },
         content = { modifier ->
-            Text(
-                text = station.name,
-                style = MaterialTheme.typography.titleSmall,
-                modifier = modifier
-                    .placeholder(station.isPlaceholder)
-                    .sharedBounds("STATION_TITLE_${station.id}"),
+            StationInfo(
+                station = station,
+                modifier = modifier,
             )
         },
         size = size,
         modifier = modifier,
+    )
+}
+
+private fun StationImage(
+    station: SpaceStationDisplayModel,
+    modifier: Modifier,
+) {
+    ImageWrapper(
+        image = station.image,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = modifier
+            .placeholder(station.isPlaceholder)
+            .sharedElement(
+                key = "stationImage-${station.id}",
+            ),
+    )
+}
+
+@Composable
+private fun StationStatus(
+    size: ImageContentCard.Size,
+    station: SpaceStationDisplayModel,
+    modifier: Modifier,
+) {
+    val placeholderColor = if (size == ImageContentCard.Size.Compact) {
+        PlaceholderDefaults.color(
+            contentAlpha = 0.15F,
+        )
+    } else {
+        PlaceholderDefaults.color()
+    }
+
+    Pill(
+        text = station.status.label,
+        containerColor = station.status.containerColor,
+        contentColor = station.status.contentColor,
+        modifier = modifier
+            .placeholder(
+                visible = station.isPlaceholder,
+                shape = CircleShape,
+                color = placeholderColor,
+            )
+            .sharedElement(
+                key = "StationStatus-${station.id}",
+            ),
+    )
+}
+
+@Composable
+private fun StationInfo(
+    station: SpaceStationDisplayModel,
+    modifier: Modifier,
+) {
+    Text(
+        text = station.name,
+        style = MaterialTheme.typography.titleSmall,
+        modifier = modifier
+            .placeholder(station.isPlaceholder)
+            .sharedBounds("STATION_TITLE_${station.id}"),
     )
 }

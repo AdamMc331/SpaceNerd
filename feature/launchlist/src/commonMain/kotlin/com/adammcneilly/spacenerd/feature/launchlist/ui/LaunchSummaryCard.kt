@@ -53,64 +53,100 @@ fun LaunchSummaryCard(
 
     ImageContentCard(
         image = { modifier ->
-            ImageWrapper(
-                image = launch.image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = modifier
-                    .placeholder(launch.isPlaceholder)
-                    .sharedElement(
-                        key = "LaunchImage-${launch.id}",
-                    ),
+            LaunchImage(
+                launch = launch,
+                modifier = modifier,
             )
         },
         status = { modifier ->
-            val placeholderColor = if (size == ImageContentCard.Size.Compact) {
-                PlaceholderDefaults.color(
-                    contentAlpha = 0.15F,
-                )
-            } else {
-                PlaceholderDefaults.color()
-            }
-
-            Pill(
-                text = launch.status.label,
-                containerColor = launch.status.containerColor,
-                contentColor = launch.status.contentColor,
-                modifier = modifier
-                    .placeholder(
-                        visible = launch.isPlaceholder,
-                        shape = CircleShape,
-                        color = placeholderColor,
-                    )
-                    .sharedElement(
-                        key = "LaunchStatus-${launch.id}",
-                    ),
+            LaunchStatus(
+                size = size,
+                launch = launch,
+                modifier = modifier,
             )
         },
         content = { modifier ->
-            Column(
+            LaunchInfo(
+                launch = launch,
                 modifier = modifier,
-            ) {
-                Text(
-                    text = launch.name,
-                    style = MaterialTheme.typography.titleSmall,
-                    modifier = Modifier
-                        .placeholder(launch.isPlaceholder)
-                        .sharedBounds("LAUNCH_TITLE_${launch.id}"),
-                )
-
-                Text(
-                    text = launch.subtitle,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier
-                        .padding(top = 4.dp)
-                        .placeholder(launch.isPlaceholder)
-                        .sharedBounds("LAUNCH_SUBTITLE_${launch.id}"),
-                )
-            }
+            )
         },
         size = size,
         modifier = modifier,
+    )
+}
+
+@OptIn(ExperimentalSharedTransitionApi::class)
+@Composable
+private fun LaunchInfo(
+    launch: LaunchDisplayModel,
+    modifier: Modifier,
+) {
+    Column(
+        modifier = modifier,
+    ) {
+        Text(
+            text = launch.name,
+            style = MaterialTheme.typography.titleSmall,
+            modifier = Modifier
+                .placeholder(launch.isPlaceholder)
+                .sharedBounds("LAUNCH_TITLE_${launch.id}"),
+        )
+
+        Text(
+            text = launch.subtitle,
+            style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .placeholder(launch.isPlaceholder)
+                .sharedBounds("LAUNCH_SUBTITLE_${launch.id}"),
+        )
+    }
+}
+
+@Composable
+private fun LaunchStatus(
+    size: ImageContentCard.Size,
+    launch: LaunchDisplayModel,
+    modifier: Modifier,
+) {
+    val placeholderColor = if (size == ImageContentCard.Size.Compact) {
+        PlaceholderDefaults.color(
+            contentAlpha = 0.15F,
+        )
+    } else {
+        PlaceholderDefaults.color()
+    }
+
+    Pill(
+        text = launch.status.label,
+        containerColor = launch.status.containerColor,
+        contentColor = launch.status.contentColor,
+        modifier = modifier
+            .placeholder(
+                visible = launch.isPlaceholder,
+                shape = CircleShape,
+                color = placeholderColor,
+            )
+            .sharedElement(
+                key = "LaunchStatus-${launch.id}",
+            ),
+    )
+}
+
+@Composable
+private fun LaunchImage(
+    launch: LaunchDisplayModel,
+    modifier: Modifier,
+) {
+    ImageWrapper(
+        image = launch.image,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = modifier
+            .placeholder(launch.isPlaceholder)
+            .sharedElement(
+                key = "LaunchImage-${launch.id}",
+            ),
     )
 }
