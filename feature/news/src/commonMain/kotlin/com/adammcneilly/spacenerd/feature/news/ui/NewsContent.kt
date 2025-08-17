@@ -17,6 +17,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowHeightSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.plus
@@ -74,10 +75,10 @@ private fun ColumnNewsContent(
         items(state.articles) { article ->
             ArticleSummaryCard(
                 article = article,
-                variant = if (isCompactWidth) {
-                    ArticleSummaryCardVariant.Compact
+                size = if (isCompactWidth) {
+                    ImageContentCard.Size.Compact
                 } else {
-                    ArticleSummaryCardVariant.Expanded
+                    ImageContentCard.Size.Expanded
                 },
                 modifier = Modifier
                     .clickable {
@@ -113,7 +114,7 @@ private fun GridNewsContent(
         items(state.articles) { article ->
             ArticleSummaryCard(
                 article = article,
-                variant = ArticleSummaryCardVariant.Compact,
+                size = ImageContentCard.Size.Compact,
                 modifier = Modifier
                     .clickable {
                         onEvent.invoke(NewsUiEvent.ArticleSelected(article))
