@@ -13,6 +13,10 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.coroutineContext
 import kotlin.time.Duration.Companion.hours
 
+/**
+ * This is an implementation of [SpaceStationRepository] that prioritizes offline data, using [localSpaceStationService]
+ * as the source of truth, and only syncing with [remoteSpaceStationService] when necessary.
+ */
 class OfflineFirstSpaceStationRepository(
     private val localSpaceStationService: LocalSpaceStationService,
     private val remoteSpaceStationService: RemoteSpaceStationService,

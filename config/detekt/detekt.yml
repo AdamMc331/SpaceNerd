@@ -31,7 +31,8 @@ comments:
   active: true
   UndocumentedPublicClass:
     active: true
-    excludes: ['**DTO**']
+    ignoreDefaultCompanionObject: true
+    excludes: ['**DTO**', '**Test.kt']
 
 exceptions:
   active: true

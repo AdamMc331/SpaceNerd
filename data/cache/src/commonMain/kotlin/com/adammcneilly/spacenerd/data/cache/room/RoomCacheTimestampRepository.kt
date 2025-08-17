@@ -7,6 +7,9 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
+/**
+ * This is an implementation of [CacheTimestampRepository] that request data from a local Room [cacheTimestampDao].
+ */
 @OptIn(ExperimentalTime::class)
 class RoomCacheTimestampRepository(
     override val dateTimeProvider: DateTimeProvider,

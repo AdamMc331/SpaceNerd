@@ -12,6 +12,10 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.coroutineContext
 import kotlin.time.Duration.Companion.hours
 
+/**
+ * This is an implementation of [ArticleRepository] that prioritizes offline data, using [localArticleService]
+ * as the source of truth, and only syncing with [remoteArticleService] when necessary.
+ */
 class OfflineFirstArticleRepository(
     private val localArticleService: LocalArticleService,
     private val remoteArticleService: RemoteArticleService,

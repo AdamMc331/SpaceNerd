@@ -5,6 +5,11 @@ import com.adammcneilly.spacenerd.data.agency.api.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDAgencyDTO
 
+/**
+ * This is an implementation of [RemoteAgencyService] that requests data from a TSD [client].
+ *
+ * We ensure the type is [BaseKtorClient] so we can supply a mock during tests.
+ */
 class TSDAgencyService(
     private val client: BaseKtorClient,
 ) : RemoteAgencyService {

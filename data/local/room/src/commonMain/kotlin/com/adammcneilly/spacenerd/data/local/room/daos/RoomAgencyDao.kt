@@ -7,6 +7,9 @@ import androidx.room.Query
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * This is the Room database access object for the agencies table.
+ */
 @Dao
 interface RoomAgencyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

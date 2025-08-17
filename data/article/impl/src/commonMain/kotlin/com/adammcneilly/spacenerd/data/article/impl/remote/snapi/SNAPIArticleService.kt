@@ -6,6 +6,12 @@ import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
 import com.adammcneilly.spacenerd.data.remote.snapi.dtos.SNAPIArticleDTO
 import com.adammcneilly.spacenerd.data.remote.snapi.dtos.SNAPIArticleListResponseDTO
 
+/**
+ * Implementation of a [RemoteArticleService] that requests data from a
+ * Spaceflight News API [client].
+ *
+ * We ensure the type is [BaseKtorClient] so we can supply a mock during tests.
+ */
 class SNAPIArticleService(
     private val client: BaseKtorClient,
 ) : RemoteArticleService {

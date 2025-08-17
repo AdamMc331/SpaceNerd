@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.map
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
 
+/**
+ * This is an implementation of [LocalLaunchService] that requests data from a Room [launchDao].
+ */
 @OptIn(ExperimentalTime::class)
 class RoomLaunchService(
     private val launchDao: RoomLaunchDao,

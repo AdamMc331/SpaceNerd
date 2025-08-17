@@ -12,6 +12,10 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.coroutineContext
 import kotlin.time.Duration.Companion.hours
 
+/**
+ * This is an implementation of [AgencyRepository] that prioritizes offline data, using [localAgencyService]
+ * as the source of truth, and only syncing with [remoteAgencyService] when necessary.
+ */
 class OfflineFirstAgencyRepository(
     private val localAgencyService: LocalAgencyService,
     private val remoteAgencyService: RemoteAgencyService,

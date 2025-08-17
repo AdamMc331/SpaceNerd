@@ -13,6 +13,9 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomMissionDTO
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * This is the Room database access object for the launches table.
+ */
 @Dao
 interface RoomLaunchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -7,6 +7,9 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+/**
+ * This is an implementation of [LocalAgencyService] that requests data from a Room [agencyDao].
+ */
 class RoomAgencyService(
     private val agencyDao: RoomAgencyDao,
 ) : LocalAgencyService {

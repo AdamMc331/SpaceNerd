@@ -8,6 +8,9 @@ import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * This is the Room database access object for the space stations table.
+ */
 @Dao
 interface RoomSpaceStationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

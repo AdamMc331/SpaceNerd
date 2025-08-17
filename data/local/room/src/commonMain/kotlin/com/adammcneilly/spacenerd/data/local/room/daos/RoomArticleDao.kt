@@ -7,6 +7,9 @@ import androidx.room.Query
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * This is the Room database access object for the articles table.
+ */
 @Dao
 interface RoomArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
