@@ -62,6 +62,7 @@ fun SpaceStationSummaryCard(
     )
 }
 
+@Composable
 private fun StationImage(
     station: SpaceStationDisplayModel,
     modifier: Modifier,
@@ -108,6 +109,7 @@ private fun StationStatus(
     )
 }
 
+@OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 private fun StationInfo(
     station: SpaceStationDisplayModel,
