@@ -34,8 +34,6 @@ import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder
 import com.eygraber.compose.placeholder.placeholder
 
-private const val CARD_IMAGE_ASPECT_RATIO = 1.5F
-
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun LaunchSummaryCard(
