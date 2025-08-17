@@ -11,7 +11,7 @@ class SNAPIArticleService(
 ) : RemoteArticleService {
     override suspend fun getArticles(): Result<List<Article>> {
         return client.getResponse<SNAPIArticleListResponseDTO>(
-            endpoint = "v4/articles",
+            endpoint = "articles",
         ).map { articleListResponse ->
             articleListResponse.results
                 ?.map(SNAPIArticleDTO::toArticle)
