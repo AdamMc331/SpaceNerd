@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
@@ -38,8 +39,8 @@ enum class ImageContentCardSize {
 
 data class ImageContentCardConfig(
     val image: ImageModel,
-    val title: String,
-    val subtitle: String?,
+    val title: AnnotatedString,
+    val subtitle: AnnotatedString?,
     val placeholder: Boolean,
     val transitionKeyPrefix: String,
     val status: StatusConfig?,
@@ -178,8 +179,8 @@ private fun CompactCard(
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 private fun CardContent(
-    title: String,
-    subtitle: String?,
+    title: AnnotatedString,
+    subtitle: AnnotatedString?,
     transitionKeyPrefix: String,
     placeholder: Boolean,
     modifier: Modifier = Modifier,

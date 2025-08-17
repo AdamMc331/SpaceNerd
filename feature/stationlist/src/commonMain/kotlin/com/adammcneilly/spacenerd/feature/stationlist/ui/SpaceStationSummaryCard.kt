@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.feature.stationlist.ui
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCardConfig
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCardSize
@@ -28,7 +29,7 @@ fun SpaceStationSummaryCard(
     ImageContentCard(
         config = ImageContentCardConfig(
             image = station.image,
-            title = station.name,
+            title = AnnotatedString(station.name),
             subtitle = null,
             placeholder = station.isPlaceholder,
             transitionKeyPrefix = "Station-${station.id}",
