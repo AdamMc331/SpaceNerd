@@ -13,6 +13,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * This is the state management container for the launch list screen. It requests launches
+ * from the [launchRepository] and exposes the information via the [state] Flow.
+ */
 class LaunchListViewModel(
     private val launchRepository: LaunchRepository,
 ) : ViewModel() {

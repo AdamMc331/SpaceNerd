@@ -2,6 +2,10 @@ package com.adammcneilly.spacenerd.feature.stationlist.ui
 
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
 
+/**
+ * Defines a user friendly representation of the information to display
+ * on the space station list screen.
+ */
 data class SpaceStationListUiState(
     val stations: List<SpaceStationDisplayModel>,
     val selectedStation: SpaceStationDisplayModel?,
