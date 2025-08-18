@@ -1,7 +1,6 @@
 package com.adammcneilly.spacenerd.data.cache
 
 import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
-import kotlinx.coroutines.flow.Flow
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -9,8 +8,8 @@ import kotlin.time.Instant
 /**
  * Defines any data requests to retrieve cache timestamp information from one or many data sources.
  *
- * Each function in this interface should return a [Flow], that emits any time the corresponding
- * data changes.
+ * Unlike other interfaces, these requests are not flows but simply suspending functions so we can
+ * read a timestamp at any given moment, with no need to observe it.
  */
 @OptIn(ExperimentalTime::class)
 interface CacheTimestampRepository {
