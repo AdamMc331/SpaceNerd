@@ -10,6 +10,10 @@ import com.adammcneilly.spacenerd.navigation.AppNavHost
 import com.adammcneilly.spacenerd.shared.app.App
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * The main entry point of the Android application, launched when the user clicks on the
+ * app icon.
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(

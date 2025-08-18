@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.data.launch.impl
 
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.data.agency.api.AgencyRepository
 import com.adammcneilly.spacenerd.data.agency.api.local.LocalAgencyService
 import com.adammcneilly.spacenerd.data.agency.api.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
@@ -17,6 +18,10 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.coroutineContext
 import kotlin.time.Duration.Companion.hours
 
+/**
+ * This is an implementation of [LaunchRepository] that prioritizes offline data, using [localLaunchService]
+ * as the source of truth, and only syncing with [remoteLaunchService] when necessary.
+ */
 class OfflineFirstLaunchRepository(
     private val localLaunchService: LocalLaunchService,
     private val remoteLaunchService: RemoteLaunchService,

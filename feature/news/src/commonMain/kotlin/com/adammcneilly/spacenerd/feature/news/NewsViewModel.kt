@@ -12,6 +12,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * This is the state management container for the news list screen. It pulls articles
+ * from the supplied [articleRepository] and exposes a UI state to render via the [state] Flow.
+ */
 class NewsViewModel(
     private val articleRepository: ArticleRepository,
 ) : ViewModel() {

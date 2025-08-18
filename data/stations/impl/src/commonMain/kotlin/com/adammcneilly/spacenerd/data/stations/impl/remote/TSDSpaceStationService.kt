@@ -8,6 +8,11 @@ import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDSpaceStationListRespon
 import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
 import com.adammcneilly.spacenerd.data.stations.api.remote.RemoteSpaceStationService
 
+/**
+ * This is an implementation of [RemoteSpaceStationService] that requests data from a TSD [client].
+ *
+ * We ensure the type is [BaseKtorClient] so we can supply a mock during tests.
+ */
 class TSDSpaceStationService(
     private val client: BaseKtorClient,
 ) : RemoteSpaceStationService {

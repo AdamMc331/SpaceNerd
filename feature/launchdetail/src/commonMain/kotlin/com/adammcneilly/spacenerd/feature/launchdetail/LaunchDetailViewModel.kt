@@ -10,6 +10,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * This is the state management container for the launch detail screen. It shows detailed
+ * information about the given [launchId], requesting data from the supplied [launchRepository] and
+ * exposing that information via the [state] Flow.
+ */
 class LaunchDetailViewModel(
     private val launchId: String,
     private val launchRepository: LaunchRepository,

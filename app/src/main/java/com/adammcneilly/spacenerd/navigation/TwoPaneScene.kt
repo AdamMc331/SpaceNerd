@@ -11,6 +11,10 @@ import androidx.navigation3.ui.Scene
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSceneType
 import com.adammcneilly.spacenerd.core.designsystem.utils.SceneType
 
+/**
+ * Custom [Scene] implementation that will be used to render two [AppScreen] entries
+ * side by side, as long as they're supported by [TwoPaneSceneStrategy].
+ */
 class TwoPaneScene(
     override val key: Any,
     override val previousEntries: List<NavEntry<AppScreen>>,

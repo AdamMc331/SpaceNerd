@@ -27,6 +27,13 @@ style:
     active: true
     ignoreAnnotated: ['Preview', 'PreviewLightDark', 'PreviewDynamicColors']
 
+comments:
+  active: true
+  UndocumentedPublicClass:
+    active: true
+    ignoreDefaultCompanionObject: true
+    excludes: ['**DTO**', '**Test.kt']
+
 exceptions:
   active: true
   # Data repositories will catch any possible errors, so ignore the specificity in

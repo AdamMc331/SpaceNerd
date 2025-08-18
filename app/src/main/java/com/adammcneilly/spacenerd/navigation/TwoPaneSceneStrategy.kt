@@ -7,6 +7,10 @@ import androidx.navigation3.ui.Scene
 import androidx.navigation3.ui.SceneStrategy
 import androidx.window.core.layout.WindowSizeClass
 
+/**
+ * An implementation of [SceneStrategy] that determines if two [AppScreen] entries can appear in a
+ * two pane scene together.
+ */
 class TwoPaneSceneStrategy : SceneStrategy<AppScreen> {
     @Composable
     @Suppress("ReturnCount")

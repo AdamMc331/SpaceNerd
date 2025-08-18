@@ -4,6 +4,19 @@ import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 
+/**
+ * A user-friendly representation of a rocket launch.
+ *
+ * @property[id] A unique identifier for this launch.
+ * @property[name] The name of this launch.
+ * @property[image] The image for this launch.
+ * @property[status] The current status of this launch, such as "Go" or "TBD".
+ * @property[subtitle] A summary of information about this launch, including the agency and location.
+ * @property[agency] The space agency responsible for this launch.
+ * @property[mission] The mission this launch is a part of.
+ * @property[isPlaceholder] If true, this display model is just a placeholder and the UI
+ * should reflect that.
+ */
 data class LaunchDisplayModel(
     val id: String,
     val name: String,

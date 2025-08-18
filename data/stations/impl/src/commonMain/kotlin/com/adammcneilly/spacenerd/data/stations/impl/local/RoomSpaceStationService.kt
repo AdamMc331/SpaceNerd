@@ -8,6 +8,9 @@ import com.adammcneilly.spacenerd.data.stations.api.local.LocalSpaceStationServi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+/**
+ * This is an implementation of [LocalSpaceStationService] that requests data from a local Room [spaceStationDao].
+ */
 class RoomSpaceStationService(
     private val spaceStationDao: RoomSpaceStationDao,
 ) : LocalSpaceStationService {

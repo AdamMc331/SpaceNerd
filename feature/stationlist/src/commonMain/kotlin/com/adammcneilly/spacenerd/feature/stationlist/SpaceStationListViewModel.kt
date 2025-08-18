@@ -14,6 +14,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * This is the state management container for the space station list screen.
+ *
+ * It requests a list of stations via the [spaceStationRepository] and exposes that information
+ * via the [state] Flow.
+ */
 class SpaceStationListViewModel(
     private val spaceStationRepository: SpaceStationRepository,
 ) : ViewModel() {

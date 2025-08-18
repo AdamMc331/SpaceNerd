@@ -20,6 +20,9 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 
+/**
+ * This is our implementation of a Room [Database] with all tables used in the Space Nerd app.
+ */
 @Database(
     version = 1,
     entities = [

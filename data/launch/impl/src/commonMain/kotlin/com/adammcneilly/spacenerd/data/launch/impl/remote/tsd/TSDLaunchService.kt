@@ -8,6 +8,11 @@ import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDLaunchDTO
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDLaunchListResponseDTO
 import kotlin.time.ExperimentalTime
 
+/**
+ * This is an implementation of [RemoteLaunchService] that requests data from a TSD [client].
+ *
+ * We ensure the type is [BaseKtorClient] so we can supply a mock during tests.
+ */
 @OptIn(ExperimentalTime::class)
 class TSDLaunchService(
     private val client: BaseKtorClient,

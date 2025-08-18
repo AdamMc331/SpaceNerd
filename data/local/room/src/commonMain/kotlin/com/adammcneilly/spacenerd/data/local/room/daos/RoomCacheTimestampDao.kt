@@ -6,6 +6,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
 
+/**
+ * This defines the local Room database access object for the cache timestamps table.
+ */
 @Dao
 interface RoomCacheTimestampDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -7,6 +7,9 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+/**
+ * Implementation of [LocalArticleService] that will request data from a Room database via [articleDao].
+ */
 class RoomArticleService(
     private val articleDao: RoomArticleDao,
 ) : LocalArticleService {
