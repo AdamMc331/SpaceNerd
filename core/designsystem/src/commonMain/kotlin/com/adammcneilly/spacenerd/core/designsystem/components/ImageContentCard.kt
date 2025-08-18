@@ -20,7 +20,16 @@ import androidx.compose.ui.unit.dp
 
 private const val COMPACT_CARD_IMAGE_ASPECT_RATIO = 1.5F
 
+/**
+ * This is a container for all of the components that make up an `ImageContentCard`.
+ *
+ * @property Size The possible sizes for an `ImageContentCard`, which will render the content
+ * in different ways.
+ */
 object ImageContentCard {
+    /**
+     * Defines the various sizes that an `ImageContentCard` can be rendered in.
+     */
     enum class Size {
         Compact,
         Expanded,
