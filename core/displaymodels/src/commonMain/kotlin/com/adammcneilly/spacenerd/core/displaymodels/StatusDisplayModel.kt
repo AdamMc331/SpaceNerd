@@ -5,6 +5,13 @@ import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceNerdColors
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 
+/**
+ * A user-friendly representation of a status badge.
+ *
+ * @property[label] The text to display inside the status badge.
+ * @property[containerColor] The background color of the status badge.
+ * @property[contentColor] The text color of the status badge.
+ */
 data class StatusDisplayModel(
     val label: String,
     val containerColor: Color,
