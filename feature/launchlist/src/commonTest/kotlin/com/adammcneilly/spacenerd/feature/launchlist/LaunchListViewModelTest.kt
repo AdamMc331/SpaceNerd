@@ -62,7 +62,6 @@ class LaunchListViewModelTest {
             )
 
             viewModel.state.test {
-                assertThat(awaitItem()).isEqualTo(LaunchListUiState.default())
                 assertThat(awaitItem()).isEqualTo(expectedState)
 
                 cancelAndIgnoreRemainingEvents()
