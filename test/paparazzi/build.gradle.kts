@@ -34,6 +34,7 @@ kotlin {
             implementation(project(":core:displaymodels"))
             implementation(project(":core:models"))
             implementation(project(":core:models-test"))
+            implementation(project(":core:scaffold"))
             implementation(project(":feature:launchlist"))
             implementation(project(":feature:launchdetail"))
             implementation(project(":feature:news"))
