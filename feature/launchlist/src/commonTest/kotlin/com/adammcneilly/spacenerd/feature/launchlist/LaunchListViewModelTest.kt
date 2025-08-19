@@ -62,10 +62,8 @@ class LaunchListViewModelTest {
             )
 
             viewModel.state.test {
-                skipItems(1)
-
-                val state = awaitItem()
-                assertThat(state).isEqualTo(expectedState)
+                assertThat(awaitItem()).isEqualTo(LaunchListUiState.default())
+                assertThat(awaitItem()).isEqualTo(expectedState)
 
                 cancelAndIgnoreRemainingEvents()
             }
