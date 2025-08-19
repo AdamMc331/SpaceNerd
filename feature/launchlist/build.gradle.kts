@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -41,6 +42,10 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(project(":core:models-test"))
+            implementation(libs.cash.turbine)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.varabyte.truthish)
         }
     }
 }
