@@ -8,6 +8,8 @@ import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
 import com.adammcneilly.spacenerd.data.stations.api.SpaceStationRepository
 import com.adammcneilly.spacenerd.feature.stationlist.ui.SpaceStationListUiEvent
 import com.adammcneilly.spacenerd.feature.stationlist.ui.SpaceStationListUiState
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -22,6 +24,7 @@ import kotlinx.coroutines.launch
  */
 class SpaceStationListViewModel(
     private val spaceStationRepository: SpaceStationRepository,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(SpaceStationListUiState.default())
     val state = mutableState.asStateFlow()
@@ -35,7 +38,7 @@ class SpaceStationListViewModel(
             status = SpaceStationStatus.Active,
         )
 
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             spaceStationRepository
                 .getStations(activeStationsRequest)
                 .collectLatest { stations ->
