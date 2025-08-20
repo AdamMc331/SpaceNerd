@@ -44,7 +44,8 @@ kotlin {
             implementation(project(":core:models-test"))
             implementation(libs.cash.turbine)
             implementation(libs.kotlinx.coroutines.test)
-            implementation(libs.varabyte.truthish
+            implementation(libs.varabyte.truthish)
+        }
     }
 }
 
