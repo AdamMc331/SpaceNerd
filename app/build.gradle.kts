@@ -65,6 +65,7 @@ dependencies {
     implementation(project(":feature:launchlist"))
     implementation(project(":feature:news"))
     implementation(project(":feature:stationlist"))
+    implementation(project(":feature:stationdetail"))
     implementation(project(":shared"))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)

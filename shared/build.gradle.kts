@@ -66,6 +66,7 @@ kotlin {
             implementation(project(":feature:launchlist"))
             implementation(project(":feature:news"))
             implementation(project(":feature:stationlist"))
+            implementation(project(":feature:stationdetail"))
             implementation(compose.components.resources)
             implementation(compose.foundation)
             implementation(compose.material3)

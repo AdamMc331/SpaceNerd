@@ -55,3 +55,4 @@ plugins {
 kover {
     enableCoverage()
 }
+include(":feature:stationdetail")
