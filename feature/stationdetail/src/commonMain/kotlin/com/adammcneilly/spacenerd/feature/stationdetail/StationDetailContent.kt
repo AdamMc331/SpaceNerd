@@ -52,6 +52,10 @@ fun StationDetailContent(
         item {
             StationTitle(state)
         }
+
+        item {
+            StationSubtitle(state)
+        }
     }
 }
 
@@ -68,6 +72,22 @@ private fun StationTitle(
             .padding(horizontal = 16.dp)
             .placeholder(state.station.isPlaceholder)
             .sharedBounds("STATION_TITLE_${state.station.id}"),
+    )
+}
+
+@Composable
+@OptIn(ExperimentalSharedTransitionApi::class)
+private fun StationSubtitle(
+    state: StationDetailUiState,
+) {
+    Text(
+        text = state.station.subtitle,
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier
+            .padding(top = 4.dp)
+            .padding(horizontal = 16.dp)
+            .placeholder(state.station.isPlaceholder)
+            .sharedBounds("STATION_SUBTITLE_${state.station.id}"),
     )
 }
 
