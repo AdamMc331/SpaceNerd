@@ -9,6 +9,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * This is the state management container for the station detail screen. It will request data
+ * from the [stationRepository] for the supplied [stationId].
+ */
 class StationDetailViewModel(
     private val stationId: String,
     private val stationRepository: SpaceStationRepository,
