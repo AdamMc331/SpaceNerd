@@ -14,6 +14,7 @@ import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListScreen
 import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.feature.launchlist.LaunchListScreen
 import com.adammcneilly.spacenerd.feature.news.NewsScreen
+import com.adammcneilly.spacenerd.feature.stationdetail.StationDetailScreen
 import com.adammcneilly.spacenerd.feature.stationlist.SpaceStationListScreen
 
 @Composable
@@ -63,6 +64,10 @@ fun AppNavHost() {
                     launchDetailEntry(key)
                 }
 
+                is AppScreen.StationDetail -> {
+                    stationDetailEntry(key)
+                }
+
                 is AppScreen.Tab -> {
                     homeTabEntry(
                         key = key,
@@ -72,6 +77,23 @@ fun AppNavHost() {
             }
         },
     )
+}
+
+private fun stationDetailEntry(
+    key: AppScreen.StationDetail,
+): NavEntry<AppScreen> {
+    return NavEntry(
+        key = key,
+        metadata = TwoPaneScene.twoPane(),
+    ) {
+        CompositionLocalProvider(
+            LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
+        ) {
+            StationDetailScreen(
+                stationId = key.stationId,
+            )
+        }
+    }
 }
 
 private fun launchDetailEntry(
@@ -95,7 +117,7 @@ private fun homeTabEntry(
     key: AppScreen.Tab,
     backStack: SnapshotStateList<AppScreen>,
 ): NavEntry<AppScreen> {
-    val metadata = if (key.tab == HomeTab.Launches) {
+    val metadata = if (key.tab.supportsTwoPane) {
         TwoPaneScene.twoPane()
     } else {
         emptyMap()
@@ -133,8 +155,14 @@ private fun homeTabEntry(
 
                 HomeTab.Stations -> {
                     SpaceStationListScreen(
-                        navigateToStation = {
-                            // Coming soon
+                        navigateToStation = { station ->
+                            val newScreen = AppScreen.StationDetail(station.id)
+
+                            if (backStack.lastOrNull() is AppScreen.StationDetail) {
+                                backStack[backStack.lastIndex] = newScreen
+                            } else {
+                                backStack.add(newScreen)
+                            }
                         },
                     )
                 }
