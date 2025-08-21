@@ -2,8 +2,11 @@ package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
 import com.adammcneilly.spacenerd.core.models.SpaceStation
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 @Serializable
 data class TSDSpaceStationDetailDTO(
@@ -50,12 +53,15 @@ data class TSDSpaceStationDetailDTO(
     @SerialName("width")
     val width: Double? = null,
 ) {
+    @OptIn(ExperimentalTime::class)
     fun toSpaceStation(): SpaceStation {
         return SpaceStation(
             id = this.id.toString(),
             name = this.name.orEmpty(),
             status = this.status?.toSpaceStationStatus() ?: SpaceStationStatus.Unknown,
             imageUrl = this.image?.imageUrl.orEmpty(),
+            agencies = this.owners?.map(TSDAgencyDTO::toAgency).orEmpty(),
+            founded = LocalDate.parse(this.founded.orEmpty()),
         )
     }
 }
