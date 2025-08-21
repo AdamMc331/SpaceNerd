@@ -6,7 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TSDSpaceStationDTO(
+data class TSDSpaceStationSummaryDTO(
     @SerialName("active_expeditions")
     val activeExpeditions: List<TSDActiveExpeditionDTO>? = null,
     @SerialName("deorbited")

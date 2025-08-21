@@ -1,5 +1,7 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
+import com.adammcneilly.spacenerd.core.models.SpaceStation
+import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -47,4 +49,13 @@ data class TSDSpaceStationDetailDTO(
     val volume: Int? = null,
     @SerialName("width")
     val width: Double? = null,
-)
+) {
+    fun toSpaceStation(): SpaceStation {
+        return SpaceStation(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+            status = this.status?.toSpaceStationStatus() ?: SpaceStationStatus.Unknown,
+            imageUrl = this.image?.imageUrl.orEmpty(),
+        )
+    }
+}
