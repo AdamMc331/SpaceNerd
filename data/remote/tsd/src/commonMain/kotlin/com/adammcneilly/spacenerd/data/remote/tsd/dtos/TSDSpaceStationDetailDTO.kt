@@ -36,7 +36,7 @@ data class TSDSpaceStationDetailDTO(
     @SerialName("orbit")
     val orbit: String? = null,
     @SerialName("owners")
-    val owners: List<TSDOwnerDTO>? = null,
+    val owners: List<TSDAgencyDTO>? = null,
     @SerialName("response_mode")
     val responseMode: String? = null,
     @SerialName("status")
