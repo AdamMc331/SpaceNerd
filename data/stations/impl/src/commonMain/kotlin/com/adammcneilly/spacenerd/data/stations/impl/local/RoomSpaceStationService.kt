@@ -30,4 +30,12 @@ class RoomSpaceStationService(
             stationDtos.map(RoomSpaceStationDTO::toSpaceStation)
         }
     }
+
+    override fun getStation(
+        id: String,
+    ): Flow<SpaceStation> {
+        return spaceStationDao
+            .getSpaceStation(id)
+            .map(RoomSpaceStationDTO::toSpaceStation)
+    }
 }

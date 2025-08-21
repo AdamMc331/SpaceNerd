@@ -13,4 +13,8 @@ interface RemoteSpaceStationService {
     suspend fun getStations(
         request: SpaceStationListRequest,
     ): Result<List<SpaceStation>>
+
+    suspend fun getStation(
+        id: String,
+    ): Result<SpaceStation>
 }

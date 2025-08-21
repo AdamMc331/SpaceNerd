@@ -28,6 +28,14 @@ class TSDSpaceStationService(
             listDto.results?.map(TSDSpaceStationDTO::toSpaceStation).orEmpty()
         }
     }
+
+    override suspend fun getStation(
+        id: String,
+    ): Result<SpaceStation> {
+        return client.getResponse<TSDSpaceStationDTO>(
+            endpoint = "space_stations/$id",
+        ).map(TSDSpaceStationDTO::toSpaceStation)
+    }
 }
 
 @Suppress("MagicNumber")

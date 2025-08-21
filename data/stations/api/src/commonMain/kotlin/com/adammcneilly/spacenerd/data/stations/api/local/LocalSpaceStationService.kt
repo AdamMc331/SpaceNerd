@@ -18,4 +18,8 @@ interface LocalSpaceStationService {
     fun getStations(
         request: SpaceStationListRequest,
     ): Flow<List<SpaceStation>>
+
+    fun getStation(
+        id: String,
+    ): Flow<SpaceStation>
 }
