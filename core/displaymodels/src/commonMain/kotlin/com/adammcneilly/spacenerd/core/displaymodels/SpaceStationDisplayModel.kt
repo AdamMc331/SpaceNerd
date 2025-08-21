@@ -36,6 +36,11 @@ data class SpaceStationDisplayModel(
     val subtitle: String,
     val isPlaceholder: Boolean = false,
 ) {
+    val imageSharedElementKey = "stationImage-$id"
+    val titleSharedElementKey = "stationTitle-$id"
+    val subtitleSharedElementKey = "stationSubtitle-$id"
+    val statusSharedElementKey = "stationStatus-$id"
+
     constructor(station: SpaceStation) : this(
         id = station.id,
         name = station.name,

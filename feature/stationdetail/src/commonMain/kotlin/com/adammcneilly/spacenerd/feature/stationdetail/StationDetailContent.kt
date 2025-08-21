@@ -71,7 +71,9 @@ private fun StationTitle(
             .padding(top = 16.dp)
             .padding(horizontal = 16.dp)
             .placeholder(state.station.isPlaceholder)
-            .sharedBounds("STATION_TITLE_${state.station.id}"),
+            .sharedBounds(
+                key = state.station.titleSharedElementKey,
+            ),
     )
 }
 
@@ -87,7 +89,9 @@ private fun StationSubtitle(
             .padding(top = 4.dp)
             .padding(horizontal = 16.dp)
             .placeholder(state.station.isPlaceholder)
-            .sharedBounds("STATION_SUBTITLE_${state.station.id}"),
+            .sharedBounds(
+                key = state.station.subtitleSharedElementKey,
+            ),
     )
 }
 
@@ -103,7 +107,7 @@ private fun StationImageStatus(
                 .fillMaxWidth()
                 .aspectRatio(STATION_IMAGE_ASPECT_RATIO)
                 .sharedElement(
-                    key = "StationImage-${state.station.id}",
+                    key = state.station.imageSharedElementKey,
                 ),
         )
 
@@ -121,7 +125,7 @@ private fun StationImageStatus(
                     shape = CircleShape,
                 )
                 .sharedElement(
-                    key = "StationStatus-${state.station.id}",
+                    key = state.station.statusSharedElementKey,
                 ),
         )
     }

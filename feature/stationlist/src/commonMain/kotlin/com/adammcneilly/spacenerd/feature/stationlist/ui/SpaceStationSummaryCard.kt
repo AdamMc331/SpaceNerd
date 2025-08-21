@@ -77,7 +77,7 @@ private fun StationImage(
         modifier = modifier
             .placeholder(station.isPlaceholder)
             .sharedElement(
-                key = "stationImage-${station.id}",
+                key = station.imageSharedElementKey,
             ),
     )
 }
@@ -107,7 +107,7 @@ private fun StationStatus(
                 color = placeholderColor,
             )
             .sharedElement(
-                key = "StationStatus-${station.id}",
+                key = station.statusSharedElementKey,
             ),
     )
 }
@@ -126,7 +126,9 @@ private fun StationInfo(
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier
                 .placeholder(station.isPlaceholder)
-                .sharedBounds("STATION_TITLE_${station.id}"),
+                .sharedBounds(
+                    key = station.titleSharedElementKey,
+                ),
         )
 
         Text(
@@ -135,7 +137,9 @@ private fun StationInfo(
             modifier = Modifier
                 .padding(top = 4.dp)
                 .placeholder(station.isPlaceholder)
-                .sharedBounds("STATION_SUBTITLE_${station.id}"),
+                .sharedBounds(
+                    key = station.subtitleSharedElementKey,
+                ),
         )
     }
 }
