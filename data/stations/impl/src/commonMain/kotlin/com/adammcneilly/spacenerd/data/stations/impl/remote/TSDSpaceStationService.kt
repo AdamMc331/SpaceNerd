@@ -3,8 +3,9 @@ package com.adammcneilly.spacenerd.data.stations.impl.remote
 import com.adammcneilly.spacenerd.core.models.SpaceStation
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
-import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDSpaceStationDTO
+import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDSpaceStationDetailDTO
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDSpaceStationListResponseDTO
+import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDSpaceStationSummaryDTO
 import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
 import com.adammcneilly.spacenerd.data.stations.api.remote.RemoteSpaceStationService
 
@@ -25,8 +26,16 @@ class TSDSpaceStationService(
                 "status" to request.status?.toTsdId(),
             ),
         ).map { listDto ->
-            listDto.results?.map(TSDSpaceStationDTO::toSpaceStation).orEmpty()
+            listDto.results?.map(TSDSpaceStationSummaryDTO::toSpaceStation).orEmpty()
         }
+    }
+
+    override suspend fun getStation(
+        id: String,
+    ): Result<SpaceStation> {
+        return client.getResponse<TSDSpaceStationDetailDTO>(
+            endpoint = "space_stations/$id",
+        ).map(TSDSpaceStationDetailDTO::toSpaceStation)
     }
 }
 

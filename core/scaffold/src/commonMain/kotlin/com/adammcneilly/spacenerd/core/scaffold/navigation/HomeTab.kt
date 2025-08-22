@@ -13,21 +13,26 @@ import androidx.compose.ui.graphics.vector.ImageVector
 enum class HomeTab(
     val label: String,
     val icon: ImageVector,
+    val supportsTwoPane: Boolean,
 ) {
     News(
         label = "News",
         icon = Icons.Default.Newspaper,
+        supportsTwoPane = false,
     ),
     Launches(
         label = "Launches",
         icon = Icons.Default.RocketLaunch,
+        supportsTwoPane = true,
     ),
     Astronauts(
         label = "Astronauts",
         icon = Icons.Default.Groups,
+        supportsTwoPane = true,
     ),
     Stations(
         label = "Stations",
         icon = Icons.Default.SatelliteAlt,
+        supportsTwoPane = true,
     ),
 }

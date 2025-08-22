@@ -3,9 +3,10 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.room)
+    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -23,19 +24,27 @@ kotlin {
     )
 
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.androidx.room.runtime.android)
-        }
-
         commonMain.dependencies {
+            implementation(project(":core:displaymodels"))
+            implementation(project(":core:designsystem"))
             implementation(project(":core:models"))
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.kotlinx.datetime)
-            implementation(libs.sqlite.bundled)
+            implementation(project(":core:scaffold"))
+            implementation(project(":data:stations:api"))
+            implementation(compose.material3)
+            implementation(compose.ui)
+            implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.eygraber.compose.placeholder.material3)
+            implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.koin.core)
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(project(":core:models-test"))
+            implementation(libs.cash.turbine)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.varabyte.truthish)
         }
     }
 }
@@ -55,18 +64,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.data.local.room"
-}
-
-dependencies {
-    // KSP configuration for Room code generation
-    add("kspCommonMainMetadata", libs.androidx.room.compiler)
-    add("kspAndroid", libs.androidx.room.compiler)
-    add("kspIosX64", libs.androidx.room.compiler)
-    add("kspIosArm64", libs.androidx.room.compiler)
-    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
-}
-
-room {
-    schemaDirectory("$projectDir/schemas")
+    namespace = "com.adammcneilly.spacenerd.feature.stationdetail"
 }

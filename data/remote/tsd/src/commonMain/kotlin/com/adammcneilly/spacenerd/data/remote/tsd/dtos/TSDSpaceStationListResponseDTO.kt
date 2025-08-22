@@ -12,5 +12,5 @@ data class TSDSpaceStationListResponseDTO(
     @SerialName("previous")
     val previous: String? = null,
     @SerialName("results")
-    val results: List<TSDSpaceStationDTO>? = null,
+    val results: List<TSDSpaceStationSummaryDTO>? = null,
 )

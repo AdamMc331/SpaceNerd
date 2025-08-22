@@ -26,4 +26,12 @@ sealed class AppScreen : NavKey {
     data class LaunchDetail(
         val launchId: String,
     ) : AppScreen()
+
+    /**
+     * Renders the space station detail screen for a given [stationId].
+     */
+    @Serializable
+    data class StationDetail(
+        val stationId: String,
+    ) : AppScreen()
 }

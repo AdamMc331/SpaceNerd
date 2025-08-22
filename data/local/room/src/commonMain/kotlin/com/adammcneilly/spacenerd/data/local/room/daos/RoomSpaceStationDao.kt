@@ -28,4 +28,15 @@ interface RoomSpaceStationDao {
     fun getSpaceStations(
         status: SpaceStationStatus?,
     ): Flow<List<RoomSpaceStationDTO>>
+
+    @Query(
+        """
+            SELECT *
+            FROM space_stations
+            WHERE id = :id
+        """,
+    )
+    fun getSpaceStation(
+        id: String,
+    ): Flow<RoomSpaceStationDTO>
 }

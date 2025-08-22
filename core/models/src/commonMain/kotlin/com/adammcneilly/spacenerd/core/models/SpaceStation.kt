@@ -1,5 +1,9 @@
 package com.adammcneilly.spacenerd.core.models
 
+import kotlinx.datetime.LocalDate
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
+
 /**
  * Represents a space station that is orbiting the Earth.
  *
@@ -13,4 +17,6 @@ data class SpaceStation(
     val name: String,
     val status: SpaceStationStatus,
     val imageUrl: String,
+    val agencies: List<Agency>,
+    val founded: LocalDate,
 )

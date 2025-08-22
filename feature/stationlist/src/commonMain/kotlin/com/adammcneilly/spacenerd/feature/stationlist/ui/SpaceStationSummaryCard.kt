@@ -1,6 +1,8 @@
 package com.adammcneilly.spacenerd.feature.stationlist.ui
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -8,6 +10,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
@@ -74,7 +77,7 @@ private fun StationImage(
         modifier = modifier
             .placeholder(station.isPlaceholder)
             .sharedElement(
-                key = "stationImage-${station.id}",
+                key = station.imageSharedElementKey,
             ),
     )
 }
@@ -104,7 +107,7 @@ private fun StationStatus(
                 color = placeholderColor,
             )
             .sharedElement(
-                key = "StationStatus-${station.id}",
+                key = station.statusSharedElementKey,
             ),
     )
 }
@@ -115,11 +118,28 @@ private fun StationInfo(
     station: SpaceStationDisplayModel,
     modifier: Modifier,
 ) {
-    Text(
-        text = station.name,
-        style = MaterialTheme.typography.titleSmall,
-        modifier = modifier
-            .placeholder(station.isPlaceholder)
-            .sharedBounds("STATION_TITLE_${station.id}"),
-    )
+    Column(
+        modifier = modifier,
+    ) {
+        Text(
+            text = station.name,
+            style = MaterialTheme.typography.titleSmall,
+            modifier = Modifier
+                .placeholder(station.isPlaceholder)
+                .sharedBounds(
+                    key = station.titleSharedElementKey,
+                ),
+        )
+
+        Text(
+            text = station.subtitle,
+            style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .placeholder(station.isPlaceholder)
+                .sharedBounds(
+                    key = station.subtitleSharedElementKey,
+                ),
+        )
+    }
 }

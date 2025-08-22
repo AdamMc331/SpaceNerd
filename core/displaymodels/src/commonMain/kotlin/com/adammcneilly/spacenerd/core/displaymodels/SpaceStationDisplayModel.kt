@@ -3,6 +3,20 @@ package com.adammcneilly.spacenerd.core.displaymodels
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.SpaceStation
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.format
+import kotlinx.datetime.format.DateTimeComponents
+import kotlinx.datetime.format.MonthNames
+import kotlinx.datetime.format.char
+
+private val foundedDateFormat = LocalDate.Format {
+    monthName(MonthNames.ENGLISH_ABBREVIATED)
+    char(' ')
+    day()
+    char(',')
+    char(' ')
+    year()
+}
 
 /**
  * A user-friendly representation of a space station.
@@ -19,13 +33,23 @@ data class SpaceStationDisplayModel(
     val name: String,
     val image: ImageModel,
     val status: StatusDisplayModel,
+    val subtitle: String,
     val isPlaceholder: Boolean = false,
 ) {
+    val imageSharedElementKey = "stationImage-$id"
+    val titleSharedElementKey = "stationTitle-$id"
+    val subtitleSharedElementKey = "stationSubtitle-$id"
+    val statusSharedElementKey = "stationStatus-$id"
+
     constructor(station: SpaceStation) : this(
         id = station.id,
         name = station.name,
         image = ImageModel.Remote(station.imageUrl),
         status = StatusDisplayModel(station.status),
+        subtitle = station.founded.let { founded ->
+            val formattedDate = founded.format(foundedDateFormat)
+            "Founded: $formattedDate"
+        },
     )
 
     companion object {
@@ -35,6 +59,7 @@ data class SpaceStationDisplayModel(
                 name = "Placeholder Station",
                 image = ImageModel.Placeholder,
                 status = StatusDisplayModel(SpaceStationStatus.Unknown),
+                subtitle = "Founded: Jan 00, 0000",
                 isPlaceholder = true,
             )
         }
