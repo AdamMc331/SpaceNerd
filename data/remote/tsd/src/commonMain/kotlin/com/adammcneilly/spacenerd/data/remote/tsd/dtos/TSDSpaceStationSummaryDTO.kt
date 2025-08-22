@@ -36,7 +36,6 @@ data class TSDSpaceStationSummaryDTO(
     @SerialName("url")
     val url: String? = null,
 ) {
-    @OptIn(ExperimentalTime::class)
     fun toSpaceStation(): SpaceStation {
         return SpaceStation(
             id = this.id.toString(),

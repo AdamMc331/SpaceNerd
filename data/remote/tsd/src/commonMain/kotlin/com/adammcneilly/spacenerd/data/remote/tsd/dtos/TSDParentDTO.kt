@@ -12,7 +12,7 @@ data class TSDParentDTO(
     @SerialName("maiden_flight")
     val maidenFlight: String? = null,
     @SerialName("manufacturer")
-    val manufacturer: TSDManufacturerDTO? = null,
+    val manufacturer: TSDAgencyDTO? = null,
     @SerialName("name")
     val name: String? = null,
     @SerialName("parent")

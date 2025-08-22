@@ -44,6 +44,7 @@ include(":feature:astronautlist")
 include(":feature:launchdetail")
 include(":feature:launchlist")
 include(":feature:news")
+include(":feature:stationdetail")
 include(":feature:stationlist")
 include(":shared")
 include(":test:paparazzi")
@@ -55,4 +56,3 @@ plugins {
 kover {
     enableCoverage()
 }
-include(":feature:stationdetail")

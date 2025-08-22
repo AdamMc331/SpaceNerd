@@ -8,7 +8,6 @@ import kotlinx.datetime.LocalDate
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
-@OptIn(ExperimentalTime::class)
 @Entity(tableName = "space_stations")
 data class RoomSpaceStationDTO(
     @PrimaryKey val id: String,
