@@ -23,6 +23,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:models"))
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
