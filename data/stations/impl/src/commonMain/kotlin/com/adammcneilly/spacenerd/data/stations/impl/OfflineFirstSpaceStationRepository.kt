@@ -40,7 +40,10 @@ class OfflineFirstSpaceStationRepository(
 
                         val stations = response.getOrNull()
                         if (stations != null) {
-                            localSpaceStationService.saveStations(stations)
+                            localSpaceStationService.saveStations(
+                                stations = stations,
+                                replace = false,
+                            )
                             cacheTimestampRepository.setCacheTimestamp(cacheKey)
                         }
 
@@ -72,7 +75,10 @@ class OfflineFirstSpaceStationRepository(
 
                         val station = response.getOrNull()
                         if (station != null) {
-                            localSpaceStationService.saveStations(listOf(station))
+                            localSpaceStationService.saveStations(
+                                stations = listOf(station),
+                                replace = true,
+                            )
                             cacheTimestampRepository.setCacheTimestamp(cacheKey)
                         }
 

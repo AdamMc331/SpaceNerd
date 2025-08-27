@@ -16,9 +16,15 @@ class RoomSpaceStationService(
 ) : LocalSpaceStationService {
     override suspend fun saveStations(
         stations: List<SpaceStation>,
+        replace: Boolean,
     ) {
         val stationDtos = stations.map(::RoomSpaceStationDTO)
-        spaceStationDao.insertSpaceStations(stationDtos)
+
+        if (replace) {
+            spaceStationDao.insertOrReplaceSpaceStations(stationDtos)
+        } else {
+            spaceStationDao.insertOrIgnoreSpaceStations(stationDtos)
+        }
     }
 
     override fun getStations(

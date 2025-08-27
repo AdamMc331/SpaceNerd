@@ -14,7 +14,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RoomSpaceStationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSpaceStations(
+    suspend fun insertOrReplaceSpaceStations(
+        stations: List<RoomSpaceStationDTO>,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreSpaceStations(
         stations: List<RoomSpaceStationDTO>,
     )
 
@@ -23,6 +28,7 @@ interface RoomSpaceStationDao {
             SELECT *
             FROM space_stations
             WHERE (:status IS NULL OR status = :status)
+            ORDER BY founded DESC
         """,
     )
     fun getSpaceStations(
