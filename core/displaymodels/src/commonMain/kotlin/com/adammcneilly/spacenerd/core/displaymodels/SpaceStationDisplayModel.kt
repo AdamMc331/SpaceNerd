@@ -54,7 +54,6 @@ data class SpaceStationDisplayModel(
     )
 
     companion object {
-        @Suppress("MagicNumber")
         fun placeholder(): SpaceStationDisplayModel {
             return SpaceStationDisplayModel(
                 id = "",

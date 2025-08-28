@@ -13,7 +13,6 @@ data class LaunchListUiState(
     val selectedLaunch: LaunchDisplayModel?,
 ) {
     companion object {
-        @Suppress("MagicNumber")
         fun default(): LaunchListUiState {
             val placeholderLaunches = List(3) {
                 LaunchDisplayModel.placeholder()
