@@ -11,7 +11,7 @@ data class RoomLaunchDetailDTO(
     @Embedded val launch: RoomLaunchDTO,
     @Relation(
         parentColumn = "launchAgencyId",
-        entityColumn = "id",
+        entityColumn = "agencyId",
     )
     val agency: RoomAgencyDTO?,
     @Relation(

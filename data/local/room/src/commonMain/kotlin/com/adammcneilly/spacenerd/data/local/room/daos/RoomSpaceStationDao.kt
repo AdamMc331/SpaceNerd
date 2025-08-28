@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationAgencyCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDetailDTO
@@ -24,6 +25,11 @@ interface RoomSpaceStationDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreSpaceStations(
         stations: List<RoomSpaceStationDTO>,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreAgencies(
+        agencies: List<RoomAgencyDTO>,
     )
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -48,7 +54,7 @@ interface RoomSpaceStationDao {
         """
             SELECT *
             FROM space_stations
-            WHERE id = :id
+            WHERE spaceStationId = :id
         """,
     )
     fun getSpaceStation(

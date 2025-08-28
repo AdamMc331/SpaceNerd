@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.data.stations.impl.local
 
 import com.adammcneilly.spacenerd.core.models.SpaceStation
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomSpaceStationDao
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationAgencyCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDetailDTO
@@ -9,6 +10,7 @@ import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
 import com.adammcneilly.spacenerd.data.stations.api.local.LocalSpaceStationService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 
 /**
  * This is an implementation of [LocalSpaceStationService] that requests data from a local Room [spaceStationDao].
@@ -20,25 +22,26 @@ class RoomSpaceStationService(
         stations: List<SpaceStation>,
         replace: Boolean,
     ) {
-        val stationsToAgencies = stations.map { station ->
-            station.agencies.map { agency ->
+        for (station in stations) {
+            val agencyDtos = station.agencies.map(::RoomAgencyDTO)
+            spaceStationDao.insertOrIgnoreAgencies(agencyDtos)
+
+            val stationToAgencies = station.agencies.map { agency ->
                 RoomSpaceStationAgencyCrossRefDTO(
                     spaceStationId = station.id,
                     agencyId = agency.id,
                 )
             }
-        }
 
-        for (stationAgencies in stationsToAgencies) {
-            spaceStationDao.insertStationAgencyMap(stationAgencies)
-        }
+            spaceStationDao.insertStationAgencyMap(stationToAgencies)
 
-        val stationDtos = stations.map(::RoomSpaceStationDTO)
+            val stationDto = RoomSpaceStationDTO(station)
 
-        if (replace) {
-            spaceStationDao.insertOrReplaceSpaceStations(stationDtos)
-        } else {
-            spaceStationDao.insertOrIgnoreSpaceStations(stationDtos)
+            if (replace) {
+                spaceStationDao.insertOrReplaceSpaceStations(listOf(stationDto))
+            } else {
+                spaceStationDao.insertOrIgnoreSpaceStations(listOf(stationDto))
+            }
         }
     }
 
