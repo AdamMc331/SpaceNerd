@@ -4,8 +4,11 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationAgencyCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDetailDTO
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -23,6 +26,11 @@ interface RoomSpaceStationDao {
         stations: List<RoomSpaceStationDTO>,
     )
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertStationAgencyMap(
+        stationAgencies: List<RoomSpaceStationAgencyCrossRefDTO>,
+    )
+
     @Query(
         """
             SELECT *
@@ -35,6 +43,7 @@ interface RoomSpaceStationDao {
         status: SpaceStationStatus?,
     ): Flow<List<RoomSpaceStationDTO>>
 
+    @Transaction
     @Query(
         """
             SELECT *
@@ -44,5 +53,5 @@ interface RoomSpaceStationDao {
     )
     fun getSpaceStation(
         id: String,
-    ): Flow<RoomSpaceStationDTO>
+    ): Flow<RoomSpaceStationDetailDTO>
 }
