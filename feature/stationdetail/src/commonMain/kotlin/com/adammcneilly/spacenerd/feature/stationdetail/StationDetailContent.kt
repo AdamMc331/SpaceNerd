@@ -1,12 +1,16 @@
 package com.adammcneilly.spacenerd.feature.stationdetail
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -55,6 +59,34 @@ fun StationDetailContent(
 
         item {
             StationSubtitle(state)
+        }
+
+        item {
+            Text(
+                text = "Agencies",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .padding(horizontal = 16.dp),
+            )
+        }
+
+        item {
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(16.dp),
+            ) {
+                items(state.station.agencies) { agency ->
+                    ImageWrapper(
+                        image = agency.logo,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .placeholder(agency.isPlaceholder)
+                            .fillParentMaxWidth(0.33F)
+                            .aspectRatio(1F),
+                    )
+                }
+            }
         }
     }
 }
