@@ -5,7 +5,6 @@ import com.adammcneilly.spacenerd.core.models.SpaceStation
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.MonthNames
 import kotlinx.datetime.format.char
 
@@ -55,6 +54,7 @@ data class SpaceStationDisplayModel(
     )
 
     companion object {
+        @Suppress("MagicNumber")
         fun placeholder(): SpaceStationDisplayModel {
             return SpaceStationDisplayModel(
                 id = "",

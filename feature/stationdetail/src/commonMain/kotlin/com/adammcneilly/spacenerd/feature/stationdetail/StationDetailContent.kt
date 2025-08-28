@@ -33,6 +33,7 @@ import com.eygraber.compose.placeholder.material3.placeholder
 import com.eygraber.compose.placeholder.placeholder
 
 private const val STATION_IMAGE_ASPECT_RATIO = 1.5F
+private const val AGENCY_IMAGE_PARENT_RATIO = 0.33F
 
 @Composable
 fun StationDetailContent(
@@ -85,7 +86,7 @@ fun StationDetailContent(
                                 visible = agency.isPlaceholder,
                                 shape = CircleShape,
                             )
-                            .fillParentMaxWidth(0.33F)
+                            .fillParentMaxWidth(AGENCY_IMAGE_PARENT_RATIO)
                             .aspectRatio(1F),
                     )
                 }
