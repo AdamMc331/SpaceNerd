@@ -81,7 +81,10 @@ fun StationDetailContent(
                         image = agency.logo,
                         contentDescription = null,
                         modifier = Modifier
-                            .placeholder(agency.isPlaceholder)
+                            .placeholder(
+                                visible = agency.isPlaceholder,
+                                shape = CircleShape,
+                            )
                             .fillParentMaxWidth(0.33F)
                             .aspectRatio(1F),
                     )
