@@ -6,7 +6,7 @@ val mockTsdSpaceStationListResponse = """
       "next": null,
       "previous": null,
       "results": [
-        $mockTsdInternationalSpaceStation,
+        $mockTsdInternationalSpaceStationSummary,
         $mockTsdTiangongSpaceStation        
       ]
     }

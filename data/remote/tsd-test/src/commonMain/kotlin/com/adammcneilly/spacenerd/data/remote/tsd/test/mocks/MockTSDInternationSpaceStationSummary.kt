@@ -1,6 +1,6 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.test.mocks
 
-val mockTsdInternationalSpaceStation = """
+val mockTsdInternationalSpaceStationSummary = """
     {
           "id": 4,
           "url": "https://ll.thespacedevs.com/2.3.0/space_stations/4/",
