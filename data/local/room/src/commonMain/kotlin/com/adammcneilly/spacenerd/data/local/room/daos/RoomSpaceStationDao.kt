@@ -4,8 +4,12 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationAgencyCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDetailDTO
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -14,8 +18,23 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RoomSpaceStationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSpaceStations(
+    suspend fun insertOrReplaceSpaceStations(
         stations: List<RoomSpaceStationDTO>,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreSpaceStations(
+        stations: List<RoomSpaceStationDTO>,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreAgencies(
+        agencies: List<RoomAgencyDTO>,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertStationAgencyMap(
+        stationAgencies: List<RoomSpaceStationAgencyCrossRefDTO>,
     )
 
     @Query(
@@ -23,20 +42,22 @@ interface RoomSpaceStationDao {
             SELECT *
             FROM space_stations
             WHERE (:status IS NULL OR status = :status)
+            ORDER BY founded DESC
         """,
     )
     fun getSpaceStations(
         status: SpaceStationStatus?,
     ): Flow<List<RoomSpaceStationDTO>>
 
+    @Transaction
     @Query(
         """
             SELECT *
             FROM space_stations
-            WHERE id = :id
+            WHERE spaceStationId = :id
         """,
     )
     fun getSpaceStation(
         id: String,
-    ): Flow<RoomSpaceStationDTO>
+    ): Flow<RoomSpaceStationDetailDTO>
 }

@@ -21,7 +21,7 @@ interface RoomAgencyDao {
         """
         SELECT * 
         FROM agencies 
-        WHERE id = :id
+        WHERE agencyId = :id
         """,
     )
     fun getAgency(

@@ -11,7 +11,6 @@ data class SpaceStationListUiState(
     val selectedStation: SpaceStationDisplayModel?,
 ) {
     companion object {
-        @Suppress("MagicNumber")
         fun default(): SpaceStationListUiState {
             val placeholderStations = List(3) {
                 SpaceStationDisplayModel.placeholder()

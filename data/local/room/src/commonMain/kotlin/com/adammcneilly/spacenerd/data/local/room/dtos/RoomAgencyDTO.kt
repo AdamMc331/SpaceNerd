@@ -6,7 +6,7 @@ import com.adammcneilly.spacenerd.core.models.Agency
 
 @Entity(tableName = "agencies")
 data class RoomAgencyDTO(
-    @PrimaryKey val id: String,
+    @PrimaryKey val agencyId: String,
     val name: String,
     val abbreviation: String,
     val description: String,
@@ -15,7 +15,7 @@ data class RoomAgencyDTO(
     constructor(
         agency: Agency,
     ) : this(
-        id = agency.id,
+        agencyId = agency.id,
         name = agency.name,
         abbreviation = agency.abbreviation,
         description = agency.description,
@@ -24,7 +24,7 @@ data class RoomAgencyDTO(
 
     fun toAgency(): Agency {
         return Agency(
-            id = id,
+            id = agencyId,
             name = name,
             abbreviation = abbreviation,
             description = description,

@@ -11,8 +11,15 @@ import kotlinx.coroutines.flow.Flow
  * Any functions to save data should be suspending and operate on a background thread.
  */
 interface LocalSpaceStationService {
+    /**
+     * Saves a list of [stations] to local storage.
+     *
+     * @param[replace] If true, replace the data that already exists.
+     * Otherwise, will ignore any conflicts with stations matching by ID.
+     */
     suspend fun saveStations(
         stations: List<SpaceStation>,
+        replace: Boolean,
     )
 
     fun getStations(

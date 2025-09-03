@@ -16,6 +16,9 @@ naming:
 
 style:
   active: true
+  MagicNumber:
+    active: true
+    ignoreNumbers: ['-1', '0', '1', '2', '3']
   # A lot of our test files have a long max line length due to mock data
   # so exclude those from being checked.
   MaxLineLength:

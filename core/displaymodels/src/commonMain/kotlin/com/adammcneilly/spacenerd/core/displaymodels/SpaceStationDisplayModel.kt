@@ -5,7 +5,6 @@ import com.adammcneilly.spacenerd.core.models.SpaceStation
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.MonthNames
 import kotlinx.datetime.format.char
 
@@ -34,6 +33,7 @@ data class SpaceStationDisplayModel(
     val image: ImageModel,
     val status: StatusDisplayModel,
     val subtitle: String,
+    val agencies: List<AgencyDisplayModel>,
     val isPlaceholder: Boolean = false,
 ) {
     val imageSharedElementKey = "stationImage-$id"
@@ -50,6 +50,7 @@ data class SpaceStationDisplayModel(
             val formattedDate = founded.format(foundedDateFormat)
             "Founded: $formattedDate"
         },
+        agencies = station.agencies.map(::AgencyDisplayModel),
     )
 
     companion object {
@@ -60,6 +61,9 @@ data class SpaceStationDisplayModel(
                 image = ImageModel.Placeholder,
                 status = StatusDisplayModel(SpaceStationStatus.Unknown),
                 subtitle = "Founded: Jan 00, 0000",
+                agencies = List(3) {
+                    AgencyDisplayModel.placeholder()
+                },
                 isPlaceholder = true,
             )
         }

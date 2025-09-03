@@ -11,6 +11,8 @@ import kotlin.time.Instant
  * @property[name] The name of this space station.
  * @property[status] The current status of this space station. See [SpaceStationStatus].
  * @property[imageUrl] A URL to an image of this space station.
+ * @property[agencies] A list of [Agency] entitities that collaborate on managing this station.
+ * @property[founded] The date this space station was founded.
  */
 data class SpaceStation(
     val id: String,

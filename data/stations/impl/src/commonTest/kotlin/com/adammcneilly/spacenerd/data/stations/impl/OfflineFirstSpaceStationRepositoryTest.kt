@@ -33,7 +33,7 @@ class OfflineFirstSpaceStationRepositoryTest {
     )
 
     @Test
-    fun `request calls remote service with sync required`() =
+    fun `list request calls remote service with sync required`() =
         runTest {
             val request = SpaceStationListRequest()
             val stations = listOf(testSpaceStation)
@@ -60,7 +60,10 @@ class OfflineFirstSpaceStationRepositoryTest {
                 }
 
                 verifySuspend {
-                    localSpaceStationService.saveStations(stations)
+                    localSpaceStationService.saveStations(
+                        stations = stations,
+                        replace = false,
+                    )
                 }
 
                 verifySuspend {
@@ -72,7 +75,7 @@ class OfflineFirstSpaceStationRepositoryTest {
         }
 
     @Test
-    fun `request skips remote service without sync required`() =
+    fun `list request skips remote service without sync required`() =
         runTest {
             val request = SpaceStationListRequest()
             val stations = listOf(testSpaceStation)
@@ -103,7 +106,100 @@ class OfflineFirstSpaceStationRepositoryTest {
                 verifySuspend(
                     mode = VerifyMode.exactly(0),
                 ) {
-                    localSpaceStationService.saveStations(any())
+                    localSpaceStationService.saveStations(
+                        stations = any(),
+                        replace = any(),
+                    )
+                }
+
+                verifySuspend(
+                    mode = VerifyMode.exactly(0),
+                ) {
+                    cacheTimestampRepository.setCacheTimestamp(any())
+                }
+
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun `detail request calls remote service with sync required`() =
+        runTest {
+            val station = testSpaceStation
+            val id = testSpaceStation.id
+            val cacheKey = "$CACHE_KEY_STATIONS_PREFIX$id"
+
+            every {
+                localSpaceStationService.getStation(id)
+            } returns flowOf(station)
+
+            everySuspend {
+                remoteSpaceStationService.getStation(id)
+            } returns Result.success(station)
+
+            everySuspend {
+                cacheTimestampRepository.shouldSyncWithServer(eq(cacheKey), any())
+            } returns true
+
+            repository.getStation(id).test {
+                val repoResponse = awaitItem()
+                assertThat(repoResponse).isEqualTo(station)
+
+                verifySuspend {
+                    remoteSpaceStationService.getStation(id)
+                }
+
+                verifySuspend {
+                    localSpaceStationService.saveStations(
+                        stations = listOf(station),
+                        replace = true,
+                    )
+                }
+
+                verifySuspend {
+                    cacheTimestampRepository.setCacheTimestamp(cacheKey)
+                }
+
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun `detail request skips remote service without sync required`() =
+        runTest {
+            val station = testSpaceStation
+            val id = testSpaceStation.id
+            val cacheKey = "$CACHE_KEY_STATIONS_PREFIX$id"
+
+            every {
+                localSpaceStationService.getStation(id)
+            } returns flowOf(station)
+
+            everySuspend {
+                remoteSpaceStationService.getStation(id)
+            } returns Result.success(station)
+
+            everySuspend {
+                cacheTimestampRepository.shouldSyncWithServer(eq(cacheKey), any())
+            } returns false
+
+            repository.getStation(id).test {
+                val repoResponse = awaitItem()
+                assertThat(repoResponse).isEqualTo(station)
+
+                verifySuspend(
+                    mode = VerifyMode.exactly(0),
+                ) {
+                    remoteSpaceStationService.getStation(any())
+                }
+
+                verifySuspend(
+                    mode = VerifyMode.exactly(0),
+                ) {
+                    localSpaceStationService.saveStations(
+                        stations = any(),
+                        replace = any(),
+                    )
                 }
 
                 verifySuspend(

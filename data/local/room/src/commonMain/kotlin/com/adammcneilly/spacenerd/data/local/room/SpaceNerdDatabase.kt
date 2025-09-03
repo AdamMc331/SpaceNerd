@@ -16,6 +16,7 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomMissionDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationAgencyCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -33,6 +34,7 @@ import kotlinx.coroutines.IO
         RoomLaunchPadDTO::class,
         RoomMissionDTO::class,
         RoomSpaceStationDTO::class,
+        RoomSpaceStationAgencyCrossRefDTO::class,
     ],
 )
 @ConstructedBy(SpaceNerdDatabaseConstructor::class)

@@ -2,15 +2,15 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b055c3821d0478ef01876897080aabcc",
+    "identityHash": "40334bd36b1ef375ffc035a47cf6a853",
     "entities": [
       {
         "tableName": "agencies",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `abbreviation` TEXT NOT NULL, `description` TEXT NOT NULL, `logoUrl` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`agencyId` TEXT NOT NULL, `name` TEXT NOT NULL, `abbreviation` TEXT NOT NULL, `description` TEXT NOT NULL, `logoUrl` TEXT NOT NULL, PRIMARY KEY(`agencyId`))",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "agencyId",
+            "columnName": "agencyId",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -42,7 +42,7 @@
         "primaryKey": {
           "autoGenerate": false,
           "columnNames": [
-            "id"
+            "agencyId"
           ]
         }
       },
@@ -259,11 +259,11 @@
       },
       {
         "tableName": "space_stations",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `status` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `founded` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`spaceStationId` TEXT NOT NULL, `name` TEXT NOT NULL, `status` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `founded` TEXT NOT NULL, PRIMARY KEY(`spaceStationId`))",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "spaceStationId",
+            "columnName": "spaceStationId",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -295,14 +295,39 @@
         "primaryKey": {
           "autoGenerate": false,
           "columnNames": [
-            "id"
+            "spaceStationId"
+          ]
+        }
+      },
+      {
+        "tableName": "RoomSpaceStationAgencyCrossRefDTO",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`spaceStationId` TEXT NOT NULL, `agencyId` TEXT NOT NULL, PRIMARY KEY(`spaceStationId`, `agencyId`))",
+        "fields": [
+          {
+            "fieldPath": "spaceStationId",
+            "columnName": "spaceStationId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "agencyId",
+            "columnName": "agencyId",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "spaceStationId",
+            "agencyId"
           ]
         }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b055c3821d0478ef01876897080aabcc')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '40334bd36b1ef375ffc035a47cf6a853')"
     ]
   }
 }

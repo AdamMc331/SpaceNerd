@@ -11,7 +11,6 @@ data class NewsUiState(
     val selectedArticle: ArticleDisplayModel?,
 ) {
     companion object {
-        @Suppress("MagicNumber")
         fun default(): NewsUiState {
             val placeholderArticles = List(3) {
                 ArticleDisplayModel.placeholder()
