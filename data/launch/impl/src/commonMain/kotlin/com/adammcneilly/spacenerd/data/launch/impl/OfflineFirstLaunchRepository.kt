@@ -48,9 +48,7 @@ class OfflineFirstLaunchRepository(
                 syncAgencyIfNecessary(coroutineContext, agencyId)
             }
             .onStart {
-                // Commenting this out for now, we don't learn anything new from
-                // detail, currently.
-//                syncLaunchIfNecessary(coroutineContext, id)
+                syncLaunchIfNecessary(coroutineContext, id)
             }
     }
 
@@ -96,7 +94,8 @@ class OfflineFirstLaunchRepository(
                 cacheDuration = 1.hours,
             )
 
-            if (needsServerFetch) {
+            // NOTE: adam-mcneilly delete before merging
+            if (true) {
                 val response = remoteLaunchService.getLaunches(request)
 
                 val launches = response.getOrNull()
@@ -127,7 +126,8 @@ class OfflineFirstLaunchRepository(
                 cacheDuration = 1.hours,
             )
 
-            if (needsServerFetch) {
+            // NOTE: adam-mcneilly delete before merging
+            if (true) {
                 val response = remoteLaunchService.getLaunch(id)
 
                 val launch = response.getOrNull()

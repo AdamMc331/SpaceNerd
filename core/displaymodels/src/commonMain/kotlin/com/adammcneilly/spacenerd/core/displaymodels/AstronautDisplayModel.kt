@@ -12,10 +12,9 @@ data class AstronautDisplayModel(
     val image: ImageModel,
     val placeholder: Boolean = false,
 ) {
-
     constructor(
         astronaut: Astronaut,
-    ): this(
+    ) : this(
         id = astronaut.id,
         name = astronaut.name,
         image = ImageModel.Remote(astronaut.imageUrl),

@@ -60,6 +60,10 @@ class TSDLaunchService(
     private suspend fun getUpcomingLaunches(): Result<List<Launch>> {
         return client.getResponse<TSDLaunchListResponseDTO>(
             endpoint = "launches/upcoming",
+            // NOTE: adam-mcneilly delete before merging
+            params = mapOf(
+                "is_crewed" to true,
+            ),
         ).map { launchListResponseDTO ->
             launchListResponseDTO.results?.map { launchDTO ->
                 launchDTO.toLaunch()
