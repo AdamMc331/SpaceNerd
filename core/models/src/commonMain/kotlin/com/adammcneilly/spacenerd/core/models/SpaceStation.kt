@@ -20,5 +20,5 @@ data class SpaceStation(
     val imageUrl: String,
     val agencies: List<Agency>,
     val founded: LocalDate,
-    val onboardCrew: List<Astronaut>,
+    val onboardCrew: List<Astronaut> = emptyList(),
 )

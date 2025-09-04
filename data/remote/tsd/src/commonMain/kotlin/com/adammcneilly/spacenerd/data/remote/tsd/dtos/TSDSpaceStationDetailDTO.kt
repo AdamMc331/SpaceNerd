@@ -11,7 +11,7 @@ import kotlin.time.Instant
 @Serializable
 data class TSDSpaceStationDetailDTO(
 //    @SerialName("active_docking_events")
-//    val activeDockingEvents: List<Any?>? = listOf(),
+//    val activeDockingEvents: List<Any?>? = null,
     @SerialName("active_expeditions")
     val activeExpeditions: List<TSDActiveExpeditionDTO>? = null,
     @SerialName("deorbited")

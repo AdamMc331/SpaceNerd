@@ -48,6 +48,7 @@ class TSDLaunchService(
             params = mapOf(
                 "net__gte" to request.after,
                 "net__lte" to request.before,
+                "is_crewed" to request.hasCrew,
             ),
         ).map { launchListResponseDTO ->
             launchListResponseDTO.results?.map { launchDTO ->

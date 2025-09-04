@@ -20,5 +20,6 @@ sealed interface LaunchListRequest {
     data class Custom(
         val before: Instant? = null,
         val after: Instant? = null,
+        val hasCrew: Boolean? = null,
     ) : LaunchListRequest
 }

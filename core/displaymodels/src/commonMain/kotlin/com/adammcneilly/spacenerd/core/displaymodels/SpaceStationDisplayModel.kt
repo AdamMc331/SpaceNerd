@@ -34,7 +34,7 @@ data class SpaceStationDisplayModel(
     val status: StatusDisplayModel,
     val subtitle: String,
     val agencies: List<AgencyDisplayModel>,
-    val onboardCrew: List<AstronautDisplayModel>,
+    val onboardCrew: List<AstronautDisplayModel> = emptyList(),
     val isPlaceholder: Boolean = false,
 ) {
     val imageSharedElementKey = "stationImage-$id"
