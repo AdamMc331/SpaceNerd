@@ -34,6 +34,7 @@ data class SpaceStationDisplayModel(
     val status: StatusDisplayModel,
     val subtitle: String,
     val agencies: List<AgencyDisplayModel>,
+    val onboardCrew: List<AstronautDisplayModel>,
     val isPlaceholder: Boolean = false,
 ) {
     val imageSharedElementKey = "stationImage-$id"
@@ -51,6 +52,7 @@ data class SpaceStationDisplayModel(
             "Founded: $formattedDate"
         },
         agencies = station.agencies.map(::AgencyDisplayModel),
+        onboardCrew = station.onboardCrew.map(::AstronautDisplayModel),
     )
 
     companion object {
@@ -63,6 +65,9 @@ data class SpaceStationDisplayModel(
                 subtitle = "Founded: Jan 00, 0000",
                 agencies = List(3) {
                     AgencyDisplayModel.placeholder()
+                },
+                onboardCrew = List(3) {
+                    AstronautDisplayModel.placeholder()
                 },
                 isPlaceholder = true,
             )

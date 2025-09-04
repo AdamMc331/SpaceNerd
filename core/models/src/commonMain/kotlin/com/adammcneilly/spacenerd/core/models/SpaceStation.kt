@@ -1,8 +1,6 @@
 package com.adammcneilly.spacenerd.core.models
 
 import kotlinx.datetime.LocalDate
-import kotlin.time.ExperimentalTime
-import kotlin.time.Instant
 
 /**
  * Represents a space station that is orbiting the Earth.
@@ -11,8 +9,9 @@ import kotlin.time.Instant
  * @property[name] The name of this space station.
  * @property[status] The current status of this space station. See [SpaceStationStatus].
  * @property[imageUrl] A URL to an image of this space station.
- * @property[agencies] A list of [Agency] entitities that collaborate on managing this station.
+ * @property[agencies] A list of [Agency] entities that collaborate on managing this station.
  * @property[founded] The date this space station was founded.
+ * @param[onboardCrew] A list of [Astronaut] entities for people currently onboard this space station.
  */
 data class SpaceStation(
     val id: String,
@@ -21,4 +20,5 @@ data class SpaceStation(
     val imageUrl: String,
     val agencies: List<Agency>,
     val founded: LocalDate,
+    val onboardCrew: List<Astronaut>,
 )
