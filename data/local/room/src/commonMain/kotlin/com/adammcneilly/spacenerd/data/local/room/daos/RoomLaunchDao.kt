@@ -5,8 +5,13 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Upsert
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.LaunchCrewMember
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautRoleDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchCrewMemberDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDetailDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
@@ -33,6 +38,21 @@ interface RoomLaunchDao {
         mission: RoomMissionDTO,
     )
 
+    @Upsert
+    suspend fun upsertAstronautRole(
+        role: RoomAstronautRoleDTO,
+    )
+
+    @Upsert
+    suspend fun upsertAstronaut(
+        astronaut: RoomAstronautDTO,
+    )
+
+    @Upsert
+    suspend fun upsertLaunchCrewMember(
+        launchCrewMember: RoomLaunchCrewMemberDTO,
+    )
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLaunchPad(
         launchPad: RoomLaunchPadDTO,
@@ -57,9 +77,26 @@ interface RoomLaunchDao {
                 insertOrIgnoreMission(missionDto)
             }
 
+            launch.crew?.forEach { crewMember ->
+                insertLaunchCrewMember(crewMember)
+            }
+
             val launchDto = RoomLaunchDTO(launch)
             insertLaunches(listOf(launchDto))
         }
+    }
+
+    private suspend fun insertLaunchCrewMember(
+        launchCrewMember: LaunchCrewMember,
+    ) {
+        val roleDto = RoomAstronautRoleDTO(launchCrewMember.role)
+        upsertAstronautRole(roleDto)
+
+        val astronautDto = RoomAstronautDTO(launchCrewMember.astronaut)
+        upsertAstronaut(astronautDto)
+
+        val launchCrewMemberDto = RoomLaunchCrewMemberDTO(launchCrewMember)
+        upsertLaunchCrewMember(launchCrewMemberDto)
     }
 
     @Transaction

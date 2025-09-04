@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "40334bd36b1ef375ffc035a47cf6a853",
+    "identityHash": "f076a4724d54f4a5b162d2bf705662e1",
     "entities": [
       {
         "tableName": "agencies",
@@ -107,6 +107,66 @@
         }
       },
       {
+        "tableName": "astronauts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`astronautId` TEXT NOT NULL, `name` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, PRIMARY KEY(`astronautId`))",
+        "fields": [
+          {
+            "fieldPath": "astronautId",
+            "columnName": "astronautId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "imageUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "astronautId"
+          ]
+        }
+      },
+      {
+        "tableName": "astronaut_roles",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`astronautRoleId` TEXT NOT NULL, `name` TEXT NOT NULL, `priority` INTEGER NOT NULL, PRIMARY KEY(`astronautRoleId`))",
+        "fields": [
+          {
+            "fieldPath": "astronautRoleId",
+            "columnName": "astronautRoleId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priority",
+            "columnName": "priority",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "astronautRoleId"
+          ]
+        }
+      },
+      {
         "tableName": "cache_timestamps",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`key` TEXT NOT NULL, `lastFetchedTime` TEXT NOT NULL, PRIMARY KEY(`key`))",
         "fields": [
@@ -184,6 +244,36 @@
           "autoGenerate": false,
           "columnNames": [
             "id"
+          ]
+        }
+      },
+      {
+        "tableName": "launch_crew_members",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`launchCrewMemberId` TEXT NOT NULL, `astronautRoleId` TEXT NOT NULL, `astronautId` TEXT NOT NULL, PRIMARY KEY(`launchCrewMemberId`))",
+        "fields": [
+          {
+            "fieldPath": "launchCrewMemberId",
+            "columnName": "launchCrewMemberId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "astronautRoleId",
+            "columnName": "astronautRoleId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "astronautId",
+            "columnName": "astronautId",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "launchCrewMemberId"
           ]
         }
       },
@@ -327,7 +417,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '40334bd36b1ef375ffc035a47cf6a853')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f076a4724d54f4a5b162d2bf705662e1')"
     ]
   }
 }

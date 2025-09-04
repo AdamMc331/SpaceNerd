@@ -12,7 +12,10 @@ import com.adammcneilly.spacenerd.data.local.room.daos.RoomLaunchDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomSpaceStationDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautRoleDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchCrewMemberDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomMissionDTO
@@ -29,8 +32,11 @@ import kotlinx.coroutines.IO
     entities = [
         RoomAgencyDTO::class,
         RoomArticleDTO::class,
+        RoomAstronautDTO::class,
+        RoomAstronautRoleDTO::class,
         RoomCacheTimestampDTO::class,
         RoomLaunchDTO::class,
+        RoomLaunchCrewMemberDTO::class,
         RoomLaunchPadDTO::class,
         RoomMissionDTO::class,
         RoomSpaceStationDTO::class,
