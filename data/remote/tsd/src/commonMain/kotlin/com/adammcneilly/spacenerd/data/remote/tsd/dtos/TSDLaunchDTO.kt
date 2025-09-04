@@ -26,6 +26,8 @@ data class TSDLaunchDTO(
     val infographic: String? = null,
     @SerialName(value = "last_updated")
     val lastUpdated: String? = null,
+    @SerialName(value = "launch_crew")
+    val launchCrew: List<TSDLaunchCrewMemberDTO>? = null,
     @SerialName(value = "launch_designator")
     val launchDesignator: String? = null,
     @SerialName(value = "launch_service_provider")
@@ -85,6 +87,7 @@ data class TSDLaunchDTO(
             agency = this.launchServiceProvider?.toAgency(),
             pad = this.pad?.toLaunchPad(),
             mission = this.mission?.toMission(),
+            crew = this.launchCrew?.map(TSDLaunchCrewMemberDTO::toLaunchCrewMember),
         )
     }
 }

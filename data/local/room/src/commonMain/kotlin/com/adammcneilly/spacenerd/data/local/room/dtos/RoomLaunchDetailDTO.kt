@@ -35,6 +35,8 @@ data class RoomLaunchDetailDTO(
             agency = agency?.toAgency(),
             pad = launchPad?.toLaunchPad(),
             mission = mission?.toMission(),
+            // Coming up next
+            crew = null,
         )
     }
 }

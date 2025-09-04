@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.core.displaymodels
 
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.LaunchCrewMember
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 
 /**
@@ -25,6 +26,7 @@ data class LaunchDisplayModel(
     val subtitle: String,
     val agency: AgencyDisplayModel?,
     val mission: MissionDisplayModel?,
+    val crew: List<LaunchCrewMemberDisplayModel>?,
     val isPlaceholder: Boolean = false,
 ) {
     constructor(launch: Launch) : this(
@@ -35,6 +37,7 @@ data class LaunchDisplayModel(
         agency = launch.agency?.let(::AgencyDisplayModel),
         subtitle = launch.buildSubtitle(),
         mission = launch.mission?.let(::MissionDisplayModel),
+        crew = launch.crew?.map(::LaunchCrewMemberDisplayModel),
     )
 
     companion object {
@@ -47,6 +50,9 @@ data class LaunchDisplayModel(
                 subtitle = "Placeholder Subtitle",
                 agency = AgencyDisplayModel.placeholder(),
                 mission = MissionDisplayModel.placeholder(),
+                crew = List(3) {
+                    LaunchCrewMemberDisplayModel.placeholder()
+                },
                 isPlaceholder = true,
             )
         }

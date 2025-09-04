@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
+import com.adammcneilly.spacenerd.core.models.Astronaut
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -45,4 +46,12 @@ data class TSDAstronautDTO(
     val url: String? = null,
     @SerialName("wiki")
     val wiki: String? = "",
-)
+) {
+    fun toAstronaut(): Astronaut {
+        return Astronaut(
+            id = this.id.toString(),
+            name = this.name.orEmpty(),
+            imageUrl = this.image?.imageUrl.orEmpty(),
+        )
+    }
+}
