@@ -24,6 +24,11 @@ data class RoomLaunchDetailDTO(
         entityColumn = "id",
     )
     val mission: RoomMissionDTO?,
+    @Relation(
+        parentColumn = "id",
+        entityColumn = "launchId",
+    )
+    val crew: List<RoomLaunchCrewMemberDetailDTO>?,
 ) {
     fun toLaunch(): Launch {
         return Launch(

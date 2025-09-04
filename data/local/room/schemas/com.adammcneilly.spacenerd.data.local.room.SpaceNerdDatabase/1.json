@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f076a4724d54f4a5b162d2bf705662e1",
+    "identityHash": "21d5bd8a3d08e73961c3fe087a3631f6",
     "entities": [
       {
         "tableName": "agencies",
@@ -249,11 +249,17 @@
       },
       {
         "tableName": "launch_crew_members",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`launchCrewMemberId` TEXT NOT NULL, `astronautRoleId` TEXT NOT NULL, `astronautId` TEXT NOT NULL, PRIMARY KEY(`launchCrewMemberId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`launchCrewMemberId` TEXT NOT NULL, `launchId` TEXT NOT NULL, `astronautRoleId` TEXT NOT NULL, `astronautId` TEXT NOT NULL, PRIMARY KEY(`launchCrewMemberId`))",
         "fields": [
           {
             "fieldPath": "launchCrewMemberId",
             "columnName": "launchCrewMemberId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "launchId",
+            "columnName": "launchId",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -417,7 +423,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f076a4724d54f4a5b162d2bf705662e1')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '21d5bd8a3d08e73961c3fe087a3631f6')"
     ]
   }
 }
