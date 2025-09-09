@@ -9,7 +9,7 @@ import kotlin.time.ExperimentalTime
 @OptIn(ExperimentalTime::class)
 @Entity(tableName = "launches")
 data class RoomLaunchDTO(
-    @PrimaryKey val id: String,
+    @PrimaryKey val launchId: String,
     val name: String,
     val imageUrl: String,
     val launchTime: String,
@@ -21,7 +21,7 @@ data class RoomLaunchDTO(
     constructor(
         launch: Launch,
     ) : this(
-        id = launch.id,
+        launchId = launch.id,
         name = launch.name,
         imageUrl = launch.imageUrl,
         launchTime = launch.launchTime.toString(),

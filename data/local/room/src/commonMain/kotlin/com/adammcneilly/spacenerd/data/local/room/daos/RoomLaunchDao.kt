@@ -78,7 +78,10 @@ interface RoomLaunchDao {
             }
 
             launch.crew?.forEach { crewMember ->
-                insertLaunchCrewMember(crewMember)
+                insertLaunchCrewMember(
+                    launchCrewMember = crewMember,
+                    launchId = launch.id,
+                )
             }
 
             val launchDto = RoomLaunchDTO(launch)
@@ -88,6 +91,7 @@ interface RoomLaunchDao {
 
     private suspend fun insertLaunchCrewMember(
         launchCrewMember: LaunchCrewMember,
+        launchId: String,
     ) {
         val roleDto = RoomAstronautRoleDTO(launchCrewMember.role)
         upsertAstronautRole(roleDto)
@@ -95,7 +99,10 @@ interface RoomLaunchDao {
         val astronautDto = RoomAstronautDTO(launchCrewMember.astronaut)
         upsertAstronaut(astronautDto)
 
-        val launchCrewMemberDto = RoomLaunchCrewMemberDTO(launchCrewMember)
+        val launchCrewMemberDto = RoomLaunchCrewMemberDTO(
+            launchCrewMember = launchCrewMember,
+            launchId = launchId,
+        )
         upsertLaunchCrewMember(launchCrewMemberDto)
     }
 
@@ -120,7 +127,7 @@ interface RoomLaunchDao {
         """
         SELECT * 
         FROM launches 
-        WHERE id == :id  
+        WHERE launchId == :id  
         """,
     )
     fun getLaunch(

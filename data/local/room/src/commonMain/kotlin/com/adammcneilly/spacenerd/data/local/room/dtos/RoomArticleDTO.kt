@@ -13,8 +13,7 @@ import kotlin.time.Instant
 @Entity(tableName = "articles")
 @TypeConverters(StringListTypeConverter::class)
 data class RoomArticleDTO(
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey val articleId: String,
     val title: String,
     val imageUrl: String,
     val url: String,
@@ -26,7 +25,7 @@ data class RoomArticleDTO(
     constructor(
         article: Article,
     ) : this(
-        id = article.id,
+        articleId = article.id,
         title = article.title,
         imageUrl = article.imageUrl,
         url = article.url,
@@ -38,7 +37,7 @@ data class RoomArticleDTO(
 
     fun toArticle(): Article {
         return Article(
-            id = id,
+            id = articleId,
             title = title,
             imageUrl = imageUrl,
             url = url,

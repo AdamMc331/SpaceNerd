@@ -16,23 +16,18 @@ data class RoomLaunchDetailDTO(
     val agency: RoomAgencyDTO?,
     @Relation(
         parentColumn = "launchPadId",
-        entityColumn = "id",
+        entityColumn = "launchPadId",
     )
     val launchPad: RoomLaunchPadDTO?,
     @Relation(
         parentColumn = "launchMissionId",
-        entityColumn = "id",
+        entityColumn = "missionId",
     )
     val mission: RoomMissionDTO?,
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "launchId",
-    )
-    val crew: List<RoomLaunchCrewMemberDetailDTO>?,
 ) {
     fun toLaunch(): Launch {
         return Launch(
-            id = launch.id,
+            id = launch.launchId,
             name = launch.name,
             imageUrl = launch.imageUrl,
             launchTime = Instant.parse(launch.launchTime),
