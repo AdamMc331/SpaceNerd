@@ -10,10 +10,9 @@ data class RoomAstronautDTO(
     val name: String,
     val imageUrl: String,
 ) {
-
     constructor(
         astronaut: Astronaut,
-    ): this(
+    ) : this(
         astronautId = astronaut.id,
         name = astronaut.name,
         imageUrl = astronaut.imageUrl,

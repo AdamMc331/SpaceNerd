@@ -24,6 +24,8 @@ data class RoomLaunchDetailDTO(
         entityColumn = "missionId",
     )
     val mission: RoomMissionDTO?,
+    // TODO: How do I properly query this?
+    val crew: List<RoomLaunchCrewMemberDetailDTO>,
 ) {
     fun toLaunch(): Launch {
         return Launch(

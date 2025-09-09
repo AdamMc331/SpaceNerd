@@ -11,11 +11,10 @@ data class RoomLaunchCrewMemberDTO(
     val astronautRoleId: String,
     val astronautId: String,
 ) {
-
     constructor(
         launchCrewMember: LaunchCrewMember,
         launchId: String,
-    ): this(
+    ) : this(
         launchCrewMemberId = launchCrewMember.id,
         launchId = launchId,
         astronautRoleId = launchCrewMember.role.id,

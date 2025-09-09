@@ -10,10 +10,9 @@ data class RoomAstronautRoleDTO(
     val name: String,
     val priority: Int,
 ) {
-
     constructor(
         role: AstronautRole,
-    ): this(
+    ) : this(
         astronautRoleId = role.id,
         name = role.name,
         priority = role.priority,
