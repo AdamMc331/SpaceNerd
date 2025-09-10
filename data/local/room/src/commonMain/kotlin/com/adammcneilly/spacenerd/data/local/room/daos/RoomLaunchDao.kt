@@ -103,6 +103,7 @@ interface RoomLaunchDao {
             launchCrewMember = launchCrewMember,
             launchId = launchId,
         )
+        println("ADAMLOG - UPSERTING CREW MEMBER: $launchCrewMember")
         upsertLaunchCrewMember(launchCrewMemberDto)
     }
 

@@ -52,7 +52,9 @@ class TSDLaunchService(
             ),
         ).map { launchListResponseDTO ->
             launchListResponseDTO.results?.map { launchDTO ->
-                launchDTO.toLaunch()
+                launchDTO.toLaunch().also {
+                    println("ADAMLOG - REMOTE CREW: ${it.crew}")
+                }
             }.orEmpty()
         }
     }
@@ -66,7 +68,9 @@ class TSDLaunchService(
             ),
         ).map { launchListResponseDTO ->
             launchListResponseDTO.results?.map { launchDTO ->
-                launchDTO.toLaunch()
+                launchDTO.toLaunch().also {
+                    println("ADAMLOG - REMOTE CREW: ${it.crew}")
+                }
             }.orEmpty()
         }
     }

@@ -24,7 +24,11 @@ data class RoomLaunchDetailDTO(
         entityColumn = "missionId",
     )
     val mission: RoomMissionDTO?,
-    // TODO: How do I properly query this?
+    @Relation(
+        entity = RoomLaunchCrewMemberDTO::class,
+        parentColumn = "launchId",
+        entityColumn = "launchId",
+    )
     val crew: List<RoomLaunchCrewMemberDetailDTO>,
 ) {
     fun toLaunch(): Launch {
@@ -37,8 +41,9 @@ data class RoomLaunchDetailDTO(
             agency = agency?.toAgency(),
             pad = launchPad?.toLaunchPad(),
             mission = mission?.toMission(),
-            // Coming up next
-            crew = null,
-        )
+            crew = crew.map(RoomLaunchCrewMemberDetailDTO::toLaunchCrewMember),
+        ).also {
+            println("ADAMLOG - CREW: ${it.crew}")
+        }
     }
 }
