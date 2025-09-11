@@ -10,6 +10,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
+import com.adammcneilly.spacenerd.feature.astronautdetail.AstronautDetailScreen
 import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListScreen
 import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.feature.launchlist.LaunchListScreen
@@ -60,6 +61,10 @@ fun AppNavHost() {
         sceneStrategy = TwoPaneSceneStrategy(),
         entryProvider = { key ->
             when (key) {
+                is AppScreen.AstronautDetail -> {
+                    astronautDetailEntry(key)
+                }
+
                 is AppScreen.LaunchDetail -> {
                     launchDetailEntry(key)
                 }
@@ -108,6 +113,23 @@ private fun launchDetailEntry(
         ) {
             LaunchDetailScreen(
                 launchId = key.launchId,
+            )
+        }
+    }
+}
+
+private fun astronautDetailEntry(
+    key: AppScreen.AstronautDetail,
+): NavEntry<AppScreen> {
+    return NavEntry(
+        key = key,
+        metadata = TwoPaneScene.twoPane(),
+    ) {
+        CompositionLocalProvider(
+            LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
+        ) {
+            AstronautDetailScreen(
+                astronautId = key.astronautId,
             )
         }
     }

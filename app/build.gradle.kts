@@ -60,6 +60,7 @@ dependencies {
     implementation(project(":core:displaymodels"))
     implementation(project(":core:scaffold"))
     implementation(project(":data:local:room"))
+    implementation(project(":feature:astronautdetail"))
     implementation(project(":feature:astronautlist"))
     implementation(project(":feature:launchdetail"))
     implementation(project(":feature:launchlist"))

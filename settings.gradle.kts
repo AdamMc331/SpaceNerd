@@ -58,3 +58,4 @@ plugins {
 kover {
     enableCoverage()
 }
+include(":feature:astronautdetail")

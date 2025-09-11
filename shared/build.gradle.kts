@@ -63,6 +63,7 @@ kotlin {
             implementation(project(":data:remote:tsd"))
             implementation(project(":data:stations:api"))
             implementation(project(":data:stations:impl"))
+            implementation(project(":feature:astronautdetail"))
             implementation(project(":feature:astronautlist"))
             implementation(project(":feature:launchdetail"))
             implementation(project(":feature:launchlist"))
