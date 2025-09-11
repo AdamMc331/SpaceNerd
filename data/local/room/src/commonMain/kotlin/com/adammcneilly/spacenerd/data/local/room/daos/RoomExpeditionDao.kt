@@ -90,7 +90,7 @@ interface RoomExpeditionDao {
             SELECT *
             FROM expeditions
             WHERE 
-                spaceStationId == :spaceStationId
+                (:spaceStationId IS NULL OR spaceStationId == :spaceStationId)
                 AND expeditionStart <= :now
                 AND expeditionEnd IS NULL
         """,
@@ -98,5 +98,17 @@ interface RoomExpeditionDao {
     fun getActiveExpeditions(
         spaceStationId: String?,
         now: String,
+    ): Flow<List<RoomExpeditionWithCrewDTO>>
+
+    @Transaction
+    @Query(
+        """
+            SELECT * 
+            FROM expeditions
+            WHERE (:spaceStationId IS NULL OR spaceStationId == :spaceStationId)
+        """,
+    )
+    fun getExpeditions(
+        spaceStationId: String?,
     ): Flow<List<RoomExpeditionWithCrewDTO>>
 }
