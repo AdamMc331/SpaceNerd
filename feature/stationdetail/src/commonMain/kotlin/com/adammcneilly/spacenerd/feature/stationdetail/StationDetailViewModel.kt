@@ -34,6 +34,27 @@ class StationDetailViewModel(
         observeCrew()
     }
 
+    fun onEvent(
+        uiEvent: StationDetailUiEvent,
+    ) {
+        when (uiEvent) {
+            is StationDetailUiEvent.CrewMemberSelected -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedCrewMember = uiEvent.crewMember,
+                    )
+                }
+            }
+            is StationDetailUiEvent.NavigatedToCrewMember -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedCrewMember = null,
+                    )
+                }
+            }
+        }
+    }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun observeCrew() {
         viewModelScope.launch {

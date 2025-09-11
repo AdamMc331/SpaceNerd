@@ -70,7 +70,10 @@ fun AppNavHost() {
                 }
 
                 is AppScreen.StationDetail -> {
-                    stationDetailEntry(key)
+                    stationDetailEntry(
+                        key = key,
+                        backStack = backStack,
+                    )
                 }
 
                 is AppScreen.Tab -> {
@@ -86,6 +89,7 @@ fun AppNavHost() {
 
 private fun stationDetailEntry(
     key: AppScreen.StationDetail,
+    backStack: SnapshotStateList<AppScreen>,
 ): NavEntry<AppScreen> {
     return NavEntry(
         key = key,
@@ -96,6 +100,15 @@ private fun stationDetailEntry(
         ) {
             StationDetailScreen(
                 stationId = key.stationId,
+                navigateToAstronaut = { astronaut ->
+                    val newScreen = AppScreen.AstronautDetail(astronaut.id)
+
+                    if (backStack.lastOrNull() is AppScreen.AstronautDetail) {
+                        backStack[backStack.lastIndex] = newScreen
+                    } else {
+                        backStack.add(newScreen)
+                    }
+                },
             )
         }
     }
