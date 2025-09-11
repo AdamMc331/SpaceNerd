@@ -39,6 +39,8 @@ class StationDetailContentPaparazziTest : BasePaparazziTest() {
                     station = SpaceStationDisplayModel(testSpaceStation),
                     crew = listOf(
                         CrewMemberDisplayModel(testCrewMember),
+                        CrewMemberDisplayModel(testCrewMember),
+                        CrewMemberDisplayModel(testCrewMember),
                     ),
                 ),
                 contentPadding = PaddingValues(),

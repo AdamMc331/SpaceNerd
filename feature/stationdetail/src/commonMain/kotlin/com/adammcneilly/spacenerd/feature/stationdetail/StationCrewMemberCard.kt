@@ -19,8 +19,6 @@ import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 
-private val CARD_HEIGHT = 128.dp
-
 @Composable
 fun StationCrewMemberCard(
     crewMember: CrewMemberDisplayModel,
@@ -28,13 +26,20 @@ fun StationCrewMemberCard(
 ) {
     Card(
         shape = MaterialTheme.shapes.large,
-        modifier = modifier
-            .height(CARD_HEIGHT),
+        modifier = modifier,
     ) {
         Row {
-            CrewMemberImage(crewMember)
+            CrewMemberImage(
+                crewMember = crewMember,
+                modifier = Modifier
+                    .weight(1F),
+            )
 
-            CrewMemberInfo(crewMember)
+            CrewMemberInfo(
+                crewMember = crewMember,
+                modifier = Modifier
+                    .weight(2F),
+            )
         }
     }
 }
@@ -42,9 +47,10 @@ fun StationCrewMemberCard(
 @Composable
 private fun CrewMemberInfo(
     crewMember: CrewMemberDisplayModel,
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(16.dp),
     ) {
         Text(
@@ -69,12 +75,13 @@ private fun CrewMemberInfo(
 @Composable
 private fun CrewMemberImage(
     crewMember: CrewMemberDisplayModel,
+    modifier: Modifier = Modifier,
 ) {
     ImageWrapper(
         image = crewMember.astronaut.image,
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = Modifier
+        modifier = modifier
             .placeholder(
                 visible = crewMember.placeholder,
             )
