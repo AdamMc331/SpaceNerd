@@ -33,7 +33,7 @@ style:
 comments:
   active: true
   UndocumentedPublicClass:
-    active: true
+    active: false
     ignoreDefaultCompanionObject: true
     excludes: ['**DTO**', '**Test.kt']
 

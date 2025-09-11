@@ -6,6 +6,8 @@ import com.adammcneilly.spacenerd.data.article.api.ArticleRepository
 import com.adammcneilly.spacenerd.data.article.impl.OfflineFirstArticleRepository
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.data.cache.room.RoomCacheTimestampRepository
+import com.adammcneilly.spacenerd.data.expeditions.api.ExpeditionRepository
+import com.adammcneilly.spacenerd.data.expeditions.impl.OfflineFirstExpeditionRepository
 import com.adammcneilly.spacenerd.data.launch.api.LaunchRepository
 import com.adammcneilly.spacenerd.data.launch.impl.OfflineFirstLaunchRepository
 import com.adammcneilly.spacenerd.data.local.room.SpaceNerdDatabase
@@ -34,6 +36,14 @@ val repositoryModule = module {
         RoomCacheTimestampRepository(
             dateTimeProvider = get(),
             cacheTimestampDao = get<SpaceNerdDatabase>().cacheTimestampDao(),
+        )
+    }
+
+    single<ExpeditionRepository> {
+        OfflineFirstExpeditionRepository(
+            localExpeditionService = get(),
+            remoteExpeditionService = get(),
+            cacheTimestampRepository = get(),
         )
     }
 

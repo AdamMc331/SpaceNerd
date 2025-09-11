@@ -53,6 +53,8 @@ kotlin {
             implementation(project(":data:article:api"))
             implementation(project(":data:article:impl"))
             implementation(project(":data:cache"))
+            implementation(project(":data:expeditions:api"))
+            implementation(project(":data:expeditions:impl"))
             implementation(project(":data:launch:api"))
             implementation(project(":data:launch:impl"))
             implementation(project(":data:local:room"))

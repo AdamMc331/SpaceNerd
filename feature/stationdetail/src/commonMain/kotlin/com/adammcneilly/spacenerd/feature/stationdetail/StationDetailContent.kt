@@ -92,6 +92,16 @@ fun StationDetailContent(
                 }
             }
         }
+
+        item {
+            val text = state.crew.joinToString { displayModel ->
+                displayModel.astronaut.name
+            }
+
+            Text(
+                text = "Onboard crew: $text",
+            )
+        }
     }
 }
 

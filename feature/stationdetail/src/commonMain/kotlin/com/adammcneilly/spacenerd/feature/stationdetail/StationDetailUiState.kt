@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.feature.stationdetail
 
+import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
 
 /**
@@ -8,11 +9,15 @@ import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
  */
 data class StationDetailUiState(
     val station: SpaceStationDisplayModel,
+    val crew: List<CrewMemberDisplayModel>,
 ) {
     companion object {
         fun default(): StationDetailUiState {
             return StationDetailUiState(
                 station = SpaceStationDisplayModel.placeholder(),
+                crew = List(3) {
+                    CrewMemberDisplayModel.placeholder()
+                },
             )
         }
     }
