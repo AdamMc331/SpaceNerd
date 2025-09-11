@@ -52,6 +52,8 @@ kotlin {
             implementation(project(":data:agency:impl"))
             implementation(project(":data:article:api"))
             implementation(project(":data:article:impl"))
+            implementation(project(":data:astronauts:api"))
+            implementation(project(":data:astronauts:impl"))
             implementation(project(":data:cache"))
             implementation(project(":data:expeditions:api"))
             implementation(project(":data:expeditions:impl"))

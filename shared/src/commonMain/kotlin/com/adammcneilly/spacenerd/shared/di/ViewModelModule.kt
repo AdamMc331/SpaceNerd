@@ -14,6 +14,7 @@ val viewModelModule = module {
     viewModel { parameters ->
         AstronautDetailViewModel(
             astronautId = parameters.get(),
+            astronautRepository = get(),
         )
     }
 

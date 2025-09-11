@@ -59,3 +59,5 @@ kover {
     enableCoverage()
 }
 include(":feature:astronautdetail")
+include(":data:astronauts:api")
+include(":data:astronauts:impl")

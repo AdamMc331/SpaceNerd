@@ -3,10 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -25,23 +22,21 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":core:displaymodels"))
-            implementation(project(":core:designsystem"))
             implementation(project(":core:models"))
-            implementation(project(":core:scaffold"))
             implementation(project(":data:astronauts:api"))
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.compose.material3.windowsizeclass)
-            implementation(libs.eygraber.compose.placeholder.material3)
-            implementation(libs.koin.compose.viewmodel.navigation)
-            implementation(libs.koin.core)
+            implementation(project(":data:cache"))
+            implementation(project(":data:local:room"))
+            implementation(project(":data:remote:ktor"))
+            implementation(project(":data:remote:tsd"))
+            implementation(libs.kotlinx.coroutines.core)
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(project(":core:datetime"))
             implementation(project(":core:models-test"))
+            implementation(project(":data:remote:ktor-test"))
+            implementation(project(":data:remote:tsd-test"))
             implementation(libs.cash.turbine)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.varabyte.truthish)
@@ -64,5 +59,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    namespace = "com.adammcneilly.spacenerd.feature.astronautdetail"
+    namespace = "com.adammcneilly.spacenerd.data.astronauts.impl"
 }
