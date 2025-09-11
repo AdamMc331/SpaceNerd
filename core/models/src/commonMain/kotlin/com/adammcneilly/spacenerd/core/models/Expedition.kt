@@ -9,6 +9,6 @@ data class Expedition(
     val start: Instant,
     val end: Instant?,
     val name: String,
-    val spaceStation: SpaceStation,
+    val spaceStation: SpaceStation?,
     val crew: List<CrewMember>,
 )

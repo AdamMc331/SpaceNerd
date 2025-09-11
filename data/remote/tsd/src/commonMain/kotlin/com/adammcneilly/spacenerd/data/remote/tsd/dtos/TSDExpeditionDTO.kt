@@ -1,7 +1,11 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
+import com.adammcneilly.spacenerd.core.models.Expedition
+import kotlinx.datetime.toInstant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 @Serializable
 data class TSDExpeditionDTO(
@@ -25,4 +29,18 @@ data class TSDExpeditionDTO(
     val start: String? = null,
     @SerialName("url")
     val url: String? = null,
-)
+) {
+    @OptIn(ExperimentalTime::class)
+    fun toExpedition(): Expedition {
+        return Expedition(
+            id = id.toString(),
+            start = Instant.parse(this.start.orEmpty()),
+            end = this.end?.let {
+                Instant.parse(it)
+            },
+            name = this.name.orEmpty(),
+            spaceStation = this.spacestation?.toSpaceStation(),
+            crew = this.crew?.map(TSDCrewMemberDTO::toCrewMember).orEmpty(),
+        )
+    }
+}

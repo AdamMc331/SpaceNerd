@@ -8,5 +8,5 @@ import kotlin.time.ExperimentalTime
 @OptIn(ExperimentalTime::class)
 data class ExpeditionListRequest(
     val spaceStationId: String? = null,
-    val isActive: Boolean? = null,
+    val isActive: Boolean = false,
 )
