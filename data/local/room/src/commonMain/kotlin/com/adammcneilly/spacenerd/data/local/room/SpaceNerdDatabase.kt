@@ -8,11 +8,16 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomAgencyDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomArticleDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomCacheTimestampDao
+import com.adammcneilly.spacenerd.data.local.room.daos.RoomExpeditionDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomLaunchDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomSpaceStationDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautRoleDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCrewMemberDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomMissionDTO
@@ -29,7 +34,11 @@ import kotlinx.coroutines.IO
     entities = [
         RoomAgencyDTO::class,
         RoomArticleDTO::class,
+        RoomAstronautDTO::class,
+        RoomAstronautRoleDTO::class,
         RoomCacheTimestampDTO::class,
+        RoomCrewMemberDTO::class,
+        RoomExpeditionDTO::class,
         RoomLaunchDTO::class,
         RoomLaunchPadDTO::class,
         RoomMissionDTO::class,
@@ -44,6 +53,8 @@ abstract class SpaceNerdDatabase : RoomDatabase() {
     abstract fun articleDao(): RoomArticleDao
 
     abstract fun cacheTimestampDao(): RoomCacheTimestampDao
+
+    abstract fun expeditionDao(): RoomExpeditionDao
 
     abstract fun launchDao(): RoomLaunchDao
 
