@@ -56,3 +56,5 @@ plugins {
 kover {
     enableCoverage()
 }
+include(":data:expeditions:api")
+include(":data:expeditions:impl")
