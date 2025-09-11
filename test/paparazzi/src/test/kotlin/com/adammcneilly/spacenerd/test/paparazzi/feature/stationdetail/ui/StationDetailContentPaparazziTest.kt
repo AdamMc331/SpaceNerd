@@ -1,8 +1,10 @@
 package com.adammcneilly.spacenerd.test.paparazzi.feature.stationdetail.ui
 
 import androidx.compose.foundation.layout.PaddingValues
+import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
+import com.adammcneilly.spacenerd.core.models.test.testCrewMember
 import com.adammcneilly.spacenerd.core.models.test.testLaunch
 import com.adammcneilly.spacenerd.core.models.test.testSpaceStation
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailContent
@@ -35,6 +37,9 @@ class StationDetailContentPaparazziTest : BasePaparazziTest() {
             StationDetailContent(
                 state = StationDetailUiState(
                     station = SpaceStationDisplayModel(testSpaceStation),
+                    crew = listOf(
+                        CrewMemberDisplayModel(testCrewMember),
+                    ),
                 ),
                 contentPadding = PaddingValues(),
             )
