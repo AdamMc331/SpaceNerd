@@ -29,6 +29,7 @@ class TSDExpeditionService(
                 "space_station" to request.spaceStationId,
                 "start__lte" to dateTimeProvider.now().toString().takeIf { request.isActive },
                 "ordering" to "-end",
+                "mode" to "detailed",
             ),
         ).map { expeditionListResponseDTO ->
             expeditionListResponseDTO.results?.map { expeditionDTO ->
@@ -39,6 +40,8 @@ class TSDExpeditionService(
                 } else {
                     true
                 }
+            }.also { expeditions ->
+                println("ADAMLOG - EXPEDITIONS: $expeditions")
             }
         }
     }

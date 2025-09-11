@@ -99,7 +99,7 @@ fun StationDetailContent(
             }
 
             Text(
-                text = text,
+                text = "Onboard crew: $text",
             )
         }
     }
