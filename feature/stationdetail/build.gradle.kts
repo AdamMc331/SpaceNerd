@@ -29,6 +29,7 @@ kotlin {
             implementation(project(":core:designsystem"))
             implementation(project(":core:models"))
             implementation(project(":core:scaffold"))
+            implementation(project(":data:expeditions:api"))
             implementation(project(":data:stations:api"))
             implementation(compose.material3)
             implementation(compose.ui)

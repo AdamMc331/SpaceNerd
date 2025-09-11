@@ -4,6 +4,8 @@ import com.adammcneilly.spacenerd.data.agency.api.local.LocalAgencyService
 import com.adammcneilly.spacenerd.data.agency.impl.local.room.RoomAgencyService
 import com.adammcneilly.spacenerd.data.article.api.local.LocalArticleService
 import com.adammcneilly.spacenerd.data.article.impl.local.room.RoomArticleService
+import com.adammcneilly.spacenerd.data.expeditions.api.local.LocalExpeditionService
+import com.adammcneilly.spacenerd.data.expeditions.impl.local.room.RoomExpeditionService
 import com.adammcneilly.spacenerd.data.launch.api.local.LocalLaunchService
 import com.adammcneilly.spacenerd.data.launch.impl.local.room.RoomLaunchService
 import com.adammcneilly.spacenerd.data.local.room.SpaceNerdDatabase
@@ -26,6 +28,13 @@ val localModule = module {
     single<LocalArticleService> {
         RoomArticleService(
             articleDao = get<SpaceNerdDatabase>().articleDao(),
+        )
+    }
+
+    single<LocalExpeditionService> {
+        RoomExpeditionService(
+            expeditionDao = get<SpaceNerdDatabase>().expeditionDao(),
+            dateTimeProvider = get(),
         )
     }
 

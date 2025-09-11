@@ -39,6 +39,7 @@ val viewModelModule = module {
         StationDetailViewModel(
             stationId = parameters.get(),
             stationRepository = get(),
+            expeditionRepository = get(),
         )
     }
 }

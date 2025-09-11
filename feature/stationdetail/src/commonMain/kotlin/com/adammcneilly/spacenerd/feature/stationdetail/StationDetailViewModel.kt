@@ -2,10 +2,18 @@ package com.adammcneilly.spacenerd.feature.stationdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
+import com.adammcneilly.spacenerd.core.models.Expedition
+import com.adammcneilly.spacenerd.data.expeditions.api.ExpeditionListRequest
+import com.adammcneilly.spacenerd.data.expeditions.api.ExpeditionRepository
 import com.adammcneilly.spacenerd.data.stations.api.SpaceStationRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMap
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -16,12 +24,38 @@ import kotlinx.coroutines.launch
 class StationDetailViewModel(
     private val stationId: String,
     private val stationRepository: SpaceStationRepository,
+    private val expeditionRepository: ExpeditionRepository,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(StationDetailUiState.default())
     val state = mutableState.asStateFlow()
 
     init {
         observeStation()
+        observeCrew()
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private fun observeCrew() {
+        viewModelScope.launch {
+            val request = ExpeditionListRequest(
+                spaceStationId = stationId,
+                isActive = true,
+            )
+
+            expeditionRepository.getExpeditions(request)
+                .map { expeditions ->
+                    expeditions.flatMap(Expedition::crew)
+                }
+                .collect { crew ->
+                    val displayModels = crew.map(::CrewMemberDisplayModel)
+
+                    mutableState.update { currentState ->
+                        currentState.copy(
+                            crew = displayModels,
+                        )
+                    }
+                }
+        }
     }
 
     private fun observeStation() {
