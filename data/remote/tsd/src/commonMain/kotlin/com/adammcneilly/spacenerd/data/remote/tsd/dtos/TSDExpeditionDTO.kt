@@ -19,7 +19,6 @@ data class TSDExpeditionDTO(
     val responseMode: String? = null,
     @SerialName("spacestation")
     val spacestation: TSDSpaceStationSummaryDTO? = null,
-    // TODO: Support spacewalks
 //    @SerialName("spacewalks")
 //    val spacewalks: List<Any?>? = listOf(),
     @SerialName("start")
