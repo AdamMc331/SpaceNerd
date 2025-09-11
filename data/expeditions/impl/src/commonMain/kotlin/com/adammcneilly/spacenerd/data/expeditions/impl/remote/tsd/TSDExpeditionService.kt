@@ -40,8 +40,6 @@ class TSDExpeditionService(
                 } else {
                     true
                 }
-            }.also { expeditions ->
-                println("ADAMLOG - EXPEDITIONS: $expeditions")
             }
         }
     }
