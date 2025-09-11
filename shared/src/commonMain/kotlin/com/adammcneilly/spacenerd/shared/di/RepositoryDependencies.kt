@@ -43,6 +43,7 @@ val repositoryModule = module {
         OfflineFirstExpeditionRepository(
             localExpeditionService = get(),
             remoteExpeditionService = get(),
+            cacheTimestampRepository = get(),
         )
     }
 
