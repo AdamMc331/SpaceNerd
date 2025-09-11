@@ -31,7 +31,7 @@ class OfflineFirstExpeditionRepository(
                         cacheDuration = 1.hours,
                     )
 
-                    if (true) {
+                    if (needsServerFetch) {
                         val response = remoteExpeditionService.getExpeditions(request)
 
                         val expeditions = response.getOrNull()
