@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9a0a1595efbbc8368e78ac99cfeb739a",
+    "identityHash": "1a042465d03341c80c89734c6adfbc8e",
     "entities": [
       {
         "tableName": "agencies",
@@ -227,7 +227,7 @@
       },
       {
         "tableName": "expeditions",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`expeditionId` TEXT NOT NULL, `name` TEXT NOT NULL, `expeditionStart` TEXT NOT NULL, `expeditionEnd` TEXT, `spaceStationId` TEXT NOT NULL, PRIMARY KEY(`expeditionId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`expeditionId` TEXT NOT NULL, `name` TEXT NOT NULL, `expeditionStart` TEXT NOT NULL, `expeditionEnd` TEXT, `spaceStationId` TEXT, PRIMARY KEY(`expeditionId`))",
         "fields": [
           {
             "fieldPath": "expeditionId",
@@ -255,8 +255,7 @@
           {
             "fieldPath": "spaceStationId",
             "columnName": "spaceStationId",
-            "affinity": "TEXT",
-            "notNull": true
+            "affinity": "TEXT"
           }
         ],
         "primaryKey": {
@@ -463,7 +462,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9a0a1595efbbc8368e78ac99cfeb739a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1a042465d03341c80c89734c6adfbc8e')"
     ]
   }
 }

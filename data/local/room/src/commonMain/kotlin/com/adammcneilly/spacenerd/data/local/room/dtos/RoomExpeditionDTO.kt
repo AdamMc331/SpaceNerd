@@ -12,7 +12,7 @@ data class RoomExpeditionDTO(
     val name: String,
     val expeditionStart: String,
     val expeditionEnd: String?,
-    val spaceStationId: String,
+    val spaceStationId: String?,
 ) {
     constructor(
         expedition: Expedition,
@@ -21,6 +21,6 @@ data class RoomExpeditionDTO(
         name = expedition.name,
         expeditionStart = expedition.start.toString(),
         expeditionEnd = expedition.end?.toString(),
-        spaceStationId = expedition.spaceStation.id,
+        spaceStationId = expedition.spaceStation?.id,
     )
 }

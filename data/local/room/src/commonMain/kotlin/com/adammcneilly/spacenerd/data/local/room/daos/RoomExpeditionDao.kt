@@ -15,6 +15,7 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionWithCrewDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.flow.Flow
+import kotlin.math.exp
 
 @Dao
 interface RoomExpeditionDao {
@@ -47,8 +48,11 @@ interface RoomExpeditionDao {
         expeditions: List<Expedition>,
     ) {
         expeditions.forEach { expedition ->
-            val stationDto = RoomSpaceStationDTO(expedition.spaceStation)
-            insertOrIgnoreStation(stationDto)
+            val spaceStation = expedition.spaceStation
+            if (spaceStation != null) {
+                val stationDto = RoomSpaceStationDTO(spaceStation)
+                insertOrIgnoreStation(stationDto)
+            }
 
             expedition.crew.forEach { crewMember ->
                 insertCrewMember(

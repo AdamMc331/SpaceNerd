@@ -13,7 +13,7 @@ data class RoomExpeditionWithCrewDTO(
         parentColumn = "spaceStationId",
         entityColumn = "spaceStationId",
     )
-    val spaceStation: RoomSpaceStationDTO,
+    val spaceStation: RoomSpaceStationDTO?,
     @Relation(
         parentColumn = "expeditionId",
         entityColumn = "expeditionId",
@@ -29,7 +29,7 @@ data class RoomExpeditionWithCrewDTO(
                 Instant.parse(end)
             },
             name = this.expedition.name,
-            spaceStation = this.spaceStation.toSpaceStation(),
+            spaceStation = this.spaceStation?.toSpaceStation(),
             crew = this.crew.map(RoomCrewMemberDetailDTO::toCrewMember),
         )
     }
