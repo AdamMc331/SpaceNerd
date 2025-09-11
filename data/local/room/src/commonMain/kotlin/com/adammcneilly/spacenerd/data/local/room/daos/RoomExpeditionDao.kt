@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RoomExpeditionDao {
     @Upsert
-    fun upsertExpedition(
+    suspend fun upsertExpedition(
         expeditions: RoomExpeditionDTO,
     )
 
