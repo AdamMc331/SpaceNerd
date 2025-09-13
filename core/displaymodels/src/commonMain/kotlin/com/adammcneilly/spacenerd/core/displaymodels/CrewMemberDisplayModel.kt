@@ -29,6 +29,7 @@ data class CrewMemberDisplayModel(
                     priority = -1,
                 ),
                 astronaut = AstronautDisplayModel.placeholder(),
+                placeholder = true,
             )
         }
     }

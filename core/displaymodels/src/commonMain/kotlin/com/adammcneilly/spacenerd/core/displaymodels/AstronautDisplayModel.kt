@@ -9,6 +9,7 @@ import com.adammcneilly.spacenerd.core.models.Astronaut
 data class AstronautDisplayModel(
     val id: String,
     val name: String,
+    val bio: String,
     val image: ImageModel,
     val placeholder: Boolean = false,
 ) {
@@ -17,6 +18,7 @@ data class AstronautDisplayModel(
     ) : this(
         id = astronaut.id,
         name = astronaut.name,
+        bio = astronaut.bio,
         image = ImageModel.Remote(astronaut.imageUrl),
     )
 
@@ -25,6 +27,7 @@ data class AstronautDisplayModel(
             return AstronautDisplayModel(
                 id = "",
                 name = "Placeholder Astronaut",
+                bio = "Placeholder Bio",
                 image = ImageModel.Placeholder,
                 placeholder = true,
             )

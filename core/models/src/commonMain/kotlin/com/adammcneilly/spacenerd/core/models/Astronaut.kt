@@ -5,10 +5,12 @@ package com.adammcneilly.spacenerd.core.models
  *
  * @property[id] A unique identifier for this person.
  * @param[name] The astronaut's full name (first and last).
+ * @param[bio] A short description of this astronaut.
  * @param[imageUrl] Remote url to an image of this astronaut.
  */
 data class Astronaut(
     val id: String,
     val name: String,
+    val bio: String,
     val imageUrl: String,
 )

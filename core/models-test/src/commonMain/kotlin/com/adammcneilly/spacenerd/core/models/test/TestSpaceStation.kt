@@ -12,5 +12,7 @@ val testSpaceStation = SpaceStation(
     founded = LocalDate(1998, 11, 20),
     agencies = listOf(
         testAgency,
+        testAgency,
+        testAgency,
     ),
 )

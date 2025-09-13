@@ -8,6 +8,7 @@ import com.adammcneilly.spacenerd.core.models.Astronaut
 data class RoomAstronautDTO(
     @PrimaryKey val astronautId: String,
     val name: String,
+    val bio: String,
     val imageUrl: String,
 ) {
     constructor(
@@ -15,6 +16,7 @@ data class RoomAstronautDTO(
     ) : this(
         astronautId = astronaut.id,
         name = astronaut.name,
+        bio = astronaut.bio,
         imageUrl = astronaut.imageUrl,
     )
 
@@ -22,6 +24,7 @@ data class RoomAstronautDTO(
         return Astronaut(
             id = astronautId,
             name = name,
+            bio = bio,
             imageUrl = imageUrl,
         )
     }

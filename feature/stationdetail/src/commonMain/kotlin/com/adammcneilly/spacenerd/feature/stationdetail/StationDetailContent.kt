@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -33,7 +34,8 @@ import com.eygraber.compose.placeholder.material3.placeholder
 import com.eygraber.compose.placeholder.placeholder
 
 private const val STATION_IMAGE_ASPECT_RATIO = 1.5F
-private const val AGENCY_IMAGE_PARENT_RATIO = 0.33F
+private const val AGENCY_IMAGE_PARENT_RATIO = 0.25F
+private const val CREW_CARD_PARENT_RATIO = 0.90F
 
 @Composable
 fun StationDetailContent(
@@ -73,33 +75,62 @@ fun StationDetailContent(
         }
 
         item {
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                contentPadding = PaddingValues(16.dp),
-            ) {
-                items(state.station.agencies) { agency ->
-                    ImageWrapper(
-                        image = agency.logo,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .placeholder(
-                                visible = agency.isPlaceholder,
-                                shape = CircleShape,
-                            )
-                            .fillParentMaxWidth(AGENCY_IMAGE_PARENT_RATIO)
-                            .aspectRatio(1F),
-                    )
-                }
-            }
+            StationAgencies(state)
         }
 
         item {
-            val text = state.crew.joinToString { displayModel ->
-                displayModel.astronaut.name
-            }
-
             Text(
-                text = "Onboard crew: $text",
+                text = "Onboard Crew",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .padding(horizontal = 16.dp),
+            )
+        }
+
+        item {
+            StationCrew(state)
+        }
+    }
+}
+
+@Composable
+private fun StationCrew(
+    state: StationDetailUiState,
+) {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(16.dp),
+    ) {
+        items(state.crew) { crewMember ->
+            StationCrewMemberCard(
+                crewMember = crewMember,
+                modifier = Modifier
+                    .fillParentMaxWidth(CREW_CARD_PARENT_RATIO),
+            )
+        }
+    }
+}
+
+@Composable
+private fun StationAgencies(
+    state: StationDetailUiState,
+) {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(16.dp),
+    ) {
+        items(state.station.agencies) { agency ->
+            ImageWrapper(
+                image = agency.logo,
+                contentDescription = null,
+                modifier = Modifier
+                    .placeholder(
+                        visible = agency.isPlaceholder,
+                        shape = CircleShape,
+                    )
+                    .fillParentMaxWidth(AGENCY_IMAGE_PARENT_RATIO)
+                    .aspectRatio(1F),
             )
         }
     }

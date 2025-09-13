@@ -51,6 +51,7 @@ data class TSDAstronautDTO(
         return Astronaut(
             id = this.id.toString(),
             name = this.name.orEmpty(),
+            bio = this.bio.orEmpty(),
             imageUrl = this.image?.imageUrl.orEmpty(),
         )
     }
