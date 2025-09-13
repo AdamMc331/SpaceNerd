@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.shared.di
 
+import com.adammcneilly.spacenerd.feature.astronautdetail.AstronautDetailViewModel
 import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailViewModel
 import com.adammcneilly.spacenerd.feature.launchlist.LaunchListViewModel
 import com.adammcneilly.spacenerd.feature.news.NewsViewModel
@@ -10,6 +11,13 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
+    viewModel { parameters ->
+        AstronautDetailViewModel(
+            astronautId = parameters.get(),
+            astronautRepository = get(),
+        )
+    }
+
     viewModel {
         NewsViewModel(
             articleRepository = get(),

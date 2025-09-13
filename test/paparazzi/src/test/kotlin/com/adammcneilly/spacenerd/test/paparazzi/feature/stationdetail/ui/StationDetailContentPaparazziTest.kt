@@ -24,6 +24,7 @@ class StationDetailContentPaparazziTest : BasePaparazziTest() {
             StationDetailContent(
                 state = StationDetailUiState.default(),
                 contentPadding = PaddingValues(),
+                onEvent = {},
             )
         }
     }
@@ -37,6 +38,7 @@ class StationDetailContentPaparazziTest : BasePaparazziTest() {
             StationDetailContent(
                 state = StationDetailUiState(
                     station = SpaceStationDisplayModel(testSpaceStation),
+                    selectedCrewMember = null,
                     crew = listOf(
                         CrewMemberDisplayModel(testCrewMember),
                         CrewMemberDisplayModel(testCrewMember),
@@ -44,6 +46,7 @@ class StationDetailContentPaparazziTest : BasePaparazziTest() {
                     ),
                 ),
                 contentPadding = PaddingValues(),
+                onEvent = {},
             )
         }
     }

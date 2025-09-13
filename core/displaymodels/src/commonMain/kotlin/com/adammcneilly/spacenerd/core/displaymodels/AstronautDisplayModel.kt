@@ -13,6 +13,9 @@ data class AstronautDisplayModel(
     val image: ImageModel,
     val placeholder: Boolean = false,
 ) {
+    val imageSharedElementKey = "astronaut_image_$id"
+    val nameSharedElementKey = "astronaut_name_$id"
+
     constructor(
         astronaut: Astronaut,
     ) : this(

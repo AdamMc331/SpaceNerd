@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.feature.stationdetail
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,6 +27,7 @@ import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
+import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
 import com.eygraber.compose.placeholder.PlaceholderDefaults
@@ -41,6 +43,7 @@ private const val CREW_CARD_PARENT_RATIO = 0.90F
 fun StationDetailContent(
     state: StationDetailUiState,
     contentPadding: PaddingValues,
+    onEvent: (StationDetailUiEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -89,7 +92,13 @@ fun StationDetailContent(
         }
 
         item {
-            StationCrew(state)
+            StationCrew(
+                state = state,
+                onClick = { crewMember ->
+                    val event = StationDetailUiEvent.CrewMemberSelected(crewMember)
+                    onEvent.invoke(event)
+                },
+            )
         }
     }
 }
@@ -97,6 +106,7 @@ fun StationDetailContent(
 @Composable
 private fun StationCrew(
     state: StationDetailUiState,
+    onClick: (CrewMemberDisplayModel) -> Unit,
 ) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -106,6 +116,11 @@ private fun StationCrew(
             StationCrewMemberCard(
                 crewMember = crewMember,
                 modifier = Modifier
+                    .clickable(
+                        onClick = {
+                            onClick.invoke(crewMember)
+                        },
+                    )
                     .fillParentMaxWidth(CREW_CARD_PARENT_RATIO),
             )
         }

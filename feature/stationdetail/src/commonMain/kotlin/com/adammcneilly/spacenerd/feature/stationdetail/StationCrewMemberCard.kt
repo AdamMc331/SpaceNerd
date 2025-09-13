@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.feature.stationdetail
 
+import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
@@ -16,6 +17,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 
@@ -45,6 +48,7 @@ fun StationCrewMemberCard(
 }
 
 @Composable
+@OptIn(ExperimentalSharedTransitionApi::class)
 private fun CrewMemberInfo(
     crewMember: CrewMemberDisplayModel,
     modifier: Modifier = Modifier,
@@ -59,7 +63,8 @@ private fun CrewMemberInfo(
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
-                .placeholder(crewMember.placeholder),
+                .placeholder(crewMember.placeholder)
+                .sharedBounds(crewMember.astronaut.nameSharedElementKey),
         )
 
         Text(
@@ -86,6 +91,7 @@ private fun CrewMemberImage(
                 visible = crewMember.placeholder,
             )
             .fillMaxHeight()
-            .aspectRatio(1F),
+            .aspectRatio(1F)
+            .sharedElement(crewMember.astronaut.imageSharedElementKey),
     )
 }

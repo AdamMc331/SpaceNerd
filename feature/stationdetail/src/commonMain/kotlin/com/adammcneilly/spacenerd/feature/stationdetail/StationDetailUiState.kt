@@ -10,6 +10,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
 data class StationDetailUiState(
     val station: SpaceStationDisplayModel,
     val crew: List<CrewMemberDisplayModel>,
+    val selectedCrewMember: CrewMemberDisplayModel?,
 ) {
     companion object {
         fun default(): StationDetailUiState {
@@ -18,6 +19,7 @@ data class StationDetailUiState(
                 crew = List(3) {
                     CrewMemberDisplayModel.placeholder()
                 },
+                selectedCrewMember = null,
             )
         }
     }

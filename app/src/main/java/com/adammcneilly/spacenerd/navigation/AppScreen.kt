@@ -19,6 +19,11 @@ sealed class AppScreen : NavKey {
         val tab: HomeTab,
     ) : AppScreen()
 
+    @Serializable
+    data class AstronautDetail(
+        val astronautId: String,
+    ) : AppScreen()
+
     /**
      * Renders the launch detail screen for the given [launchId].
      */

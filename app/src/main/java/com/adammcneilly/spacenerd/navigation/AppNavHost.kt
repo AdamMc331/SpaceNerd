@@ -10,6 +10,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
+import com.adammcneilly.spacenerd.feature.astronautdetail.AstronautDetailScreen
 import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListScreen
 import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailScreen
 import com.adammcneilly.spacenerd.feature.launchlist.LaunchListScreen
@@ -60,12 +61,19 @@ fun AppNavHost() {
         sceneStrategy = TwoPaneSceneStrategy(),
         entryProvider = { key ->
             when (key) {
+                is AppScreen.AstronautDetail -> {
+                    astronautDetailEntry(key)
+                }
+
                 is AppScreen.LaunchDetail -> {
                     launchDetailEntry(key)
                 }
 
                 is AppScreen.StationDetail -> {
-                    stationDetailEntry(key)
+                    stationDetailEntry(
+                        key = key,
+                        backStack = backStack,
+                    )
                 }
 
                 is AppScreen.Tab -> {
@@ -81,6 +89,7 @@ fun AppNavHost() {
 
 private fun stationDetailEntry(
     key: AppScreen.StationDetail,
+    backStack: SnapshotStateList<AppScreen>,
 ): NavEntry<AppScreen> {
     return NavEntry(
         key = key,
@@ -91,6 +100,15 @@ private fun stationDetailEntry(
         ) {
             StationDetailScreen(
                 stationId = key.stationId,
+                navigateToAstronaut = { astronaut ->
+                    val newScreen = AppScreen.AstronautDetail(astronaut.id)
+
+                    if (backStack.lastOrNull() is AppScreen.AstronautDetail) {
+                        backStack[backStack.lastIndex] = newScreen
+                    } else {
+                        backStack.add(newScreen)
+                    }
+                },
             )
         }
     }
@@ -108,6 +126,23 @@ private fun launchDetailEntry(
         ) {
             LaunchDetailScreen(
                 launchId = key.launchId,
+            )
+        }
+    }
+}
+
+private fun astronautDetailEntry(
+    key: AppScreen.AstronautDetail,
+): NavEntry<AppScreen> {
+    return NavEntry(
+        key = key,
+        metadata = TwoPaneScene.twoPane(),
+    ) {
+        CompositionLocalProvider(
+            LocalNavAnimatedVisibilityScope provides LocalNavAnimatedContentScope.current,
+        ) {
+            AstronautDetailScreen(
+                astronautId = key.astronautId,
             )
         }
     }

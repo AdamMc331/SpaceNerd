@@ -6,8 +6,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationBar
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
@@ -19,6 +21,7 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun StationDetailScreen(
     stationId: String,
+    navigateToAstronaut: (AstronautDisplayModel) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: StationDetailViewModel = koinViewModel(
         key = "StationDetailVm_$stationId",
@@ -29,12 +32,22 @@ fun StationDetailScreen(
 ) {
     val state = viewModel.state.collectAsState()
 
+    val selectedCrewMember = state.value.selectedCrewMember
+
+    LaunchedEffect(selectedCrewMember) {
+        if (selectedCrewMember != null) {
+            navigateToAstronaut(selectedCrewMember.astronaut)
+            viewModel.onEvent(StationDetailUiEvent.NavigatedToCrewMember(selectedCrewMember))
+        }
+    }
+
     rememberScaffoldState().PersistentScaffold(
         modifier = modifier,
         content = { scaffoldPadding ->
             StationDetailContent(
                 state = state.value,
                 contentPadding = scaffoldPadding,
+                onEvent = viewModel::onEvent,
             )
         },
     )
