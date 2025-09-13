@@ -133,16 +133,6 @@ private fun StationAgencies(
                     .aspectRatio(1F),
             )
         }
-
-        item {
-            val text = state.crew.joinToString { displayModel ->
-                displayModel.astronaut.name
-            }
-
-            Text(
-                text = "Onboard crew: $text",
-            )
-        }
     }
 }
 
