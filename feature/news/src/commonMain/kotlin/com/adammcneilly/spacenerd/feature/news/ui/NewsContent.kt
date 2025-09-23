@@ -12,14 +12,12 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
-import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowHeightSizeClass
-import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.plus
 
 private const val LARGE_SCREEN_GRID_COLUMN_COUNT = 2
@@ -31,21 +29,25 @@ fun NewsContent(
     onEvent: (NewsUiEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val isCompactWidth = currentWindowWidthSizeClass() == WindowWidthSizeClass.Compact
-    val isCompactHeight = currentWindowHeightSizeClass() == WindowHeightSizeClass.Compact
+    val isMediumOrExpandedWidth = currentWindowAdaptiveInfo().windowSizeClass.isWidthAtLeastBreakpoint(
+        WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
+    )
+    val isMediumOrExpandedHeight = currentWindowAdaptiveInfo().windowSizeClass.isHeightAtLeastBreakpoint(
+        WindowSizeClass.HEIGHT_DP_MEDIUM_LOWER_BOUND,
+    )
 
-    if (isCompactHeight || isCompactWidth) {
-        ColumnNewsContent(
+    if (isMediumOrExpandedHeight && isMediumOrExpandedWidth) {
+        GridNewsContent(
             contentPadding = contentPadding,
             state = state,
-            isCompactWidth = isCompactWidth,
             onEvent = onEvent,
             modifier = modifier,
         )
     } else {
-        GridNewsContent(
+        ColumnNewsContent(
             contentPadding = contentPadding,
             state = state,
+            isCompactWidth = !isMediumOrExpandedWidth,
             onEvent = onEvent,
             modifier = modifier,
         )

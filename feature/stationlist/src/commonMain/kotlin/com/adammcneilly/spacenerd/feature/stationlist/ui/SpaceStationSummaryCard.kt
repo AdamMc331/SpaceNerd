@@ -6,15 +6,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
-import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
@@ -29,9 +29,8 @@ fun SpaceStationSummaryCard(
     station: SpaceStationDisplayModel,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
-        WindowWidthSizeClass.Medium,
-        WindowWidthSizeClass.Expanded,
+    val isAtLeastMediumWidth = currentWindowAdaptiveInfo().windowSizeClass.isWidthAtLeastBreakpoint(
+        WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
     )
 
     val size = if (isAtLeastMediumWidth) {

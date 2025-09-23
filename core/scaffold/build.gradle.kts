@@ -29,7 +29,7 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.materialIconsExtended)
             implementation(compose.ui)
-            implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.compose.material3.adaptive)
         }
 
         commonTest.dependencies {

@@ -1,31 +1,20 @@
 package com.adammcneilly.spacenerd.feature.launchlist.ui
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
-import com.adammcneilly.spacenerd.core.designsystem.utils.currentWindowWidthSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
 import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
@@ -40,9 +29,8 @@ fun LaunchSummaryCard(
     launch: LaunchDisplayModel,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowWidthSizeClass() in listOf(
-        WindowWidthSizeClass.Medium,
-        WindowWidthSizeClass.Expanded,
+    val isAtLeastMediumWidth = currentWindowAdaptiveInfo().windowSizeClass.isWidthAtLeastBreakpoint(
+        WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
     )
 
     val size = if (isAtLeastMediumWidth) {

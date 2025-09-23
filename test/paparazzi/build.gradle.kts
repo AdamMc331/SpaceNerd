@@ -42,7 +42,7 @@ kotlin {
             implementation(project(":feature:stationlist"))
             implementation(compose.material3)
             implementation(compose.ui)
-            implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.compose.material3.adaptive)
             implementation(libs.google.testparameterinjector)
         }
     }
