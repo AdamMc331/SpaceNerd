@@ -41,7 +41,7 @@ sqlite = "2.6.1"
 testParameterInjector = "1.19"
 truthish = "1.0.3"
 turbine = "1.2.1"
-xr = "1.0.0-alpha06"
+xr = "1.0.0-alpha07"
 xr-material = "1.0.0-alpha11"
 
 
