@@ -32,7 +32,7 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(libs.coil.compose)
-            implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.compose.material3.adaptive)
             implementation(libs.material.kolor)
         }
 

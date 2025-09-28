@@ -13,7 +13,7 @@ gradleVersionsPlugin = "0.53.0"
 hilt = "2.57.2"
 hiltNavigationCompose = "1.3.0"
 junit = "4.13.2"
-kmpCompose = "1.8.2"
+kmpCompose = "1.9.0"
 koin = "4.1.1"
 kotlin = "2.2.20"
 kotlinter = "5.2.0"
@@ -27,6 +27,7 @@ leakCanary = "2.14"
 lifecycle = "2.9.4"
 material = "1.13.0"
 materialKolor = "3.0.1"
+material3Adaptive = "1.2.0-alpha06"
 minSdk = "31"
 mokkery = "2.10.0"
 moshi = "1.15.2"
@@ -71,7 +72,7 @@ coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coi
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 compose-material = { group = "androidx.compose.material3", name = "material3" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
-compose-material3-windowsizeclass = { module = "org.jetbrains.compose.material3:material3-window-size-class", version.ref = "kmpCompose"}
+compose-material3-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version.ref = "material3Adaptive"}
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-test-junit = { group = "androidx.compose.ui", name = "ui-test-junit4" }

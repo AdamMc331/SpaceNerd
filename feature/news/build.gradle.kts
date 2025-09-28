@@ -33,7 +33,7 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.compose.material3.windowsizeclass)
+            implementation(libs.compose.material3.adaptive)
             implementation(libs.eygraber.compose.placeholder.material3)
             implementation(libs.koin.compose.viewmodel.navigation)
             implementation(libs.koin.core)

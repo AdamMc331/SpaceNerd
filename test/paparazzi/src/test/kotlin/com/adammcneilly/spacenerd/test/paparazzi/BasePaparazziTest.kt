@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
-import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
@@ -14,8 +12,6 @@ import androidx.compose.ui.unit.dp
 import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
 import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceTheme
-import com.adammcneilly.spacenerd.core.designsystem.utils.LocalWindowHeightSizeClassOverride
-import com.adammcneilly.spacenerd.core.designsystem.utils.LocalWindowWidthSizeClassOverride
 import com.android.resources.NightMode
 import com.android.resources.ScreenOrientation
 import com.google.testing.junit.testparameterinjector.TestParameter
@@ -47,8 +43,6 @@ abstract class BasePaparazziTest {
 
         _paparazzi.snapshot {
             CompositionLocalProvider(
-                LocalWindowWidthSizeClassOverride provides testInput.widthSizeClass,
-                LocalWindowHeightSizeClassOverride provides testInput.heightSizeClass,
                 LocalInspectionMode provides true,
             ) {
                 SpaceTheme {
@@ -71,36 +65,26 @@ abstract class BasePaparazziTest {
 
     enum class TestInput(
         val deviceConfig: DeviceConfig,
-        val widthSizeClass: WindowWidthSizeClass,
-        val heightSizeClass: WindowHeightSizeClass,
     ) {
         LIGHT_PHONE(
             deviceConfig = DeviceConfig.NEXUS_5.copy(
                 nightMode = NightMode.NOTNIGHT,
             ),
-            widthSizeClass = WindowWidthSizeClass.Compact,
-            heightSizeClass = WindowHeightSizeClass.Expanded,
         ),
         DARK_PHONE(
             deviceConfig = DeviceConfig.NEXUS_5.copy(
                 nightMode = NightMode.NIGHT,
             ),
-            widthSizeClass = WindowWidthSizeClass.Compact,
-            heightSizeClass = WindowHeightSizeClass.Expanded,
         ),
         LANDSCAPE_PHONE(
             deviceConfig = DeviceConfig.NEXUS_5.copy(
                 orientation = ScreenOrientation.LANDSCAPE,
             ),
-            widthSizeClass = WindowWidthSizeClass.Expanded,
-            heightSizeClass = WindowHeightSizeClass.Compact,
         ),
         TABLET(
             deviceConfig = DeviceConfig.PIXEL_C.copy(
                 orientation = ScreenOrientation.LANDSCAPE,
             ),
-            widthSizeClass = WindowWidthSizeClass.Expanded,
-            heightSizeClass = WindowHeightSizeClass.Expanded,
         ),
     }
 }
