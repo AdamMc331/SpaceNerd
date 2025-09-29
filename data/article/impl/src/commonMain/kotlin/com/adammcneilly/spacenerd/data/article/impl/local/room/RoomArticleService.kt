@@ -7,10 +7,14 @@ import com.adammcneilly.spacenerd.data.local.room.daos.RoomArticleDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 /**
  * Implementation of [LocalArticleService] that will request data from a Room database via [articleDao].
  */
+@OptIn(ExperimentalTime::class)
 class RoomArticleService(
     private val articleDao: RoomArticleDao,
     private val dateTimeProvider: DateTimeProvider,
@@ -32,5 +36,16 @@ class RoomArticleService(
         return articleDao.getAllArticles().map { dtoList ->
             dtoList.map(RoomArticleDTO::toArticle)
         }
+    }
+
+    override suspend fun isCacheStale(
+        cacheDuration: Duration,
+    ): Boolean {
+        val latestCacheTimestamp = articleDao.getLatestCacheTimestamp()?.let {
+            Instant.parse(it)
+        }
+        val now = dateTimeProvider.now()
+
+        return latestCacheTimestamp == null || ((now - latestCacheTimestamp) > cacheDuration)
     }
 }

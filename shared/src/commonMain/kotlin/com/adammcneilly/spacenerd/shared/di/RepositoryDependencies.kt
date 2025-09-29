@@ -30,7 +30,6 @@ val repositoryModule = module {
         OfflineFirstArticleRepository(
             localArticleService = get(),
             remoteArticleService = get(),
-            cacheTimestampRepository = get(),
         )
     }
 

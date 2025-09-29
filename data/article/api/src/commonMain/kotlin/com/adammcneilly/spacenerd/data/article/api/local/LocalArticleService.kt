@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.data.article.api.local
 
 import com.adammcneilly.spacenerd.core.models.Article
 import kotlinx.coroutines.flow.Flow
+import kotlin.time.Duration
 
 /**
  * This is a data source that requests article information from a local data source.
@@ -15,4 +16,14 @@ interface LocalArticleService {
     )
 
     fun getArticles(): Flow<List<Article>>
+
+    /**
+     * Checks if the article cache is older than the provided [cacheDuration].
+     *
+     * @return True if the cache is empty or the most recently cached article
+     * is older than the [cacheDuration], indicating a sync is needed.
+     */
+    suspend fun isCacheStale(
+        cacheDuration: Duration,
+    ): Boolean
 }

@@ -19,39 +19,26 @@ import kotlin.time.Duration.Companion.hours
 class OfflineFirstArticleRepository(
     private val localArticleService: LocalArticleService,
     private val remoteArticleService: RemoteArticleService,
-    private val cacheTimestampRepository: CacheTimestampRepository,
 ) : ArticleRepository {
     override fun getArticles(): Flow<List<Article>> {
         return localArticleService.getArticles()
             .onStart {
                 CoroutineScope(coroutineContext).launch {
-                    val cacheKey = CACHE_KEY_ARTICLES
-
-                    val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
-                        key = cacheKey,
+                    val needsServerFetch = localArticleService.isCacheStale(
                         cacheDuration = 1.hours,
                     )
 
                     if (needsServerFetch) {
                         val response = remoteArticleService.getArticles()
 
-                        val articles = response.getOrNull()
-                        if (articles != null) {
+                        response.onSuccess { articles ->
                             localArticleService.saveArticles(articles)
-                            cacheTimestampRepository.setCacheTimestamp(cacheKey)
-                        }
-
-                        val error = response.exceptionOrNull()
-                        if (error != null) {
+                        }.onFailure { error ->
                             // Need to log this somewhere
                             println("Error fetching articles: $error")
                         }
                     }
                 }
             }
-    }
-
-    companion object {
-        private const val CACHE_KEY_ARTICLES = "articles"
     }
 }

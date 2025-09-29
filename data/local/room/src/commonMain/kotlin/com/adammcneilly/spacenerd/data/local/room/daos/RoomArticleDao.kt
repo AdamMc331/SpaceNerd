@@ -25,4 +25,14 @@ interface RoomArticleDao {
     """,
     )
     fun getAllArticles(): Flow<List<RoomArticleDTO>>
+
+    @Query(
+        """
+            SELECT lastPersistedAtUtc
+            FROM articles
+            ORDER BY lastPersistedAtUtc DESC
+            LIMIT 1
+        """,
+    )
+    suspend fun getLatestCacheTimestamp(): String?
 }
