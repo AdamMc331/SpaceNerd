@@ -30,6 +30,7 @@ val localModule = module {
     single<LocalArticleService> {
         RoomArticleService(
             articleDao = get<SpaceNerdDatabase>().articleDao(),
+            dateTimeProvider = get(),
         )
     }
 

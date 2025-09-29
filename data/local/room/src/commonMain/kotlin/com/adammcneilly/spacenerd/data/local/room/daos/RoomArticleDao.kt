@@ -17,14 +17,12 @@ interface RoomArticleDao {
         articles: List<RoomArticleDTO>,
     )
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertArticle(
-        article: RoomArticleDTO,
+    @Query(
+        """
+        SELECT * 
+        FROM articles 
+        ORDER BY publishedAtUtc DESC 
+    """,
     )
-
-    @Query("SELECT * FROM articles ORDER BY publishedAtUtc DESC")
     fun getAllArticles(): Flow<List<RoomArticleDTO>>
-
-    @Query("DELETE FROM articles")
-    suspend fun clearAllArticles()
 }

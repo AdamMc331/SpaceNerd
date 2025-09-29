@@ -22,6 +22,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":core:datetime"))
             implementation(project(":core:models"))
             implementation(project(":data:cache"))
             implementation(project(":data:article:api"))
