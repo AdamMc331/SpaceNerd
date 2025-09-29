@@ -3,8 +3,8 @@ package com.adammcneilly.spacenerd.navigation
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.NavEntry
-import androidx.navigation3.scene.Scene
-import androidx.navigation3.scene.SceneStrategy
+import androidx.navigation3.ui.Scene
+import androidx.navigation3.ui.SceneStrategy
 import androidx.window.core.layout.WindowSizeClass
 
 /**
