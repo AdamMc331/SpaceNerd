@@ -13,6 +13,11 @@
       ],
       automerge: true,
     },
+    {
+      matchFileNames: ["**/android_ui_tests.yml"],
+      matchPackageNames: ["macos"],
+      enabled: false
+    },
   ],
   platformAutomerge: true,
   ignorePresets: [
