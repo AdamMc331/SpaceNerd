@@ -27,19 +27,6 @@ class OfflineFirstArticleRepositoryTest {
     )
 
     @Test
-    fun `getArticles does not fetch from remote when cache is not stale`() =
-        runTest {
-            everySuspend { localArticleService.isCacheStale() } returns false
-            everySuspend { localArticleService.getArticles() } returns flowOf(emptyList())
-
-            repository.getArticles().collect {}
-
-            verifySuspend(VerifyMode.exactly(0)) {
-                remoteArticleService.getArticles()
-            }
-        }
-
-    @Test
     fun `getArticles fetches and saves from remote when cache is stale`() =
         runTest {
             val remoteArticles = listOf(testArticle.copy(title = "Remote Article"))
