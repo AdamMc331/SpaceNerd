@@ -28,6 +28,7 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(project(":core:datetime"))
             implementation(project(":core:models"))
             implementation(libs.androidx.room.runtime)
             implementation(libs.kotlinx.datetime)

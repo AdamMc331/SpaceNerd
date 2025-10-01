@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.data.local.room.dtos
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
 import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.core.models.Author
 import com.adammcneilly.spacenerd.data.local.room.converters.StringListTypeConverter
@@ -22,9 +23,11 @@ data class RoomArticleDTO(
     val authors: List<String>,
     val publishedAtUtc: String,
     val isFeatured: Boolean,
+    val lastPersistedAtUtc: String,
 ) {
     constructor(
         article: Article,
+        dateTimeProvider: DateTimeProvider,
     ) : this(
         id = article.id,
         title = article.title,
@@ -34,6 +37,7 @@ data class RoomArticleDTO(
         authors = article.authors.map { it.name },
         publishedAtUtc = article.publishedAtUtc.toString(),
         isFeatured = article.isFeatured,
+        lastPersistedAtUtc = dateTimeProvider.now().toString(),
     )
 
     fun toArticle(): Article {
