@@ -8,6 +8,7 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
@@ -38,14 +39,22 @@ class RoomArticleService(
         }
     }
 
-    override suspend fun isCacheStale(
-        cacheDuration: Duration,
-    ): Boolean {
+    override suspend fun isCacheStale(): Boolean {
+        val cacheDuration = 12.hours
+
         val latestCacheTimestamp = articleDao.getLatestCacheTimestamp()?.let {
             Instant.parse(it)
         }
+
+        // If no saved timestamp, consider cache stale and needs to be updated.
+        if (latestCacheTimestamp == null) {
+            return true
+        }
+
         val now = dateTimeProvider.now()
 
-        return latestCacheTimestamp == null || ((now - latestCacheTimestamp) > cacheDuration)
+        val durationSinceCache = (now - latestCacheTimestamp)
+
+        return durationSinceCache > cacheDuration
     }
 }

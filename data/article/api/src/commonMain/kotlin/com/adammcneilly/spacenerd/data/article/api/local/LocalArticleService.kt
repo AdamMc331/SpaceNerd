@@ -18,12 +18,8 @@ interface LocalArticleService {
     fun getArticles(): Flow<List<Article>>
 
     /**
-     * Checks if the article cache is older than the provided [cacheDuration].
-     *
-     * @return True if the cache is empty or the most recently cached article
-     * is older than the [cacheDuration], indicating a sync is needed.
+     * Checks if the article cache is stale. The duration for a stale cache will
+     * be defined by the implementation.
      */
-    suspend fun isCacheStale(
-        cacheDuration: Duration,
-    ): Boolean
+    suspend fun isCacheStale(): Boolean
 }

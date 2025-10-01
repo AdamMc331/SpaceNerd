@@ -29,7 +29,7 @@ class OfflineFirstArticleRepositoryTest {
     @Test
     fun `getArticles does not fetch from remote when cache is not stale`() =
         runTest {
-            everySuspend { localArticleService.isCacheStale(any()) } returns false
+            everySuspend { localArticleService.isCacheStale() } returns false
             everySuspend { localArticleService.getArticles() } returns flowOf(emptyList())
 
             repository.getArticles().collect {}
@@ -45,7 +45,7 @@ class OfflineFirstArticleRepositoryTest {
             val remoteArticles = listOf(testArticle.copy(title = "Remote Article"))
             val localArticles = listOf(testArticle.copy(title = "Local Article"))
 
-            everySuspend { localArticleService.isCacheStale(any()) } returns true
+            everySuspend { localArticleService.isCacheStale() } returns true
             everySuspend { remoteArticleService.getArticles() } returns Result.success(remoteArticles)
             everySuspend { localArticleService.getArticles() } returns flowOf(localArticles)
             everySuspend { localArticleService.saveArticles(any()) } returns Unit
@@ -72,7 +72,7 @@ class OfflineFirstArticleRepositoryTest {
             val remoteArticles = listOf(testArticle.copy(title = "Remote Article"))
             val localArticles = listOf(testArticle.copy(title = "Local Article"))
 
-            everySuspend { localArticleService.isCacheStale(any()) } returns false
+            everySuspend { localArticleService.isCacheStale() } returns false
             everySuspend { remoteArticleService.getArticles() } returns Result.success(remoteArticles)
             everySuspend { localArticleService.getArticles() } returns flowOf(localArticles)
             everySuspend { localArticleService.saveArticles(any()) } returns Unit

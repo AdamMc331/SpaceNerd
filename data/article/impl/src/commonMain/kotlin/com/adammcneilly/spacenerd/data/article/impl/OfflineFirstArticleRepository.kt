@@ -24,9 +24,7 @@ class OfflineFirstArticleRepository(
         return localArticleService.getArticles()
             .onStart {
                 CoroutineScope(coroutineContext).launch {
-                    val needsServerFetch = localArticleService.isCacheStale(
-                        cacheDuration = 1.hours,
-                    )
+                    val needsServerFetch = localArticleService.isCacheStale()
 
                     if (needsServerFetch) {
                         val response = remoteArticleService.getArticles()
