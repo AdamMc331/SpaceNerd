@@ -27,6 +27,13 @@ open class BaseKtorClient(
     val httpClient: HttpClient = defaultHttpClient(),
 ) {
     /**
+     * Provides a series of base [RemoteParams] to attach to every request.
+     */
+    open fun baseParams(): Map<String, Any?> {
+        return emptyMap()
+    }
+
+    /**
      * A helper function to build the [baseUrl] and [endpoint] operation and performs a get request.
      * Will also pass in the supplied [params] as necessary.
      *
@@ -46,6 +53,7 @@ open class BaseKtorClient(
         return try {
             val response: HttpResponse = httpClient
                 .get(url) {
+                    addParams(baseParams())
                     addParams(params)
                 }
 
