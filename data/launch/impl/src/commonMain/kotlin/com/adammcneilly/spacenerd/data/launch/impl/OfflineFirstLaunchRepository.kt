@@ -69,7 +69,6 @@ class OfflineFirstLaunchRepository(
     }
 
     companion object {
-        private const val KEY_AGENCY_PREFIX = "agency_"
         private const val KEY_LAUNCH_PREFIX = "launch_"
     }
 }
