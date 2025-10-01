@@ -47,11 +47,6 @@ class OfflineFirstLaunchRepository(
 
                 syncAgencyIfNecessary(coroutineContext, agencyId)
             }
-            .onStart {
-                // Commenting this out for now, we don't learn anything new from
-                // detail, currently.
-//                syncLaunchIfNecessary(coroutineContext, id)
-            }
     }
 
     private fun syncAgencyIfNecessary(
@@ -109,37 +104,6 @@ class OfflineFirstLaunchRepository(
                 if (error != null) {
                     // Need to log this somewhere
                     println("Error fetching launches $request: $error")
-                }
-            }
-        }
-    }
-
-    @Suppress("UnusedPrivateMember")
-    private fun syncLaunchIfNecessary(
-        coroutineContext: CoroutineContext,
-        id: String,
-    ) {
-        CoroutineScope(coroutineContext).launch {
-            val cacheKey = "$KEY_LAUNCH_PREFIX$id"
-
-            val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
-                key = cacheKey,
-                cacheDuration = 1.hours,
-            )
-
-            if (needsServerFetch) {
-                val response = remoteLaunchService.getLaunch(id)
-
-                val launch = response.getOrNull()
-                if (launch != null) {
-                    localLaunchService.saveLaunches(listOf(launch))
-                    cacheTimestampRepository.setCacheTimestamp(cacheKey)
-                }
-
-                val error = response.exceptionOrNull()
-                if (error != null) {
-                    // Need to log this somewhere
-                    println("Error fetching launch $id: $error")
                 }
             }
         }
