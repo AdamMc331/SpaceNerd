@@ -26,6 +26,10 @@ open class BaseKtorClient(
     val baseUrl: String,
     val httpClient: HttpClient = defaultHttpClient(),
 ) {
+    open fun baseParams(): Map<String, Any?> {
+        return emptyMap()
+    }
+
     /**
      * A helper function to build the [baseUrl] and [endpoint] operation and performs a get request.
      * Will also pass in the supplied [params] as necessary.
@@ -47,6 +51,7 @@ open class BaseKtorClient(
             val response: HttpResponse = httpClient
                 .get(url) {
                     addParams(params)
+                    addParams(baseParams())
                 }
 
             if (response.status.isSuccess()) {

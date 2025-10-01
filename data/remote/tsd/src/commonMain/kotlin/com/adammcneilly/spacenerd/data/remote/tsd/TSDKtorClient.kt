@@ -7,4 +7,10 @@ import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
  *
  * Docs here: https://lldev.thespacedevs.com/2.3.0/
  */
-object TSDKtorClient : BaseKtorClient("https://lldev.thespacedevs.com/2.3.0/")
+object TSDKtorClient : BaseKtorClient("https://lldev.thespacedevs.com/2.3.0/") {
+    override fun baseParams(): Map<String, Any?> {
+        return mapOf(
+            "mode" to "detailed",
+        )
+    }
+}
