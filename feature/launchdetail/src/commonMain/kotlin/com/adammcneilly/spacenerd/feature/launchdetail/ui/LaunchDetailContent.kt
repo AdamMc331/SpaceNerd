@@ -57,13 +57,13 @@ fun LaunchDetailContent(
             LaunchSubtitle(state)
         }
 
-        LaunchServiceProvider(state)
+        launchServiceProvider(state)
 
-        LaunchMission(state)
+        launchMission(state)
     }
 }
 
-private fun LazyListScope.LaunchMission(
+private fun LazyListScope.launchMission(
     state: LaunchDetailUiState,
 ) {
     with(state.launch.mission) {
@@ -91,7 +91,7 @@ private fun LazyListScope.LaunchMission(
     }
 }
 
-private fun LazyListScope.LaunchServiceProvider(
+private fun LazyListScope.launchServiceProvider(
     state: LaunchDetailUiState,
 ) {
     with(state.launch.agency) {
