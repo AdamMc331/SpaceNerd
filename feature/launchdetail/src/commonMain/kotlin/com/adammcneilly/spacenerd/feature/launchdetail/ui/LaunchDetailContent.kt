@@ -59,6 +59,14 @@ fun LaunchDetailContent(
         with(state.launch.agency) {
             if (this@with != null) {
                 item {
+                    SectionTitle(
+                        text = "Launch Provider",
+                        modifier = Modifier
+                            .padding(top = 16.dp),
+                    )
+                }
+
+                item {
                     LaunchAgencyCard(
                         agency = this@with,
                         modifier = Modifier
@@ -74,6 +82,14 @@ fun LaunchDetailContent(
 
         with(state.launch.mission) {
             if (this@with != null) {
+                item {
+                    SectionTitle(
+                        text = "Mission",
+                        modifier = Modifier
+                            .padding(top = 16.dp),
+                    )
+                }
+
                 item {
                     LaunchMissionCard(
                         mission = this@with,
@@ -184,5 +200,20 @@ private fun LaunchStatus(
         contentColor = launch.status.contentColor,
         textStyle = textStyle,
         modifier = modifier,
+    )
+}
+
+@Composable
+private fun SectionTitle(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleMedium,
+        modifier = modifier
+            .padding(
+                horizontal = 16.dp,
+            ),
     )
 }

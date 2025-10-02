@@ -25,37 +25,19 @@ fun LaunchMissionCard(
     ElevatedCard(
         modifier = modifier,
     ) {
-        Column {
-            MissionImage(mission)
+        Column(
+            modifier = Modifier
+                .padding(16.dp),
+        ) {
+            MissionName(mission)
 
-            Column(
+            MissionDescription(
+                mission = mission,
                 modifier = Modifier
-                    .padding(16.dp),
-            ) {
-                MissionName(mission)
-
-                MissionDescription(
-                    mission = mission,
-                    modifier = Modifier
-                        .padding(top = 4.dp),
-                )
-            }
+                    .padding(top = 4.dp),
+            )
         }
     }
-}
-
-@Composable
-private fun MissionImage(
-    mission: MissionDisplayModel,
-) {
-    ImageWrapper(
-        image = mission.image,
-        contentDescription = null,
-        modifier = Modifier
-            .placeholder(mission.isPlaceholder)
-            .fillMaxWidth()
-            .aspectRatio(LOGO_ASPECT_RATIO),
-    )
 }
 
 @Composable
