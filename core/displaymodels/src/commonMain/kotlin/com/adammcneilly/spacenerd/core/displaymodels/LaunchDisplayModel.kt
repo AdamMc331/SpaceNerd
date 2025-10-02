@@ -25,6 +25,7 @@ data class LaunchDisplayModel(
     val subtitle: String,
     val agency: AgencyDisplayModel?,
     val mission: MissionDisplayModel?,
+    val rocket: RocketDisplayModel?,
     val isPlaceholder: Boolean = false,
 ) {
     constructor(launch: Launch) : this(
@@ -35,6 +36,7 @@ data class LaunchDisplayModel(
         agency = launch.agency?.let(::AgencyDisplayModel),
         subtitle = launch.buildSubtitle(),
         mission = launch.mission?.let(::MissionDisplayModel),
+        rocket = launch.rocket?.let(::RocketDisplayModel),
     )
 
     companion object {
@@ -47,6 +49,7 @@ data class LaunchDisplayModel(
                 subtitle = "Placeholder Subtitle",
                 agency = AgencyDisplayModel.placeholder(),
                 mission = MissionDisplayModel.placeholder(),
+                rocket = RocketDisplayModel.placeholder(),
                 isPlaceholder = true,
             )
         }

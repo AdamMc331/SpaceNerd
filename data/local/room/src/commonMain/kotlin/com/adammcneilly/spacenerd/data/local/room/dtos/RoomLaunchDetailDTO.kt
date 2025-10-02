@@ -35,6 +35,7 @@ data class RoomLaunchDetailDTO(
             agency = agency?.toAgency(),
             pad = launchPad?.toLaunchPad(),
             mission = mission?.toMission(),
+            rocket = null, // Not persisted yet
         )
     }
 }
