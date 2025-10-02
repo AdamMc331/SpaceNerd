@@ -108,8 +108,8 @@ class TSDLaunchServiceTest {
                     id = "66",
                     name = "Soviet Space Program",
                     abbreviation = "CCCP",
-                    description = "",
-                    logoUrl = "",
+                    description = "The Soviet space program, was the national space program of the Union of Soviet Socialist Republics (USSR) actived from 1930s until disintegration of the Soviet Union in 1991.\r\n\r\nThe Soviet Union's space program was mainly based on the cosmonautic exploration of space and the development of the expandable launch vehicles, which had been split between many design bureaus competing against each other. Over its 60-years of history, the Russian program was responsible for a number of pioneering feats and accomplishments in the human space flight, including the first intercontinental ballistic missile (R-7), first satellite (Sputnik 1), first animal in Earth orbit (the dog Laika on Sputnik 2), first human in space and Earth orbit (cosmonaut Yuri Gagarin on Vostok 1), first woman in space and Earth orbit (cosmonaut Valentina Tereshkova on Vostok 6), first spacewalk (cosmonaut Alexei Leonov on Voskhod 2), first Moon impact (Luna 2), first image of the far side of the Moon (Luna 3) and unmanned lunar soft landing (Luna 9), first space rover (Lunokhod 1), first sample of lunar soil automatically extracted and brought to Earth (Luna 16), and first space station (Salyut 1). Further notable records included the first interplanetary probes: Venera 1 and Mars 1 to fly by Venus and Mars, respectively, Venera 3 and Mars 2 to impact the respective planet surface, and Venera 7 and Mars 3 to make soft landings on these planets.",
+                    logoUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soviet2520space2520program_logo_20191229081307.png",
                 ),
                 pad = LaunchPad(
                     id = "32",
