@@ -29,7 +29,7 @@ data class TSDLaunchDTO(
     @SerialName(value = "launch_designator")
     val launchDesignator: String? = null,
     @SerialName(value = "launch_service_provider")
-    val launchServiceProvider: TSDLaunchServiceProviderDTO? = null,
+    val launchServiceProvider: TSDAgencyDTO? = null,
     @SerialName(value = "location_launch_attempt_count")
     val locationLaunchAttemptCount: Int? = null,
     @SerialName(value = "location_launch_attempt_count_year")

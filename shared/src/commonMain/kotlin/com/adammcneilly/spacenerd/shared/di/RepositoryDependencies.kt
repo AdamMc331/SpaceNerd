@@ -59,8 +59,6 @@ val repositoryModule = module {
             localLaunchService = get(),
             remoteLaunchService = get(),
             cacheTimestampRepository = get(),
-            localAgencyService = get(),
-            remoteAgencyService = get(),
         )
     }
 

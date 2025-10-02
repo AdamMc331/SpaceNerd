@@ -61,35 +61,6 @@ class OfflineFirstSpaceStationRepository(
         id: String,
     ): Flow<SpaceStation> {
         return localSpaceStationService.getStation(id)
-            .onStart {
-                CoroutineScope(coroutineContext).launch {
-                    val cacheKey = "$CACHE_KEY_STATIONS_PREFIX$id"
-
-                    val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
-                        key = cacheKey,
-                        cacheDuration = 1.hours,
-                    )
-
-                    if (needsServerFetch) {
-                        val response = remoteSpaceStationService.getStation(id)
-
-                        val station = response.getOrNull()
-                        if (station != null) {
-                            localSpaceStationService.saveStations(
-                                stations = listOf(station),
-                                replace = true,
-                            )
-                            cacheTimestampRepository.setCacheTimestamp(cacheKey)
-                        }
-
-                        val error = response.exceptionOrNull()
-                        if (error != null) {
-                            // Need to log this somewhere
-                            println("Error fetching station by id: $id: $error")
-                        }
-                    }
-                }
-            }
     }
 
     companion object {

@@ -1,9 +1,6 @@
 package com.adammcneilly.spacenerd.data.launch.impl
 
 import com.adammcneilly.spacenerd.core.models.Launch
-import com.adammcneilly.spacenerd.data.agency.api.AgencyRepository
-import com.adammcneilly.spacenerd.data.agency.api.local.LocalAgencyService
-import com.adammcneilly.spacenerd.data.agency.api.remote.RemoteAgencyService
 import com.adammcneilly.spacenerd.data.cache.CacheTimestampRepository
 import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
 import com.adammcneilly.spacenerd.data.launch.api.LaunchRepository
@@ -11,7 +8,6 @@ import com.adammcneilly.spacenerd.data.launch.api.local.LocalLaunchService
 import com.adammcneilly.spacenerd.data.launch.api.remote.RemoteLaunchService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
@@ -26,8 +22,6 @@ class OfflineFirstLaunchRepository(
     private val localLaunchService: LocalLaunchService,
     private val remoteLaunchService: RemoteLaunchService,
     private val cacheTimestampRepository: CacheTimestampRepository,
-    private val localAgencyService: LocalAgencyService,
-    private val remoteAgencyService: RemoteAgencyService,
 ) : LaunchRepository {
     override fun getLaunches(
         request: LaunchListRequest,
@@ -42,46 +36,6 @@ class OfflineFirstLaunchRepository(
         id: String,
     ): Flow<Launch> {
         return localLaunchService.getLaunch(id)
-            .onEach { launch ->
-                val agencyId = launch.agency?.id ?: return@onEach
-
-                syncAgencyIfNecessary(coroutineContext, agencyId)
-            }
-            .onStart {
-                // Commenting this out for now, we don't learn anything new from
-                // detail, currently.
-//                syncLaunchIfNecessary(coroutineContext, id)
-            }
-    }
-
-    private fun syncAgencyIfNecessary(
-        coroutineContext: CoroutineContext,
-        agencyId: String,
-    ) {
-        CoroutineScope(coroutineContext).launch {
-            val cacheKey = "$KEY_AGENCY_PREFIX$agencyId"
-
-            val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
-                key = cacheKey,
-                cacheDuration = 1.hours,
-            )
-
-            if (needsServerFetch) {
-                val response = remoteAgencyService.getAgency(agencyId)
-
-                val agency = response.getOrNull()
-                if (agency != null) {
-                    localAgencyService.saveAgency(agency)
-                    cacheTimestampRepository.setCacheTimestamp(cacheKey)
-                }
-
-                val error = response.exceptionOrNull()
-                if (error != null) {
-                    // Need to log this somewhere
-                    println("Error fetching agency $agencyId: $error")
-                }
-            }
-        }
     }
 
     private fun syncLaunchListIfNecessary(
@@ -114,39 +68,7 @@ class OfflineFirstLaunchRepository(
         }
     }
 
-    @Suppress("UnusedPrivateMember")
-    private fun syncLaunchIfNecessary(
-        coroutineContext: CoroutineContext,
-        id: String,
-    ) {
-        CoroutineScope(coroutineContext).launch {
-            val cacheKey = "$KEY_LAUNCH_PREFIX$id"
-
-            val needsServerFetch = cacheTimestampRepository.shouldSyncWithServer(
-                key = cacheKey,
-                cacheDuration = 1.hours,
-            )
-
-            if (needsServerFetch) {
-                val response = remoteLaunchService.getLaunch(id)
-
-                val launch = response.getOrNull()
-                if (launch != null) {
-                    localLaunchService.saveLaunches(listOf(launch))
-                    cacheTimestampRepository.setCacheTimestamp(cacheKey)
-                }
-
-                val error = response.exceptionOrNull()
-                if (error != null) {
-                    // Need to log this somewhere
-                    println("Error fetching launch $id: $error")
-                }
-            }
-        }
-    }
-
     companion object {
-        private const val KEY_AGENCY_PREFIX = "agency_"
         private const val KEY_LAUNCH_PREFIX = "launch_"
     }
 }

@@ -21,7 +21,7 @@ data class TSDPadDTO(
     @SerialName(value = "image")
     val image: TSDImageDTO? = null,
     @SerialName(value = "info_url")
-    val infoUrl: TSDInfoUrlDTO? = null,
+    val infoUrl: String? = null,
     @SerialName(value = "latitude")
     val latitude: Double? = null,
     @SerialName(value = "location")
