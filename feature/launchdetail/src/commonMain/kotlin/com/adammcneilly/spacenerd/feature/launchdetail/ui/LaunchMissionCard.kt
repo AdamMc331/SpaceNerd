@@ -15,8 +15,6 @@ import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 
-private const val LOGO_ASPECT_RATIO = 4F
-
 @Composable
 fun LaunchMissionCard(
     mission: MissionDisplayModel,
