@@ -15,4 +15,5 @@ val testLaunch = Launch(
     agency = testAgency,
     pad = testLaunchPad,
     mission = testMission,
+    rocket = testRocket,
 )
