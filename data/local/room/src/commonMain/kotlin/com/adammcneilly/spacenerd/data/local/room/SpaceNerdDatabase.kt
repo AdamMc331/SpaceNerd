@@ -22,6 +22,7 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomMissionDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomRocketDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationAgencyCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.Dispatchers
@@ -43,6 +44,7 @@ import kotlinx.coroutines.IO
         RoomLaunchDTO::class,
         RoomLaunchPadDTO::class,
         RoomMissionDTO::class,
+        RoomRocketDTO::class,
         RoomSpaceStationDTO::class,
         RoomSpaceStationAgencyCrossRefDTO::class,
     ],

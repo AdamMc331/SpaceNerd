@@ -60,6 +60,12 @@ fun LaunchDetailContent(
         launchServiceProvider(state)
 
         launchMission(state)
+
+        item {
+            Text(
+                text = "Rocket: ${state.launch.rocket}",
+            )
+        }
     }
 }
 

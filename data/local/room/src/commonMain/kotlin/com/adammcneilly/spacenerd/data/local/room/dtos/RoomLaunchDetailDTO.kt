@@ -24,6 +24,12 @@ data class RoomLaunchDetailDTO(
         entityColumn = "id",
     )
     val mission: RoomMissionDTO?,
+    @Relation(
+        parentColumn = "rocketId",
+        entityColumn = "rocketId",
+        entity = RoomRocketDTO::class,
+    )
+    val rocket: RoomRocketDetailDTO?,
 ) {
     fun toLaunch(): Launch {
         return Launch(
@@ -35,7 +41,7 @@ data class RoomLaunchDetailDTO(
             agency = agency?.toAgency(),
             pad = launchPad?.toLaunchPad(),
             mission = mission?.toMission(),
-            rocket = null, // Not persisted yet
+            rocket = rocket?.toRocket(),
         )
     }
 }
