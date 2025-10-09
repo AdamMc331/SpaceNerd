@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.navigation
 
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -7,6 +8,7 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
+import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
@@ -47,6 +49,12 @@ fun AppNavHost() {
         }
     }
 
+    val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
+
+    val isMediumOrLargerWidth = windowSizeClass.isWidthAtLeastBreakpoint(
+        widthDpBreakpoint = WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
+    )
+
     NavDisplay(
         backStack = backStack,
         onBack = {
@@ -58,7 +66,9 @@ fun AppNavHost() {
                 appState.onNavItemSelected(newTab)
             }
         },
-        sceneStrategy = TwoPaneSceneStrategy(),
+        sceneStrategy = TwoPaneSceneStrategy(
+            isMediumOrLargerWidth = isMediumOrLargerWidth,
+        ),
         entryProvider = { key ->
             when (key) {
                 is AppScreen.AstronautDetail -> {
