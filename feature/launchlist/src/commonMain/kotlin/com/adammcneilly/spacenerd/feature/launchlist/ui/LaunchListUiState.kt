@@ -11,6 +11,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 data class LaunchListUiState(
     val launches: List<LaunchDisplayModel>,
     val selectedLaunch: LaunchDisplayModel?,
+    val isSyncing: Boolean = false,
 ) {
     companion object {
         fun default(): LaunchListUiState {
