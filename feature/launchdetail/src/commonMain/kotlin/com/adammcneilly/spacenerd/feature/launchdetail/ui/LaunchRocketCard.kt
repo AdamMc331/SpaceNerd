@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.displaymodels.RocketDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
+import com.eygraber.compose.placeholder.placeholder
 
 private const val IMAGE_ASPECT_RATIO = 2F
 
@@ -35,12 +36,7 @@ fun LaunchRocketCard(
             ) {
                 RocketName(rocket)
 
-                Text(
-                    text = "Maiden Flight: ${rocket.maidenFlight} | Total Launches: ${rocket.totalLaunches}",
-                    style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier
-                        .padding(top = 8.dp),
-                )
+                FlightDetails(rocket)
 
                 RocketDescription(
                     rocket = rocket,
@@ -50,6 +46,21 @@ fun LaunchRocketCard(
             }
         }
     }
+}
+
+@Composable
+private fun FlightDetails(
+    rocket: RocketDisplayModel,
+) {
+    val maidenFlightLabel = "Maiden Flight: ${rocket.maidenFlight}"
+    val totalLaunchesLabel = "Total Launches: ${rocket.totalLaunches}"
+    Text(
+        text = "$maidenFlightLabel | $totalLaunchesLabel",
+        style = MaterialTheme.typography.labelSmall,
+        modifier = Modifier
+            .padding(top = 8.dp)
+            .placeholder(rocket.placeholder),
+    )
 }
 
 @Composable
