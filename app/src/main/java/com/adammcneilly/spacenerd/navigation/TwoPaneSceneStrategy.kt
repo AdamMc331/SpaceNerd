@@ -15,6 +15,7 @@ import androidx.window.core.layout.WindowSizeClass
 class TwoPaneSceneStrategy(
     private val isMediumOrLargerWidth: Boolean,
 ) : SceneStrategy<AppScreen> {
+    @Suppress("ReturnCount")
     override fun SceneStrategyScope<AppScreen>.calculateScene(
         entries: List<NavEntry<AppScreen>>,
     ): Scene<AppScreen>? {

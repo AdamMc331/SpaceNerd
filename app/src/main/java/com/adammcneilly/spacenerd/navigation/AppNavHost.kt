@@ -70,32 +70,38 @@ fun AppNavHost() {
             isMediumOrLargerWidth = isMediumOrLargerWidth,
         ),
         entryProvider = { key ->
-            when (key) {
-                is AppScreen.AstronautDetail -> {
-                    astronautDetailEntry(key)
-                }
-
-                is AppScreen.LaunchDetail -> {
-                    launchDetailEntry(key)
-                }
-
-                is AppScreen.StationDetail -> {
-                    stationDetailEntry(
-                        key = key,
-                        backStack = backStack,
-                    )
-                }
-
-                is AppScreen.Tab -> {
-                    homeTabEntry(
-                        key = key,
-                        backStack = backStack,
-                    )
-                }
-            }
+            navEntryProvider(key, backStack)
         },
     )
 }
+
+private fun navEntryProvider(
+    key: AppScreen,
+    backStack: SnapshotStateList<AppScreen>,
+): NavEntry<AppScreen> =
+    when (key) {
+        is AppScreen.AstronautDetail -> {
+            astronautDetailEntry(key)
+        }
+
+        is AppScreen.LaunchDetail -> {
+            launchDetailEntry(key)
+        }
+
+        is AppScreen.StationDetail -> {
+            stationDetailEntry(
+                key = key,
+                backStack = backStack,
+            )
+        }
+
+        is AppScreen.Tab -> {
+            homeTabEntry(
+                key = key,
+                backStack = backStack,
+            )
+        }
+    }
 
 private fun stationDetailEntry(
     key: AppScreen.StationDetail,
