@@ -41,6 +41,7 @@ kotlin {
             implementation(project(":data:remote:tsd-test"))
             implementation(libs.cash.turbine)
             implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.kotlinx.datetime)
             implementation(libs.varabyte.truthish)
         }
     }
