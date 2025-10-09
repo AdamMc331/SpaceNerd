@@ -31,7 +31,7 @@ fun LaunchListContent(
             )
         }
 
-        items(state.launches) { launch ->
+        items(state.displayLaunches) { launch ->
             LaunchSummaryCard(
                 launch = launch,
                 modifier = Modifier
