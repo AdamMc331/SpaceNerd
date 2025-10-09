@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TSDRocketDTO(
     @SerialName(value = "configuration")
-    val configuration: TSDConfigurationDTO? = null,
+    val configuration: TSDRocketConfigurationDTO? = null,
     @SerialName(value = "id")
     val id: Int? = null,
 )

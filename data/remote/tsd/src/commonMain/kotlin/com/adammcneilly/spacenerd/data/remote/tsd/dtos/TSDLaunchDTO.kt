@@ -85,6 +85,7 @@ data class TSDLaunchDTO(
             agency = this.launchServiceProvider?.toAgency(),
             pad = this.pad?.toLaunchPad(),
             mission = this.mission?.toMission(),
+            rocket = this.rocket?.configuration?.toRocket(),
         )
     }
 }

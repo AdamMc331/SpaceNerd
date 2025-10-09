@@ -6,10 +6,12 @@ import com.adammcneilly.spacenerd.core.models.LaunchPad
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.core.models.Location
 import com.adammcneilly.spacenerd.core.models.Mission
+import com.adammcneilly.spacenerd.core.models.Rocket
 import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
 import com.adammcneilly.spacenerd.data.remote.tsd.test.FakeTSDKtorClient
 import com.varabyte.truthish.assertThat
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.LocalDate
 import kotlin.test.Test
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -55,6 +57,15 @@ class TSDLaunchServiceTest {
                     description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W transmitters for a total mass of 83.6 kg.",
                     imageUrl = "",
                 ),
+                rocket = Rocket(
+                    id = "468",
+                    name = "Sputnik 8K74PS",
+                    imageUrl = "",
+                    manufacturer = null,
+                    description = "",
+                    maidenFlight = null,
+                    totalLaunches = 0,
+                ),
             )
 
             val expectedLaunch2 = Launch(
@@ -83,6 +94,15 @@ class TSDLaunchServiceTest {
                     name = "Sputnik 2",
                     description = "Second artificial satellite and first to carry an animal into orbit.",
                     imageUrl = "",
+                ),
+                rocket = Rocket(
+                    id = "468",
+                    name = "Sputnik 8K74PS",
+                    imageUrl = "",
+                    manufacturer = null,
+                    description = "",
+                    maidenFlight = null,
+                    totalLaunches = 0,
                 ),
             )
 
@@ -124,6 +144,21 @@ class TSDLaunchServiceTest {
                     name = "Sputnik 1",
                     description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W transmitters for a total mass of 83.6 kg.",
                     imageUrl = "",
+                ),
+                rocket = Rocket(
+                    id = "468",
+                    name = "Sputnik 8K74PS",
+                    imageUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/sputnik_8k74ps_image_20210830185541.jpg",
+                    manufacturer = Agency(
+                        id = "1000",
+                        name = "Energia",
+                        abbreviation = "OKB-1",
+                        description = "",
+                        logoUrl = "",
+                    ),
+                    description = "An early Russian rocket designed by Sergei Korolev in the Soviet Union",
+                    maidenFlight = LocalDate.parse("1957-10-04"),
+                    totalLaunches = 2,
                 ),
             )
 

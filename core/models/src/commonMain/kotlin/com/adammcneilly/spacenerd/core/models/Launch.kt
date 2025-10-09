@@ -25,4 +25,5 @@ data class Launch(
     val agency: Agency?,
     val pad: LaunchPad?,
     val mission: Mission?,
+    val rocket: Rocket?,
 )

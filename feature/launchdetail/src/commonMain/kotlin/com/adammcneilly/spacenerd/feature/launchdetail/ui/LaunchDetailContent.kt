@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -56,35 +57,93 @@ fun LaunchDetailContent(
             LaunchSubtitle(state)
         }
 
-        with(state.launch.agency) {
-            if (this@with != null) {
-                item {
-                    LaunchAgencyCard(
-                        agency = this@with,
-                        modifier = Modifier
-                            .padding(top = 16.dp)
-                            .fillMaxWidth()
-                            .padding(
-                                horizontal = 16.dp,
-                            ),
-                    )
-                }
+        launchServiceProvider(state)
+
+        launchMission(state)
+
+        launchRocket(state)
+    }
+}
+
+private fun LazyListScope.launchMission(
+    state: LaunchDetailUiState,
+) {
+    with(state.launch.mission) {
+        if (this@with != null) {
+            item {
+                SectionTitle(
+                    text = "Mission",
+                    modifier = Modifier
+                        .padding(top = 16.dp),
+                )
+            }
+
+            item {
+                LaunchMissionCard(
+                    mission = this@with,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 16.dp,
+                        ),
+                )
             }
         }
+    }
+}
 
-        with(state.launch.mission) {
-            if (this@with != null) {
-                item {
-                    LaunchMissionCard(
-                        mission = this@with,
-                        modifier = Modifier
-                            .padding(top = 16.dp)
-                            .fillMaxWidth()
-                            .padding(
-                                horizontal = 16.dp,
-                            ),
-                    )
-                }
+private fun LazyListScope.launchServiceProvider(
+    state: LaunchDetailUiState,
+) {
+    with(state.launch.agency) {
+        if (this@with != null) {
+            item {
+                SectionTitle(
+                    text = "Launch Provider",
+                    modifier = Modifier
+                        .padding(top = 16.dp),
+                )
+            }
+
+            item {
+                LaunchAgencyCard(
+                    agency = this@with,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 16.dp,
+                        ),
+                )
+            }
+        }
+    }
+}
+
+private fun LazyListScope.launchRocket(
+    state: LaunchDetailUiState,
+) {
+    with(state.launch.rocket) {
+        if (this@with != null) {
+            item {
+                SectionTitle(
+                    text = "Rocket",
+                    modifier = Modifier
+                        .padding(top = 16.dp),
+                )
+            }
+
+            item {
+                LaunchRocketCard(
+                    rocket = this@with,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 16.dp,
+                        ),
+                )
             }
         }
     }
@@ -184,5 +243,20 @@ private fun LaunchStatus(
         contentColor = launch.status.contentColor,
         textStyle = textStyle,
         modifier = modifier,
+    )
+}
+
+@Composable
+private fun SectionTitle(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleMedium,
+        modifier = modifier
+            .padding(
+                horizontal = 16.dp,
+            ),
     )
 }
