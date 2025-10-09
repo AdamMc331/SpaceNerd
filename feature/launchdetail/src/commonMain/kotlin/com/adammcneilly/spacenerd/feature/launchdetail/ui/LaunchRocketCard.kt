@@ -35,10 +35,17 @@ fun LaunchRocketCard(
             ) {
                 RocketName(rocket)
 
+                Text(
+                    text = "Maiden Flight: ${rocket.maidenFlight} | Total Launches: ${rocket.totalLaunches}",
+                    style = MaterialTheme.typography.labelSmall,
+                    modifier = Modifier
+                        .padding(top = 8.dp),
+                )
+
                 RocketDescription(
                     rocket = rocket,
                     modifier = Modifier
-                        .padding(top = 4.dp),
+                        .padding(top = 8.dp),
                 )
             }
         }
