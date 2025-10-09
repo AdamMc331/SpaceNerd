@@ -61,11 +61,7 @@ fun LaunchDetailContent(
 
         launchMission(state)
 
-        item {
-            Text(
-                text = "Rocket: ${state.launch.rocket}",
-            )
-        }
+        launchRocket(state)
     }
 }
 
@@ -113,6 +109,34 @@ private fun LazyListScope.launchServiceProvider(
             item {
                 LaunchAgencyCard(
                     agency = this@with,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 16.dp,
+                        ),
+                )
+            }
+        }
+    }
+}
+
+private fun LazyListScope.launchRocket(
+    state: LaunchDetailUiState,
+) {
+    with(state.launch.rocket) {
+        if (this@with != null) {
+            item {
+                SectionTitle(
+                    text = "Rocket",
+                    modifier = Modifier
+                        .padding(top = 16.dp),
+                )
+            }
+
+            item {
+                LaunchRocketCard(
+                    rocket = this@with,
                     modifier = Modifier
                         .padding(top = 16.dp)
                         .fillMaxWidth()
