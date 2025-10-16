@@ -55,7 +55,7 @@ include(":shared")
 include(":test:paparazzi")
 
 plugins {
-    id("org.jetbrains.kotlinx.kover.aggregation").version("0.9.2")
+    id("org.jetbrains.kotlinx.kover.aggregation").version("0.9.3")
 }
 
 kover {
