@@ -13,6 +13,8 @@ import com.adammcneilly.spacenerd.core.scaffold.app.AppState
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.shared.di.appModules
 import org.koin.compose.KoinApplication
+import org.koin.compose.KoinMultiplatformApplication
+import org.koin.dsl.KoinConfiguration
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
@@ -21,8 +23,8 @@ fun App(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
-    KoinApplication(
-        application = {
+    KoinMultiplatformApplication(
+        config = KoinConfiguration {
             modules(appModules)
         },
     ) {

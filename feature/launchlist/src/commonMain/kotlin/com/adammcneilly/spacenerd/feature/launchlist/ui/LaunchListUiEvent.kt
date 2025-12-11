@@ -19,4 +19,9 @@ sealed interface LaunchListUiEvent {
     data class NavigatedToLaunch(
         val launch: LaunchDisplayModel,
     ) : LaunchListUiEvent
+
+    /**
+     * Triggered when the user clicks the button to pin the widget to their home screen.
+     */
+    data object PinWidgetClicked : LaunchListUiEvent
 }

@@ -25,6 +25,11 @@ kotlin {
     )
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(project(":android-widget"))
+            implementation(libs.androidx.glance.appwidget)
+        }
+
         commonMain.dependencies {
             implementation(project(":core:displaymodels"))
             implementation(project(":core:designsystem"))
@@ -32,6 +37,7 @@ kotlin {
             implementation(project(":core:scaffold"))
             implementation(project(":data:launch:api"))
             implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.compose.material3.adaptive)

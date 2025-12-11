@@ -11,9 +11,12 @@ import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 data class LaunchListUiState(
     val launches: List<LaunchDisplayModel>,
     val selectedLaunch: LaunchDisplayModel?,
+    val launchWidgetSupported: Boolean,
 ) {
     companion object {
-        fun default(): LaunchListUiState {
+        fun default(
+            launchWidgetSupported: Boolean = false,
+        ): LaunchListUiState {
             val placeholderLaunches = List(3) {
                 LaunchDisplayModel.placeholder()
             }
@@ -21,6 +24,7 @@ data class LaunchListUiState(
             return LaunchListUiState(
                 launches = placeholderLaunches,
                 selectedLaunch = null,
+                launchWidgetSupported = launchWidgetSupported,
             )
         }
     }
