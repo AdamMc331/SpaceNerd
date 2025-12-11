@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="next_launch_widget_description">Next Launch</string>
+    <string name="next_launch_widget_description">Displays summarized information about the next upcoming space launch.</string>
 </resources>
