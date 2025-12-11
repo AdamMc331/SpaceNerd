@@ -21,6 +21,8 @@ class MainActivity : ComponentActivity() {
     ) {
         super.onCreate(savedInstanceState)
 
+        val launchId = intent?.extras?.getString("launchId")
+
         setContent {
             enableEdgeToEdge()
 
@@ -31,7 +33,9 @@ class MainActivity : ComponentActivity() {
             App(
                 appState = appState,
             ) {
-                AppNavHost()
+                AppNavHost(
+                    launchId = launchId,
+                )
             }
         }
     }

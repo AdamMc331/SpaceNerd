@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.os.bundleOf
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
@@ -103,7 +104,14 @@ private fun WidgetContent(
     context: Context,
 ) {
     val className = "com.adammcneilly.spacenerd.MainActivity"
-    val intent = Intent(context, Class.forName(className))
+    val extras = bundleOf(
+        "launchId" to launch.id,
+    )
+
+    val intent = Intent(context, Class.forName(className)).apply {
+        putExtras(extras)
+    }
+
     GlanceTheme {
         Scaffold(
             horizontalPadding = 0.dp,

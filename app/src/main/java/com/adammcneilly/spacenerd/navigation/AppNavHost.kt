@@ -10,6 +10,7 @@ import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
+import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
 import com.adammcneilly.spacenerd.feature.astronautdetail.AstronautDetailScreen
@@ -21,7 +22,9 @@ import com.adammcneilly.spacenerd.feature.stationdetail.StationDetailScreen
 import com.adammcneilly.spacenerd.feature.stationlist.SpaceStationListScreen
 
 @Composable
-fun AppNavHost() {
+fun AppNavHost(
+    launchId: String?,
+) {
     val startDestination = AppScreen.Tab(HomeTab.News)
 
     val backStack = rememberNavBackStack<AppScreen>(
@@ -31,6 +34,12 @@ fun AppNavHost() {
     val appState = LocalAppState.current
 
     val currentTab = appState.currentSelectedTab
+
+    LaunchedEffect(launchId) {
+        if (launchId != null) {
+            navigateOrReplaceLaunchDetail(launchId, backStack)
+        }
+    }
 
     LaunchedEffect(currentTab) {
         if (currentTab != null) {
@@ -189,13 +198,7 @@ private fun homeTabEntry(
                 HomeTab.Launches -> {
                     LaunchListScreen(
                         navigateToLaunch = { launch ->
-                            val newScreen = AppScreen.LaunchDetail(launch.id)
-
-                            if (backStack.lastOrNull() is AppScreen.LaunchDetail) {
-                                backStack[backStack.lastIndex] = newScreen
-                            } else {
-                                backStack.add(newScreen)
-                            }
+                            navigateOrReplaceLaunchDetail(launch.id, backStack)
                         },
                     )
                 }
@@ -219,5 +222,18 @@ private fun homeTabEntry(
                 }
             }
         }
+    }
+}
+
+private fun navigateOrReplaceLaunchDetail(
+    launchId: String,
+    backStack: SnapshotStateList<AppScreen>,
+) {
+    val newScreen = AppScreen.LaunchDetail(launchId)
+
+    if (backStack.lastOrNull() is AppScreen.LaunchDetail) {
+        backStack[backStack.lastIndex] = newScreen
+    } else {
+        backStack.add(newScreen)
     }
 }
