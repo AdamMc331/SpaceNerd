@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.android.material)
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.okhttp)
     implementation(libs.koin.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
