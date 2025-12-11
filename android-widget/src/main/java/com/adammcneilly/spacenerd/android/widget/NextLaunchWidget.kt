@@ -37,13 +37,17 @@ import kotlinx.coroutines.flow.map
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class NextLaunchWidget : GlanceAppWidget(), KoinComponent {
-
+class NextLaunchWidget :
+    GlanceAppWidget(),
+    KoinComponent {
     private val localLaunchService: LocalLaunchService by inject()
 
     override val sizeMode: SizeMode = SizeMode.Exact
 
-    override suspend fun provideGlance(context: Context, id: GlanceId) {
+    override suspend fun provideGlance(
+        context: Context,
+        id: GlanceId,
+    ) {
         // Observe entire launch
         val launchFlow = localLaunchService.getLaunches(LaunchListRequest.Upcoming)
             .filter { launches ->
@@ -104,7 +108,7 @@ private fun WidgetContent(
 
 @Composable
 private fun LaunchImage(
-    launchImage: Bitmap?
+    launchImage: Bitmap?,
 ) {
     if (launchImage != null) {
         val height = LocalSize.current.height
@@ -114,7 +118,7 @@ private fun LaunchImage(
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = GlanceModifier
-                .size(height)
+                .size(height),
         )
     }
 }
