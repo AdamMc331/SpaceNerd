@@ -17,6 +17,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Space Nerd"
+include(":android-widget")
 include(":app")
 include(":core:datetime")
 include(":core:designsystem")
@@ -61,3 +62,4 @@ plugins {
 kover {
     enableCoverage()
 }
+
