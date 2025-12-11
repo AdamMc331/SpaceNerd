@@ -1,8 +1,10 @@
 package com.adammcneilly.spacenerd.android.widget
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceId
@@ -11,8 +13,10 @@ import androidx.glance.GlanceTheme
 import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.LocalSize
+import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.SizeMode
+import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.appwidget.components.Scaffold
 import androidx.glance.appwidget.provideContent
 import androidx.glance.layout.Column
@@ -82,7 +86,11 @@ class NextLaunchWidget :
             (launch to bitmap)
         }.collect { (launch, bitmap) ->
             provideContent {
-                WidgetContent(launch, bitmap)
+                WidgetContent(
+                    launch = launch,
+                    launchImage = bitmap,
+                    context = context,
+                )
             }
         }
     }
@@ -92,10 +100,17 @@ class NextLaunchWidget :
 private fun WidgetContent(
     launch: LaunchDisplayModel,
     launchImage: Bitmap?,
+    context: Context,
 ) {
+    val className = "com.adammcneilly.spacenerd.MainActivity"
+    val intent = Intent(context, Class.forName(className))
     GlanceTheme {
         Scaffold(
             horizontalPadding = 0.dp,
+            modifier = GlanceModifier
+                .clickable(
+                    onClick = actionStartActivity(intent),
+                ),
         ) {
             Row {
                 LaunchImage(launchImage)
