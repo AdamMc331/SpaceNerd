@@ -6,11 +6,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.Rocket
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDetailDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomMissionDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomRocketDTO
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -33,10 +35,27 @@ interface RoomLaunchDao {
         mission: RoomMissionDTO,
     )
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreRocket(
+        rocket: RoomRocketDTO,
+    )
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLaunchPad(
         launchPad: RoomLaunchPadDTO,
     )
+
+    private suspend fun insertDomainRocket(
+        rocket: Rocket,
+    ) {
+        val manufacturerDto = rocket.manufacturer?.let(::RoomAgencyDTO)
+        if (manufacturerDto != null) {
+            insertOrIgnoreAgency(manufacturerDto)
+        }
+
+        val rocketDto = RoomRocketDTO(rocket)
+        insertOrIgnoreRocket(rocketDto)
+    }
 
     suspend fun insertDomainLaunches(
         launches: List<Launch>,
@@ -55,6 +74,11 @@ interface RoomLaunchDao {
             val missionDto = launch.mission?.let(::RoomMissionDTO)
             if (missionDto != null) {
                 insertOrIgnoreMission(missionDto)
+            }
+
+            val rocket = launch.rocket
+            if (rocket != null) {
+                insertDomainRocket(rocket)
             }
 
             val launchDto = RoomLaunchDTO(launch)

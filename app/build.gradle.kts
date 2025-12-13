@@ -56,6 +56,7 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation(project(":android-widget"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:displaymodels"))
     implementation(project(":core:scaffold"))
@@ -73,6 +74,7 @@ dependencies {
     implementation(libs.androidx.adaptive.android)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
@@ -88,6 +90,7 @@ dependencies {
     implementation(libs.eygraber.compose.placeholder.material3)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.koin.core)
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.square.moshi.kotlin)

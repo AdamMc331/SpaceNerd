@@ -13,6 +13,7 @@ import com.adammcneilly.spacenerd.core.models.SyncStatus
 data class LaunchListUiState(
     private val launches: List<LaunchDisplayModel>,
     val selectedLaunch: LaunchDisplayModel?,
+    val launchWidgetSupported: Boolean,
     val syncStatus: SyncStatus,
 ) {
     /**
@@ -32,7 +33,9 @@ data class LaunchListUiState(
     }
 
     companion object {
-        fun default(): LaunchListUiState {
+        fun default(
+            launchWidgetSupported: Boolean = false,
+        ): LaunchListUiState {
             val placeholderLaunches = List(3) {
                 LaunchDisplayModel.placeholder()
             }
@@ -40,6 +43,7 @@ data class LaunchListUiState(
             return LaunchListUiState(
                 launches = placeholderLaunches,
                 selectedLaunch = null,
+                launchWidgetSupported = launchWidgetSupported,
                 syncStatus = SyncStatus.None,
             )
         }

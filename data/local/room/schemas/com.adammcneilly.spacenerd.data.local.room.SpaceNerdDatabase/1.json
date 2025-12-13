@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "106ffe610e66eb02a4737065eb110666",
+    "identityHash": "ac906bc40599480dd8810c9fd4806619",
     "entities": [
       {
         "tableName": "agencies",
@@ -279,7 +279,7 @@
       },
       {
         "tableName": "launches",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `launchTime` TEXT NOT NULL, `status` TEXT NOT NULL, `launchAgencyId` TEXT, `launchPadId` TEXT, `launchMissionId` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `launchTime` TEXT NOT NULL, `status` TEXT NOT NULL, `launchAgencyId` TEXT, `launchPadId` TEXT, `launchMissionId` TEXT, `rocketId` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -324,6 +324,11 @@
           {
             "fieldPath": "launchMissionId",
             "columnName": "launchMissionId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rocketId",
+            "columnName": "rocketId",
             "affinity": "TEXT"
           }
         ],
@@ -405,6 +410,58 @@
         }
       },
       {
+        "tableName": "rockets",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`rocketId` TEXT NOT NULL, `name` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `manufacturerId` TEXT, `description` TEXT NOT NULL, `maidenFlight` TEXT, `totalLaunches` INTEGER NOT NULL, PRIMARY KEY(`rocketId`))",
+        "fields": [
+          {
+            "fieldPath": "rocketId",
+            "columnName": "rocketId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "imageUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "manufacturerId",
+            "columnName": "manufacturerId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maidenFlight",
+            "columnName": "maidenFlight",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "totalLaunches",
+            "columnName": "totalLaunches",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "rocketId"
+          ]
+        }
+      },
+      {
         "tableName": "space_stations",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`spaceStationId` TEXT NOT NULL, `name` TEXT NOT NULL, `status` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `founded` TEXT NOT NULL, PRIMARY KEY(`spaceStationId`))",
         "fields": [
@@ -474,7 +531,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '106ffe610e66eb02a4737065eb110666')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ac906bc40599480dd8810c9fd4806619')"
     ]
   }
 }

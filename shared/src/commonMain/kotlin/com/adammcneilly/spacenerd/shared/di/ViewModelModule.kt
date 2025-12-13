@@ -27,6 +27,7 @@ val viewModelModule = module {
     viewModel {
         LaunchListViewModel(
             launchRepository = get(),
+            launchWidgetManager = get(),
         )
     }
 

@@ -19,11 +19,13 @@ import kotlin.test.Test
 
 class LaunchListViewModelTest {
     private val launchRepository: LaunchRepository = mock()
+    private val launchWidgetManager: LaunchWidgetManager = mock()
     private lateinit var viewModel: LaunchListViewModel
 
     private fun buildSubject() {
         viewModel = LaunchListViewModel(
             launchRepository = launchRepository,
+            launchWidgetManager = launchWidgetManager,
         )
     }
 
@@ -34,11 +36,40 @@ class LaunchListViewModelTest {
                 launchRepository.getLaunches(LaunchListRequest.Upcoming)
             } returns flow { }
 
+            every {
+                launchWidgetManager.launchWidgetSupported()
+            } returns false
+
             buildSubject()
 
             viewModel.state.test {
                 val initialState = awaitItem()
                 assertThat(initialState).isEqualTo(LaunchListUiState.default())
+
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun observeInitialStateWithLaunchWidgetSupported() =
+        runTest {
+            every {
+                launchRepository.getLaunches(LaunchListRequest.Upcoming)
+            } returns flow { }
+
+            every {
+                launchWidgetManager.launchWidgetSupported()
+            } returns true
+
+            buildSubject()
+
+            val expectedState = LaunchListUiState.default(
+                launchWidgetSupported = true,
+            )
+
+            viewModel.state.test {
+                val initialState = awaitItem()
+                assertThat(initialState).isEqualTo(expectedState)
 
                 cancelAndIgnoreRemainingEvents()
             }
@@ -61,6 +92,7 @@ class LaunchListViewModelTest {
                     LaunchDisplayModel(testLaunch),
                 ),
                 selectedLaunch = null,
+                launchWidgetSupported = false,
             )
 
             viewModel.state.test {
@@ -79,6 +111,10 @@ class LaunchListViewModelTest {
             every {
                 launchRepository.getLaunches(LaunchListRequest.Upcoming)
             } returns flow { }
+
+            every {
+                launchWidgetManager.launchWidgetSupported()
+            } returns false
 
             buildSubject()
 
@@ -104,6 +140,10 @@ class LaunchListViewModelTest {
             every {
                 launchRepository.getLaunches(LaunchListRequest.Upcoming)
             } returns flow { }
+
+            every {
+                launchWidgetManager.launchWidgetSupported()
+            } returns false
 
             buildSubject()
 

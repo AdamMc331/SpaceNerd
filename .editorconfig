@@ -17,3 +17,6 @@ ktlint_standard_string-template-indent = disabled
 
 [**/commonTest/**.{kt,kts}]
 ktlint_standard_max-line-length = disabled
+
+[**/*.{android,ios}.kt]
+ktlint_standard_filename = disabled

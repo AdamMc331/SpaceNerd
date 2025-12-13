@@ -3,6 +3,12 @@ package com.adammcneilly.spacenerd.feature.launchlist
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Pin
+import androidx.compose.material.icons.filled.Widgets
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -11,6 +17,7 @@ import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSceneType
 import com.adammcneilly.spacenerd.core.designsystem.utils.SceneType
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.scaffold.PersistentScaffold
+import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentFloatingActionButton
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationBar
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
 import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
@@ -50,6 +57,24 @@ fun LaunchListScreen(
             if (LocalSceneType.current != SceneType.TwoPane) {
                 PersistentNavigationRail()
             }
+        },
+        floatingActionButton = {
+            PersistentFloatingActionButton(
+                text = {
+                    Text(
+                        text = "Widget",
+                    )
+                },
+                icon = {
+                    Icon(
+                        Icons.Default.Widgets,
+                        contentDescription = null,
+                    )
+                },
+                onClick = {
+                    viewModel.onEvent(LaunchListUiEvent.PinWidgetClicked)
+                },
+            )
         },
         content = { scaffoldPadding ->
             LaunchListContent(
