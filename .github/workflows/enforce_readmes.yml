@@ -1,0 +1,26 @@
+name: Enforce READMEs
+
+# This will cancel any in progress workflows for the same PR, if
+# multiple pushes happen in quick succession.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - development
+  pull_request:
+
+jobs:
+  enforce-readmes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Make script executable
+        run: chmod +x ./scripts/enforce-readmes.sh
+
+      - name: Check for README.md in all modules
+        run: ./scripts/enforce-readmes.sh
