@@ -13,6 +13,7 @@ import com.adammcneilly.spacenerd.core.scaffold.ScaffoldState
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
+@Suppress("LongParameterList")
 fun ScaffoldState.PersistentFloatingActionButton(
     text: @Composable () -> Unit,
     icon: @Composable () -> Unit,
