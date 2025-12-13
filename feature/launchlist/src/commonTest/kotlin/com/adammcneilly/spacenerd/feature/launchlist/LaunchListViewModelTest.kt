@@ -30,17 +30,23 @@ class LaunchListViewModelTest {
         )
     }
 
+    init {
+        every {
+            launchRepository.getLaunches(LaunchListRequest.Upcoming)
+        } returns flow { }
+
+        every {
+            launchWidgetManager.launchWidgetSupported()
+        } returns false
+
+        every {
+            launchRepository.syncStatus
+        } returns flow { }
+    }
+
     @Test
     fun observeInitialState() =
         runTest {
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
-            every {
-                launchWidgetManager.launchWidgetSupported()
-            } returns false
-
             buildSubject()
 
             viewModel.state.test {
@@ -54,10 +60,6 @@ class LaunchListViewModelTest {
     @Test
     fun observeInitialStateWithLaunchWidgetSupported() =
         runTest {
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
             every {
                 launchWidgetManager.launchWidgetSupported()
             } returns true
@@ -110,14 +112,6 @@ class LaunchListViewModelTest {
         runTest {
             val launch = LaunchDisplayModel(testLaunch)
 
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
-            every {
-                launchWidgetManager.launchWidgetSupported()
-            } returns false
-
             buildSubject()
 
             viewModel.onEvent(LaunchListUiEvent.LaunchSelected(launch))
@@ -138,14 +132,6 @@ class LaunchListViewModelTest {
     fun handleNavigatedToLaunch() =
         runTest {
             val launch = LaunchDisplayModel(testLaunch)
-
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
-            every {
-                launchWidgetManager.launchWidgetSupported()
-            } returns false
 
             buildSubject()
 
