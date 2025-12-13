@@ -61,11 +61,12 @@ fun LaunchDetailContent(
                 LaunchSubtitle(state)
             }
 
-        launchServiceProvider(state)
+            launchServiceProvider(state)
 
-        launchMission(state)
+            launchMission(state)
 
-        launchRocket(state)
+            launchRocket(state)
+        }
     }
 }
 
@@ -150,12 +151,6 @@ private fun LazyListScope.launchRocket(
                 )
             }
         }
-
-        CircularProgressIndicator(
-            modifier = Modifier
-                .wrapContentSize()
-                .align(Alignment.Center),
-        )
     }
 }
 
