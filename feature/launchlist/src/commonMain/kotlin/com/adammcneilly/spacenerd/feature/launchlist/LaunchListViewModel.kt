@@ -55,9 +55,11 @@ class LaunchListViewModel(
             is LaunchListUiEvent.LaunchSelected -> {
                 processLaunchSelected(event)
             }
+
             is LaunchListUiEvent.NavigatedToLaunch -> {
                 processNavigatedToLaunch()
             }
+
             is LaunchListUiEvent.PinWidgetClicked -> {
                 processPinWidgetClicked()
             }
