@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.feature.launchlist
 
 import app.cash.turbine.test
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.core.models.test.testLaunch
 import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
 import com.adammcneilly.spacenerd.data.launch.api.LaunchRepository
@@ -93,6 +94,7 @@ class LaunchListViewModelTest {
                 ),
                 selectedLaunch = null,
                 launchWidgetSupported = false,
+                syncStatus = SyncStatus.None,
             )
 
             viewModel.state.test {
