@@ -27,6 +27,7 @@ data class LaunchListUiState(
                 LaunchDisplayModel.placeholder()
             }
         }
+
         else -> {
             launches
         }

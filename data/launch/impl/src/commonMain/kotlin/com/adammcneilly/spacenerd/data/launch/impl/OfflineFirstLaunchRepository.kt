@@ -64,10 +64,12 @@ class OfflineFirstLaunchRepository(
                     setSyncStatus(SyncStatus.Initial)
                     requestLaunches(request, cacheKey)
                 }
+
                 (now - lastCache) > cacheDuration -> {
                     setSyncStatus(SyncStatus.Refresh)
                     requestLaunches(request, cacheKey)
                 }
+
                 else -> {
                     setSyncStatus(SyncStatus.None)
                 }
