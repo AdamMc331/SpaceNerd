@@ -13,6 +13,9 @@ naming:
     functionPattern: '[a-z][a-zA-Z0-9]*'
     excludeClassPattern: '$^'
     ignoreAnnotated: ['Composable']
+  MatchingDeclarationName:
+    active: true
+    excludes: [ '**/*.android.kt', '**/*.ios.kt' ]
 
 style:
   active: true

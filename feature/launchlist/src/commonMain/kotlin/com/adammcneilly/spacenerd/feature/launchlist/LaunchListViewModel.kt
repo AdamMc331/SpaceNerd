@@ -19,8 +19,13 @@ import kotlinx.coroutines.launch
  */
 class LaunchListViewModel(
     private val launchRepository: LaunchRepository,
+    private val launchWidgetManager: LaunchWidgetManager,
 ) : ViewModel() {
-    private val mutableState = MutableStateFlow(LaunchListUiState.default())
+    private val mutableState = MutableStateFlow(
+        LaunchListUiState.default(
+            launchWidgetSupported = launchWidgetManager.launchWidgetSupported(),
+        ),
+    )
     val state = mutableState.asStateFlow()
 
     init {
@@ -53,6 +58,15 @@ class LaunchListViewModel(
             is LaunchListUiEvent.NavigatedToLaunch -> {
                 processNavigatedToLaunch()
             }
+            is LaunchListUiEvent.PinWidgetClicked -> {
+                processPinWidgetClicked()
+            }
+        }
+    }
+
+    private fun processPinWidgetClicked() {
+        viewModelScope.launch {
+            launchWidgetManager.requestPinWidget()
         }
     }
 
