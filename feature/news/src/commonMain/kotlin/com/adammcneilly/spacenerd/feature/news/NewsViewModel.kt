@@ -55,6 +55,7 @@ class NewsViewModel(
                     )
                 }
             }
+
             is NewsUiEvent.NavigatedToArticle -> {
                 mutableState.update { currentState ->
                     currentState.copy(

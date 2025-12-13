@@ -60,6 +60,7 @@ class SpaceStationListViewModel(
             is SpaceStationListUiEvent.StationSelected -> {
                 processStationSelected(event)
             }
+
             is SpaceStationListUiEvent.NavigatedToStation -> {
                 processNavigatedToStation()
             }
