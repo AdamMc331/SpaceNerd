@@ -24,6 +24,7 @@ class TSDLaunchService(
             is LaunchListRequest.Custom -> {
                 getCustomLaunches(request)
             }
+
             LaunchListRequest.Upcoming -> {
                 getUpcomingLaunches()
             }

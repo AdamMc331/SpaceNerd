@@ -45,6 +45,7 @@ class StationDetailViewModel(
                     )
                 }
             }
+
             is StationDetailUiEvent.NavigatedToCrewMember -> {
                 mutableState.update { currentState ->
                     currentState.copy(

@@ -53,6 +53,7 @@ fun ImageContentCard(
                 modifier = modifier,
             )
         }
+
         ImageContentCard.Size.Expanded -> {
             ExpandedCard(
                 image = image,
