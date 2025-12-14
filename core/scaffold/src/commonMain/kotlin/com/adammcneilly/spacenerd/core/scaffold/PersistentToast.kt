@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun ScaffoldState.PersistentToast(
-    message: String,
+    message: String?,
     modifier: Modifier = Modifier,
     enterTransition: EnterTransition = slideInVertically(initialOffsetY = { it }),
     exitTransition: ExitTransition = slideOutVertically(targetOffsetY = { it }),
@@ -32,7 +32,7 @@ fun ScaffoldState.PersistentToast(
                 ),
                 animatedVisibilityScope = this,
             ),
-        visible = true,
+        visible = message != null,
         enter = enterTransition,
         exit = exitTransition,
         content = {
@@ -46,7 +46,7 @@ fun ScaffoldState.PersistentToast(
                     .fillMaxWidth(),
             ) {
                 Text(
-                    text = message,
+                    text = message.orEmpty(),
                     style = MaterialTheme.typography.labelMedium,
                     modifier = Modifier
                         .padding(vertical = 4.dp, horizontal = 8.dp),

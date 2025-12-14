@@ -60,11 +60,9 @@ fun LaunchListScreen(
                 else -> null
             }
 
-            if (message != null) {
-                PersistentToast(
-                    message = message,
-                )
-            }
+            PersistentToast(
+                message = message,
+            )
         },
         content = { scaffoldPadding ->
             LaunchListContent(
