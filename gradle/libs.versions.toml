@@ -6,7 +6,7 @@ androidxTest = "1.3.0"
 appCompat = "1.7.1"
 coil = "3.3.0"
 compileSdk = "36"
-composeBom = "2025.11.01"
+composeBom = "2025.12.00"
 detektGradlePlugin = "1.23.8"
 espresso = "3.7.0"
 glanceAppwidget = "1.2.0-rc01"
@@ -25,7 +25,8 @@ ksp = "2.3.3"
 ktor = "3.3.3"
 ktxCore = "1.17.0"
 leakCanary = "2.14"
-lifecycle = "2.9.6"
+lifecycleAndroidX = "2.10.0"
+lifecycleJetBrains = "2.9.6"
 material = "1.13.0"
 materialKolor = "4.0.5"
 material3Adaptive = "1.2.0"
@@ -43,7 +44,7 @@ sqlite = "2.6.2"
 testParameterInjector = "1.20"
 truthish = "1.0.3"
 turbine = "1.2.1"
-xr = "1.0.0-alpha08"
+xr = "1.0.0-alpha09"
 xr-material = "1.0.0-alpha13"
 
 
@@ -55,9 +56,9 @@ androidx-adaptive-android = { group = "androidx.compose.material3.adaptive", nam
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
 androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glanceAppwidget" }
-androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
-androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
-androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycleJetBrains" }
+androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleJetBrains" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleAndroidX" }
 androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
 androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
