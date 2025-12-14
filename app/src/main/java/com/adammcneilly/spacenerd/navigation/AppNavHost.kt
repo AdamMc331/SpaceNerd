@@ -9,6 +9,7 @@ import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass
+import com.adammcneilly.spacenerd.core.deeplinks.DeepLink
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
@@ -23,7 +24,7 @@ import com.adammcneilly.spacenerd.feature.stationlist.SpaceStationListScreen
 
 @Composable
 fun AppNavHost(
-    launchId: String?,
+    deepLink: DeepLink?,
 ) {
     val startDestination = AppScreen.Tab(HomeTab.News)
 
@@ -35,9 +36,9 @@ fun AppNavHost(
 
     val currentTab = appState.currentSelectedTab
 
-    LaunchedEffect(launchId) {
-        if (launchId != null) {
-            navigateOrReplaceLaunchDetail(launchId, backStack)
+    LaunchedEffect(deepLink) {
+        if (deepLink != null) {
+            navigateToDeepLink(deepLink, backStack)
         }
     }
 
@@ -235,5 +236,19 @@ private fun navigateOrReplaceLaunchDetail(
         backStack[backStack.lastIndex] = newScreen
     } else {
         backStack.add(newScreen)
+    }
+}
+
+private fun navigateToDeepLink(
+    deepLink: DeepLink,
+    backStack: SnapshotStateList<AppScreen>,
+) {
+    when (deepLink) {
+        is DeepLink.LaunchDetail -> {
+            navigateOrReplaceLaunchDetail(
+                launchId = deepLink.launchId,
+                backStack = backStack,
+            )
+        }
     }
 }

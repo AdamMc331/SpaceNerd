@@ -57,6 +57,7 @@ android {
 dependencies {
     implementation(platform(libs.compose.bom))
     implementation(project(":android-widget"))
+    implementation(project(":core:deeplinks"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:displaymodels"))
     implementation(project(":core:scaffold"))

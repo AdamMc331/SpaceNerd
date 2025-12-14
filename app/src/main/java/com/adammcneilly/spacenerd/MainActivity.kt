@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.saveable.rememberSaveable
+import com.adammcneilly.spacenerd.core.deeplinks.DeepLink
 import com.adammcneilly.spacenerd.core.scaffold.app.AppState
 import com.adammcneilly.spacenerd.navigation.AppNavHost
 import com.adammcneilly.spacenerd.shared.app.App
@@ -21,8 +22,6 @@ class MainActivity : ComponentActivity() {
     ) {
         super.onCreate(savedInstanceState)
 
-        val launchId = intent?.extras?.getString("launchId")
-
         setContent {
             enableEdgeToEdge()
 
@@ -34,8 +33,22 @@ class MainActivity : ComponentActivity() {
                 appState = appState,
             ) {
                 AppNavHost(
-                    launchId = launchId,
+                    deepLink = getDeepLink(),
                 )
+            }
+        }
+    }
+
+    private fun getDeepLink(): DeepLink? {
+        val launchId = intent?.extras?.getString("launchId")
+
+        return when {
+            (launchId != null) -> {
+                DeepLink.LaunchDetail(launchId)
+            }
+
+            else -> {
+                null
             }
         }
     }
