@@ -20,6 +20,7 @@ rootProject.name = "Space Nerd"
 include(":android-widget")
 include(":app")
 include(":core:datetime")
+include(":core:deeplinks")
 include(":core:designsystem")
 include(":core:displaymodels")
 include(":core:models")
@@ -62,4 +63,3 @@ plugins {
 kover {
     enableCoverage()
 }
-
