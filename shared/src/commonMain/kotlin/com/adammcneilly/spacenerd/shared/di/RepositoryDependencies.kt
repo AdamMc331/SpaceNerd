@@ -59,6 +59,7 @@ val repositoryModule = module {
             localLaunchService = get(),
             remoteLaunchService = get(),
             cacheTimestampRepository = get(),
+            dateTimeProvider = get(),
         )
     }
 

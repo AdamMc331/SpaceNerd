@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.data.launch.api
 
 import com.adammcneilly.spacenerd.core.models.Launch
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,6 +11,8 @@ import kotlinx.coroutines.flow.Flow
  * data changes.
  */
 interface LaunchRepository {
+    val syncStatus: Flow<SyncStatus>
+
     fun getLaunches(
         request: LaunchListRequest,
     ): Flow<List<Launch>>

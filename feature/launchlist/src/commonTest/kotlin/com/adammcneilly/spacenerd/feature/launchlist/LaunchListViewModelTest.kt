@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.feature.launchlist
 
 import app.cash.turbine.test
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.core.models.test.testLaunch
 import com.adammcneilly.spacenerd.data.launch.api.LaunchListRequest
 import com.adammcneilly.spacenerd.data.launch.api.LaunchRepository
@@ -29,17 +30,23 @@ class LaunchListViewModelTest {
         )
     }
 
+    init {
+        every {
+            launchRepository.getLaunches(LaunchListRequest.Upcoming)
+        } returns flow { }
+
+        every {
+            launchWidgetManager.launchWidgetSupported()
+        } returns false
+
+        every {
+            launchRepository.syncStatus
+        } returns flow { }
+    }
+
     @Test
     fun observeInitialState() =
         runTest {
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
-            every {
-                launchWidgetManager.launchWidgetSupported()
-            } returns false
-
             buildSubject()
 
             viewModel.state.test {
@@ -53,10 +60,6 @@ class LaunchListViewModelTest {
     @Test
     fun observeInitialStateWithLaunchWidgetSupported() =
         runTest {
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
             every {
                 launchWidgetManager.launchWidgetSupported()
             } returns true
@@ -93,6 +96,7 @@ class LaunchListViewModelTest {
                 ),
                 selectedLaunch = null,
                 launchWidgetSupported = false,
+                syncStatus = SyncStatus.None,
             )
 
             viewModel.state.test {
@@ -107,14 +111,6 @@ class LaunchListViewModelTest {
     fun handleLaunchSelected() =
         runTest {
             val launch = LaunchDisplayModel(testLaunch)
-
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
-            every {
-                launchWidgetManager.launchWidgetSupported()
-            } returns false
 
             buildSubject()
 
@@ -136,14 +132,6 @@ class LaunchListViewModelTest {
     fun handleNavigatedToLaunch() =
         runTest {
             val launch = LaunchDisplayModel(testLaunch)
-
-            every {
-                launchRepository.getLaunches(LaunchListRequest.Upcoming)
-            } returns flow { }
-
-            every {
-                launchWidgetManager.launchWidgetSupported()
-            } returns false
 
             buildSubject()
 

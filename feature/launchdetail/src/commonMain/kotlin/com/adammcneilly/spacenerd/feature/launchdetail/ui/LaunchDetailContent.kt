@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,32 +38,35 @@ fun LaunchDetailContent(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
-    LazyColumn(
-        contentPadding = PaddingValues(
-            bottom = 16.dp + contentPadding.calculateBottomPadding(),
-        ),
+    Box(
         modifier = modifier,
     ) {
-        item {
-            LaunchImageStatus(
-                state,
-                contentPadding,
-            )
+        LazyColumn(
+            contentPadding = PaddingValues(
+                bottom = 16.dp + contentPadding.calculateBottomPadding(),
+            ),
+        ) {
+            item {
+                LaunchImageStatus(
+                    state,
+                    contentPadding,
+                )
+            }
+
+            item {
+                LaunchTitle(state)
+            }
+
+            item {
+                LaunchSubtitle(state)
+            }
+
+            launchServiceProvider(state)
+
+            launchMission(state)
+
+            launchRocket(state)
         }
-
-        item {
-            LaunchTitle(state)
-        }
-
-        item {
-            LaunchSubtitle(state)
-        }
-
-        launchServiceProvider(state)
-
-        launchMission(state)
-
-        launchRocket(state)
     }
 }
 

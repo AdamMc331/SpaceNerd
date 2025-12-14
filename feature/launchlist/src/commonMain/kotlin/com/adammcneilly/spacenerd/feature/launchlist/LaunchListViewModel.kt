@@ -29,6 +29,7 @@ class LaunchListViewModel(
     val state = mutableState.asStateFlow()
 
     init {
+        observeSyncStatus()
         observeLaunches()
     }
 
@@ -42,6 +43,19 @@ class LaunchListViewModel(
                     mutableState.update { currentState ->
                         currentState.copy(
                             launches = displayModels,
+                        )
+                    }
+                }
+        }
+    }
+
+    private fun observeSyncStatus() {
+        viewModelScope.launch {
+            launchRepository.syncStatus
+                .collectLatest { syncStatus ->
+                    mutableState.update { currentState ->
+                        currentState.copy(
+                            syncStatus = syncStatus,
                         )
                     }
                 }
