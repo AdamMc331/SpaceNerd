@@ -27,6 +27,7 @@ fun ScaffoldState.PersistentScaffold(
     floatingActionButton: @Composable ScaffoldState.() -> Unit = {},
     navigationBar: @Composable ScaffoldState.() -> Unit = {},
     navigationRail: @Composable ScaffoldState.() -> Unit = {},
+    toastMessage: @Composable ScaffoldState.() -> Unit = {},
     content: @Composable ScaffoldState.(PaddingValues) -> Unit,
 ) {
     NavigationRailScaffold(
@@ -44,6 +45,9 @@ fun ScaffoldState.PersistentScaffold(
                 },
                 bottomBar = {
                     navigationBar()
+                },
+                snackbarHost = {
+                    toastMessage()
                 },
                 content = { paddingValues ->
                     content(paddingValues)

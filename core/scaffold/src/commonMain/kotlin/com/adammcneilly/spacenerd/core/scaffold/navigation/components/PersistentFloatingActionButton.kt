@@ -30,7 +30,7 @@ fun ScaffoldState.PersistentFloatingActionButton(
                 ),
                 animatedVisibilityScope = this,
             ),
-        visible = canShowBottomNavigation,
+        visible = true,
         enter = enterTransition,
         exit = exitTransition,
         content = {
