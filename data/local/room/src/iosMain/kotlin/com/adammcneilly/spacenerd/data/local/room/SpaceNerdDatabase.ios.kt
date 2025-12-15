@@ -7,6 +7,7 @@ import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
+@OptIn(ExperimentalForeignApi::class)
 class IOSDatabaseBuilderProvider : DatabaseBuilderProvider {
     override fun provideBuilder(): RoomDatabase.Builder<SpaceNerdDatabase> {
         val documentDirectory = NSFileManager.defaultManager.URLForDirectory(
