@@ -44,8 +44,7 @@ fun NewsScreen(
         },
         toastMessage = {
             val message = when (state.value.syncStatus) {
-                SyncStatus.Initial -> "Performing initial sync..."
-                SyncStatus.Refresh -> "Refreshing news articles..."
+                SyncStatus.Initial, SyncStatus.Initial -> "Refreshing news articles..."
                 else -> null
             }
 
