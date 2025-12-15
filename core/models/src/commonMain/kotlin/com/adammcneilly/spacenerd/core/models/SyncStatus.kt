@@ -1,8 +1,6 @@
 package com.adammcneilly.spacenerd.core.models
 
 /**
- * Consider moving to a shared data package?
- *
  * Defines the status of a sync between a local and remote data source.
  */
 enum class SyncStatus {

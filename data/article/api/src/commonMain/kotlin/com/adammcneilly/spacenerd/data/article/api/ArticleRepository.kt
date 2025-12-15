@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.data.article.api
 
 import com.adammcneilly.spacenerd.core.models.Article
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,5 +11,7 @@ import kotlinx.coroutines.flow.Flow
  * data changes.
  */
 interface ArticleRepository {
+    val syncStatus: Flow<SyncStatus>
+
     fun getArticles(): Flow<List<Article>>
 }

@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.feature.news.ui
 
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 
 /**
  * Defines the user friendly state of the news screen, defining all of the information
@@ -9,6 +10,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 data class NewsUiState(
     val articles: List<ArticleDisplayModel>,
     val selectedArticle: ArticleDisplayModel?,
+    val syncStatus: SyncStatus,
 ) {
     companion object {
         fun default(): NewsUiState {
@@ -19,6 +21,7 @@ data class NewsUiState(
             return NewsUiState(
                 articles = placeholderArticles,
                 selectedArticle = null,
+                syncStatus = SyncStatus.Initial,
             )
         }
     }
