@@ -3,6 +3,7 @@ package com.adammcneilly.spacenerd.test.paparazzi.feature.news.ui
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.core.models.test.testArticle
 import com.adammcneilly.spacenerd.feature.news.ui.NewsContent
 import com.adammcneilly.spacenerd.feature.news.ui.NewsUiState
@@ -25,6 +26,7 @@ class NewsContentPaparazziTest : BasePaparazziTest() {
         val state = NewsUiState(
             articles = displayModels,
             selectedArticle = null,
+            syncStatus = SyncStatus.None,
         )
 
         snapshot(screenPaddingDp = 0) {
