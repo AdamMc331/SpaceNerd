@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.feature.news
 
 import app.cash.turbine.test
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.core.models.test.testArticle
 import com.adammcneilly.spacenerd.data.article.api.ArticleRepository
 import com.adammcneilly.spacenerd.feature.news.ui.NewsUiEvent
@@ -18,6 +19,12 @@ import kotlin.test.Test
 class NewsViewModelTest {
     private val articleRepository: ArticleRepository = mock()
     private lateinit var viewModel: NewsViewModel
+
+    init {
+        every {
+            articleRepository.syncStatus
+        } returns flowOf(SyncStatus.None)
+    }
 
     private fun buildSubject() {
         viewModel = NewsViewModel(
@@ -58,6 +65,7 @@ class NewsViewModelTest {
                     ArticleDisplayModel(testArticle),
                 ),
                 selectedArticle = null,
+                syncStatus = SyncStatus.None,
             )
 
             viewModel.state.test {
