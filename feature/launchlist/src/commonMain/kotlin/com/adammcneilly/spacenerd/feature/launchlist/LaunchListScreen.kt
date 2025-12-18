@@ -55,8 +55,7 @@ fun LaunchListScreen(
         },
         toastMessage = {
             val message = when (state.value.syncStatus) {
-                SyncStatus.Initial -> "Performing initial sync..."
-                SyncStatus.Refresh -> "Refreshing launch list..."
+                SyncStatus.Initial, SyncStatus.Refresh -> "Refreshing launch list..."
                 else -> null
             }
 

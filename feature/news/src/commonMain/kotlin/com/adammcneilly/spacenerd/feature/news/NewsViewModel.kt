@@ -3,12 +3,14 @@ package com.adammcneilly.spacenerd.feature.news
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.data.article.api.ArticleRepository
 import com.adammcneilly.spacenerd.feature.news.ui.NewsUiEvent
 import com.adammcneilly.spacenerd.feature.news.ui.NewsUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -28,18 +30,32 @@ class NewsViewModel(
 
     private fun observeArticles() {
         viewModelScope.launch {
-            articleRepository
-                .getArticles()
-                .collectLatest { articles ->
-                    val displayModelResult = articles.map { article ->
-                        ArticleDisplayModel(article)
-                    }
+            combine(
+                articleRepository.getArticles(),
+                articleRepository.syncStatus,
+            ) { articles, syncStatus ->
+                val displayModelResult = articles.map { article ->
+                    ArticleDisplayModel(article)
+                }
 
-                    mutableState.update { currentState ->
-                        currentState.copy(
-                            articles = displayModelResult,
-                        )
-                    }
+                val newStatus = if (
+                    displayModelResult.isNotEmpty() &&
+                    syncStatus != SyncStatus.Initial &&
+                    syncStatus != SyncStatus.Refresh
+                ) {
+                    SyncStatus.None
+                } else {
+                    syncStatus
+                }
+
+                NewsUiState(
+                    articles = displayModelResult,
+                    syncStatus = newStatus,
+                    selectedArticle = mutableState.value.selectedArticle,
+                )
+            }
+                .collectLatest { uiState ->
+                    mutableState.value = uiState
                 }
         }
     }
