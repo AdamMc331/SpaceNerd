@@ -18,7 +18,9 @@ import org.koin.dsl.module
 
 val localModule = module {
     single<SpaceNerdDatabase> {
-        getDatabase()
+        getDatabase(
+            builderProvider = get(),
+        )
     }
 
     single<LocalAgencyService> {

@@ -79,16 +79,18 @@ expect object SpaceNerdDatabaseConstructor : RoomDatabaseConstructor<SpaceNerdDa
  */
 internal const val DATABASE_NAME = "spacenerd.db"
 
-/**
- * Create the database builder - expect/actual implementation per platform
- */
-expect fun getDatabaseBuilder(): RoomDatabase.Builder<SpaceNerdDatabase>
+interface DatabaseBuilderProvider {
+    fun provideBuilder(): RoomDatabase.Builder<SpaceNerdDatabase>
+}
 
 /**
- * Get database instance - singleton pattern
+ * Get database instance using the platform specific [builderProvider].
  */
-fun getDatabase(): SpaceNerdDatabase {
-    return getDatabaseBuilder()
+fun getDatabase(
+    builderProvider: DatabaseBuilderProvider,
+): SpaceNerdDatabase {
+    return builderProvider
+        .provideBuilder()
         .setQueryCoroutineContext(Dispatchers.IO)
         .setDriver(BundledSQLiteDriver()) // Essential for KMP
         // Replace with migrations when stable
