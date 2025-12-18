@@ -37,10 +37,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     buildFeatures {
         compose = true
     }
@@ -114,6 +110,7 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
 
     ksp(libs.hilt.compiler)
+    ksp(libs.kotlin.metadata.jvm)
     ksp(libs.square.moshi.kotlin.codegen)
 
     kspAndroidTest(libs.hilt.android.compiler)
