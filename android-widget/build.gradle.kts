@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
@@ -23,6 +25,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    kotlin.compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 
     compileOptions {
