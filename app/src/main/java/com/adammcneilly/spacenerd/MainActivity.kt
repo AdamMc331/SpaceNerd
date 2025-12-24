@@ -7,8 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.saveable.rememberSaveable
 import com.adammcneilly.spacenerd.core.deeplinks.DeepLink
 import com.adammcneilly.spacenerd.core.scaffold.app.AppState
-import com.adammcneilly.spacenerd.navigation.AppNavHost
 import com.adammcneilly.spacenerd.shared.app.App
+import com.adammcneilly.spacenerd.shared.app.navigation.AppNavHost
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

@@ -34,6 +34,7 @@ minSdk = "31"
 mokkery = "3.1.1"
 moshi = "1.15.2"
 nav3Core = "1.0.0"
+nav3Kmp = "1.0.0-alpha05"
 navigationCompose = "2.9.6"
 okhttp = "5.3.2"
 paparazzi = "2.0.0-alpha02"
@@ -61,6 +62,7 @@ androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleAndroidX" }
 androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
 androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
+androidx-navigation3-ui-kmp = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "nav3Kmp" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-runtime-android = { module = "androidx.room:room-runtime-android", version.ref = "room" }

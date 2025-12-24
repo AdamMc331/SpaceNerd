@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.navigation
+package com.adammcneilly.spacenerd.shared.app.navigation
 
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable

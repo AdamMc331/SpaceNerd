@@ -45,6 +45,7 @@ kotlin {
 
         commonMain.dependencies {
             implementation(project(":core:datetime"))
+            implementation(project(":core:deeplinks"))
             implementation(project(":core:designsystem"))
             implementation(project(":core:displaymodels"))
             implementation(project(":core:models"))
@@ -80,6 +81,7 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.androidx.navigation3.ui.kmp)
             implementation(libs.androidx.room.runtime)
             implementation(libs.coil.compose)
             implementation(libs.coil.ktor)

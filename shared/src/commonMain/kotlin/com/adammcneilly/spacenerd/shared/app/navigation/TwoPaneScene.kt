@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.navigation
+package com.adammcneilly.spacenerd.shared.app.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
