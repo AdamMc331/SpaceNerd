@@ -1,4 +1,4 @@
-package com.adammcneilly.spacenerd.navigation
+package com.adammcneilly.spacenerd.shared.app.navigation
 
 import androidx.navigation3.runtime.NavKey
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
