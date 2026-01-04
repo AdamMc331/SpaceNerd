@@ -15,8 +15,6 @@ import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
-import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
-import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
@@ -77,8 +75,7 @@ private fun LaunchInfo(
             text = launch.name,
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier
-                .placeholder(launch.isPlaceholder)
-                .sharedBounds("LAUNCH_TITLE_${launch.id}"),
+                .placeholder(launch.isPlaceholder),
         )
 
         Text(
@@ -86,8 +83,7 @@ private fun LaunchInfo(
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier
                 .padding(top = 4.dp)
-                .placeholder(launch.isPlaceholder)
-                .sharedBounds("LAUNCH_SUBTITLE_${launch.id}"),
+                .placeholder(launch.isPlaceholder),
         )
     }
 }
@@ -115,9 +111,6 @@ private fun LaunchStatus(
                 visible = launch.isPlaceholder,
                 shape = CircleShape,
                 color = placeholderColor,
-            )
-            .sharedElement(
-                key = "LaunchStatus-${launch.id}",
             ),
     )
 }
@@ -132,9 +125,6 @@ private fun LaunchImage(
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = modifier
-            .placeholder(launch.isPlaceholder)
-            .sharedElement(
-                key = "LaunchImage-${launch.id}",
-            ),
+            .placeholder(launch.isPlaceholder),
     )
 }
