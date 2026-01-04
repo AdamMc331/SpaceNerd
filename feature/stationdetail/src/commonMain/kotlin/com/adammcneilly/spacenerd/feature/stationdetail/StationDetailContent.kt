@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -19,16 +18,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
-import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
-import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
-import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
@@ -162,10 +157,7 @@ private fun StationTitle(
         modifier = Modifier
             .padding(top = 16.dp)
             .padding(horizontal = 16.dp)
-            .placeholder(state.station.isPlaceholder)
-            .sharedBounds(
-                key = state.station.titleSharedElementKey,
-            ),
+            .placeholder(state.station.isPlaceholder),
     )
 }
 
@@ -180,10 +172,7 @@ private fun StationSubtitle(
         modifier = Modifier
             .padding(top = 4.dp)
             .padding(horizontal = 16.dp)
-            .placeholder(state.station.isPlaceholder)
-            .sharedBounds(
-                key = state.station.subtitleSharedElementKey,
-            ),
+            .placeholder(state.station.isPlaceholder),
     )
 }
 
@@ -197,10 +186,7 @@ private fun StationImageStatus(
             station = state.station,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(STATION_IMAGE_ASPECT_RATIO)
-                .sharedElement(
-                    key = state.station.imageSharedElementKey,
-                ),
+                .aspectRatio(STATION_IMAGE_ASPECT_RATIO),
         )
 
         StationStatus(
@@ -215,9 +201,6 @@ private fun StationImageStatus(
                         contentAlpha = 0.15F,
                     ),
                     shape = CircleShape,
-                )
-                .sharedElement(
-                    key = state.station.statusSharedElementKey,
                 ),
         )
     }

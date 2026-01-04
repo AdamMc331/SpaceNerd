@@ -18,13 +18,7 @@ fun ScaffoldState.PersistentNavigationRail(
     exitTransition: ExitTransition = slideOutVertically(targetOffsetY = { it }),
 ) {
     AnimatedVisibility(
-        modifier = modifier
-            .sharedElement(
-                sharedContentState = rememberSharedContentState(
-                    NavRailSharedElementKey,
-                ),
-                animatedVisibilityScope = this,
-            ),
+        modifier = modifier,
         visible = canShowNavRail,
         enter = enterTransition,
         exit = exitTransition,
@@ -33,5 +27,3 @@ fun ScaffoldState.PersistentNavigationRail(
         },
     )
 }
-
-private data object NavRailSharedElementKey

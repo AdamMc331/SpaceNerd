@@ -25,13 +25,7 @@ fun ScaffoldState.PersistentToast(
     exitTransition: ExitTransition = slideOutVertically(targetOffsetY = { it }),
 ) {
     AnimatedVisibility(
-        modifier = modifier
-            .sharedElement(
-                sharedContentState = rememberSharedContentState(
-                    ToastSharedElementKey,
-                ),
-                animatedVisibilityScope = this,
-            ),
+        modifier = modifier,
         visible = message != null,
         enter = enterTransition,
         exit = exitTransition,
@@ -55,5 +49,3 @@ fun ScaffoldState.PersistentToast(
         },
     )
 }
-
-private data object ToastSharedElementKey

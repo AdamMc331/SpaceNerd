@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -17,8 +15,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
-import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
-import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.CrewMemberDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 
@@ -63,8 +59,7 @@ private fun CrewMemberInfo(
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
-                .placeholder(crewMember.placeholder)
-                .sharedBounds(crewMember.astronaut.nameSharedElementKey),
+                .placeholder(crewMember.placeholder),
         )
 
         Text(
@@ -91,7 +86,6 @@ private fun CrewMemberImage(
                 visible = crewMember.placeholder,
             )
             .fillMaxHeight()
-            .aspectRatio(1F)
-            .sharedElement(crewMember.astronaut.imageSharedElementKey),
+            .aspectRatio(1F),
     )
 }

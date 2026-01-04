@@ -23,13 +23,7 @@ fun ScaffoldState.PersistentFloatingActionButton(
     exitTransition: ExitTransition = slideOutVertically(targetOffsetY = { it }),
 ) {
     AnimatedVisibility(
-        modifier = modifier
-            .sharedElement(
-                sharedContentState = rememberSharedContentState(
-                    FloatingActionButtonSharedElementKey,
-                ),
-                animatedVisibilityScope = this,
-            ),
+        modifier = modifier,
         visible = true,
         enter = enterTransition,
         exit = exitTransition,
@@ -42,5 +36,3 @@ fun ScaffoldState.PersistentFloatingActionButton(
         },
     )
 }
-
-private data object FloatingActionButtonSharedElementKey
