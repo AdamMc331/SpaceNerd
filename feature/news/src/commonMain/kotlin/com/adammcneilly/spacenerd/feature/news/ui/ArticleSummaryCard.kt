@@ -1,6 +1,5 @@
 package com.adammcneilly.spacenerd.feature.news.ui
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -44,12 +43,7 @@ fun ArticleSummaryCard(
             )
         },
         size = size,
-        modifier = modifier
-            .border(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.outline,
-                shape = MaterialTheme.shapes.large,
-            ),
+        modifier = modifier,
     )
 }
 
