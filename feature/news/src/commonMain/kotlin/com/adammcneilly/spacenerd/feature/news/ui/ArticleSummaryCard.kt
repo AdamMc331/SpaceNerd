@@ -6,13 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.History
-import androidx.compose.material.icons.filled.LockClock
 import androidx.compose.material.icons.filled.PersonOutline
-import androidx.compose.material.icons.filled.Publish
-import androidx.compose.material.icons.filled.PunchClock
-import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
