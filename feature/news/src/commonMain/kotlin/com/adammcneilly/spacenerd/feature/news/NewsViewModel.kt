@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.feature.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.data.article.api.ArticleRepository
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
  */
 class NewsViewModel(
     private val articleRepository: ArticleRepository,
+    private val dateTimeProvider: DateTimeProvider,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(NewsUiState.default())
     val state = mutableState.asStateFlow()
@@ -35,7 +37,10 @@ class NewsViewModel(
                 articleRepository.syncStatus,
             ) { articles, syncStatus ->
                 val displayModelResult = articles.map { article ->
-                    ArticleDisplayModel(article)
+                    ArticleDisplayModel(
+                        article = article,
+                        dateTimeProvider = dateTimeProvider,
+                    )
                 }
 
                 val newStatus = if (
