@@ -14,6 +14,27 @@ import kotlin.time.ExperimentalTime
 @OptIn(ExperimentalTime::class)
 class NewsContentPaparazziTest : BasePaparazziTest() {
     @Test
+    fun renderPlaceholder() {
+        val displayModels = List(10) { _ ->
+            ArticleDisplayModel.placeholder()
+        }
+
+        val state = NewsUiState(
+            articles = displayModels,
+            selectedArticle = null,
+            syncStatus = SyncStatus.None,
+        )
+
+        snapshot(screenPaddingDp = 0) {
+            NewsContent(
+                state = state,
+                contentPadding = PaddingValues(16.dp),
+                onEvent = {},
+            )
+        }
+    }
+
+    @Test
     fun renderDefault() {
         val articles = List(10) { index ->
             testArticle.copy(

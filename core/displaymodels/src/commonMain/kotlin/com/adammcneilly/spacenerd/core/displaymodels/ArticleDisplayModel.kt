@@ -15,7 +15,8 @@ import kotlin.time.ExperimentalTime
  * A user-friendly representation of an [Article] to be displayed on the UI.
  *
  * @property[id] A unique identifier for this article.
- * @property[title] The title of the article, potentially with author information formatted.
+ * @property[title] The title of the article.
+ * @property[author] The author(s) of this article.
  * @property[publishedAt] A formatted string of when the article was published.
  * @property[image] The [ImageModel] for the article's hero image.
  * @property[url] The URL to the actual article source.
@@ -26,6 +27,7 @@ import kotlin.time.ExperimentalTime
 data class ArticleDisplayModel(
     val id: String,
     val title: AnnotatedString,
+    val author: String,
     val publishedAt: String,
     val image: ImageModel,
     val url: String,
@@ -39,15 +41,8 @@ data class ArticleDisplayModel(
         dateTimeProvider: DateTimeProvider,
     ) : this(
         id = article.id,
-        title = buildAnnotatedString {
-            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                append(article.title)
-            }
-            append(" | ")
-
-            val authorNames = article.authors.joinToString(transform = Author::name)
-            append(authorNames)
-        },
+        title = AnnotatedString(article.title),
+        author = article.authors.joinToString(transform = Author::name),
         publishedAt = dateTimeProvider.relativeTimestamp(article.publishedAtUtc),
         image = ImageModel.Remote(article.imageUrl),
         url = article.url,
@@ -60,6 +55,7 @@ data class ArticleDisplayModel(
             return ArticleDisplayModel(
                 id = "",
                 title = AnnotatedString("Placeholder Title Should Be Long"),
+                author = "NASA",
                 image = ImageModel.Placeholder,
                 publishedAt = "Month 00, 0000",
                 url = "",
