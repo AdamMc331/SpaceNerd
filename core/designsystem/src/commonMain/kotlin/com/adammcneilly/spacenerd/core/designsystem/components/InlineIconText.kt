@@ -39,6 +39,7 @@ private const val INLINE_CONTENT_ID = "inlineContent"
  * @param[maxLines] @see [Text]
  */
 @Composable
+@Suppress("LongParameterList")
 fun InlineIconText(
     text: String,
     icon: ImageVector,
