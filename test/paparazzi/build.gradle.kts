@@ -30,6 +30,7 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(project(":core:datetime"))
             implementation(project(":core:designsystem"))
             implementation(project(":core:displaymodels"))
             implementation(project(":core:models"))
