@@ -2,7 +2,8 @@ package com.adammcneilly.spacenerd.feature.news.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
@@ -47,6 +49,7 @@ fun ArticleSummaryCard(
     )
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ArticleInfo(
     article: ArticleDisplayModel,
@@ -68,6 +71,8 @@ private fun ArticleInfo(
         Text(
             text = article.summary,
             style = MaterialTheme.typography.bodySmall,
+            maxLines = 5,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .padding(top = 4.dp)
                 .placeholder(article.isPlaceholder),
@@ -78,7 +83,7 @@ private fun ArticleInfo(
                 .padding(vertical = 16.dp),
         )
 
-        Row(
+        FlowRow(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth(),
