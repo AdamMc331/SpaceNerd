@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.core.designsystem.components
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -74,7 +75,12 @@ private fun CompactCard(
 ) {
     ElevatedCard(
         shape = MaterialTheme.shapes.large,
-        modifier = modifier,
+        modifier = modifier
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.outlineVariant,
+                shape = MaterialTheme.shapes.large,
+            ),
     ) {
         Column {
             Box {
@@ -109,7 +115,12 @@ private fun ExpandedCard(
     ElevatedCard(
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.outlineVariant,
+                shape = MaterialTheme.shapes.medium,
+            ),
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp),

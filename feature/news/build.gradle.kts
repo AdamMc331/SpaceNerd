@@ -31,6 +31,7 @@ kotlin {
             implementation(project(":core:scaffold"))
             implementation(project(":data:article:api"))
             implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.compose.material3.adaptive)
