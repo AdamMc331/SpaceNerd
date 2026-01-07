@@ -1,19 +1,21 @@
 package com.adammcneilly.spacenerd.core.datetime
 
-import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
 import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.MonthNames
 import kotlinx.datetime.format.Padding
 import kotlinx.datetime.format.char
-import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Duration
 import kotlin.time.Instant
+
+private const val DAYS_PER_WEEK = 7
+private const val DAYS_PER_MONTH = 30
+private const val DAYS_PER_YEAR = 365
 
 private val fullDateFormat = DateTimeComponents.Format {
     monthName(MonthNames.ENGLISH_FULL)
     char(' ')
-    dayOfMonth(Padding.NONE)
+    day()
     char(',')
     char(' ')
     year()
@@ -41,9 +43,9 @@ interface DateTimeProvider {
             duration.inWholeMinutes < 1 -> "Just Now"
             duration.inWholeHours < 1 -> formatMinutesAgo(duration)
             duration.inWholeDays < 1 -> formatHoursAgo(duration)
-            duration.inWholeDays < 7 -> formatDaysAgo(duration)
-            duration.inWholeDays < 30 -> formatWeeksAgo(duration)
-            duration.inWholeDays < 365 -> formatMonthsAgo(duration)
+            duration.inWholeDays < DAYS_PER_WEEK -> formatDaysAgo(duration)
+            duration.inWholeDays < DAYS_PER_MONTH -> formatWeeksAgo(duration)
+            duration.inWholeDays < DAYS_PER_YEAR -> formatMonthsAgo(duration)
             else -> formatDate(timestamp)
         }
     }
