@@ -93,6 +93,10 @@ private fun ArticleInfo(
                 icon = Icons.Default.PersonOutline,
                 leadingIcon = true,
                 style = MaterialTheme.typography.labelMedium,
+                modifier = Modifier
+                    .placeholder(
+                        visible = article.isPlaceholder,
+                    ),
             )
 
             InlineIconText(
@@ -100,6 +104,10 @@ private fun ArticleInfo(
                 icon = Icons.Default.History,
                 leadingIcon = true,
                 style = MaterialTheme.typography.labelMedium,
+                modifier = Modifier
+                    .placeholder(
+                        visible = article.isPlaceholder,
+                    ),
             )
         }
     }
