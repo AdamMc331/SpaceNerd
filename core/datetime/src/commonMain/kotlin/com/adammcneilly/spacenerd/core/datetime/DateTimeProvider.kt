@@ -74,14 +74,14 @@ interface DateTimeProvider {
     private fun formatWeeksAgo(
         duration: Duration,
     ): String {
-        val weeks = duration.inWholeDays / 7
+        val weeks = duration.inWholeDays / DAYS_PER_WEEK
         return "$weeks week${if (weeks > 1) "s" else ""} ago"
     }
 
     private fun formatMonthsAgo(
         duration: Duration,
     ): String {
-        val months = duration.inWholeDays / 30
+        val months = duration.inWholeDays / DAYS_PER_MONTH
         return "$months month${if (months > 1) "s" else ""} ago"
     }
 
