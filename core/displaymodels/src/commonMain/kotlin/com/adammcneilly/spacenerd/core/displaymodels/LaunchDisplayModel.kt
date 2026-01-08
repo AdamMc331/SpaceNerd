@@ -3,12 +3,14 @@ package com.adammcneilly.spacenerd.core.displaymodels
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.MonthNames
 import kotlinx.datetime.format.char
+import kotlinx.datetime.toLocalDateTime
 
-private val launchDateFormat = DateTimeComponents.Format {
+private val launchDateFormat = LocalDateTime.Format {
     monthName(MonthNames.ENGLISH_FULL)
     char(' ')
     day()
@@ -20,8 +22,6 @@ private val launchDateFormat = DateTimeComponents.Format {
     minute()
     char(':')
     second()
-    char(' ')
-    timeZoneId()
 }
 
 /**
@@ -55,7 +55,9 @@ data class LaunchDisplayModel(
         name = launch.name,
         image = ImageModel.Remote(launch.imageUrl),
         status = StatusDisplayModel(launch.status),
-        launchTime = launch.launchTime.format(launchDateFormat),
+        launchTime = launch.launchTime
+            .toLocalDateTime(TimeZone.currentSystemDefault())
+            .format(launchDateFormat),
         agency = launch.agency?.let(::AgencyDisplayModel),
         subtitle = launch.buildSubtitle(),
         mission = launch.mission?.let(::MissionDisplayModel),
