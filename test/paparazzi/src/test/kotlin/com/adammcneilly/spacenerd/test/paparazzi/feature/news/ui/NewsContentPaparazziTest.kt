@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.test.paparazzi.feature.news.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
+import com.adammcneilly.spacenerd.core.datetime.DebugTimeProvider
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.core.models.test.testArticle
@@ -42,7 +43,12 @@ class NewsContentPaparazziTest : BasePaparazziTest() {
             )
         }
 
-        val displayModels = articles.map(::ArticleDisplayModel)
+        val displayModels = articles.map { article ->
+            ArticleDisplayModel(
+                article = article,
+                dateTimeProvider = DebugTimeProvider(),
+            )
+        }
 
         val state = NewsUiState(
             articles = displayModels,

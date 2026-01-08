@@ -5,23 +5,11 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
+import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
 import com.adammcneilly.spacenerd.core.designsystem.models.ImageModel
 import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.core.models.Author
-import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeComponents
-import kotlinx.datetime.format.MonthNames
-import kotlinx.datetime.format.char
 import kotlin.time.ExperimentalTime
-
-private val publishedDateFormat = DateTimeComponents.Format {
-    monthName(MonthNames.ENGLISH_FULL)
-    char(' ')
-    day()
-    char(',')
-    char(' ')
-    year()
-}
 
 /**
  * A user-friendly representation of an [Article] to be displayed on the UI.
@@ -50,11 +38,12 @@ data class ArticleDisplayModel(
     @OptIn(ExperimentalTime::class)
     constructor(
         article: Article,
+        dateTimeProvider: DateTimeProvider,
     ) : this(
         id = article.id,
         title = AnnotatedString(article.title),
         author = article.authors.joinToString(transform = Author::name),
-        publishedAt = article.publishedAtUtc.format(publishedDateFormat),
+        publishedAt = dateTimeProvider.relativeTimestamp(article.publishedAtUtc),
         image = ImageModel.Remote(article.imageUrl),
         url = article.url,
         summary = article.summary,
