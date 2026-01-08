@@ -121,9 +121,11 @@ class NextLaunchWidget :
             image = ImageModel.Placeholder,
             status = StatusDisplayModel(LaunchStatus.Go),
             subtitle = "SpaceX • Vandenberg SFB, CA, USA",
+            launchTime = "January 08, 2026 - 00:00:00",
             agency = null,
             mission = null,
             rocket = null,
+            launchPad = null,
         )
 
         val imageProvider = ImageProvider(R.drawable.falcon9)
