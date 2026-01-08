@@ -27,7 +27,6 @@ class NewsViewModelTest {
     }
 
     private fun buildSubject() {
-        ''
         viewModel = NewsViewModel(
             articleRepository = articleRepository,
         )
