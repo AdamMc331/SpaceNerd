@@ -21,6 +21,7 @@ val viewModelModule = module {
     viewModel {
         NewsViewModel(
             articleRepository = get(),
+            dateTimeProvider = get(),
         )
     }
 

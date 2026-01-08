@@ -1,6 +1,8 @@
 package com.adammcneilly.spacenerd.feature.news
 
 import app.cash.turbine.test
+import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
+import com.adammcneilly.spacenerd.core.datetime.DebugTimeProvider
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
 import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.core.models.test.testArticle
@@ -18,6 +20,7 @@ import kotlin.test.Test
 
 class NewsViewModelTest {
     private val articleRepository: ArticleRepository = mock()
+    private val dateTimeProvider: DateTimeProvider = DebugTimeProvider()
     private lateinit var viewModel: NewsViewModel
 
     init {
@@ -29,6 +32,7 @@ class NewsViewModelTest {
     private fun buildSubject() {
         viewModel = NewsViewModel(
             articleRepository = articleRepository,
+            dateTimeProvider = dateTimeProvider,
         )
     }
 
@@ -60,15 +64,20 @@ class NewsViewModelTest {
 
             buildSubject()
 
+            val expectedInitialState = NewsUiState.default()
+
             val expectedState = NewsUiState(
                 articles = listOf(
-                    ArticleDisplayModel(testArticle),
+                    ArticleDisplayModel(testArticle, dateTimeProvider),
                 ),
                 selectedArticle = null,
                 syncStatus = SyncStatus.None,
             )
 
             viewModel.state.test {
+                val initialState = awaitItem()
+                assertThat(initialState).isEqualTo(expectedInitialState)
+
                 val state = awaitItem()
                 assertThat(state).isEqualTo(expectedState)
 
@@ -79,7 +88,7 @@ class NewsViewModelTest {
     @Test
     fun handleArticleSelected() =
         runTest {
-            val article = ArticleDisplayModel(testArticle)
+            val article = ArticleDisplayModel(testArticle, dateTimeProvider)
 
             every {
                 articleRepository.getArticles()
@@ -104,7 +113,7 @@ class NewsViewModelTest {
     @Test
     fun handleNavigatedToArticle() =
         runTest {
-            val article = ArticleDisplayModel(testArticle)
+            val article = ArticleDisplayModel(testArticle, dateTimeProvider)
 
             every {
                 articleRepository.getArticles()
