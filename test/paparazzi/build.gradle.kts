@@ -45,6 +45,7 @@ kotlin {
             implementation(compose.ui)
             implementation(libs.compose.material3.adaptive)
             implementation(libs.google.testparameterinjector)
+            implementation(libs.kotlinx.datetime)
         }
     }
 }

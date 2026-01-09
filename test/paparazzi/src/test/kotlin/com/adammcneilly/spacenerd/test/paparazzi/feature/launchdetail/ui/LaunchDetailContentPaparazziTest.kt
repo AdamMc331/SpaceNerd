@@ -6,6 +6,7 @@ import com.adammcneilly.spacenerd.core.models.test.testLaunch
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailContent
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailUiState
 import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
+import kotlinx.datetime.TimeZone
 import kotlin.test.Test
 import kotlin.time.ExperimentalTime
 
@@ -30,7 +31,10 @@ class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
         ) {
             LaunchDetailContent(
                 state = LaunchDetailUiState(
-                    launch = LaunchDisplayModel(testLaunch),
+                    launch = LaunchDisplayModel(
+                        launch = testLaunch,
+                        timeZone = TimeZone.UTC,
+                    ),
                 ),
                 contentPadding = PaddingValues(),
             )
