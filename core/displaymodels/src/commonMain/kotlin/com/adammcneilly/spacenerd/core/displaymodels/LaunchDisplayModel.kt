@@ -50,13 +50,16 @@ data class LaunchDisplayModel(
     val launchPad: LaunchPadDisplayModel?,
     val isPlaceholder: Boolean = false,
 ) {
-    constructor(launch: Launch) : this(
+    constructor(
+        launch: Launch,
+        timeZone: TimeZone,
+    ) : this(
         id = launch.id,
         name = launch.name,
         image = ImageModel.Remote(launch.imageUrl),
         status = StatusDisplayModel(launch.status),
         launchTime = launch.launchTime
-            .toLocalDateTime(TimeZone.currentSystemDefault())
+            .toLocalDateTime(timeZone)
             .format(launchDateFormat),
         agency = launch.agency?.let(::AgencyDisplayModel),
         subtitle = launch.buildSubtitle(),

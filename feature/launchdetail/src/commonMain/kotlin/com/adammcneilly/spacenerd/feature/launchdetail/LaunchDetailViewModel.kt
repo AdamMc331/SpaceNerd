@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.TimeZone
 
 /**
  * This is the state management container for the launch detail screen. It shows detailed
@@ -30,7 +31,10 @@ class LaunchDetailViewModel(
         viewModelScope.launch {
             launchRepository.getLaunch(launchId)
                 .collect { launch ->
-                    val displayModel = LaunchDisplayModel(launch)
+                    val displayModel = LaunchDisplayModel(
+                        launch = launch,
+                        timeZone = TimeZone.currentSystemDefault(),
+                    )
 
                     mutableState.update { currentState ->
                         currentState.copy(

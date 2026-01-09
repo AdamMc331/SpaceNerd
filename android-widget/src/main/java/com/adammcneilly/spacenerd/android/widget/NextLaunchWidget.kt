@@ -43,6 +43,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
+import kotlinx.datetime.TimeZone
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -70,7 +71,10 @@ class NextLaunchWidget :
                 launchList.first()
             }
             .map { launch ->
-                LaunchDisplayModel(launch)
+                LaunchDisplayModel(
+                    launch = launch,
+                    timeZone = TimeZone.currentSystemDefault(),
+                )
             }
 
         // Observe and download image

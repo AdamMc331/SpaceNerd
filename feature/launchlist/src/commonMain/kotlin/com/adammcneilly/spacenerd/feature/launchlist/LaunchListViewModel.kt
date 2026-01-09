@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.TimeZone
 
 /**
  * This is the state management container for the launch list screen. It requests launches
@@ -38,7 +39,12 @@ class LaunchListViewModel(
             launchRepository
                 .getLaunches(LaunchListRequest.Upcoming)
                 .collectLatest { launches ->
-                    val displayModels = launches.map(::LaunchDisplayModel)
+                    val displayModels = launches.map { launch ->
+                        LaunchDisplayModel(
+                            launch = launch,
+                            timeZone = TimeZone.currentSystemDefault(),
+                        )
+                    }
 
                     mutableState.update { currentState ->
                         currentState.copy(
