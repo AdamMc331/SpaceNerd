@@ -15,6 +15,7 @@ import dev.mokkery.mock
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.TimeZone
 import kotlin.test.Ignore
 import kotlin.test.Test
 
@@ -92,7 +93,10 @@ class LaunchListViewModelTest {
 
             val expectedState = LaunchListUiState(
                 launches = listOf(
-                    LaunchDisplayModel(testLaunch),
+                    LaunchDisplayModel(
+                        launch = testLaunch,
+                        timeZone = TimeZone.currentSystemDefault(),
+                    ),
                 ),
                 selectedLaunch = null,
                 launchWidgetSupported = false,
@@ -110,7 +114,10 @@ class LaunchListViewModelTest {
     @Test
     fun handleLaunchSelected() =
         runTest {
-            val launch = LaunchDisplayModel(testLaunch)
+            val launch = LaunchDisplayModel(
+                launch = testLaunch,
+                timeZone = TimeZone.UTC,
+            )
 
             buildSubject()
 
@@ -131,7 +138,10 @@ class LaunchListViewModelTest {
     @Test
     fun handleNavigatedToLaunch() =
         runTest {
-            val launch = LaunchDisplayModel(testLaunch)
+            val launch = LaunchDisplayModel(
+                launch = testLaunch,
+                timeZone = TimeZone.UTC,
+            )
 
             buildSubject()
 

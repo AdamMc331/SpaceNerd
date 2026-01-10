@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.TimeZone
 import kotlin.test.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -55,7 +56,10 @@ class LaunchDetailViewModelTest {
             buildSubject()
 
             val expectedState = LaunchDetailUiState(
-                launch = LaunchDisplayModel(testLaunch),
+                launch = LaunchDisplayModel(
+                    launch = testLaunch,
+                    timeZone = TimeZone.UTC,
+                ),
             )
 
             viewModel.state.test {
