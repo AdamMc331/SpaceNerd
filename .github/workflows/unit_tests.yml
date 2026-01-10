@@ -26,5 +26,5 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: Unit  Tests
-          path: '*/testDebugUnitTest/TEST-*.xml'
+          path: '**/testDebugUnitTest/TEST-*.xml'
           reporter: jest-junit
