@@ -35,6 +35,12 @@ subprojects {
     tasks.withType<LintTask> {
         exclude { it.file.path.contains("build/") }
     }
+
+    tasks.withType<Test> {
+        reports {
+            junitXml.required = true
+        }
+    }
 }
 
 tasks.register("clean", Delete::class) {
