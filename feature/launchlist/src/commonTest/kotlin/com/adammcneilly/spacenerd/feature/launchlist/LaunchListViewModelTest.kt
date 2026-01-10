@@ -28,6 +28,7 @@ class LaunchListViewModelTest {
         viewModel = LaunchListViewModel(
             launchRepository = launchRepository,
             launchWidgetManager = launchWidgetManager,
+            timeZone = TimeZone.UTC,
         )
     }
 

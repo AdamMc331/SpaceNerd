@@ -19,6 +19,7 @@ import kotlinx.datetime.TimeZone
 class LaunchDetailViewModel(
     private val launchId: String,
     private val launchRepository: LaunchRepository,
+    private val timeZone: TimeZone,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(LaunchDetailUiState.default())
     val state = mutableState.asStateFlow()
@@ -33,7 +34,7 @@ class LaunchDetailViewModel(
                 .collect { launch ->
                     val displayModel = LaunchDisplayModel(
                         launch = launch,
-                        timeZone = TimeZone.currentSystemDefault(),
+                        timeZone = timeZone,
                     )
 
                     mutableState.update { currentState ->

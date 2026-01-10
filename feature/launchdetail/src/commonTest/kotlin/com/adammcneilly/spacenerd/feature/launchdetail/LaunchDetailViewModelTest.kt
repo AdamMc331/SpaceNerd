@@ -26,6 +26,7 @@ class LaunchDetailViewModelTest {
         viewModel = LaunchDetailViewModel(
             launchId = testLaunch.id,
             launchRepository = launchRepository,
+            timeZone = TimeZone.UTC,
         )
     }
 
