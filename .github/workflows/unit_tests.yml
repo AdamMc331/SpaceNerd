@@ -27,4 +27,4 @@ jobs:
         with:
           name: Unit  Tests
           path: '**/testDebugUnitTest/TEST-*.xml'
-          reporter: jest-junit
+          reporter: java-junit
