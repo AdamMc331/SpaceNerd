@@ -4,6 +4,7 @@ import app.cash.turbine.test
 import com.adammcneilly.spacenerd.core.datetime.DateTimeProvider
 import com.adammcneilly.spacenerd.core.datetime.DebugTimeProvider
 import com.adammcneilly.spacenerd.core.displaymodels.ArticleDisplayModel
+import com.adammcneilly.spacenerd.core.models.Article
 import com.adammcneilly.spacenerd.core.models.SyncStatus
 import com.adammcneilly.spacenerd.core.models.test.testArticle
 import com.adammcneilly.spacenerd.data.article.api.ArticleRepository
@@ -13,6 +14,7 @@ import com.varabyte.truthish.assertThat
 import dev.mokkery.answering.returns
 import dev.mokkery.every
 import dev.mokkery.mock
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
@@ -56,11 +58,11 @@ class NewsViewModelTest {
     @Test
     fun mapArticleResponse() =
         runTest {
-            val articles = listOf(testArticle)
+            val articlesFlow = MutableSharedFlow<List<Article>>(replay = 0)
 
             every {
                 articleRepository.getArticles()
-            } returns flowOf(articles)
+            } returns articlesFlow
 
             buildSubject()
 
@@ -77,6 +79,8 @@ class NewsViewModelTest {
             viewModel.state.test {
                 val initialState = awaitItem()
                 assertThat(initialState).isEqualTo(expectedInitialState)
+
+                articlesFlow.emit(listOf(testArticle))
 
                 val state = awaitItem()
                 assertThat(state).isEqualTo(expectedState)
