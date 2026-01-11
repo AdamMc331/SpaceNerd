@@ -4,16 +4,23 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CorporateFare
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.PinDrop
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.eygraber.compose.placeholder.PlaceholderDefaults
@@ -79,10 +86,43 @@ private fun LaunchInfo(
         )
 
         Text(
-            text = launch.subtitle,
+            text = launch.mission?.description.orEmpty(),
             style = MaterialTheme.typography.bodySmall,
+            maxLines = 5,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .padding(top = 4.dp)
+                .placeholder(launch.isPlaceholder),
+        )
+
+        HorizontalDivider(
+            modifier = Modifier
+                .padding(vertical = 16.dp),
+        )
+
+        InlineIconText(
+            text = launch.agency?.name.orEmpty(),
+            icon = Icons.Default.CorporateFare,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier
+                .placeholder(launch.isPlaceholder),
+        )
+
+        InlineIconText(
+            text = launch.launchPad?.location.orEmpty(),
+            icon = Icons.Default.PinDrop,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .placeholder(launch.isPlaceholder),
+        )
+
+        InlineIconText(
+            text = launch.launchTime,
+            icon = Icons.Default.History,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier
+                .padding(top = 8.dp)
                 .placeholder(launch.isPlaceholder),
         )
     }

@@ -44,7 +44,7 @@ fun InlineIconText(
     text: String,
     icon: ImageVector,
     modifier: Modifier = Modifier,
-    leadingIcon: Boolean = false,
+    leadingIcon: Boolean = true,
     showIcon: Boolean = true,
     textColor: Color = LocalContentColor.current,
     iconTint: Color = LocalContentColor.current,

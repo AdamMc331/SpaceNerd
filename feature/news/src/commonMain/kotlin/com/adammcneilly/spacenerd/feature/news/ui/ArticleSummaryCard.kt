@@ -91,7 +91,6 @@ private fun ArticleInfo(
             InlineIconText(
                 text = article.author,
                 icon = Icons.Default.PersonOutline,
-                leadingIcon = true,
                 style = MaterialTheme.typography.labelMedium,
                 modifier = Modifier
                     .placeholder(
@@ -102,7 +101,6 @@ private fun ArticleInfo(
             InlineIconText(
                 text = article.publishedAt,
                 icon = Icons.Default.History,
-                leadingIcon = true,
                 style = MaterialTheme.typography.labelMedium,
                 modifier = Modifier
                     .placeholder(

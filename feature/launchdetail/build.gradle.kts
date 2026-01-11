@@ -37,6 +37,7 @@ kotlin {
             implementation(libs.eygraber.compose.placeholder.material3)
             implementation(libs.koin.compose.viewmodel.navigation)
             implementation(libs.koin.core)
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {

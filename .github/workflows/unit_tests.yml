@@ -20,3 +20,11 @@ jobs:
 
       - name: Run Tests
         run: ./gradlew test -x :test:paparazzi:test
+
+      - name: Test Report
+        uses: dorny/test-reporter@v2
+        if: ${{ !cancelled() }}
+        with:
+          name: Unit  Tests
+          path: '**/testDebugUnitTest/TEST-*.xml'
+          reporter: java-junit

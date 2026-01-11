@@ -7,6 +7,7 @@ import com.adammcneilly.spacenerd.feature.news.NewsViewModel
 import com.adammcneilly.spacenerd.feature.stationdetail.StationDetailViewModel
 import com.adammcneilly.spacenerd.feature.stationlist.SpaceStationListViewModel
 import io.ktor.http.parameters
+import kotlinx.datetime.TimeZone
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
@@ -29,6 +30,7 @@ val viewModelModule = module {
         LaunchListViewModel(
             launchRepository = get(),
             launchWidgetManager = get(),
+            timeZone = TimeZone.currentSystemDefault(),
         )
     }
 
@@ -36,6 +38,7 @@ val viewModelModule = module {
         LaunchDetailViewModel(
             launchId = parameters.get(),
             launchRepository = get(),
+            timeZone = TimeZone.currentSystemDefault(),
         )
     }
 
