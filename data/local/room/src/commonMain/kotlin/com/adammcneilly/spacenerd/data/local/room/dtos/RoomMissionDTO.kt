@@ -10,6 +10,7 @@ data class RoomMissionDTO(
     val name: String,
     val description: String,
     val imageUrl: String,
+    val type: String,
 ) {
     constructor(
         mission: Mission,
@@ -18,6 +19,7 @@ data class RoomMissionDTO(
         name = mission.name,
         description = mission.description,
         imageUrl = mission.imageUrl,
+        type = mission.type,
     )
 
     fun toMission(): Mission {
@@ -26,6 +28,7 @@ data class RoomMissionDTO(
             name = this.name,
             description = this.description,
             imageUrl = this.imageUrl,
+            type = this.type,
         )
     }
 }

@@ -6,5 +6,6 @@ val testMission = Mission(
     id = "test_mission_id",
     name = "Test Mission Name",
     description = "This is a test mission description.",
+    type = "Communications",
     imageUrl = "ImageUrl",
 )

@@ -31,6 +31,7 @@ data class TSDMissionDTO(
             name = this.name.orEmpty(),
             description = this.description.orEmpty(),
             imageUrl = this.image.orEmpty(),
+            type = this.type.orEmpty(),
         )
     }
 }
