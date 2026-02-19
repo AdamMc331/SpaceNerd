@@ -63,8 +63,6 @@ private fun MissionDescription(
 ) {
     Text(
         text = mission.description,
-        maxLines = 3,
-        overflow = TextOverflow.Ellipsis,
         modifier = modifier
             .placeholder(mission.isPlaceholder),
     )

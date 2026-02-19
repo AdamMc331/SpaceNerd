@@ -30,6 +30,7 @@ kotlin {
             implementation(project(":core:models"))
             implementation(project(":core:scaffold"))
             implementation(project(":data:launch:api"))
+            implementation(compose.materialIconsExtended)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
