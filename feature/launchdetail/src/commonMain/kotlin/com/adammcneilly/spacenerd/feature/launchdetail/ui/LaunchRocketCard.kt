@@ -1,18 +1,24 @@
 package com.adammcneilly.spacenerd.feature.launchdetail.ui
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.Flight
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.displaymodels.RocketDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 import com.eygraber.compose.placeholder.placeholder
@@ -25,7 +31,12 @@ fun LaunchRocketCard(
     modifier: Modifier = Modifier,
 ) {
     ElevatedCard(
-        modifier = modifier,
+        modifier = modifier
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.outlineVariant,
+                shape = MaterialTheme.shapes.medium,
+            ),
     ) {
         Column {
             RocketImage(rocket)
@@ -36,7 +47,11 @@ fun LaunchRocketCard(
             ) {
                 RocketName(rocket)
 
-                FlightDetails(rocket)
+                FlightDetails(
+                    rocket = rocket,
+                    modifier = Modifier
+                        .padding(top = 8.dp),
+                )
 
                 RocketDescription(
                     rocket = rocket,
@@ -51,16 +66,27 @@ fun LaunchRocketCard(
 @Composable
 private fun FlightDetails(
     rocket: RocketDisplayModel,
+    modifier: Modifier = Modifier,
 ) {
-    val maidenFlightLabel = "Maiden Flight: ${rocket.maidenFlight}"
-    val totalLaunchesLabel = "Total Launches: ${rocket.totalLaunches}"
-    Text(
-        text = "$maidenFlightLabel | $totalLaunchesLabel",
-        style = MaterialTheme.typography.labelSmall,
-        modifier = Modifier
-            .padding(top = 8.dp)
-            .placeholder(rocket.placeholder),
-    )
+    Column(
+        modifier = modifier,
+    ) {
+        InlineIconText(
+            text = "Maiden Flight: ${rocket.maidenFlight}",
+            icon = Icons.Default.Flight,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier
+                .placeholder(rocket.placeholder),
+        )
+
+        InlineIconText(
+            text = "Total Launches: ${rocket.totalLaunches}",
+            icon = Icons.Default.BarChart,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier
+                .placeholder(rocket.placeholder),
+        )
+    }
 }
 
 @Composable
@@ -85,6 +111,7 @@ private fun RocketName(
     Text(
         text = rocket.name,
         style = MaterialTheme.typography.titleMedium,
+        fontWeight = FontWeight.Bold,
         modifier = Modifier
             .placeholder(rocket.placeholder),
     )

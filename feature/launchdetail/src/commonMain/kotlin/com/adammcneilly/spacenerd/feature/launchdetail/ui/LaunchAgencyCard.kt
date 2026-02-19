@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.feature.launchdetail.ui
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
@@ -23,7 +25,12 @@ fun LaunchAgencyCard(
     modifier: Modifier = Modifier,
 ) {
     ElevatedCard(
-        modifier = modifier,
+        modifier = modifier
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.outlineVariant,
+                shape = MaterialTheme.shapes.medium,
+            ),
     ) {
         Column {
             AgencyImage(agency)
@@ -65,6 +72,7 @@ private fun AgencyName(
     Text(
         text = agency.name,
         style = MaterialTheme.typography.titleMedium,
+        fontWeight = FontWeight.Bold,
         modifier = Modifier
             .placeholder(agency.isPlaceholder),
     )
