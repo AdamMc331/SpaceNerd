@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f30ede49a44564fe31e13335e9e9e447",
+    "identityHash": "319ef9ea557265344e785798797762cc",
     "entities": [
       {
         "tableName": "agencies",
@@ -199,6 +199,36 @@
           "autoGenerate": false,
           "columnNames": [
             "key"
+          ]
+        }
+      },
+      {
+        "tableName": "countries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `alpha3Code` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alpha3Code",
+            "columnName": "alpha3Code",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
           ]
         }
       },
@@ -537,7 +567,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f30ede49a44564fe31e13335e9e9e447')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '319ef9ea557265344e785798797762cc')"
     ]
   }
 }

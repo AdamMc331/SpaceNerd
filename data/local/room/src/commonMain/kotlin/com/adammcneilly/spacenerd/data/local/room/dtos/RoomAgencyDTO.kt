@@ -29,6 +29,7 @@ data class RoomAgencyDTO(
             abbreviation = abbreviation,
             description = description,
             logoUrl = logoUrl,
+            countries = emptyList(),
         )
     }
 }

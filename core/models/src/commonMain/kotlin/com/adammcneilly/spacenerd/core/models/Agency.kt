@@ -8,6 +8,7 @@ package com.adammcneilly.spacenerd.core.models
  * @property[abbreviation] The abbreviated name of this agency.
  * @property[description] A summary of this agency.
  * @property[logoUrl] A URL to the logo for this agency.
+ * @property[countries] A collection of [Country]s that manage this agency.
  */
 data class Agency(
     val id: String,
@@ -15,4 +16,5 @@ data class Agency(
     val abbreviation: String,
     val description: String,
     val logoUrl: String,
+    val countries: List<Country>,
 )
