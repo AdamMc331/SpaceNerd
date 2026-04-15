@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.Flow
  * This is the Room database access object for the launches table.
  */
 @Dao
+@Suppress("TooManyFunctions")
 interface RoomLaunchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLaunches(
