@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "319ef9ea557265344e785798797762cc",
+    "identityHash": "f5b729627617a7bf5d6b8dc1bf615183",
     "entities": [
       {
         "tableName": "agencies",
@@ -43,6 +43,31 @@
           "autoGenerate": false,
           "columnNames": [
             "agencyId"
+          ]
+        }
+      },
+      {
+        "tableName": "agency_country_cross_ref",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`agency_id` TEXT NOT NULL, `country_id` TEXT NOT NULL, PRIMARY KEY(`agency_id`, `country_id`))",
+        "fields": [
+          {
+            "fieldPath": "agencyId",
+            "columnName": "agency_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "countryId",
+            "columnName": "country_id",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "agency_id",
+            "country_id"
           ]
         }
       },
@@ -204,11 +229,11 @@
       },
       {
         "tableName": "countries",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `alpha3Code` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`countryId` TEXT NOT NULL, `name` TEXT NOT NULL, `alpha3Code` TEXT NOT NULL, PRIMARY KEY(`countryId`))",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "countryId",
+            "columnName": "countryId",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -228,7 +253,7 @@
         "primaryKey": {
           "autoGenerate": false,
           "columnNames": [
-            "id"
+            "countryId"
           ]
         }
       },
@@ -567,7 +592,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '319ef9ea557265344e785798797762cc')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f5b729627617a7bf5d6b8dc1bf615183')"
     ]
   }
 }

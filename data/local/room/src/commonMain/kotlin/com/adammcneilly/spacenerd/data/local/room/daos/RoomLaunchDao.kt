@@ -7,7 +7,9 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.core.models.Rocket
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyCountryCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCountryDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchDetailDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomLaunchPadDTO
@@ -31,6 +33,16 @@ interface RoomLaunchDao {
     )
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreCountry(
+        country: RoomCountryDTO,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreAgencyCountryCrossRef(
+        crossRef: RoomAgencyCountryCrossRefDTO,
+    )
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreMission(
         mission: RoomMissionDTO,
     )
@@ -45,6 +57,10 @@ interface RoomLaunchDao {
         launchPad: RoomLaunchPadDTO,
     )
 
+    /**
+     * NOTE: Cleanup opportunity - when we insert the manufacturer, we're not inserting the country.
+     * Maybe we can find a way to consolidate across DAOs.
+     */
     private suspend fun insertDomainRocket(
         rocket: Rocket,
     ) {
@@ -69,6 +85,19 @@ interface RoomLaunchDao {
             val agencyDto = launch.agency?.let(::RoomAgencyDTO)
             if (agencyDto != null) {
                 insertOrIgnoreAgency(agencyDto)
+
+                val countryDtos = launch.agency?.countries?.map(::RoomCountryDTO)
+
+                countryDtos?.forEach { countryDto ->
+                    insertOrIgnoreCountry(countryDto)
+
+                    val crossRef = RoomAgencyCountryCrossRefDTO(
+                        agencyId = agencyDto.agencyId,
+                        countryId = countryDto.countryId,
+                    )
+
+                    insertOrIgnoreAgencyCountryCrossRef(crossRef)
+                }
             }
 
             val missionDto = launch.mission?.let(::RoomMissionDTO)

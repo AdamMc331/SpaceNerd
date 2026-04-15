@@ -12,6 +12,7 @@ import com.adammcneilly.spacenerd.data.local.room.daos.RoomCacheTimestampDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomExpeditionDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomLaunchDao
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomSpaceStationDao
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyCountryCrossRefDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
@@ -36,6 +37,7 @@ import kotlinx.coroutines.IO
     version = 1,
     entities = [
         RoomAgencyDTO::class,
+        RoomAgencyCountryCrossRefDTO::class,
         RoomArticleDTO::class,
         RoomAstronautDTO::class,
         RoomAstronautRoleDTO::class,

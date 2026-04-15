@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Public
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -14,7 +16,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.displaymodels.AgencyDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.CountryDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val LOGO_ASPECT_RATIO = 4F
@@ -41,14 +45,34 @@ fun LaunchAgencyCard(
             ) {
                 AgencyName(agency)
 
+                AgencyCountries(
+                    agency = agency,
+                    modifier = Modifier
+                        .padding(top = 8.dp),
+                )
+
                 AgencyDescription(
                     agency = agency,
                     modifier = Modifier
-                        .padding(top = 4.dp),
+                        .padding(top = 8.dp),
                 )
             }
         }
     }
+}
+
+@Composable
+private fun AgencyCountries(
+    agency: AgencyDisplayModel,
+    modifier: Modifier = Modifier,
+) {
+    val countries = agency.countries.joinToString(transform = CountryDisplayModel::alpha3Code)
+
+    InlineIconText(
+        text = countries,
+        icon = Icons.Default.Public,
+        modifier = modifier,
+    )
 }
 
 @Composable
