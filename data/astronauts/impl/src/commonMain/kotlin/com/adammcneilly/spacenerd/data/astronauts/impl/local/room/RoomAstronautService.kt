@@ -26,4 +26,12 @@ class RoomAstronautService(
             astronautList.map(RoomAstronautDTO::toAstronaut)
         }
     }
+
+    override suspend fun saveAstronauts(
+        astronauts: List<Astronaut>,
+    ) {
+        val astronautDtos = astronauts.map(::RoomAstronautDTO)
+
+        astronautDao.insertAstronauts(astronautDtos)
+    }
 }

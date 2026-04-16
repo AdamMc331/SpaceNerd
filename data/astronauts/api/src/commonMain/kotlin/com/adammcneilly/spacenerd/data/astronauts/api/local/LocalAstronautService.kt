@@ -12,4 +12,8 @@ interface LocalAstronautService {
     fun getAstronauts(
         request: AstronautListRequest,
     ): Flow<List<Astronaut>>
+
+    suspend fun saveAstronauts(
+        astronauts: List<Astronaut>,
+    )
 }
