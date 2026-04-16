@@ -24,15 +24,6 @@ fun AstronautListScreen(
 
     rememberScaffoldState().PersistentScaffold(
         modifier = modifier,
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "Astronauts",
-                    )
-                },
-            )
-        },
         navigationBar = {
             PersistentNavigationBar()
         },
@@ -40,8 +31,8 @@ fun AstronautListScreen(
             PersistentNavigationRail()
         },
         content = { scaffoldPadding ->
-            Text(
-                text = "Astronaut List Screen - $state",
+            AstronautListContent(
+                state = state.value,
                 modifier = Modifier
                     .padding(scaffoldPadding),
             )
