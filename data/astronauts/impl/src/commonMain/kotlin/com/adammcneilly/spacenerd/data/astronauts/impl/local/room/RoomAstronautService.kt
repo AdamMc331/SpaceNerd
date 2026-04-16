@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.data.astronauts.impl.local.room
 
 import com.adammcneilly.spacenerd.core.models.Astronaut
+import com.adammcneilly.spacenerd.data.astronauts.api.AstronautListRequest
 import com.adammcneilly.spacenerd.data.astronauts.api.local.LocalAstronautService
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomAstronautDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
@@ -14,5 +15,15 @@ class RoomAstronautService(
         astronautId: String,
     ): Flow<Astronaut> {
         return astronautDao.getAstronaut(astronautId).map(RoomAstronautDTO::toAstronaut)
+    }
+
+    override fun getAstronauts(
+        request: AstronautListRequest,
+    ): Flow<List<Astronaut>> {
+        return astronautDao.getAstronauts(
+//            inSpace = request.inSpace,
+        ).map { astronautList ->
+            astronautList.map(RoomAstronautDTO::toAstronaut)
+        }
     }
 }

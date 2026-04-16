@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.shared.di
 
 import com.adammcneilly.spacenerd.feature.astronautdetail.AstronautDetailViewModel
+import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListViewModel
 import com.adammcneilly.spacenerd.feature.launchdetail.LaunchDetailViewModel
 import com.adammcneilly.spacenerd.feature.launchlist.LaunchListViewModel
 import com.adammcneilly.spacenerd.feature.news.NewsViewModel
@@ -53,6 +54,12 @@ val viewModelModule = module {
             stationId = parameters.get(),
             stationRepository = get(),
             expeditionRepository = get(),
+        )
+    }
+
+    viewModel {
+        AstronautListViewModel(
+            repository = get(),
         )
     }
 }

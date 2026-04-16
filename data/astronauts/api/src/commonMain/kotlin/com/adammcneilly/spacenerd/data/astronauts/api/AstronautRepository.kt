@@ -7,4 +7,8 @@ interface AstronautRepository {
     fun getAstronaut(
         astronautId: String,
     ): Flow<Astronaut>
+
+    fun getAstronauts(
+        request: AstronautListRequest,
+    ): Flow<List<Astronaut>>
 }

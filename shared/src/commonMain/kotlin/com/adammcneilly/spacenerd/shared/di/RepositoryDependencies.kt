@@ -36,6 +36,7 @@ val repositoryModule = module {
     single<AstronautRepository> {
         OfflineFirstAstronautRepository(
             localAstronautService = get(),
+            remoteAstronautService = get(),
         )
     }
 

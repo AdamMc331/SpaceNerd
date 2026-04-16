@@ -17,4 +17,12 @@ interface RoomAstronautDao {
     fun getAstronaut(
         astronautId: String,
     ): Flow<RoomAstronautDTO>
+
+    @Query(
+        """
+            SELECT *
+            FROM astronauts
+        """,
+    )
+    fun getAstronauts(): Flow<List<RoomAstronautDTO>>
 }
