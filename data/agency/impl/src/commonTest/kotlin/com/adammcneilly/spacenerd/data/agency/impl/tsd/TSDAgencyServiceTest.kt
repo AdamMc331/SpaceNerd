@@ -32,7 +32,7 @@ class TSDAgencyServiceTest {
                         name = "United States of America",
                         alpha3Code = "USA",
                     ),
-                )
+                ),
             )
 
             assertThat(agency).isEqualTo(expectedAgency)
