@@ -24,9 +24,20 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":core:displaymodels"))
+            implementation(project(":core:designsystem"))
+            implementation(project(":core:models"))
             implementation(project(":core:scaffold"))
+            implementation(project(":data:astronauts:api"))
+            implementation(compose.materialIconsExtended)
             implementation(compose.material3)
             implementation(compose.ui)
+            implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.compose.material3.adaptive)
+            implementation(libs.eygraber.compose.placeholder.material3)
+            implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.koin.core)
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
