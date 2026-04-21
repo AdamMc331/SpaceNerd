@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Upsert
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import kotlinx.coroutines.flow.Flow
 
@@ -12,8 +13,8 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface RoomAgencyDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrReplaceAgency(
+    @Upsert
+    suspend fun upsertAgency(
         agency: RoomAgencyDTO,
     )
 

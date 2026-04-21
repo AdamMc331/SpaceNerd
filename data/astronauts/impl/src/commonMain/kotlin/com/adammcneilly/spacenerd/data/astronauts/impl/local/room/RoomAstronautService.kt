@@ -32,6 +32,6 @@ class RoomAstronautService(
     ) {
         val astronautDtos = astronauts.map(::RoomAstronautDTO)
 
-        astronautDao.insertAstronauts(astronautDtos)
+        astronautDao.upsertAstronauts(astronautDtos)
     }
 }

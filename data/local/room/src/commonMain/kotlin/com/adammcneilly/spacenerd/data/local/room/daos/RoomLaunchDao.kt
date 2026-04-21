@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Upsert
 import com.adammcneilly.spacenerd.core.models.Launch
 import com.adammcneilly.spacenerd.core.models.Rocket
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyCountryCrossRefDTO
@@ -23,8 +24,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 @Suppress("TooManyFunctions")
 interface RoomLaunchDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLaunches(
+    @Upsert
+    suspend fun upsertLaunches(
         launches: List<RoomLaunchDTO>,
     )
 
@@ -53,8 +54,8 @@ interface RoomLaunchDao {
         rocket: RoomRocketDTO,
     )
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLaunchPad(
+    @Upsert
+    suspend fun upsertLaunchPad(
         launchPad: RoomLaunchPadDTO,
     )
 
@@ -80,7 +81,7 @@ interface RoomLaunchDao {
         launches.forEach { launch ->
             val padDto = launch.pad?.let(::RoomLaunchPadDTO)
             if (padDto != null) {
-                insertLaunchPad(padDto)
+                upsertLaunchPad(padDto)
             }
 
             val agencyDto = launch.agency?.let(::RoomAgencyDTO)
@@ -112,7 +113,7 @@ interface RoomLaunchDao {
             }
 
             val launchDto = RoomLaunchDTO(launch)
-            insertLaunches(listOf(launchDto))
+            upsertLaunches(listOf(launchDto))
         }
     }
 

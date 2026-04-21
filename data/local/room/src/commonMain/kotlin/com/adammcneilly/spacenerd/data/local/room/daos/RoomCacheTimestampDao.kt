@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Upsert
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
 
 /**
@@ -11,8 +12,8 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCacheTimestampDTO
  */
 @Dao
 interface RoomCacheTimestampDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrUpdateTimestamp(
+    @Upsert
+    suspend fun upsertTimestamp(
         cacheTimestamp: RoomCacheTimestampDTO,
     )
 

@@ -7,7 +7,6 @@ import com.adammcneilly.spacenerd.data.local.room.daos.RoomArticleDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -30,7 +29,7 @@ class RoomArticleService(
             )
         }
 
-        articleDao.insertArticles(dtoList)
+        articleDao.upsertArticles(dtoList)
     }
 
     override fun getArticles(): Flow<List<Article>> {
