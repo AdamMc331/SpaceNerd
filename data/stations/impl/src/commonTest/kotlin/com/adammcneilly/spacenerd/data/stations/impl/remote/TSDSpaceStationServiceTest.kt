@@ -37,7 +37,7 @@ class TSDSpaceStationServiceTest {
                         logoUrl = "nasaImageUrl",
                         countries = listOf(
                             Country(
-                                id = "123",
+                                id = "2",
                                 name = "United States of America",
                                 alpha3Code = "USA",
                             ),
@@ -61,9 +61,9 @@ class TSDSpaceStationServiceTest {
                         logoUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/china2520aerospace2520science2520and2520technology2520corporation_logo_20220826093937.png",
                         countries = listOf(
                             Country(
-                                id = "123",
-                                name = "United States of America",
-                                alpha3Code = "USA",
+                                id = "6",
+                                name = "China",
+                                alpha3Code = "CHN",
                             ),
                         ),
                     ),

@@ -43,13 +43,7 @@ class TSDLaunchServiceTest {
                     abbreviation = "CCCP",
                     description = "",
                     logoUrl = "",
-                    countries = listOf(
-                        Country(
-                            id = "123",
-                            name = "United States of America",
-                            alpha3Code = "USA",
-                        ),
-                    ),
+                    countries = emptyList(),
                 ),
                 pad = LaunchPad(
                     id = "32",
@@ -64,7 +58,7 @@ class TSDLaunchServiceTest {
                     name = "Sputnik 1",
                     description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W transmitters for a total mass of 83.6 kg.",
                     imageUrl = "",
-                    type = "Test Type",
+                    type = "Test Flight",
                 ),
                 rocket = Rocket(
                     id = "468",
@@ -89,13 +83,7 @@ class TSDLaunchServiceTest {
                     abbreviation = "CCCP",
                     description = "",
                     logoUrl = "",
-                    countries = listOf(
-                        Country(
-                            id = "123",
-                            name = "United States of America",
-                            alpha3Code = "USA",
-                        ),
-                    ),
+                    countries = emptyList(),
                 ),
                 pad = LaunchPad(
                     id = "32",
@@ -110,7 +98,7 @@ class TSDLaunchServiceTest {
                     name = "Sputnik 2",
                     description = "Second artificial satellite and first to carry an animal into orbit.",
                     imageUrl = "",
-                    type = "Test Type",
+                    type = "Test Flight",
                 ),
                 rocket = Rocket(
                     id = "468",
@@ -149,9 +137,9 @@ class TSDLaunchServiceTest {
                     logoUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soviet2520space2520program_logo_20191229081307.png",
                     countries = listOf(
                         Country(
-                            id = "123",
-                            name = "United States of America",
-                            alpha3Code = "USA",
+                            id = "5",
+                            name = "Russia",
+                            alpha3Code = "RUS",
                         ),
                     ),
                 ),
@@ -168,7 +156,7 @@ class TSDLaunchServiceTest {
                     name = "Sputnik 1",
                     description = "First artificial satellite consisting of a 58 cm pressurized aluminium shell containing two 1 W transmitters for a total mass of 83.6 kg.",
                     imageUrl = "",
-                    type = "Test Type",
+                    type = "Test Flight",
                 ),
                 rocket = Rocket(
                     id = "468",
@@ -182,9 +170,9 @@ class TSDLaunchServiceTest {
                         logoUrl = "",
                         countries = listOf(
                             Country(
-                                id = "123",
-                                name = "United States of America",
-                                alpha3Code = "USA",
+                                id = "5",
+                                name = "Russia",
+                                alpha3Code = "RUS",
                             ),
                         ),
                     ),
