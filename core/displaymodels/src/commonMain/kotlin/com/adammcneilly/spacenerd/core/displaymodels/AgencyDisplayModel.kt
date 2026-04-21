@@ -18,6 +18,7 @@ data class AgencyDisplayModel(
     val name: String,
     val description: String,
     val logo: ImageModel,
+    val countries: List<CountryDisplayModel>,
     val isPlaceholder: Boolean = false,
 ) {
     constructor(
@@ -27,6 +28,7 @@ data class AgencyDisplayModel(
         name = agency.name,
         description = agency.description,
         logo = ImageModel.Remote(agency.logoUrl),
+        countries = agency.countries.map(::CountryDisplayModel),
     )
 
     companion object {
@@ -36,6 +38,7 @@ data class AgencyDisplayModel(
                 name = "Agency Name",
                 description = "Agency description is kinda long\nand definitely expands multiple\nnew lines",
                 logo = ImageModel.Placeholder,
+                countries = listOf(CountryDisplayModel.placeholder()),
                 isPlaceholder = true,
             )
         }

@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
+import com.adammcneilly.spacenerd.core.models.Country
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -17,4 +18,12 @@ data class TSDCountryDTO(
     val nationalityName: String? = null,
     @SerialName(value = "nationality_name_composed")
     val nationalityNameComposed: String? = null,
-)
+) {
+    fun toCountry(): Country {
+        return Country(
+            id = this.id?.toString().orEmpty(),
+            name = this.name.orEmpty(),
+            alpha3Code = this.alpha3Code.orEmpty(),
+        )
+    }
+}

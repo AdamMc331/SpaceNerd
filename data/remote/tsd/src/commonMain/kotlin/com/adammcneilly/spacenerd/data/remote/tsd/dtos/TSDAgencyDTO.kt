@@ -11,7 +11,7 @@ data class TSDAgencyDTO(
     @SerialName(value = "administrator")
     val administrator: String? = null,
     @SerialName(value = "country")
-    val country: List<TSDCountryDTO>? = null,
+    val countries: List<TSDCountryDTO>? = null,
     @SerialName(value = "description")
     val description: String? = null,
     @SerialName(value = "featured")
@@ -36,6 +36,8 @@ data class TSDAgencyDTO(
     val socialLogo: TSDSocialLogoDTO? = null,
     @SerialName(value = "spacecraft")
     val spacecraft: String? = null,
+    @SerialName("total_launch_count")
+    val totalLaunchCount: Int? = null,
     @SerialName(value = "type")
     val type: TSDTypeDTO? = null,
     @SerialName(value = "url")
@@ -48,6 +50,7 @@ data class TSDAgencyDTO(
             abbreviation = this.abbrev.orEmpty(),
             description = this.description.orEmpty(),
             logoUrl = this.logo?.imageUrl.orEmpty(),
+            countries = this.countries?.map(TSDCountryDTO::toCountry).orEmpty(),
         )
     }
 }

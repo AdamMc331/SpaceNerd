@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ac906bc40599480dd8810c9fd4806619",
+    "identityHash": "f5b729627617a7bf5d6b8dc1bf615183",
     "entities": [
       {
         "tableName": "agencies",
@@ -43,6 +43,31 @@
           "autoGenerate": false,
           "columnNames": [
             "agencyId"
+          ]
+        }
+      },
+      {
+        "tableName": "agency_country_cross_ref",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`agency_id` TEXT NOT NULL, `country_id` TEXT NOT NULL, PRIMARY KEY(`agency_id`, `country_id`))",
+        "fields": [
+          {
+            "fieldPath": "agencyId",
+            "columnName": "agency_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "countryId",
+            "columnName": "country_id",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "agency_id",
+            "country_id"
           ]
         }
       },
@@ -199,6 +224,36 @@
           "autoGenerate": false,
           "columnNames": [
             "key"
+          ]
+        }
+      },
+      {
+        "tableName": "countries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`countryId` TEXT NOT NULL, `name` TEXT NOT NULL, `alpha3Code` TEXT NOT NULL, PRIMARY KEY(`countryId`))",
+        "fields": [
+          {
+            "fieldPath": "countryId",
+            "columnName": "countryId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alpha3Code",
+            "columnName": "alpha3Code",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "countryId"
           ]
         }
       },
@@ -375,7 +430,7 @@
       },
       {
         "tableName": "missions",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `type` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -398,6 +453,12 @@
           {
             "fieldPath": "imageUrl",
             "columnName": "imageUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -531,7 +592,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ac906bc40599480dd8810c9fd4806619')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f5b729627617a7bf5d6b8dc1bf615183')"
     ]
   }
 }

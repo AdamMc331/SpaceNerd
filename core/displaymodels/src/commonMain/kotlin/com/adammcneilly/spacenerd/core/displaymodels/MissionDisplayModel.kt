@@ -18,6 +18,7 @@ data class MissionDisplayModel(
     val name: String,
     val description: String,
     val image: ImageModel,
+    val type: String,
     val isPlaceholder: Boolean = false,
 ) {
     constructor(
@@ -26,6 +27,7 @@ data class MissionDisplayModel(
         id = mission.id,
         name = mission.name,
         description = mission.description,
+        type = mission.type,
         image = ImageModel.Remote(mission.imageUrl),
     )
 
@@ -35,6 +37,7 @@ data class MissionDisplayModel(
                 id = "",
                 name = "Mission Placeholder",
                 description = "Some longer description of the mission\nmultiline for sure",
+                type = "Communications",
                 image = ImageModel.Placeholder,
                 isPlaceholder = true,
             )

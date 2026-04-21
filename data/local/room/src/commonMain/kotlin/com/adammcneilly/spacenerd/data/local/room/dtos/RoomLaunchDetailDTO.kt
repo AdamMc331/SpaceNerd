@@ -12,8 +12,9 @@ data class RoomLaunchDetailDTO(
     @Relation(
         parentColumn = "launchAgencyId",
         entityColumn = "agencyId",
+        entity = RoomAgencyDTO::class,
     )
-    val agency: RoomAgencyDTO?,
+    val agency: RoomAgencyDetailDTO?,
     @Relation(
         parentColumn = "launchPadId",
         entityColumn = "id",

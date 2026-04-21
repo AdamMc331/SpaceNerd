@@ -47,3 +47,8 @@ exceptions:
   TooGenericExceptionCaught:
     active: true
     excludes: ['**Repository.kt']
+
+complexity:
+  active: true
+  LongMethod:
+    excludes: ['**Test.kt']

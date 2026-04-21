@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Category
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -14,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.displaymodels.MissionDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 
@@ -36,10 +39,17 @@ fun LaunchMissionCard(
         ) {
             MissionName(mission)
 
+            InlineIconText(
+                text = mission.type,
+                icon = Icons.Default.Category,
+                modifier = Modifier
+                    .padding(top = 8.dp),
+            )
+
             MissionDescription(
                 mission = mission,
                 modifier = Modifier
-                    .padding(top = 4.dp),
+                    .padding(top = 8.dp),
             )
         }
     }
