@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Upsert
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAgencyDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationAgencyCrossRefDTO
@@ -17,8 +18,8 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface RoomSpaceStationDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrReplaceSpaceStations(
+    @Upsert
+    suspend fun upsertSpaceStations(
         stations: List<RoomSpaceStationDTO>,
     )
 

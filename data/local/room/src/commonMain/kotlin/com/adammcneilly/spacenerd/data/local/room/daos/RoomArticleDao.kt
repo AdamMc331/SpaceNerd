@@ -1,9 +1,8 @@
 package com.adammcneilly.spacenerd.data.local.room.daos
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Upsert
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomArticleDTO
 import kotlinx.coroutines.flow.Flow
 
@@ -12,8 +11,8 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface RoomArticleDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertArticles(
+    @Upsert
+    suspend fun upsertArticles(
         articles: List<RoomArticleDTO>,
     )
 

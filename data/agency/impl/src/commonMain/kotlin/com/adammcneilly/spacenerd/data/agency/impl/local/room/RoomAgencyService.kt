@@ -18,7 +18,7 @@ class RoomAgencyService(
     ) {
         val agencyDto = RoomAgencyDTO(agency)
 
-        agencyDao.insertOrReplaceAgency(agencyDto)
+        agencyDao.upsertAgency(agencyDto)
     }
 
     override fun getAgency(

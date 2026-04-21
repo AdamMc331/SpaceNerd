@@ -31,6 +31,6 @@ class RoomCacheTimestampRepository(
             lastFetchedTime = dateTimeProvider.now().toString(),
         )
 
-        cacheTimestampDao.insertOrUpdateTimestamp(dto)
+        cacheTimestampDao.upsertTimestamp(dto)
     }
 }

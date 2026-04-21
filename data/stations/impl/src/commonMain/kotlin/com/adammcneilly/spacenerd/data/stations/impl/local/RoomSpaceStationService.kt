@@ -10,7 +10,6 @@ import com.adammcneilly.spacenerd.data.stations.api.SpaceStationListRequest
 import com.adammcneilly.spacenerd.data.stations.api.local.LocalSpaceStationService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 
 /**
  * This is an implementation of [LocalSpaceStationService] that requests data from a local Room [spaceStationDao].
@@ -38,7 +37,7 @@ class RoomSpaceStationService(
             val stationDto = RoomSpaceStationDTO(station)
 
             if (replace) {
-                spaceStationDao.insertOrReplaceSpaceStations(listOf(stationDto))
+                spaceStationDao.upsertSpaceStations(listOf(stationDto))
             } else {
                 spaceStationDao.insertOrIgnoreSpaceStations(listOf(stationDto))
             }
