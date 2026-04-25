@@ -17,27 +17,7 @@ import kotlinx.coroutines.flow.Flow
  * This is the Room database access object for the space stations table.
  */
 @Dao
-interface RoomSpaceStationDao {
-    @Upsert
-    suspend fun upsertSpaceStations(
-        stations: List<RoomSpaceStationDTO>,
-    )
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreSpaceStations(
-        stations: List<RoomSpaceStationDTO>,
-    )
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreAgencies(
-        agencies: List<RoomAgencyDTO>,
-    )
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertStationAgencyMap(
-        stationAgencies: List<RoomSpaceStationAgencyCrossRefDTO>,
-    )
-
+interface RoomSpaceStationDao : BaseSpaceStationDao {
     @Query(
         """
             SELECT *

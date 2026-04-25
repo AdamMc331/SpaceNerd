@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlin.math.exp
 
 @Dao
-interface RoomExpeditionDao {
+interface RoomExpeditionDao : BaseSpaceStationDao {
     @Upsert
     suspend fun upsertExpedition(
         expeditions: RoomExpeditionDTO,
@@ -39,19 +39,13 @@ interface RoomExpeditionDao {
         launchCrewMember: RoomCrewMemberDTO,
     )
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreStation(
-        station: RoomSpaceStationDTO,
-    )
-
     suspend fun upsertDomainExpeditions(
         expeditions: List<Expedition>,
     ) {
         expeditions.forEach { expedition ->
             val spaceStation = expedition.spaceStation
             if (spaceStation != null) {
-                val stationDto = RoomSpaceStationDTO(spaceStation)
-                insertOrIgnoreStation(stationDto)
+                insertOrIgnoreDomainSpaceStation(spaceStation)
             }
 
             expedition.crew.forEach { crewMember ->

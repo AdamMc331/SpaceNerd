@@ -23,25 +23,10 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 @Suppress("TooManyFunctions")
-interface RoomLaunchDao {
+interface RoomLaunchDao : BaseAgencyDao {
     @Upsert
     suspend fun upsertLaunches(
         launches: List<RoomLaunchDTO>,
-    )
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreAgency(
-        agency: RoomAgencyDTO,
-    )
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreCountry(
-        country: RoomCountryDTO,
-    )
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreAgencyCountryCrossRef(
-        crossRef: RoomAgencyCountryCrossRefDTO,
     )
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -59,16 +44,12 @@ interface RoomLaunchDao {
         launchPad: RoomLaunchPadDTO,
     )
 
-    /**
-     * NOTE: Cleanup opportunity - when we insert the manufacturer, we're not inserting the country.
-     * Maybe we can find a way to consolidate across DAOs.
-     */
     private suspend fun insertDomainRocket(
         rocket: Rocket,
     ) {
-        val manufacturerDto = rocket.manufacturer?.let(::RoomAgencyDTO)
-        if (manufacturerDto != null) {
-            insertOrIgnoreAgency(manufacturerDto)
+        val manufacturer = rocket.manufacturer
+        if (manufacturer != null) {
+            upsertDomainAgency(manufacturer)
         }
 
         val rocketDto = RoomRocketDTO(rocket)
@@ -84,22 +65,9 @@ interface RoomLaunchDao {
                 upsertLaunchPad(padDto)
             }
 
-            val agencyDto = launch.agency?.let(::RoomAgencyDTO)
-            if (agencyDto != null) {
-                insertOrIgnoreAgency(agencyDto)
-
-                val countryDtos = launch.agency?.countries?.map(::RoomCountryDTO)
-
-                countryDtos?.forEach { countryDto ->
-                    insertOrIgnoreCountry(countryDto)
-
-                    val crossRef = RoomAgencyCountryCrossRefDTO(
-                        agencyId = agencyDto.agencyId,
-                        countryId = countryDto.countryId,
-                    )
-
-                    insertOrIgnoreAgencyCountryCrossRef(crossRef)
-                }
+            val agency = launch.agency
+            if (agency != null) {
+                upsertDomainAgency(agency)
             }
 
             val missionDto = launch.mission?.let(::RoomMissionDTO)
