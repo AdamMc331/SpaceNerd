@@ -16,9 +16,7 @@ class RoomAgencyService(
     override suspend fun saveAgency(
         agency: Agency,
     ) {
-        val agencyDto = RoomAgencyDTO(agency)
-
-        agencyDao.upsertAgency(agencyDto)
+        agencyDao.upsertAgency(agency)
     }
 
     override fun getAgency(

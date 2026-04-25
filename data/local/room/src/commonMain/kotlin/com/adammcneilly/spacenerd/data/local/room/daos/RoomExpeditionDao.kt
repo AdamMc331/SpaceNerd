@@ -15,7 +15,6 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionWithCrewDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.flow.Flow
-import kotlin.math.exp
 
 @Dao
 interface RoomExpeditionDao {
@@ -44,29 +43,36 @@ interface RoomExpeditionDao {
         station: RoomSpaceStationDTO,
     )
 
+    @Transaction
     suspend fun upsertDomainExpeditions(
         expeditions: List<Expedition>,
     ) {
         expeditions.forEach { expedition ->
-            val spaceStation = expedition.spaceStation
-            if (spaceStation != null) {
-                val stationDto = RoomSpaceStationDTO(spaceStation)
-                insertOrIgnoreStation(stationDto)
-            }
-
-            expedition.crew.forEach { crewMember ->
-                insertCrewMember(
-                    crewMember = crewMember,
-                    expeditionId = expedition.id,
-                )
-            }
-
-            val expeditionDto = RoomExpeditionDTO(expedition)
-            upsertExpedition(expeditionDto)
+            upsertExpedition(expedition)
         }
     }
 
-    private suspend fun insertCrewMember(
+    private suspend fun upsertExpedition(
+        expedition: Expedition,
+    ) {
+        val spaceStation = expedition.spaceStation
+        if (spaceStation != null) {
+            val stationDto = RoomSpaceStationDTO(spaceStation)
+            insertOrIgnoreStation(stationDto)
+        }
+
+        expedition.crew.forEach { crewMember ->
+            upsertCrewMember(
+                crewMember = crewMember,
+                expeditionId = expedition.id,
+            )
+        }
+
+        val expeditionDto = RoomExpeditionDTO(expedition)
+        upsertExpedition(expeditionDto)
+    }
+
+    private suspend fun upsertCrewMember(
         crewMember: CrewMember,
         expeditionId: String,
     ) {

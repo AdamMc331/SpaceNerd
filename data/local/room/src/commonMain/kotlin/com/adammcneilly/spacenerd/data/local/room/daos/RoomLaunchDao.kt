@@ -59,15 +59,17 @@ interface RoomLaunchDao {
         launchPad: RoomLaunchPadDTO,
     )
 
-    /**
-     * NOTE: Cleanup opportunity - when we insert the manufacturer, we're not inserting the country.
-     * Maybe we can find a way to consolidate across DAOs.
-     */
-    private suspend fun insertDomainRocket(
+    private suspend fun insertRocket(
         rocket: Rocket,
     ) {
-        val manufacturerDto = rocket.manufacturer?.let(::RoomAgencyDTO)
-        if (manufacturerDto != null) {
+        val manufacturer = rocket.manufacturer
+        if (manufacturer != null) {
+            for (country in manufacturer.countries) {
+                val countryDto = RoomCountryDTO(country)
+                insertOrIgnoreCountry(countryDto)
+            }
+
+            val manufacturerDto = RoomAgencyDTO(manufacturer)
             insertOrIgnoreAgency(manufacturerDto)
         }
 
@@ -75,7 +77,8 @@ interface RoomLaunchDao {
         insertOrIgnoreRocket(rocketDto)
     }
 
-    suspend fun insertDomainLaunches(
+    @Transaction
+    suspend fun upsertDomainLaunches(
         launches: List<Launch>,
     ) {
         launches.forEach { launch ->
@@ -109,7 +112,7 @@ interface RoomLaunchDao {
 
             val rocket = launch.rocket
             if (rocket != null) {
-                insertDomainRocket(rocket)
+                insertRocket(rocket)
             }
 
             val launchDto = RoomLaunchDTO(launch)
