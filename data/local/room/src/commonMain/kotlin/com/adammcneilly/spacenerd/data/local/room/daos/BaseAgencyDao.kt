@@ -32,31 +32,27 @@ interface BaseAgencyDao {
         agency: RoomAgencyDTO,
     )
 
-    private suspend fun insertAgencyCountry(
-        country: Country,
-        agencyId: String,
+    private suspend fun insertAgencyCountries(
+        agency: Agency,
     ) {
-        val countryDto = RoomCountryDTO(country)
-        insertOrIgnoreCountry(countryDto)
+        for (country in agency.countries) {
+            val countryDto = RoomCountryDTO(country)
+            insertOrIgnoreCountry(countryDto)
 
-        val crossRef = RoomAgencyCountryCrossRefDTO(
-            agencyId = agencyId,
-            countryId = country.id,
-        )
+            val crossRef = RoomAgencyCountryCrossRefDTO(
+                agencyId = agency.id,
+                countryId = country.id,
+            )
 
-        insertOrIgnoreAgencyCountryCrossRef(crossRef)
+            insertOrIgnoreAgencyCountryCrossRef(crossRef)
+        }
     }
 
     @Transaction
     suspend fun upsertDomainAgency(
         agency: Agency,
     ) {
-        for (country in agency.countries) {
-            insertAgencyCountry(
-                country = country,
-                agencyId = agency.id,
-            )
-        }
+        insertAgencyCountries(agency)
 
         val agencyDto = RoomAgencyDTO(agency)
         upsertAgency(agencyDto)

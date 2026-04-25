@@ -27,27 +27,26 @@ interface BaseSpaceStationDao : BaseAgencyDao {
         station: RoomSpaceStationDTO,
     )
 
-    private suspend fun insertSpaceStationAgency(
-        agency: Agency,
-        spaceStationId: String,
+    private suspend fun insertSpaceStationAgencies(
+        station: SpaceStation,
     ) {
-        upsertDomainAgency(agency)
+        for (agency in station.agencies) {
+            upsertDomainAgency(agency)
 
-        val crossRef = RoomSpaceStationAgencyCrossRefDTO(
-            spaceStationId = spaceStationId,
-            agencyId = agency.id,
-        )
+            val crossRef = RoomSpaceStationAgencyCrossRefDTO(
+                spaceStationId = station.id,
+                agencyId = agency.id,
+            )
 
-        insertSpaceStationAgencyCrossRef(crossRef)
+            insertSpaceStationAgencyCrossRef(crossRef)
+        }
     }
 
     @Transaction
     suspend fun upsertDomainSpaceStation(
         station: SpaceStation,
     ) {
-        for (agency in station.agencies) {
-            upsertDomainAgency(agency)
-        }
+        insertSpaceStationAgencies(station)
 
         val stationDto = RoomSpaceStationDTO(station)
         upsertSpaceStation(stationDto)
@@ -57,9 +56,7 @@ interface BaseSpaceStationDao : BaseAgencyDao {
     suspend fun insertOrIgnoreDomainSpaceStation(
         station: SpaceStation,
     ) {
-        for (agency in station.agencies) {
-            upsertDomainAgency(agency)
-        }
+        insertSpaceStationAgencies(station)
 
         val stationDto = RoomSpaceStationDTO(station)
         insertOrIgnoreSpaceStation(stationDto)

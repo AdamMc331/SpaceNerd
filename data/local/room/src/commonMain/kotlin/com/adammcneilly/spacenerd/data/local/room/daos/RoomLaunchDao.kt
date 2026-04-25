@@ -23,7 +23,9 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 @Suppress("TooManyFunctions")
-interface RoomLaunchDao : BaseAgencyDao {
+interface RoomLaunchDao :
+    BaseAgencyDao,
+    BaseRocketDao {
     @Upsert
     suspend fun upsertLaunches(
         launches: List<RoomLaunchDTO>,
@@ -34,27 +36,10 @@ interface RoomLaunchDao : BaseAgencyDao {
         mission: RoomMissionDTO,
     )
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreRocket(
-        rocket: RoomRocketDTO,
-    )
-
     @Upsert
     suspend fun upsertLaunchPad(
         launchPad: RoomLaunchPadDTO,
     )
-
-    private suspend fun insertDomainRocket(
-        rocket: Rocket,
-    ) {
-        val manufacturer = rocket.manufacturer
-        if (manufacturer != null) {
-            upsertDomainAgency(manufacturer)
-        }
-
-        val rocketDto = RoomRocketDTO(rocket)
-        insertOrIgnoreRocket(rocketDto)
-    }
 
     suspend fun insertDomainLaunches(
         launches: List<Launch>,
