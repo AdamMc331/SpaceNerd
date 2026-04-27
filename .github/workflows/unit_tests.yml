@@ -28,3 +28,4 @@ jobs:
           name: Unit  Tests
           path: '**/testDebugUnitTest/TEST-*.xml'
           reporter: java-junit
+      - run: cat "${{ steps.report.outputs.summary_file }}" >> $GITHUB_STEP_SUMMARY
