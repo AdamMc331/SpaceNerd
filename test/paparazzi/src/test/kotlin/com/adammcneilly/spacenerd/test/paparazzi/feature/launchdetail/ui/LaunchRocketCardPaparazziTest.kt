@@ -4,7 +4,7 @@ import com.adammcneilly.spacenerd.core.displaymodels.RocketDisplayModel
 import com.adammcneilly.spacenerd.core.models.test.testRocket
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchRocketCard
 import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
-import kotlin.test.Test
+import org.junit.Test
 
 class LaunchRocketCardPaparazziTest : BasePaparazziTest() {
     @Test

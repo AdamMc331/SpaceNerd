@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    testImplementation(platform(libs.compose.bom))
     testImplementation(kotlin("test"))
     testImplementation(project(":core:datetime"))
     testImplementation(project(":core:designsystem"))
@@ -54,7 +55,8 @@ dependencies {
     testImplementation(project(":feature:news"))
     testImplementation(project(":feature:stationdetail"))
     testImplementation(project(":feature:stationlist"))
-    testImplementation(libs.compose.material3.adaptive)
+    testImplementation(libs.compose.material)
+    testImplementation(libs.compose.ui)
     testImplementation(libs.google.testparameterinjector)
     testImplementation(libs.kotlinx.datetime)
 }

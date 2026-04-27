@@ -9,7 +9,7 @@ import com.adammcneilly.spacenerd.core.models.test.testArticle
 import com.adammcneilly.spacenerd.feature.news.ui.NewsContent
 import com.adammcneilly.spacenerd.feature.news.ui.NewsUiState
 import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
-import kotlin.test.Test
+import org.junit.Test
 import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)
