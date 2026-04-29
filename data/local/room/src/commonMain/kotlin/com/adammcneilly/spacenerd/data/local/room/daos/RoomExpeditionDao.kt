@@ -1,8 +1,6 @@
 package com.adammcneilly.spacenerd.data.local.room.daos
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Upsert
@@ -13,35 +11,20 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautRoleDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCrewMemberDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionDTO
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomExpeditionWithCrewDTO
-import com.adammcneilly.spacenerd.data.local.room.dtos.RoomSpaceStationDTO
 import kotlinx.coroutines.flow.Flow
-import kotlin.math.exp
 
 @Dao
-interface RoomExpeditionDao {
+interface RoomExpeditionDao :
+    BaseAstronautDao,
+    BaseSpaceStationDao {
     @Upsert
     suspend fun upsertExpedition(
         expeditions: RoomExpeditionDTO,
     )
 
     @Upsert
-    suspend fun upsertAstronautRole(
-        role: RoomAstronautRoleDTO,
-    )
-
-    @Upsert
-    suspend fun upsertAstronaut(
-        astronaut: RoomAstronautDTO,
-    )
-
-    @Upsert
     suspend fun upsertCrewMember(
         launchCrewMember: RoomCrewMemberDTO,
-    )
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreStation(
-        station: RoomSpaceStationDTO,
     )
 
     suspend fun upsertDomainExpeditions(
@@ -50,12 +33,11 @@ interface RoomExpeditionDao {
         expeditions.forEach { expedition ->
             val spaceStation = expedition.spaceStation
             if (spaceStation != null) {
-                val stationDto = RoomSpaceStationDTO(spaceStation)
-                insertOrIgnoreStation(stationDto)
+                insertOrIgnoreDomainSpaceStation(spaceStation)
             }
 
-            expedition.crew.forEach { crewMember ->
-                insertCrewMember(
+            for (crewMember in expedition.crew) {
+                upsertDomainCrewMember(
                     crewMember = crewMember,
                     expeditionId = expedition.id,
                 )
@@ -66,7 +48,7 @@ interface RoomExpeditionDao {
         }
     }
 
-    private suspend fun insertCrewMember(
+    private suspend fun upsertDomainCrewMember(
         crewMember: CrewMember,
         expeditionId: String,
     ) {

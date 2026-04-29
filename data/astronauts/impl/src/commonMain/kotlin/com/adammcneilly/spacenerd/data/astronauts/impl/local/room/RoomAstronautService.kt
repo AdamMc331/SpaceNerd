@@ -30,8 +30,9 @@ class RoomAstronautService(
     override suspend fun saveAstronauts(
         astronauts: List<Astronaut>,
     ) {
-        val astronautDtos = astronauts.map(::RoomAstronautDTO)
-
-        astronautDao.upsertAstronauts(astronautDtos)
+        for (astronaut in astronauts) {
+            val astronautDto = RoomAstronautDTO(astronaut)
+            astronautDao.upsertAstronaut(astronautDto)
+        }
     }
 }

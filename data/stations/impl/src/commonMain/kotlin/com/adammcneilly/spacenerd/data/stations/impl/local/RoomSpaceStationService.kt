@@ -22,24 +22,10 @@ class RoomSpaceStationService(
         replace: Boolean,
     ) {
         for (station in stations) {
-            val agencyDtos = station.agencies.map(::RoomAgencyDTO)
-            spaceStationDao.insertOrIgnoreAgencies(agencyDtos)
-
-            val stationToAgencies = station.agencies.map { agency ->
-                RoomSpaceStationAgencyCrossRefDTO(
-                    spaceStationId = station.id,
-                    agencyId = agency.id,
-                )
-            }
-
-            spaceStationDao.insertStationAgencyMap(stationToAgencies)
-
-            val stationDto = RoomSpaceStationDTO(station)
-
             if (replace) {
-                spaceStationDao.upsertSpaceStations(listOf(stationDto))
+                spaceStationDao.upsertDomainSpaceStation(station)
             } else {
-                spaceStationDao.insertOrIgnoreSpaceStations(listOf(stationDto))
+                spaceStationDao.insertOrIgnoreDomainSpaceStation(station)
             }
         }
     }

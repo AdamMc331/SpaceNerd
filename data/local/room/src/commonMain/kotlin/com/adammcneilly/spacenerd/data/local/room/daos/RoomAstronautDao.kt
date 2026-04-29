@@ -7,12 +7,7 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface RoomAstronautDao {
-    @Upsert
-    suspend fun upsertAstronauts(
-        astronauts: List<RoomAstronautDTO>,
-    )
-
+interface RoomAstronautDao : BaseAstronautDao {
     @Query(
         """
             SELECT *
