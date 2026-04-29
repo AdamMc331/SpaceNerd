@@ -12,12 +12,7 @@ import kotlinx.coroutines.flow.Flow
  * This is the Room database access object for the agencies table.
  */
 @Dao
-interface RoomAgencyDao {
-    @Upsert
-    suspend fun upsertAgency(
-        agency: RoomAgencyDTO,
-    )
-
+interface RoomAgencyDao : BaseAgencyDao {
     @Query(
         """
         SELECT * 
