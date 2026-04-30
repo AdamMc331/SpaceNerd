@@ -18,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
+import com.adammcneilly.spacenerd.core.designsystem.utils.LocalSceneType
+import com.adammcneilly.spacenerd.core.designsystem.utils.SceneType
 import com.adammcneilly.spacenerd.core.designsystem.utils.plus
 
 private const val LARGE_SCREEN_GRID_COLUMN_COUNT = 2
@@ -25,6 +27,7 @@ private const val LARGE_SCREEN_GRID_COLUMN_COUNT = 2
 @Composable
 fun AstronautListContent(
     state: AstronautListUiState,
+    onEvent: (AstronautListUiEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val isMediumOrExpandedWidth = currentWindowAdaptiveInfo().windowSizeClass.isWidthAtLeastBreakpoint(
@@ -33,16 +36,19 @@ fun AstronautListContent(
     val isMediumOrExpandedHeight = currentWindowAdaptiveInfo().windowSizeClass.isHeightAtLeastBreakpoint(
         WindowSizeClass.HEIGHT_DP_MEDIUM_LOWER_BOUND,
     )
+    val isTwoPane = LocalSceneType.current == SceneType.TwoPane
 
-    if (isMediumOrExpandedHeight && isMediumOrExpandedWidth) {
+    if (isMediumOrExpandedHeight && isMediumOrExpandedWidth && !isTwoPane) {
         GridAstronautContent(
             state = state,
+            onEvent = onEvent,
             modifier = modifier,
         )
     } else {
         ColumnAstronautContent(
             state = state,
             isCompactWidth = !isMediumOrExpandedWidth,
+            onEvent = onEvent,
             modifier = modifier,
         )
     }
@@ -51,6 +57,7 @@ fun AstronautListContent(
 @Composable
 private fun GridAstronautContent(
     state: AstronautListUiState,
+    onEvent: (AstronautListUiEvent) -> Unit,
     modifier: Modifier,
 ) {
     LazyVerticalStaggeredGrid(
@@ -72,6 +79,9 @@ private fun GridAstronautContent(
                 astronaut = astronaut,
                 size = ImageContentCard.Size.Compact,
                 modifier = Modifier
+                    .clickable {
+                        onEvent.invoke(AstronautListUiEvent.AstronautSelected(astronaut))
+                    }
                     .fillMaxWidth(),
             )
         }
@@ -82,6 +92,7 @@ private fun GridAstronautContent(
 private fun ColumnAstronautContent(
     state: AstronautListUiState,
     isCompactWidth: Boolean,
+    onEvent: (AstronautListUiEvent) -> Unit,
     modifier: Modifier,
 ) {
     val cardSize = if (isCompactWidth) {
@@ -106,6 +117,10 @@ private fun ColumnAstronautContent(
             AstronautCard(
                 astronaut = astronaut,
                 size = cardSize,
+                modifier = Modifier
+                    .clickable {
+                        onEvent.invoke(AstronautListUiEvent.AstronautSelected(astronaut))
+                    },
             )
         }
     }

@@ -12,6 +12,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.deeplinks.DeepLink
 import com.adammcneilly.spacenerd.core.designsystem.utils.LocalNavAnimatedVisibilityScope
+import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.adammcneilly.spacenerd.core.scaffold.app.LocalAppState
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
 import com.adammcneilly.spacenerd.feature.astronautdetail.AstronautDetailScreen
@@ -127,13 +128,7 @@ private fun stationDetailEntry(
             StationDetailScreen(
                 stationId = key.stationId,
                 navigateToAstronaut = { astronaut ->
-                    val newScreen = AppScreen.AstronautDetail(astronaut.id)
-
-                    if (backStack.lastOrNull() is AppScreen.AstronautDetail) {
-                        backStack[backStack.lastIndex] = newScreen
-                    } else {
-                        backStack.add(newScreen)
-                    }
+                    navigateToAstronaut(astronaut, backStack)
                 },
             )
         }
@@ -205,7 +200,11 @@ private fun homeTabEntry(
                 }
 
                 HomeTab.Astronauts -> {
-                    AstronautListScreen()
+                    AstronautListScreen(
+                        navigateToAstronaut = { astronaut ->
+                            navigateToAstronaut(astronaut, backStack)
+                        },
+                    )
                 }
 
                 HomeTab.Stations -> {
@@ -250,5 +249,18 @@ private fun navigateToDeepLink(
                 backStack = backStack,
             )
         }
+    }
+}
+
+private fun navigateToAstronaut(
+    astronaut: AstronautDisplayModel,
+    backStack: SnapshotStateList<AppScreen>,
+) {
+    val newScreen = AppScreen.AstronautDetail(astronaut.id)
+
+    if (backStack.lastOrNull() is AppScreen.AstronautDetail) {
+        backStack[backStack.lastIndex] = newScreen
+    } else {
+        backStack.add(newScreen)
     }
 }
