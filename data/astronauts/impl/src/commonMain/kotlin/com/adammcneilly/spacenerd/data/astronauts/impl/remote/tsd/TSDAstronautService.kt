@@ -5,6 +5,7 @@ import com.adammcneilly.spacenerd.data.astronauts.api.AstronautListRequest
 import com.adammcneilly.spacenerd.data.astronauts.api.remote.RemoteAstronautService
 import com.adammcneilly.spacenerd.data.remote.ktor.BaseKtorClient
 import com.adammcneilly.spacenerd.data.remote.tsd.dtos.TSDAstronautListResponseDTO
+import kotlinx.coroutines.delay
 
 class TSDAstronautService(
     private val client: BaseKtorClient,
