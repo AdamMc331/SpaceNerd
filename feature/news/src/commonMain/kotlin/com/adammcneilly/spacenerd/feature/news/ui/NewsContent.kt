@@ -74,7 +74,7 @@ private fun ColumnNewsContent(
             )
         }
 
-        items(state.articles) { article ->
+        items(state.displayArticles) { article ->
             ArticleSummaryCard(
                 article = article,
                 size = if (isCompactWidth) {
@@ -113,7 +113,7 @@ private fun GridNewsContent(
             )
         }
 
-        items(state.articles) { article ->
+        items(state.displayArticles) { article ->
             ArticleSummaryCard(
                 article = article,
                 size = ImageContentCard.Size.Compact,

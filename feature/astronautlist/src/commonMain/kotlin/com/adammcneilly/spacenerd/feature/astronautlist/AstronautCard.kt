@@ -1,9 +1,5 @@
 package com.adammcneilly.spacenerd.feature.astronautlist
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CorporateFare
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
@@ -12,16 +8,25 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
-import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
+import com.eygraber.compose.placeholder.placeholder
 
 @Composable
 fun AstronautCard(
     astronaut: AstronautDisplayModel,
-    size: ImageContentCard.Size,
     modifier: Modifier = Modifier,
 ) {
+    val isAtLeastMediumWidth = currentWindowAdaptiveInfo().windowSizeClass.isWidthAtLeastBreakpoint(
+        WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
+    )
+
+    val size = if (isAtLeastMediumWidth) {
+        ImageContentCard.Size.Expanded
+    } else {
+        ImageContentCard.Size.Compact
+    }
+
     ImageContentCard(
         image = { modifier ->
             ImageWrapper(
@@ -34,25 +39,11 @@ fun AstronautCard(
         },
         status = {},
         content = { modifier ->
-            Column(
-                modifier = modifier,
-            ) {
-                Text(
-                    text = astronaut.name,
-                )
-
-                val agency = astronaut.agency
-
-                if (agency != null) {
-                    InlineIconText(
-                        text = agency.name,
-                        icon = Icons.Default.CorporateFare,
-                        style = MaterialTheme.typography.labelMedium,
-                        modifier = Modifier
-                            .placeholder(agency.isPlaceholder),
-                    )
-                }
-            }
+            Text(
+                text = astronaut.name,
+                modifier = modifier
+                    .placeholder(astronaut.placeholder),
+            )
         },
         size = size,
         modifier = modifier,
