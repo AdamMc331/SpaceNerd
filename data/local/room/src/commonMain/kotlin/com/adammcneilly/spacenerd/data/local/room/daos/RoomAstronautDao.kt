@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDetailDTO
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,7 +18,7 @@ interface RoomAstronautDao : BaseAstronautDao {
     )
     fun getAstronaut(
         astronautId: String,
-    ): Flow<RoomAstronautDTO>
+    ): Flow<RoomAstronautDetailDTO>
 
     @Query(
         """
@@ -25,5 +26,5 @@ interface RoomAstronautDao : BaseAstronautDao {
             FROM astronauts
         """,
     )
-    fun getAstronauts(): Flow<List<RoomAstronautDTO>>
+    fun getAstronauts(): Flow<List<RoomAstronautDetailDTO>>
 }

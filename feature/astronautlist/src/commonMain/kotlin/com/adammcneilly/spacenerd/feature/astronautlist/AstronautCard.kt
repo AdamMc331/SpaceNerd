@@ -1,13 +1,19 @@
 package com.adammcneilly.spacenerd.feature.astronautlist
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CorporateFare
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.window.core.layout.WindowSizeClass
+import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 import com.eygraber.compose.placeholder.placeholder
@@ -15,18 +21,9 @@ import com.eygraber.compose.placeholder.placeholder
 @Composable
 fun AstronautCard(
     astronaut: AstronautDisplayModel,
+    size: ImageContentCard.Size,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowAdaptiveInfo().windowSizeClass.isWidthAtLeastBreakpoint(
-        WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
-    )
-
-    val size = if (isAtLeastMediumWidth) {
-        ImageContentCard.Size.Expanded
-    } else {
-        ImageContentCard.Size.Compact
-    }
-
     ImageContentCard(
         image = { modifier ->
             ImageWrapper(
@@ -39,11 +36,42 @@ fun AstronautCard(
         },
         status = {},
         content = { modifier ->
-            Text(
-                text = astronaut.name,
-                modifier = modifier
-                    .placeholder(astronaut.placeholder),
-            )
+            Column(
+                modifier = modifier,
+            ) {
+                Text(
+                    text = astronaut.name,
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier
+                        .placeholder(astronaut.placeholder),
+                )
+
+                Text(
+                    text = astronaut.bio,
+                    style = MaterialTheme.typography.bodySmall,
+                    maxLines = 3,
+                    modifier = Modifier
+                        .padding(top = 4.dp)
+                        .placeholder(astronaut.placeholder),
+                )
+
+                HorizontalDivider(
+                    modifier = Modifier
+                        .padding(vertical = 16.dp),
+                )
+
+                val agency = astronaut.agency
+
+                if (agency != null) {
+                    InlineIconText(
+                        text = agency.name,
+                        icon = Icons.Default.CorporateFare,
+                        style = MaterialTheme.typography.labelMedium,
+                        modifier = Modifier
+                            .placeholder(agency.isPlaceholder),
+                    )
+                }
+            }
         },
         size = size,
         modifier = modifier,

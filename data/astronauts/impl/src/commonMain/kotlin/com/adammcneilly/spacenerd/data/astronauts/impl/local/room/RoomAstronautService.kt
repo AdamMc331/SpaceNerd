@@ -5,6 +5,7 @@ import com.adammcneilly.spacenerd.data.astronauts.api.AstronautListRequest
 import com.adammcneilly.spacenerd.data.astronauts.api.local.LocalAstronautService
 import com.adammcneilly.spacenerd.data.local.room.daos.RoomAstronautDao
 import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDTO
+import com.adammcneilly.spacenerd.data.local.room.dtos.RoomAstronautDetailDTO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -14,7 +15,7 @@ class RoomAstronautService(
     override fun getAstronaut(
         astronautId: String,
     ): Flow<Astronaut> {
-        return astronautDao.getAstronaut(astronautId).map(RoomAstronautDTO::toAstronaut)
+        return astronautDao.getAstronaut(astronautId).map(RoomAstronautDetailDTO::toAstronaut)
     }
 
     override fun getAstronauts(
@@ -23,7 +24,7 @@ class RoomAstronautService(
         return astronautDao.getAstronauts(
 //            inSpace = request.inSpace,
         ).map { astronautList ->
-            astronautList.map(RoomAstronautDTO::toAstronaut)
+            astronautList.map(RoomAstronautDetailDTO::toAstronaut)
         }
     }
 
@@ -31,8 +32,7 @@ class RoomAstronautService(
         astronauts: List<Astronaut>,
     ) {
         for (astronaut in astronauts) {
-            val astronautDto = RoomAstronautDTO(astronaut)
-            astronautDao.upsertAstronaut(astronautDto)
+            astronautDao.upsertDomainAstronaut(astronaut)
         }
     }
 }
