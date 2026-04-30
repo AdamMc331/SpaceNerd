@@ -14,18 +14,9 @@ import com.eygraber.compose.placeholder.material3.placeholder
 @Composable
 fun AstronautCard(
     astronaut: AstronautDisplayModel,
+    size: ImageContentCard.Size,
     modifier: Modifier = Modifier,
 ) {
-    val isAtLeastMediumWidth = currentWindowAdaptiveInfo().windowSizeClass.isWidthAtLeastBreakpoint(
-        WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND,
-    )
-
-    val size = if (isAtLeastMediumWidth) {
-        ImageContentCard.Size.Expanded
-    } else {
-        ImageContentCard.Size.Compact
-    }
-
     ImageContentCard(
         image = { modifier ->
             ImageWrapper(
