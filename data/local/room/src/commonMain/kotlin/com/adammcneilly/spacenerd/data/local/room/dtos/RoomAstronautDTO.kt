@@ -26,6 +26,7 @@ data class RoomAstronautDTO(
             name = name,
             bio = bio,
             imageUrl = imageUrl,
+            agency = null, // TODO: Store in Room
         )
     }
 }

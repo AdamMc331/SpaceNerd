@@ -53,6 +53,7 @@ data class TSDAstronautDTO(
             name = this.name.orEmpty(),
             bio = this.bio.orEmpty(),
             imageUrl = this.image?.imageUrl.orEmpty(),
+            agency = this.agency?.toAgency(),
         )
     }
 }

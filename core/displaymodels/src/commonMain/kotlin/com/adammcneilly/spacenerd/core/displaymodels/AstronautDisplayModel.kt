@@ -11,6 +11,7 @@ data class AstronautDisplayModel(
     val name: String,
     val bio: String,
     val image: ImageModel,
+    val agency: AgencyDisplayModel?,
     val placeholder: Boolean = false,
 ) {
     constructor(
@@ -20,6 +21,7 @@ data class AstronautDisplayModel(
         name = astronaut.name,
         bio = astronaut.bio,
         image = ImageModel.Remote(astronaut.imageUrl),
+        agency = astronaut.agency?.let(::AgencyDisplayModel),
     )
 
     companion object {
@@ -29,6 +31,7 @@ data class AstronautDisplayModel(
                 name = "Placeholder Astronaut",
                 bio = "Placeholder Bio",
                 image = ImageModel.Placeholder,
+                agency = AgencyDisplayModel.placeholder(),
                 placeholder = true,
             )
         }
