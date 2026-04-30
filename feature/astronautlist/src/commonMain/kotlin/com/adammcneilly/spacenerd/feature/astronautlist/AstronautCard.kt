@@ -10,6 +10,7 @@ import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
+import com.eygraber.compose.placeholder.placeholder
 
 @Composable
 fun AstronautCard(
@@ -40,7 +41,8 @@ fun AstronautCard(
         content = { modifier ->
             Text(
                 text = astronaut.name,
-                modifier = modifier,
+                modifier = modifier
+                    .placeholder(astronaut.placeholder),
             )
         },
         size = size,
