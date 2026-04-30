@@ -5,17 +5,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CorporateFare
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
-import com.eygraber.compose.placeholder.placeholder
 
 @Composable
 fun AstronautCard(
