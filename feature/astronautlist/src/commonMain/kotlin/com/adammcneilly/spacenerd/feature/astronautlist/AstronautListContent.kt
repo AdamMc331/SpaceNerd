@@ -67,7 +67,7 @@ private fun GridAstronautContent(
             )
         }
 
-        items(state.astronauts) { astronaut ->
+        items(state.displayAstronauts) { astronaut ->
             AstronautCard(
                 astronaut = astronaut,
                 size = ImageContentCard.Size.Compact,
