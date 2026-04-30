@@ -12,6 +12,7 @@ data class AstronautDisplayModel(
     val bio: String,
     val image: ImageModel,
     val agency: AgencyDisplayModel?,
+    val nationalities: List<CountryDisplayModel>,
     val placeholder: Boolean = false,
 ) {
     constructor(
@@ -22,6 +23,7 @@ data class AstronautDisplayModel(
         bio = astronaut.bio,
         image = ImageModel.Remote(astronaut.imageUrl),
         agency = astronaut.agency?.let(::AgencyDisplayModel),
+        nationalities = astronaut.nationalities.map(::CountryDisplayModel),
     )
 
     companion object {
@@ -32,6 +34,7 @@ data class AstronautDisplayModel(
                 bio = "Placeholder Bio",
                 image = ImageModel.Placeholder,
                 agency = AgencyDisplayModel.placeholder(),
+                nationalities = listOf(CountryDisplayModel.placeholder()),
                 placeholder = true,
             )
         }
