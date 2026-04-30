@@ -31,7 +31,7 @@ data class TSDAstronautDTO(
     @SerialName("name")
     val name: String? = null,
     @SerialName("nationality")
-    val nationality: List<TSDNationalityDTO>? = null,
+    val nationalities: List<TSDCountryDTO>? = null,
     @SerialName("response_mode")
     val responseMode: String? = null,
     @SerialName("social_media_links")
@@ -54,6 +54,7 @@ data class TSDAstronautDTO(
             bio = this.bio.orEmpty(),
             imageUrl = this.image?.imageUrl.orEmpty(),
             agency = this.agency?.toAgency(),
+            nationalities = this.nationalities?.map(TSDCountryDTO::toCountry).orEmpty(),
         )
     }
 }

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "29fd8debaf17a6d394913d5c7eef6341",
+    "identityHash": "efd0c082fb51b4806bde2ce0648e2d03",
     "entities": [
       {
         "tableName": "agencies",
@@ -175,6 +175,31 @@
           "autoGenerate": false,
           "columnNames": [
             "astronautId"
+          ]
+        }
+      },
+      {
+        "tableName": "RoomAstronautCountryCrossRefDTO",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`astronautId` TEXT NOT NULL, `countryId` TEXT NOT NULL, PRIMARY KEY(`astronautId`, `countryId`))",
+        "fields": [
+          {
+            "fieldPath": "astronautId",
+            "columnName": "astronautId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "countryId",
+            "columnName": "countryId",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "astronautId",
+            "countryId"
           ]
         }
       },
@@ -597,7 +622,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '29fd8debaf17a6d394913d5c7eef6341')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'efd0c082fb51b4806bde2ce0648e2d03')"
     ]
   }
 }

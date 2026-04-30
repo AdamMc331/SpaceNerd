@@ -8,4 +8,5 @@ val testAstronaut = Astronaut(
     imageUrl = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/sergey_ryzhikov_image_20200603213525.jpg",
     bio = "Sergey Ryzhikov bio.",
     agency = testAgency,
+    nationalities = listOf(testCountry),
 )

@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CorporateFare
+import androidx.compose.material.icons.filled.Flag
+import androidx.compose.material.icons.filled.Public
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,6 +17,7 @@ import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.CountryDisplayModel
 import com.eygraber.compose.placeholder.material3.placeholder
 import com.eygraber.compose.placeholder.placeholder
 
@@ -69,6 +72,20 @@ fun AstronautCard(
                         style = MaterialTheme.typography.labelMedium,
                         modifier = Modifier
                             .placeholder(agency.isPlaceholder),
+                    )
+                }
+
+                val nationalities = astronaut.nationalities
+                if (nationalities.isNotEmpty()) {
+                    val names = nationalities.joinToString(transform = CountryDisplayModel::name)
+
+                    InlineIconText(
+                        text = names,
+                        icon = Icons.Default.Public,
+                        style = MaterialTheme.typography.labelMedium,
+                        modifier = Modifier
+                            .padding(top = 4.dp)
+                            .placeholder(astronaut.placeholder),
                     )
                 }
             }
