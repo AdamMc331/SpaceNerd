@@ -27,7 +27,7 @@ fun AstronautListContent(
             )
         }
 
-        items(state.astronauts) { astronaut ->
+        items(state.displayAstronauts) { astronaut ->
             AstronautCard(
                 astronaut = astronaut,
             )
