@@ -19,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass
@@ -66,7 +67,9 @@ private fun GridAstronautContent(
         modifier = modifier,
     ) {
         item(span = StaggeredGridItemSpan.FullLine) {
-            AstronautListHeader()
+            AstronautListHeader(
+                onSearchClick = {},
+            )
         }
 
         items(state.displayAstronauts) { astronaut ->
@@ -98,7 +101,9 @@ private fun ColumnAstronautContent(
         modifier = modifier,
     ) {
         item {
-            AstronautListHeader()
+            AstronautListHeader(
+                onSearchClick = {},
+            )
         }
 
         items(state.displayAstronauts) { astronaut ->
@@ -112,6 +117,7 @@ private fun ColumnAstronautContent(
 
 @Composable
 private fun AstronautListHeader(
+    onSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -126,7 +132,7 @@ private fun AstronautListHeader(
         )
 
         IconButton(
-            onClick = { /*TODO*/ },
+            onClick = onSearchClick,
         ) {
             Icon(
                 imageVector = Icons.Default.Search,
