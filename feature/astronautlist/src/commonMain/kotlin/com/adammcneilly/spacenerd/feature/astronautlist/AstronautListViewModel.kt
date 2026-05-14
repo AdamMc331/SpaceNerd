@@ -23,6 +23,28 @@ class AstronautListViewModel(
         observeAstronauts()
     }
 
+    fun onEvent(
+        event: AstronautListUiEvent,
+    ) {
+        when (event) {
+            is AstronautListUiEvent.AstronautSelected -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedAstronaut = event.astronaut,
+                    )
+                }
+            }
+
+            is AstronautListUiEvent.NavigatedToAstronaut -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedAstronaut = null,
+                    )
+                }
+            }
+        }
+    }
+
     private fun observeAstronauts() {
         viewModelScope.launch {
             repository.getAstronauts(AstronautListRequest())
