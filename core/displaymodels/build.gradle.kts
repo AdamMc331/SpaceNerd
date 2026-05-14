@@ -28,8 +28,8 @@ kotlin {
             implementation(project(":core:datetime"))
             implementation(project(":core:designsystem"))
             implementation(project(":core:models"))
-            implementation(compose.components.resources)
-            implementation(compose.ui)
+            implementation(libs.jetbrains.compose.components.resources)
+            implementation(libs.jetbrains.compose.ui)
             implementation(libs.kotlinx.datetime)
         }
 

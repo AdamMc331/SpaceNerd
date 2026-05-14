@@ -30,11 +30,11 @@ kotlin {
             implementation(project(":core:models"))
             implementation(project(":core:scaffold"))
             implementation(project(":data:stations:api"))
-            implementation(compose.material3)
-            implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.compose.material3.adaptive)
             implementation(libs.eygraber.compose.placeholder.material3)
+            implementation(libs.jetbrains.compose.material3)
+            implementation(libs.jetbrains.compose.ui)
             implementation(libs.koin.compose.viewmodel.navigation)
             implementation(libs.koin.core)
         }
