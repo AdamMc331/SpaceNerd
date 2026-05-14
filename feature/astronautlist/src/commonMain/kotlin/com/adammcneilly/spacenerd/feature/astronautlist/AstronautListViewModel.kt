@@ -42,6 +42,10 @@ class AstronautListViewModel(
                     )
                 }
             }
+
+            AstronautListUiEvent.SearchClicked -> {
+                // TODO: Open bottom sheet
+            }
         }
     }
 

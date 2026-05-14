@@ -75,7 +75,7 @@ private fun GridAstronautContent(
     ) {
         item(span = StaggeredGridItemSpan.FullLine) {
             AstronautListHeader(
-                onSearchClick = {},
+                onEvent = onEvent,
             )
         }
 
@@ -113,7 +113,7 @@ private fun ColumnAstronautContent(
     ) {
         item {
             AstronautListHeader(
-                onSearchClick = {},
+                onEvent = onEvent,
             )
         }
 
@@ -132,7 +132,7 @@ private fun ColumnAstronautContent(
 
 @Composable
 private fun AstronautListHeader(
-    onSearchClick: () -> Unit,
+    onEvent: (AstronautListUiEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -147,7 +147,9 @@ private fun AstronautListHeader(
         )
 
         IconButton(
-            onClick = onSearchClick,
+            onClick = {
+                onEvent.invoke(AstronautListUiEvent.SearchClicked)
+            },
         ) {
             Icon(
                 imageVector = Icons.Default.Search,
