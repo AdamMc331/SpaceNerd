@@ -28,11 +28,11 @@ kotlin {
         }
 
         commonMain.dependencies {
-            implementation(compose.components.resources)
-            implementation(compose.material3)
-            implementation(compose.ui)
             implementation(libs.coil.compose)
             implementation(libs.compose.material3.adaptive)
+            implementation(libs.jetbrains.compose.components.resources)
+            implementation(libs.jetbrains.compose.material3)
+            implementation(libs.jetbrains.compose.ui)
             implementation(libs.material.kolor)
         }
 

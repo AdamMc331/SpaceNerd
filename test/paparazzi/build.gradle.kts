@@ -42,10 +42,10 @@ kotlin {
             implementation(project(":feature:news"))
             implementation(project(":feature:stationdetail"))
             implementation(project(":feature:stationlist"))
-            implementation(compose.material3)
-            implementation(compose.ui)
             implementation(libs.compose.material3.adaptive)
             implementation(libs.google.testparameterinjector)
+            implementation(libs.jetbrains.compose.material3)
+            implementation(libs.jetbrains.compose.ui)
             implementation(libs.kotlinx.datetime)
         }
     }
