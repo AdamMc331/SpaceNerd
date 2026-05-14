@@ -19,6 +19,7 @@ class AstronautListContentPaparazziTest : BasePaparazziTest() {
                 state = AstronautListUiState.default().copy(
                     syncStatus = SyncStatus.Initial,
                 ),
+                onEvent = {},
             )
         }
     }
@@ -34,6 +35,7 @@ class AstronautListContentPaparazziTest : BasePaparazziTest() {
                         AstronautDisplayModel(testAstronaut),
                     ),
                 ),
+                onEvent = {},
             )
         }
     }
