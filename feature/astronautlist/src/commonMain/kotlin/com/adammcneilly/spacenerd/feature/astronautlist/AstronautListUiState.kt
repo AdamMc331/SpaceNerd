@@ -7,6 +7,7 @@ data class AstronautListUiState(
     private val astronauts: List<AstronautDisplayModel>,
     val selectedAstronaut: AstronautDisplayModel?,
     val syncStatus: SyncStatus,
+    val searchVisible: Boolean,
 ) {
     /**
      * If we're syncing data for the initial time of running the app,
@@ -31,6 +32,7 @@ data class AstronautListUiState(
                 astronauts = emptyList(),
                 selectedAstronaut = null,
                 syncStatus = SyncStatus.None,
+                searchVisible = false,
             )
         }
     }

@@ -44,7 +44,19 @@ class AstronautListViewModel(
             }
 
             AstronautListUiEvent.SearchClicked -> {
-                // TODO: Open bottom sheet
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        searchVisible = true,
+                    )
+                }
+            }
+
+            AstronautListUiEvent.SearchHidden -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        searchVisible = false,
+                    )
+                }
             }
         }
     }

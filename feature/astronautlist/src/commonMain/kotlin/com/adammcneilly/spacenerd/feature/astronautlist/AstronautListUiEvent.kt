@@ -12,4 +12,6 @@ sealed interface AstronautListUiEvent {
     ) : AstronautListUiEvent
 
     data object SearchClicked : AstronautListUiEvent
+
+    data object SearchHidden : AstronautListUiEvent
 }
