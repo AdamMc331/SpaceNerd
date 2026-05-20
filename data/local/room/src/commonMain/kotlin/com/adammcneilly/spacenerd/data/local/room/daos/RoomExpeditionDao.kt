@@ -55,8 +55,7 @@ interface RoomExpeditionDao :
         val roleDto = RoomAstronautRoleDTO(crewMember.role)
         upsertAstronautRole(roleDto)
 
-        val astronautDto = RoomAstronautDTO(crewMember.astronaut)
-        upsertAstronaut(astronautDto)
+        upsertDomainAstronaut(crewMember.astronaut)
 
         val crewMemberDto = RoomCrewMemberDTO(
             crewMember = crewMember,

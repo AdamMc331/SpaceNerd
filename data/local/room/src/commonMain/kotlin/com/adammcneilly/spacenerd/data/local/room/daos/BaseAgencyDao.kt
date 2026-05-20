@@ -16,12 +16,7 @@ import com.adammcneilly.spacenerd.data.local.room.dtos.RoomCountryDTO
  * along with any [com.adammcneilly.spacenerd.core.models.Country] dependencies.
  */
 @Dao
-interface BaseAgencyDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertOrIgnoreCountry(
-        country: RoomCountryDTO,
-    )
-
+interface BaseAgencyDao : BaseCountryDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreAgencyCountryCrossRef(
         crossRef: RoomAgencyCountryCrossRefDTO,

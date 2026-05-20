@@ -16,8 +16,9 @@ data class RoomCrewMemberDetailDTO(
     @Relation(
         parentColumn = "astronautId",
         entityColumn = "astronautId",
+        entity = RoomAstronautDTO::class,
     )
-    val astronaut: RoomAstronautDTO,
+    val astronaut: RoomAstronautDetailDTO,
 ) {
     fun toCrewMember(): CrewMember {
         return CrewMember(

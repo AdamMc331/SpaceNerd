@@ -6,27 +6,29 @@ androidxTest = "1.3.0"
 appCompat = "1.7.1"
 coil = "3.4.0"
 compileSdk = "36"
-composeBom = "2026.04.01"
+composeBom = "2026.05.00"
 detektGradlePlugin = "1.23.8"
 espresso = "3.7.0"
 glanceAppwidget = "1.2.0-rc01"
 hilt = "2.59.2"
 hiltNavigationCompose = "1.3.0"
 junit = "4.13.2"
-kmpCompose = "1.10.3"
+kmpCompose = "1.11.0"
+kmpComposeMaterial3 = "1.9.0"
 koin = "4.2.1"
 kotlin = "2.3.21"
 kotlinter = "5.3.0"
-kotlinxCoroutines = "1.10.2"
-kotlinxDatetime = "0.7.1-0.6.x-compat"
+kotlinxCoroutines = "1.11.0"
+kotlinxDatetime = "0.8.0-0.6.x-compat"
 kotlinxSerialization = "1.11.0"
-ksp = "2.3.7"
-ktor = "3.4.3"
+ksp = "2.3.8"
+ktor = "3.5.0"
 ktxCore = "1.18.0"
 leakCanary = "2.14"
 lifecycleAndroidX = "2.10.0"
 lifecycleJetBrains = "2.10.0"
-material = "1.13.0"
+material = "1.14.0"
+materialIconsExtended = "1.7.3"
 materialKolor = "4.1.1"
 material3Adaptive = "1.2.0"
 minSdk = "31"
@@ -44,7 +46,7 @@ sqlite = "2.6.2"
 testParameterInjector = "1.22"
 truthish = "1.0.4"
 turbine = "1.2.1"
-xr = "1.0.0-alpha12"
+xr = "1.0.0-alpha13"
 xr-material = "1.0.0-alpha16"
 
 
@@ -92,6 +94,12 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+jetbrains-compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "kmpCompose" }
+jetbrains-compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "kmpCompose" }
+jetbrains-compose-material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
+jetbrains-compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "kmpComposeMaterial3" }
+jetbrains-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "kmpCompose" }
+jetbrains-compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "kmpCompose" }
 junit = { module = "junit:junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "koin" }

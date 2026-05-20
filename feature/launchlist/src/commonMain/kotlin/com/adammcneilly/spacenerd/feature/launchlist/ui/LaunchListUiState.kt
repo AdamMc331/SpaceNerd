@@ -37,12 +37,8 @@ data class LaunchListUiState(
         fun default(
             launchWidgetSupported: Boolean = false,
         ): LaunchListUiState {
-            val placeholderLaunches = List(3) {
-                LaunchDisplayModel.placeholder()
-            }
-
             return LaunchListUiState(
-                launches = placeholderLaunches,
+                launches = emptyList(),
                 selectedLaunch = null,
                 launchWidgetSupported = launchWidgetSupported,
                 syncStatus = SyncStatus.None,

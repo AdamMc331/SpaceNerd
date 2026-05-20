@@ -10,6 +10,7 @@ data class RoomAstronautDTO(
     val name: String,
     val bio: String,
     val imageUrl: String,
+    val agencyId: String?,
 ) {
     constructor(
         astronaut: Astronaut,
@@ -18,14 +19,6 @@ data class RoomAstronautDTO(
         name = astronaut.name,
         bio = astronaut.bio,
         imageUrl = astronaut.imageUrl,
+        agencyId = astronaut.agency?.id,
     )
-
-    fun toAstronaut(): Astronaut {
-        return Astronaut(
-            id = astronautId,
-            name = name,
-            bio = bio,
-            imageUrl = imageUrl,
-        )
-    }
 }

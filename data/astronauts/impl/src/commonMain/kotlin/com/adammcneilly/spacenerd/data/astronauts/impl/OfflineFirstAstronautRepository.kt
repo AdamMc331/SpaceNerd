@@ -36,7 +36,6 @@ class OfflineFirstAstronautRepository(
     override fun getAstronauts(
         request: AstronautListRequest,
     ): Flow<List<Astronaut>> {
-        // Need to sync with remote server
         return localAstronautService.getAstronauts(request)
             .onStart {
                 syncAstronautListIfNecessary(coroutineContext, request)

@@ -8,6 +8,7 @@ import com.adammcneilly.spacenerd.data.astronauts.api.AstronautRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -18,18 +19,54 @@ class AstronautListViewModel(
     val state: StateFlow<AstronautListUiState> = mutableState.asStateFlow()
 
     init {
+        observeSyncStatus()
         observeAstronauts()
+    }
+
+    fun onEvent(
+        event: AstronautListUiEvent,
+    ) {
+        when (event) {
+            is AstronautListUiEvent.AstronautSelected -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedAstronaut = event.astronaut,
+                    )
+                }
+            }
+
+            is AstronautListUiEvent.NavigatedToAstronaut -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        selectedAstronaut = null,
+                    )
+                }
+            }
+        }
     }
 
     private fun observeAstronauts() {
         viewModelScope.launch {
             repository.getAstronauts(AstronautListRequest())
-                .collect { astronauts ->
+                .collectLatest { astronauts ->
                     val displayModels = astronauts.map(::AstronautDisplayModel)
 
                     mutableState.update { currentState ->
                         currentState.copy(
                             astronauts = displayModels,
+                        )
+                    }
+                }
+        }
+    }
+
+    private fun observeSyncStatus() {
+        viewModelScope.launch {
+            repository.syncStatus
+                .collectLatest { syncStatus ->
+                    mutableState.update { currentState ->
+                        currentState.copy(
+                            syncStatus = syncStatus,
                         )
                     }
                 }
