@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.feature.astronautlist
 
+import androidx.compose.ui.state.ToggleableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
@@ -39,6 +40,41 @@ class AstronautListViewModel(
                 mutableState.update { currentState ->
                     currentState.copy(
                         selectedAstronaut = null,
+                    )
+                }
+            }
+
+            AstronautListUiEvent.SearchClicked -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        searchVisible = true,
+                    )
+                }
+            }
+
+            AstronautListUiEvent.SearchHidden -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        searchVisible = false,
+                    )
+                }
+            }
+
+            AstronautListUiEvent.SearchEvent.InSpaceClicked -> {
+                mutableState.update { currentState ->
+                    val currentInSpace = currentState.searchUiState.inSpace
+                    val nextInSpace = when (currentInSpace) {
+                        ToggleableState.On -> ToggleableState.Off
+                        ToggleableState.Off -> ToggleableState.Indeterminate
+                        ToggleableState.Indeterminate -> ToggleableState.On
+                    }
+
+                    val nextSearchUiState = currentState.searchUiState.copy(
+                        inSpace = nextInSpace,
+                    )
+
+                    currentState.copy(
+                        searchUiState = nextSearchUiState,
                     )
                 }
             }
