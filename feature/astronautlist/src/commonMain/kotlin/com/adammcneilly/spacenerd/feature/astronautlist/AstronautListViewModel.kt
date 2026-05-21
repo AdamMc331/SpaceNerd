@@ -38,70 +38,96 @@ class AstronautListViewModel(
     ) {
         when (event) {
             is AstronautListUiEvent.AstronautSelected -> {
-                mutableState.update { currentState ->
-                    currentState.copy(
-                        selectedAstronaut = event.astronaut,
-                    )
-                }
+                processAstronautSelected(event)
             }
 
             is AstronautListUiEvent.NavigatedToAstronaut -> {
-                mutableState.update { currentState ->
-                    currentState.copy(
-                        selectedAstronaut = null,
-                    )
-                }
+                processNavigatedToAstronaut()
             }
 
             AstronautListUiEvent.SearchClicked -> {
-                mutableState.update { currentState ->
-                    currentState.copy(
-                        searchVisible = true,
-                    )
-                }
+                processSearchClicked()
             }
 
             AstronautListUiEvent.SearchHidden -> {
-                mutableState.update { currentState ->
-                    currentState.copy(
-                        searchVisible = false,
-                    )
-                }
+                processSearchHidden()
             }
 
             AstronautListUiEvent.SearchEvent.InSpaceClicked -> {
-                mutableState.update { currentState ->
-                    val currentInSpace = currentState.searchUiState.inSpace
-                    val nextInSpace = when (currentInSpace) {
-                        ToggleableState.On -> ToggleableState.Off
-                        ToggleableState.Off -> ToggleableState.Indeterminate
-                        ToggleableState.Indeterminate -> ToggleableState.On
-                    }
-
-                    val nextSearchUiState = currentState.searchUiState.copy(
-                        inSpace = nextInSpace,
-                    )
-
-                    currentState.copy(
-                        searchUiState = nextSearchUiState,
-                    )
-                }
+                processInSpaceClicked()
             }
 
             AstronautListUiEvent.SearchEvent.SubmitSearch -> {
-                mutableState.update { currentState ->
-                    val newRequest = with(currentState.searchUiState) {
-                        AstronautListRequest(
-                            inSpace = this.inSpace.toBoolean(),
-                        )
-                    }
-
-                    currentState.copy(
-                        request = newRequest,
-                        searchVisible = false,
-                    )
-                }
+                processSubmitSearch()
             }
+        }
+    }
+
+    private fun processSubmitSearch() {
+        mutableState.update { currentState ->
+            val newRequest = with(currentState.searchUiState) {
+                AstronautListRequest(
+                    inSpace = this.inSpace.toBoolean(),
+                )
+            }
+
+            currentState.copy(
+                request = newRequest,
+                searchVisible = false,
+            )
+        }
+    }
+
+    private fun processInSpaceClicked() {
+        mutableState.update { currentState ->
+            val currentInSpace = currentState.searchUiState.inSpace
+            val nextInSpace = when (currentInSpace) {
+                ToggleableState.On -> ToggleableState.Off
+                ToggleableState.Off -> ToggleableState.Indeterminate
+                ToggleableState.Indeterminate -> ToggleableState.On
+            }
+
+            val nextSearchUiState = currentState.searchUiState.copy(
+                inSpace = nextInSpace,
+            )
+
+            currentState.copy(
+                searchUiState = nextSearchUiState,
+            )
+        }
+    }
+
+    private fun processSearchHidden() {
+        mutableState.update { currentState ->
+            currentState.copy(
+                searchVisible = false,
+            )
+        }
+    }
+
+    private fun processSearchClicked() {
+        mutableState.update { currentState ->
+            currentState.copy(
+                searchVisible = true,
+            )
+        }
+    }
+
+    private fun processNavigatedToAstronaut() {
+        mutableState.update { currentState ->
+            currentState.copy(
+                selectedAstronaut = null,
+            )
+        }
+    }
+
+    private fun processAstronautSelected(
+        event: AstronautListUiEvent.AstronautSelected,
+    ) {
+        mutableState.update { currentState ->
+            currentState.copy(
+                selectedAstronaut = event.astronaut,
+            )
         }
     }
 
