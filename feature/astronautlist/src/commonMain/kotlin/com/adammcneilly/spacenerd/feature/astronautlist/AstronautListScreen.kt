@@ -25,6 +25,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class, ExperimentalMaterial3Api::class)
+@Suppress("LongMethod")
 fun AstronautListScreen(
     navigateToAstronaut: (AstronautDisplayModel) -> Unit,
     modifier: Modifier = Modifier,
