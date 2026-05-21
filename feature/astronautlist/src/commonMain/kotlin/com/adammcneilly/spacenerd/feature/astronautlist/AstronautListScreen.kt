@@ -21,6 +21,7 @@ import com.adammcneilly.spacenerd.core.scaffold.navigation.components.Persistent
 import com.adammcneilly.spacenerd.core.scaffold.navigation.components.PersistentNavigationRail
 import com.adammcneilly.spacenerd.core.scaffold.rememberScaffoldState
 import com.adammcneilly.spacenerd.feature.astronautlist.search.AstronautListSearchContent
+import com.adammcneilly.spacenerd.feature.astronautlist.search.AstronautListSearchUiState
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -90,7 +91,9 @@ fun AstronautListScreen(
             BottomSheetScaffold(
                 scaffoldState = scaffoldState,
                 sheetContent = {
-                    AstronautListSearchContent()
+                    AstronautListSearchContent(
+                        state = AstronautListSearchUiState.default(),
+                    )
                 },
                 content = {
                     AstronautListContent(

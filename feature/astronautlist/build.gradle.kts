@@ -8,6 +8,10 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
 }
 
+dependencies {
+    debugImplementation(libs.jetbrains.compose.ui.tooling)
+}
+
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -35,6 +39,7 @@ kotlin {
             implementation(libs.jetbrains.compose.material.icons.extended)
             implementation(libs.jetbrains.compose.material3)
             implementation(libs.jetbrains.compose.ui)
+            implementation(libs.jetbrains.compose.ui.tooling.preview)
             implementation(libs.koin.compose.viewmodel.navigation)
             implementation(libs.koin.core)
             implementation(libs.kotlinx.datetime)
