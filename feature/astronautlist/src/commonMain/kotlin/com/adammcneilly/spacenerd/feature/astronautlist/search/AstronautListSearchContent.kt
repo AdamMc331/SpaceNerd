@@ -49,7 +49,7 @@ private fun InSpaceCheckbox(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         TriStateCheckbox(
-            state = state.inSpace.toToggleableState(),
+            state = state.inSpace,
             onClick = onClick,
         )
 
@@ -57,14 +57,6 @@ private fun InSpaceCheckbox(
             text = "In Space",
             style = MaterialTheme.typography.bodyLarge,
         )
-    }
-}
-
-private fun Boolean?.toToggleableState(): ToggleableState {
-    return when (this) {
-        true -> ToggleableState.On
-        false -> ToggleableState.Off
-        null -> ToggleableState.Indeterminate
     }
 }
 
