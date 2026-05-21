@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.test.paparazzi.feature.astronautlist.search
 
+import androidx.compose.ui.state.ToggleableState
 import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListContent
 import com.adammcneilly.spacenerd.feature.astronautlist.search.AstronautListSearchContent
 import com.adammcneilly.spacenerd.feature.astronautlist.search.AstronautListSearchUiState
@@ -22,7 +23,7 @@ class AstronautListSearchContentPaparazziTest : BasePaparazziTest() {
     @Test
     fun renderAllFieldsSelected() {
         val state = AstronautListSearchUiState(
-            inSpace = true,
+            inSpace = ToggleableState.On,
         )
 
         snapshot {
@@ -36,7 +37,7 @@ class AstronautListSearchContentPaparazziTest : BasePaparazziTest() {
     @Test
     fun renderNoFieldsSelected() {
         val state = AstronautListSearchUiState(
-            inSpace = false,
+            inSpace = ToggleableState.Off,
         )
 
         snapshot {
