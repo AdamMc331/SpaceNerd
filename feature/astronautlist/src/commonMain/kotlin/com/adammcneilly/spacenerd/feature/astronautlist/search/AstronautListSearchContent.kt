@@ -27,10 +27,16 @@ fun AstronautListSearchContent(
     modifier: Modifier = Modifier,
 ) {
     Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.fillMaxWidth()
             .fillMaxHeight(SEARCH_SHEET_RATIO)
             .padding(16.dp),
     ) {
+        Text(
+            text = "Search Astronauts",
+            style = MaterialTheme.typography.titleMedium,
+        )
+
         InSpaceCheckbox(
             state = state,
             onClick = {
