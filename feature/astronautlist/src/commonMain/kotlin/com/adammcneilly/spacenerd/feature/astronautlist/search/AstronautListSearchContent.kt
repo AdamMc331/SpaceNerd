@@ -20,6 +20,7 @@ import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceTheme
 import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListUiEvent
 
 private const val SEARCH_SHEET_RATIO = 0.9F
+private const val SUBMIT_BUTTON_WIDTH_RATIO = 0.75F
 
 @Composable
 fun AstronautListSearchContent(
@@ -60,7 +61,7 @@ private fun ColumnScope.SearchButton(
     Button(
         onClick = onClick,
         modifier = Modifier
-            .fillMaxWidth(0.75F)
+            .fillMaxWidth(SUBMIT_BUTTON_WIDTH_RATIO)
             .align(Alignment.CenterHorizontally),
     ) {
         Text(
