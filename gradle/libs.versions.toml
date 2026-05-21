@@ -48,7 +48,7 @@ testParameterInjector = "1.22"
 truthish = "1.0.4"
 turbine = "1.2.1"
 xr = "1.0.0-alpha14"
-xr-material = "1.0.0-alpha16"
+xr-material = "1.0.0-alpha17"
 
 
 [libraries]
