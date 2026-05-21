@@ -3,13 +3,22 @@ package com.adammcneilly.spacenerd.feature.astronautlist
 import androidx.compose.ui.state.ToggleableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.adammcneilly.spacenerd.data.astronauts.api.AstronautListRequest
 import com.adammcneilly.spacenerd.data.astronauts.api.AstronautRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -78,13 +87,36 @@ class AstronautListViewModel(
                     )
                 }
             }
+
+            AstronautListUiEvent.SearchEvent.SubmitSearch -> {
+                mutableState.update { currentState ->
+                    val newRequest = with(currentState.searchUiState) {
+                        AstronautListRequest(
+                            inSpace = this.inSpace.toBoolean(),
+                        )
+                    }
+
+                    currentState.copy(
+                        request = newRequest,
+                        searchVisible = false,
+                    )
+                }
+            }
         }
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private fun observeAstronauts() {
         viewModelScope.launch {
-            repository.getAstronauts(AstronautListRequest())
-                .collectLatest { astronauts ->
+            state
+                .map { astronautListUiState ->
+                    astronautListUiState.request
+                }
+                .distinctUntilChanged()
+                .flatMapLatest { request ->
+                    repository.getAstronauts(request)
+                }
+                .collect { astronauts ->
                     val displayModels = astronauts.map(::AstronautDisplayModel)
 
                     mutableState.update { currentState ->
@@ -107,5 +139,13 @@ class AstronautListViewModel(
                     }
                 }
         }
+    }
+}
+
+private fun ToggleableState.toBoolean(): Boolean? {
+    return when (this) {
+        ToggleableState.On -> true
+        ToggleableState.Off -> false
+        ToggleableState.Indeterminate -> null
     }
 }

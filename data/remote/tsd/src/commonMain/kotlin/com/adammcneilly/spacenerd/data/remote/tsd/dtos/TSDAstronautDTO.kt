@@ -55,6 +55,7 @@ data class TSDAstronautDTO(
             imageUrl = this.image?.imageUrl.orEmpty(),
             agency = this.agency?.toAgency(),
             nationalities = this.nationalities?.map(TSDCountryDTO::toCountry).orEmpty(),
+            inSpace = this.inSpace == true,
         )
     }
 }

@@ -2,17 +2,18 @@ package com.adammcneilly.spacenerd.feature.astronautlist.search
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TriStateCheckbox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceTheme
@@ -42,6 +43,28 @@ fun AstronautListSearchContent(
             onClick = {
                 onEvent.invoke(AstronautListUiEvent.SearchEvent.InSpaceClicked)
             },
+        )
+
+        SearchButton(
+            onClick = {
+                onEvent.invoke(AstronautListUiEvent.SearchEvent.SubmitSearch)
+            },
+        )
+    }
+}
+
+@Composable
+private fun ColumnScope.SearchButton(
+    onClick: () -> Unit,
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth(0.75F)
+            .align(Alignment.CenterHorizontally),
+    ) {
+        Text(
+            text = "Search",
         )
     }
 }

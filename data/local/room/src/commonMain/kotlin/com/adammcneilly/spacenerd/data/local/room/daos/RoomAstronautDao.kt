@@ -24,7 +24,10 @@ interface RoomAstronautDao : BaseAstronautDao {
         """
             SELECT *
             FROM astronauts
+            WHERE :inSpace IS NULL OR inSpace = :inSpace
         """,
     )
-    fun getAstronauts(): Flow<List<RoomAstronautDetailDTO>>
+    fun getAstronauts(
+        inSpace: Boolean?,
+    ): Flow<List<RoomAstronautDetailDTO>>
 }
