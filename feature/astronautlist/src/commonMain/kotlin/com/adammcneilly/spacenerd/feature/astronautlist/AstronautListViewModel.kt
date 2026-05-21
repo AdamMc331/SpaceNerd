@@ -60,6 +60,41 @@ class AstronautListViewModel(
             AstronautListUiEvent.SearchEvent.SubmitSearch -> {
                 processSubmitSearch()
             }
+
+            AstronautListUiEvent.SearchClicked -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        searchVisible = true,
+                    )
+                }
+            }
+
+            AstronautListUiEvent.SearchHidden -> {
+                mutableState.update { currentState ->
+                    currentState.copy(
+                        searchVisible = false,
+                    )
+                }
+            }
+
+            AstronautListUiEvent.SearchEvent.InSpaceClicked -> {
+                mutableState.update { currentState ->
+                    val currentInSpace = currentState.searchUiState.inSpace
+                    val nextInSpace = when (currentInSpace) {
+                        ToggleableState.On -> ToggleableState.Off
+                        ToggleableState.Off -> ToggleableState.Indeterminate
+                        ToggleableState.Indeterminate -> ToggleableState.On
+                    }
+
+                    val nextSearchUiState = currentState.searchUiState.copy(
+                        inSpace = nextInSpace,
+                    )
+
+                    currentState.copy(
+                        searchUiState = nextSearchUiState,
+                    )
+                }
+            }
         }
     }
 
