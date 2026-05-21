@@ -16,12 +16,14 @@ import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceTheme
+import com.adammcneilly.spacenerd.feature.astronautlist.AstronautListUiEvent
 
 private const val SEARCH_SHEET_RATIO = 0.9F
 
 @Composable
 fun AstronautListSearchContent(
     state: AstronautListSearchUiState,
+    onEvent: (AstronautListUiEvent.SearchEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -29,22 +31,26 @@ fun AstronautListSearchContent(
             .fillMaxHeight(SEARCH_SHEET_RATIO)
             .padding(16.dp),
     ) {
-        InSpaceCheckbox(state)
+        InSpaceCheckbox(
+            state = state,
+            onClick = {
+                onEvent.invoke(AstronautListUiEvent.SearchEvent.InSpaceClicked)
+            },
+        )
     }
 }
 
 @Composable
 private fun InSpaceCheckbox(
     state: AstronautListSearchUiState,
+    onClick: () -> Unit,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         TriStateCheckbox(
             state = state.inSpace.toToggleableState(),
-            onClick = {
-            },
+            onClick = onClick,
         )
 
         Text(
@@ -68,6 +74,7 @@ private fun AstronautListSearchContentPreview() {
     SpaceTheme {
         AstronautListSearchContent(
             state = AstronautListSearchUiState.default(),
+            onEvent = {},
         )
     }
 }

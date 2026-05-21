@@ -12,7 +12,10 @@ class AstronautListSearchContentPaparazziTest : BasePaparazziTest() {
         val state = AstronautListSearchUiState.default()
 
         snapshot {
-            AstronautListSearchContent(state)
+            AstronautListSearchContent(
+                state = state,
+                onEvent = {},
+            )
         }
     }
 
@@ -23,7 +26,10 @@ class AstronautListSearchContentPaparazziTest : BasePaparazziTest() {
         )
 
         snapshot {
-            AstronautListSearchContent(state)
+            AstronautListSearchContent(
+                state = state,
+                onEvent = {},
+            )
         }
     }
 
@@ -34,7 +40,10 @@ class AstronautListSearchContentPaparazziTest : BasePaparazziTest() {
         )
 
         snapshot {
-            AstronautListSearchContent(state)
+            AstronautListSearchContent(
+                state = state,
+                onEvent = {},
+            )
         }
     }
 }

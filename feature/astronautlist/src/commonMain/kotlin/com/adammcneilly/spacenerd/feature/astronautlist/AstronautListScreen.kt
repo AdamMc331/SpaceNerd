@@ -75,7 +75,8 @@ fun AstronautListScreen(
                 scaffoldState = scaffoldState,
                 sheetContent = {
                     AstronautListSearchContent(
-                        state = AstronautListSearchUiState.default(),
+                        state = state.value.searchUiState,
+                        onEvent = viewModel::onEvent,
                     )
                 },
                 content = {

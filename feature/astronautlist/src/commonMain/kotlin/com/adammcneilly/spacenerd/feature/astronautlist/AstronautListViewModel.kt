@@ -58,6 +58,25 @@ class AstronautListViewModel(
                     )
                 }
             }
+
+            AstronautListUiEvent.SearchEvent.InSpaceClicked -> {
+                mutableState.update { currentState ->
+                    val currentInSpace = currentState.searchUiState.inSpace
+                    val nextInSpace = when (currentInSpace) {
+                        true -> false
+                        false -> null
+                        null -> true
+                    }
+
+                    val nextSearchUiState = currentState.searchUiState.copy(
+                        inSpace = nextInSpace,
+                    )
+
+                    currentState.copy(
+                        searchUiState = nextSearchUiState,
+                    )
+                }
+            }
         }
     }
 
