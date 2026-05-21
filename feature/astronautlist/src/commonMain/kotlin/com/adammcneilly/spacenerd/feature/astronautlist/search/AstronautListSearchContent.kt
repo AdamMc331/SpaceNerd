@@ -17,6 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.theme.SpaceTheme
 
+private const val SEARCH_SHEET_RATIO = 0.9F
+
 @Composable
 fun AstronautListSearchContent(
     state: AstronautListSearchUiState,
@@ -24,7 +26,7 @@ fun AstronautListSearchContent(
 ) {
     Column(
         modifier = modifier.fillMaxWidth()
-            .fillMaxHeight(0.9F)
+            .fillMaxHeight(SEARCH_SHEET_RATIO)
             .padding(16.dp),
     ) {
         InSpaceCheckbox(state)
