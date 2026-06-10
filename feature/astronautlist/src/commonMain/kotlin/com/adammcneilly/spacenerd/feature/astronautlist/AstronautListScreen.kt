@@ -9,6 +9,7 @@ import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,9 +38,8 @@ fun AstronautListScreen(
 
     val selectedAstronaut = state.value.selectedAstronaut
 
-    val sheetState = rememberStandardBottomSheetState(
-        initialValue = SheetValue.Hidden,
-        skipHiddenState = false,
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true,
     )
 
     val scaffoldState = rememberBottomSheetScaffoldState(
