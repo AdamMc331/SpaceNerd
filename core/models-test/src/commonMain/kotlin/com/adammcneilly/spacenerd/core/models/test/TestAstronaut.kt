@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.core.models.test
 
 import com.adammcneilly.spacenerd.core.models.Astronaut
+import com.adammcneilly.spacenerd.core.models.AstronautStatus
 
 val testAstronaut = Astronaut(
     id = "585",
@@ -10,4 +11,5 @@ val testAstronaut = Astronaut(
     agency = testAgency,
     nationalities = listOf(testCountry),
     inSpace = false,
+    status = AstronautStatus.Active,
 )
