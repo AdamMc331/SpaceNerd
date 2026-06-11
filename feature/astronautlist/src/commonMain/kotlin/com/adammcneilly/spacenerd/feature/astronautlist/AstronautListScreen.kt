@@ -4,6 +4,7 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
@@ -42,10 +43,6 @@ fun AstronautListScreen(
         skipPartiallyExpanded = true,
     )
 
-    val scaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = sheetState,
-    )
-
     observeSheetState(sheetState, viewModel)
 
     observeSearchVisible(state, sheetState)
@@ -71,23 +68,26 @@ fun AstronautListScreen(
             )
         },
         content = { scaffoldPadding ->
-            BottomSheetScaffold(
-                scaffoldState = scaffoldState,
-                sheetContent = {
+            AstronautListContent(
+                state = state.value,
+                onEvent = viewModel::onEvent,
+                modifier = Modifier
+                    .padding(scaffoldPadding),
+            )
+
+            if (state.value.searchVisible) {
+                ModalBottomSheet(
+                    onDismissRequest = {
+                        viewModel.onEvent(AstronautListUiEvent.SearchHidden)
+                    },
+                    sheetState = sheetState,
+                ) {
                     AstronautListSearchContent(
                         state = state.value.searchUiState,
                         onEvent = viewModel::onEvent,
                     )
-                },
-                content = {
-                    AstronautListContent(
-                        state = state.value,
-                        onEvent = viewModel::onEvent,
-                        modifier = Modifier
-                            .padding(scaffoldPadding),
-                    )
-                },
-            )
+                }
+            }
         },
     )
 }
