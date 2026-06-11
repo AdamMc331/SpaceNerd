@@ -2,6 +2,7 @@ package com.adammcneilly.spacenerd.feature.astronautlist
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CorporateFare
 import androidx.compose.material.icons.filled.Public
@@ -15,9 +16,15 @@ import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.InlineIconText
+import com.adammcneilly.spacenerd.core.designsystem.components.Pill
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.adammcneilly.spacenerd.core.displaymodels.CountryDisplayModel
+import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
+import com.adammcneilly.spacenerd.core.models.AstronautStatus
+import com.eygraber.compose.placeholder.PlaceholderDefaults
+import com.eygraber.compose.placeholder.material3.color
 import com.eygraber.compose.placeholder.material3.placeholder
+import com.eygraber.compose.placeholder.placeholder
 
 @Composable
 fun AstronautCard(
@@ -35,7 +42,13 @@ fun AstronautCard(
                     .placeholder(astronaut.placeholder),
             )
         },
-        status = {},
+        status = { modifier ->
+            AstronautStatus(
+                size = size,
+                astronaut = astronaut,
+                modifier = modifier,
+            )
+        },
         content = { modifier ->
             Column(
                 modifier = modifier,
@@ -56,6 +69,33 @@ fun AstronautCard(
         },
         size = size,
         modifier = modifier,
+    )
+}
+
+@Composable
+private fun AstronautStatus(
+    size: ImageContentCard.Size,
+    astronaut: AstronautDisplayModel,
+    modifier: Modifier,
+) {
+    val placeholderColor = if (size == ImageContentCard.Size.Compact) {
+        PlaceholderDefaults.color(
+            contentAlpha = 0.15F,
+        )
+    } else {
+        PlaceholderDefaults.color()
+    }
+
+    Pill(
+        text = astronaut.status.label,
+        containerColor = astronaut.status.containerColor,
+        contentColor = astronaut.status.contentColor,
+        modifier = modifier
+            .placeholder(
+                visible = astronaut.placeholder,
+                shape = CircleShape,
+                color = placeholderColor,
+            ),
     )
 }
 
