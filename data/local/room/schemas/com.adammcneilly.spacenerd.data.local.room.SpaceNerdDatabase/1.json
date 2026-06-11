@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "efd0c082fb51b4806bde2ce0648e2d03",
+    "identityHash": "d81fa05d8868aee88768ac9c5d2995fc",
     "entities": [
       {
         "tableName": "agencies",
@@ -139,7 +139,7 @@
       },
       {
         "tableName": "astronauts",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`astronautId` TEXT NOT NULL, `name` TEXT NOT NULL, `bio` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `agencyId` TEXT, PRIMARY KEY(`astronautId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`astronautId` TEXT NOT NULL, `name` TEXT NOT NULL, `bio` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `agencyId` TEXT, `inSpace` INTEGER NOT NULL, PRIMARY KEY(`astronautId`))",
         "fields": [
           {
             "fieldPath": "astronautId",
@@ -169,6 +169,12 @@
             "fieldPath": "agencyId",
             "columnName": "agencyId",
             "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "inSpace",
+            "columnName": "inSpace",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -622,7 +628,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'efd0c082fb51b4806bde2ce0648e2d03')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd81fa05d8868aee88768ac9c5d2995fc')"
     ]
   }
 }

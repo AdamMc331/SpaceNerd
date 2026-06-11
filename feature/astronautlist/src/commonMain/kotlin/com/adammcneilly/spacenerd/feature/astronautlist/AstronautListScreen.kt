@@ -4,11 +4,13 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,13 +39,8 @@ fun AstronautListScreen(
 
     val selectedAstronaut = state.value.selectedAstronaut
 
-    val sheetState = rememberStandardBottomSheetState(
-        initialValue = SheetValue.Hidden,
-        skipHiddenState = false,
-    )
-
-    val scaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = sheetState,
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true,
     )
 
     observeSheetState(sheetState, viewModel)
@@ -71,23 +68,26 @@ fun AstronautListScreen(
             )
         },
         content = { scaffoldPadding ->
-            BottomSheetScaffold(
-                scaffoldState = scaffoldState,
-                sheetContent = {
+            AstronautListContent(
+                state = state.value,
+                onEvent = viewModel::onEvent,
+                modifier = Modifier
+                    .padding(scaffoldPadding),
+            )
+
+            if (state.value.searchVisible) {
+                ModalBottomSheet(
+                    onDismissRequest = {
+                        viewModel.onEvent(AstronautListUiEvent.SearchHidden)
+                    },
+                    sheetState = sheetState,
+                ) {
                     AstronautListSearchContent(
                         state = state.value.searchUiState,
                         onEvent = viewModel::onEvent,
                     )
-                },
-                content = {
-                    AstronautListContent(
-                        state = state.value,
-                        onEvent = viewModel::onEvent,
-                        modifier = Modifier
-                            .padding(scaffoldPadding),
-                    )
-                },
-            )
+                }
+            }
         },
     )
 }
