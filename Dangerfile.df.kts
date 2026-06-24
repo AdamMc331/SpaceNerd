@@ -28,18 +28,6 @@ danger(args) {
             message("🎉 Code Cleanup!")
         }
 
-        val updatesFile = File("build/dependencyUpdates/report.txt")
-        val lines = updatesFile.readLines()
-
-        val headerIndex = lines.indexOfFirst { line ->
-            line.contains("The following dependencies have later milestone versions:")
-        }
-
-        if (headerIndex >= 0) {
-            val message = lines.subList(headerIndex, lines.size).joinToString("\n")
-            message(message)
-        }
-
         val koverHtmlFile = File("build/reports/kover/html/index.html")
         val koverFileText = koverHtmlFile.readText()
         val koverOverallPattern = """
