@@ -1,5 +1,6 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
+import com.adammcneilly.spacenerd.core.models.AstronautStatus
 import com.adammcneilly.spacenerd.core.models.LaunchStatus
 import com.adammcneilly.spacenerd.core.models.SpaceStationStatus
 import kotlinx.serialization.SerialName
@@ -39,6 +40,23 @@ data class TSDStatusDTO(
             2 -> SpaceStationStatus.DeOrbited
             3 -> SpaceStationStatus.Decommissioned
             else -> SpaceStationStatus.Unknown
+        }
+    }
+
+    @Suppress("MagicNumber")
+    fun toAstronautStatus(): AstronautStatus {
+        return when (this.id) {
+            1 -> AstronautStatus.Active
+            2 -> AstronautStatus.Retired
+            3 -> AstronautStatus.InTraining
+            4 -> AstronautStatus.Deceased
+            5 -> AstronautStatus.Deceased
+            6 -> AstronautStatus.Deceased
+            7 -> AstronautStatus.Dismissed
+            8 -> AstronautStatus.Resigned
+            11 -> AstronautStatus.Deceased
+            14 -> AstronautStatus.OccasionalSpaceflight
+            else -> AstronautStatus.Unknown
         }
     }
 }

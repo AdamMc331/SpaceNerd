@@ -1,6 +1,7 @@
 package com.adammcneilly.spacenerd.data.remote.tsd.dtos
 
 import com.adammcneilly.spacenerd.core.models.Astronaut
+import com.adammcneilly.spacenerd.core.models.AstronautStatus
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -56,6 +57,7 @@ data class TSDAstronautDTO(
             agency = this.agency?.toAgency(),
             nationalities = this.nationalities?.map(TSDCountryDTO::toCountry).orEmpty(),
             inSpace = this.inSpace == true,
+            status = this.status?.toAstronautStatus() ?: AstronautStatus.Unknown,
         )
     }
 }

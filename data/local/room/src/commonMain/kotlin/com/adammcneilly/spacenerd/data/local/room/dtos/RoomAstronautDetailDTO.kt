@@ -4,6 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
 import com.adammcneilly.spacenerd.core.models.Astronaut
+import com.adammcneilly.spacenerd.core.models.AstronautStatus
 
 data class RoomAstronautDetailDTO(
     @Embedded val astronaut: RoomAstronautDTO,
@@ -29,6 +30,7 @@ data class RoomAstronautDetailDTO(
             agency = agency?.toAgency(),
             nationalities = countries.map(RoomCountryDTO::toCountry),
             inSpace = astronaut.inSpace,
+            status = AstronautStatus.valueOf(astronaut.status),
         )
     }
 }

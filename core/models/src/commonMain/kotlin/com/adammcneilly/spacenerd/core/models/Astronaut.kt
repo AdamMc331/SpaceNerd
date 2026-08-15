@@ -19,4 +19,5 @@ data class Astronaut(
     val agency: Agency?,
     val nationalities: List<Country>,
     val inSpace: Boolean,
+    val status: AstronautStatus,
 )
