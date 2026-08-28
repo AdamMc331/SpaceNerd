@@ -9,11 +9,11 @@ plugins {
 }
 
 dependencies {
-    debugImplementation(libs.jetbrains.compose.ui.tooling)
+    "androidRuntimeClasspath"(libs.jetbrains.compose.ui.tooling)
 }
 
 kotlin {
-    androidLibrary {
+    android {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)

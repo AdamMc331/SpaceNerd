@@ -13,7 +13,7 @@ plugins {
 }
 
 kotlin {
-    androidLibrary {
+    android {
         compileSdk = libs.versions.compileSdk.get().toInt()
         minSdk = libs.versions.minSdk.get().toInt()
 
