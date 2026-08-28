@@ -9,4 +9,5 @@ val testAstronaut = Astronaut(
     bio = "Sergey Ryzhikov bio.",
     agency = testAgency,
     nationalities = listOf(testCountry),
+    inSpace = false,
 )

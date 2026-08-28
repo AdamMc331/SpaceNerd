@@ -9,6 +9,7 @@ package com.adammcneilly.spacenerd.core.models
  * @property[imageUrl] Remote url to an image of this astronaut.
  * @property[agency] The [Agency] this Astronaut is associated with, if any.
  * @property[nationalities] The collection of [Country] that make up this Astronaut's nationalities.
+ * @property[inSpace] True if this astronaut is currently in space on a mission.
  */
 data class Astronaut(
     val id: String,
@@ -17,4 +18,5 @@ data class Astronaut(
     val imageUrl: String,
     val agency: Agency?,
     val nationalities: List<Country>,
+    val inSpace: Boolean,
 )

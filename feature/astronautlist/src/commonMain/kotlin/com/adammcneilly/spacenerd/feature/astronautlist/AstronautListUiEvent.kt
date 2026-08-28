@@ -10,4 +10,14 @@ sealed interface AstronautListUiEvent {
     data class NavigatedToAstronaut(
         val astronaut: AstronautDisplayModel,
     ) : AstronautListUiEvent
+
+    data object SearchClicked : AstronautListUiEvent
+
+    data object SearchHidden : AstronautListUiEvent
+
+    sealed interface SearchEvent : AstronautListUiEvent {
+        data object InSpaceClicked : SearchEvent
+
+        data object SubmitSearch : SearchEvent
+    }
 }

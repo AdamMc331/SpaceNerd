@@ -22,7 +22,7 @@ class RoomAstronautService(
         request: AstronautListRequest,
     ): Flow<List<Astronaut>> {
         return astronautDao.getAstronauts(
-//            inSpace = request.inSpace,
+            inSpace = request.inSpace,
         ).map { astronautList ->
             astronautList.map(RoomAstronautDetailDTO::toAstronaut)
         }

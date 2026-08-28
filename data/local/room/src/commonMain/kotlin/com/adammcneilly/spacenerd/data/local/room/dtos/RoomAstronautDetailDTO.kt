@@ -28,6 +28,7 @@ data class RoomAstronautDetailDTO(
             imageUrl = astronaut.imageUrl,
             agency = agency?.toAgency(),
             nationalities = countries.map(RoomCountryDTO::toCountry),
+            inSpace = astronaut.inSpace,
         )
     }
 }

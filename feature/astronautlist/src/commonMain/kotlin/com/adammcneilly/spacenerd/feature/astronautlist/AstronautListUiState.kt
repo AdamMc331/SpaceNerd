@@ -2,11 +2,16 @@ package com.adammcneilly.spacenerd.feature.astronautlist
 
 import com.adammcneilly.spacenerd.core.displaymodels.AstronautDisplayModel
 import com.adammcneilly.spacenerd.core.models.SyncStatus
+import com.adammcneilly.spacenerd.data.astronauts.api.AstronautListRequest
+import com.adammcneilly.spacenerd.feature.astronautlist.search.AstronautListSearchUiState
 
 data class AstronautListUiState(
     private val astronauts: List<AstronautDisplayModel>,
     val selectedAstronaut: AstronautDisplayModel?,
     val syncStatus: SyncStatus,
+    val searchVisible: Boolean,
+    val searchUiState: AstronautListSearchUiState,
+    val request: AstronautListRequest,
 ) {
     /**
      * If we're syncing data for the initial time of running the app,
@@ -31,6 +36,9 @@ data class AstronautListUiState(
                 astronauts = emptyList(),
                 selectedAstronaut = null,
                 syncStatus = SyncStatus.None,
+                searchVisible = false,
+                searchUiState = AstronautListSearchUiState.default(),
+                request = AstronautListRequest(),
             )
         }
     }
