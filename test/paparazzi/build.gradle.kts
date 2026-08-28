@@ -55,7 +55,7 @@ kotlin {
             implementation(libs.kotlinx.datetime)
         }
 
-        val androidHostTest by getting {
+        named("androidHostTest") {
             dependencies {
                 implementation(project.dependencies.platform(libs.compose.bom))
                 implementation(kotlin("test"))
