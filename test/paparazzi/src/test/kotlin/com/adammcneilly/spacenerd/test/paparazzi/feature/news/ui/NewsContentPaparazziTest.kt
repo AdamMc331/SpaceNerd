@@ -14,6 +14,7 @@ import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)
 class NewsContentPaparazziTest : BasePaparazziTest() {
+
     @Test
     fun renderPlaceholder() {
         val displayModels = List(10) { _ ->
