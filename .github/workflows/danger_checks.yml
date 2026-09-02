@@ -18,9 +18,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/workflow_setup
 
-      - name: Dependency Updates
-        run: ./gradlew dependencyUpdates
-
       - name: Kover
         run: ./gradlew test koverHtmlReport
 

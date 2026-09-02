@@ -19,12 +19,12 @@ jobs:
         uses: ./.github/actions/workflow_setup
 
       - name: Run Tests
-        run: ./gradlew test -x :test:paparazzi:test
+        run: ./gradlew test iosSimulatorArm64Test -x :test:paparazzi:test
 
       - name: Test Report
-        uses: dorny/test-reporter@v2
+        uses: dorny/test-reporter@v3
         if: ${{ !cancelled() }}
         with:
           name: Unit  Tests
-          path: '**/testDebugUnitTest/TEST-*.xml'
+          path: '**/build/test-results/**/TEST-*.xml'
           reporter: java-junit

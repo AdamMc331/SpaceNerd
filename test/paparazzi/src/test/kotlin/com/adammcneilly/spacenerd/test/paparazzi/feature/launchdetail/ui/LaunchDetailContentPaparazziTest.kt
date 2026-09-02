@@ -7,7 +7,7 @@ import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailContent
 import com.adammcneilly.spacenerd.feature.launchdetail.ui.LaunchDetailUiState
 import com.adammcneilly.spacenerd.test.paparazzi.BasePaparazziTest
 import kotlinx.datetime.TimeZone
-import kotlin.test.Test
+import org.junit.Test
 import kotlin.time.ExperimentalTime
 
 class LaunchDetailContentPaparazziTest : BasePaparazziTest() {
