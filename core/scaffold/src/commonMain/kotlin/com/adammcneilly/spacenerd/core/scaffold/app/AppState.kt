@@ -1,6 +1,5 @@
 package com.adammcneilly.spacenerd.core.scaffold.app
 
-import android.os.Parcelable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
@@ -8,7 +7,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.adammcneilly.spacenerd.core.scaffold.navigation.HomeTab
 import com.adammcneilly.spacenerd.core.scaffold.navigation.NavItem
-import kotlinx.parcelize.Parcelize
 
 /**
  * A composition local provider for [AppState] allows us to
@@ -20,14 +18,13 @@ val LocalAppState = staticCompositionLocalOf<AppState> {
 }
 
 /**
- * By extracting the parcelable components out of [AppState], this data
- * class can also be parcelable and persisted across configuration changes
+ * By extracting the components out of [AppState], this data
+ * class can be persisted across configuration changes
  * using rememberSaveable.
  */
-@Parcelize
 data class AppStateData(
     val navItems: List<NavItem>,
-) : Parcelable {
+) {
     constructor(
         selectedTab: HomeTab = HomeTab.News,
     ) : this(
@@ -66,23 +63,14 @@ class AppState(
         }
     }
 
-    /**
-     * Convert this class into something that can actually be saved
-     * in rememberSaveable.
-     */
-    fun toSaveableData(): AppStateData {
-        return AppStateData(
-            navItems = navItems,
-        )
-    }
-
     companion object {
-        val saver = Saver<AppState, AppStateData>(
+        val saver = Saver<AppState, String>(
             save = { appState ->
-                appState.toSaveableData()
+                appState.currentSelectedTab?.name
             },
-            restore = { appStateData ->
-                AppState(appStateData)
+            restore = { tabName ->
+                val selectedTab = HomeTab.entries.find { it.name == tabName } ?: HomeTab.News
+                AppState(AppStateData(selectedTab))
             },
         )
     }

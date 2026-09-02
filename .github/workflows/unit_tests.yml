@@ -19,7 +19,7 @@ jobs:
         uses: ./.github/actions/workflow_setup
 
       - name: Run Tests
-        run: ./gradlew test -x :test:paparazzi:test
+        run: ./gradlew allTests -x :test:paparazzi:test
 
       - name: Test Report
         uses: dorny/test-reporter@v3
