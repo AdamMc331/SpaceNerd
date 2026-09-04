@@ -15,6 +15,8 @@ import androidx.window.core.layout.WindowSizeClass
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageContentCard
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.SpaceStationDisplayModel
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
@@ -72,7 +74,10 @@ private fun StationImage(
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = modifier
-            .placeholder(station.isPlaceholder),
+            .placeholder(station.isPlaceholder)
+            .sharedElement(
+                key = station.imageSharedElementKey,
+            ),
     )
 }
 
@@ -99,6 +104,9 @@ private fun StationStatus(
                 visible = station.isPlaceholder,
                 shape = CircleShape,
                 color = placeholderColor,
+            )
+            .sharedElement(
+                key = station.statusSharedElementKey,
             ),
     )
 }
@@ -116,7 +124,10 @@ private fun StationInfo(
             text = station.name,
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier
-                .placeholder(station.isPlaceholder),
+                .placeholder(station.isPlaceholder)
+                .sharedBounds(
+                    key = station.titleSharedElementKey,
+                ),
         )
 
         Text(
@@ -124,7 +135,10 @@ private fun StationInfo(
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier
                 .padding(top = 4.dp)
-                .placeholder(station.isPlaceholder),
+                .placeholder(station.isPlaceholder)
+                .sharedBounds(
+                    key = station.subtitleSharedElementKey,
+                ),
         )
     }
 }
