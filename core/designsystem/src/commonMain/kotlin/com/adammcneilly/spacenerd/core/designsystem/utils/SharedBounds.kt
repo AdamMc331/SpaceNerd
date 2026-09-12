@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.LayoutDirection
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun Modifier.sharedBounds(
     key: String,
-    resizeMode: SharedTransitionScope.ResizeMode = SharedTransitionScope.ResizeMode.scaleToBounds(),
     clipShapeInOverlayDuringTransition: Shape? = null,
 ): Modifier {
     val sharedTransitionScope = LocalSharedTransitionScope.current
@@ -43,7 +42,6 @@ fun Modifier.sharedBounds(
                 key = key,
             ),
             animatedVisibilityScope = animatedVisibilityScope,
-            resizeMode = resizeMode,
             clipInOverlayDuringTransition = overlayClip,
         )
     }
