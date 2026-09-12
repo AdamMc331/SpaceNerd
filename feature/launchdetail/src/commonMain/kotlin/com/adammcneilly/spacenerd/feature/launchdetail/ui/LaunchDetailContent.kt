@@ -181,7 +181,7 @@ private fun LaunchSubtitle(
             .padding(top = 4.dp)
             .padding(horizontal = 16.dp)
             .placeholder(state.launch.isPlaceholder)
-            .sharedBounds(state.launch.subtitleSharedElementKey)
+            .sharedBounds(state.launch.subtitleSharedElementKey),
     )
 }
 
