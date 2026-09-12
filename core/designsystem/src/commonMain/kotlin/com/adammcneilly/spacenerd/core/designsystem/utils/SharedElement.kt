@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
  * Custom wrapper around the Compose foundation sharedElement modifier, that will only apply
  * if we have the relevant local scopes defined. Otherwise we'll return early with the current modifier.
  */
-@Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
+@Composable
 fun Modifier.sharedElement(
     key: String,
 ): Modifier {

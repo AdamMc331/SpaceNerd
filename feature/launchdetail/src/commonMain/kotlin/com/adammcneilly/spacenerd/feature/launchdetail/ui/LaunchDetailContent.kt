@@ -166,12 +166,11 @@ private fun LaunchTitle(
             .padding(top = 16.dp)
             .padding(horizontal = 16.dp)
             .placeholder(state.launch.isPlaceholder)
-            .sharedBounds("LAUNCH_TITLE_${state.launch.id}"),
+            .sharedBounds(state.launch.titleSharedElementKey),
     )
 }
 
 @Composable
-@OptIn(ExperimentalSharedTransitionApi::class)
 private fun LaunchSubtitle(
     state: LaunchDetailUiState,
 ) {
@@ -182,7 +181,7 @@ private fun LaunchSubtitle(
             .padding(top = 4.dp)
             .padding(horizontal = 16.dp)
             .placeholder(state.launch.isPlaceholder)
-            .sharedBounds("LAUNCH_SUBTITLE_${state.launch.id}"),
+            .sharedBounds(state.launch.subtitleSharedElementKey)
     )
 }
 
@@ -197,9 +196,7 @@ private fun LaunchImageStatus(
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(LAUNCH_IMAGE_ASPECT_RATIO)
-                .sharedElement(
-                    key = "LaunchImage-${state.launch.id}",
-                ),
+                .sharedElement(state.launch.imageSharedElementKey),
         )
 
         LaunchStatus(
@@ -215,9 +212,7 @@ private fun LaunchImageStatus(
                     ),
                     shape = CircleShape,
                 )
-                .sharedElement(
-                    key = "LaunchStatus-${state.launch.id}",
-                ),
+                .sharedElement(state.launch.statusSharedElementKey),
         )
     }
 }
