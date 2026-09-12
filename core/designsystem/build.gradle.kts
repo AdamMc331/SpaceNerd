@@ -35,6 +35,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.coil.compose)
             implementation(libs.compose.material3.adaptive)
+            implementation(libs.jetbrains.compose.animations)
             implementation(libs.jetbrains.compose.components.resources)
             implementation(libs.jetbrains.compose.material3)
             implementation(libs.jetbrains.compose.ui)

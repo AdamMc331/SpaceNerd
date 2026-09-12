@@ -68,6 +68,11 @@ data class LaunchDisplayModel(
         launchPad = launch.pad?.let(::LaunchPadDisplayModel),
     )
 
+    val titleSharedElementKey = "launch_title_$id"
+    val subtitleSharedElementKey = "launch_subtitle_$id"
+    val imageSharedElementKey = "launch_image_$id"
+    val statusSharedElementKey = "launch_status_$id"
+
     companion object {
         fun placeholder(): LaunchDisplayModel {
             return LaunchDisplayModel(
