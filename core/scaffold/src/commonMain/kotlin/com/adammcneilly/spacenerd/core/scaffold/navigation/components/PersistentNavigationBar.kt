@@ -18,7 +18,13 @@ fun ScaffoldState.PersistentNavigationBar(
     exitTransition: ExitTransition = slideOutVertically(targetOffsetY = { it }),
 ) {
     AnimatedVisibility(
-        modifier = modifier,
+        modifier = modifier
+            .sharedElement(
+                sharedContentState = rememberSharedContentState(
+                    BottomNavSharedElementKey,
+                ),
+                animatedVisibilityScope = this,
+            ),
         visible = canShowBottomNavigation,
         enter = enterTransition,
         exit = exitTransition,
@@ -27,3 +33,5 @@ fun ScaffoldState.PersistentNavigationBar(
         },
     )
 }
+
+private data object BottomNavSharedElementKey

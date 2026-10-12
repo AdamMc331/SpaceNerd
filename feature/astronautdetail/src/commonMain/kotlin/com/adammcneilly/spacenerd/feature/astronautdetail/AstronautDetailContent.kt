@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.eygraber.compose.placeholder.material3.placeholder
 
 private const val ASTRONAUT_IMAGE_ASPECT_RATIO = 1F
@@ -54,7 +56,10 @@ private fun AstronautName(
         modifier = Modifier
             .padding(top = 16.dp)
             .padding(horizontal = 16.dp)
-            .placeholder(state.astronaut.placeholder),
+            .placeholder(state.astronaut.placeholder)
+            .sharedBounds(
+                key = state.astronaut.nameSharedElementKey,
+            ),
     )
 }
 
@@ -83,6 +88,9 @@ private fun AstronautImage(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(ASTRONAUT_IMAGE_ASPECT_RATIO)
+            .sharedElement(
+                key = state.astronaut.imageSharedElementKey,
+            )
             .placeholder(state.astronaut.placeholder),
     )
 }

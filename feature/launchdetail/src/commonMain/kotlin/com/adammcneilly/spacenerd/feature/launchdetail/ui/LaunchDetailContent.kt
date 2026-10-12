@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,6 +22,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.spacenerd.core.designsystem.components.ImageWrapper
 import com.adammcneilly.spacenerd.core.designsystem.components.Pill
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedBounds
+import com.adammcneilly.spacenerd.core.designsystem.utils.sharedElement
 import com.adammcneilly.spacenerd.core.displaymodels.LaunchDisplayModel
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.material3.color
@@ -161,12 +165,12 @@ private fun LaunchTitle(
         modifier = Modifier
             .padding(top = 16.dp)
             .padding(horizontal = 16.dp)
-            .placeholder(state.launch.isPlaceholder),
+            .placeholder(state.launch.isPlaceholder)
+            .sharedBounds(state.launch.titleSharedElementKey),
     )
 }
 
 @Composable
-@OptIn(ExperimentalSharedTransitionApi::class)
 private fun LaunchSubtitle(
     state: LaunchDetailUiState,
 ) {
@@ -176,7 +180,8 @@ private fun LaunchSubtitle(
         modifier = Modifier
             .padding(top = 4.dp)
             .padding(horizontal = 16.dp)
-            .placeholder(state.launch.isPlaceholder),
+            .placeholder(state.launch.isPlaceholder)
+            .sharedBounds(state.launch.subtitleSharedElementKey),
     )
 }
 
@@ -190,7 +195,8 @@ private fun LaunchImageStatus(
             launch = state.launch,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(LAUNCH_IMAGE_ASPECT_RATIO),
+                .aspectRatio(LAUNCH_IMAGE_ASPECT_RATIO)
+                .sharedElement(state.launch.imageSharedElementKey),
         )
 
         LaunchStatus(
@@ -205,7 +211,8 @@ private fun LaunchImageStatus(
                         contentAlpha = 0.15F,
                     ),
                     shape = CircleShape,
-                ),
+                )
+                .sharedElement(state.launch.statusSharedElementKey),
         )
     }
 }
